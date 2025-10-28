@@ -8,6 +8,7 @@ export interface CustomButtonProps
   iconClassName?: string;
   iconContainerClassName?: string;
   size?: "sm" | "md" | "lg";
+  variant?: "primary" | "secondary";
 }
 
 const sizeClasses = {
@@ -47,12 +48,17 @@ const iconSizeClasses = {
 };
 
 const CustomButton = React.forwardRef<HTMLButtonElement, CustomButtonProps>(
-  ({ className, rightIcon: RightIcon, iconClassName, iconContainerClassName, size = "md", children, ...props }, ref) => {
+  ({ className, rightIcon: RightIcon, iconClassName, iconContainerClassName, size = "md", variant = "primary", children, ...props }, ref) => {
     const sizeConfig = sizeClasses[size];
     const iconConfig = iconSizeClasses[size];
     
     // Use buttonWithIcon class when icon is present, otherwise use button class
     const buttonPaddingClass = RightIcon ? sizeConfig.buttonWithIcon : sizeConfig.button;
+
+    // Variant styles
+    const variantStyles = variant === "secondary" 
+      ? "bg-white border border-[#F4781B] text-[#F4781B] hover:bg-[#F4781B] hover:text-white"
+      : "bg-[#F4781B] text-white shadow hover:opacity-90";
 
     return (
       <button
@@ -60,8 +66,10 @@ const CustomButton = React.forwardRef<HTMLButtonElement, CustomButtonProps>(
         className={cn(
           // Base styles
           "flex items-center relative overflow-hidden w-fit my-2 rounded-full",
-          "bg-[#F4781B] text-white font-normal shadow hover:opacity-90 transition-colors",
+          "font-normal transition-colors",
           "focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50",
+          // Variant-based styles
+          variantStyles,
           // Size-based styles
           buttonPaddingClass,
           sizeConfig.text,

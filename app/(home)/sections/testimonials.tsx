@@ -7,57 +7,12 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/heading";
 import { ResponsiveParagraph, Paragraph } from "@/components/ui/paragraph";
-
-interface Testimonial {
-  id: number;
-  name: string;
-  role: string;
-  image: string;
-  rating: number;
-  review: string;
-}
+import { TESTIMONIALS } from "@/lib/constants";
 
 export default function TestimonialsSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const testimonials: Testimonial[] = [
-    {
-      id: 1,
-      name: "Sarah M.",
-      role: "Registered Nurse",
-      image: "/img/testimonials/sarah.png",
-      rating: 5,
-      review:
-        "Got a part-time nursing job in 2 days — everything was verified! The smart job recommendations saved me so much time. Highly recommend it!",
-    },
-    {
-      id: 2,
-      name: "David L.",
-      role: "Freelance Physiotherapist",
-      image: "/img/testimonials/michael.png",
-      rating: 4,
-      review:
-        "I had been looking for flexible shifts with no luck. The easy payments and map view here made freelancing smooth. Totally worth it.",
-    },
-    {
-      id: 3,
-      name: "Emily R.",
-      role: "Healthcare Specialist",
-      image: "/img/testimonials/sarah.png",
-      rating: 5,
-      review:
-        "The AI matching is incredible! Found my dream job within a week. The verification process gave me confidence in every application.",
-    },
-    {
-      id: 4,
-      name: "Michael K.",
-      role: "Medical Technician",
-      image: "/img/testimonials/michael.png",
-      rating: 5,
-      review:
-        "Best platform for healthcare professionals! The instant notifications and easy application process made job hunting stress-free.",
-    },
-  ];
+  const testimonials = TESTIMONIALS;
 
   const nextTestimonial = () => {
     setCurrentIndex((prev) => (prev + 2 >= testimonials.length ? 0 : prev + 2));
@@ -76,9 +31,9 @@ export default function TestimonialsSection() {
         <div>
           <Heading as="h2" size="md" className="text-[#252B37] mb-4">
             What Our Professionals Are Saying About{" "} <br />
-            <span className="text-[#F4781B] font-bold">MeDFasterrrrr</span>
+            <span className="text-[#F4781B] font-bold">MedFaster</span>
           </Heading>
-          <ResponsiveParagraph size="base" className="text-[#717680] max-w-3xl">
+          <ResponsiveParagraph size="sm" className="text-[#717680] max-w-3xl">
             Real experiences from nurses, specialists, and therapists who found
             success on our platform. See how we&apos;ve helped thousands find their
             ideal roles.
@@ -121,6 +76,7 @@ export default function TestimonialsSection() {
                       alt={testimonial.name}
                       fill
                       className="object-cover"
+                      quality={100}
                     />
                   </div>
                   <div>
@@ -145,7 +101,7 @@ export default function TestimonialsSection() {
           </button>
           <button
             onClick={nextTestimonial}
-            className="w-12 h-12 rounded-full border-2 border-roubd border-neutral-100 flex items-center justify-center hover:bg-[#F4781B] hover:text-white transition-all group"
+            className="w-12 h-12 rounded-full border-2 border-neutral-100 flex items-center justify-center hover:bg-[#F4781B] hover:text-white transition-all group"
             aria-label="Next testimonials"
           >
             <ArrowRight className="w-6 h-6 text-[#F4781B] group-hover:text-white" />

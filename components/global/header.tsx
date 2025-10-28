@@ -1,34 +1,40 @@
-'use client';
+"use client";
 
-import { ArrowDownToLine, Menu, X } from 'lucide-react';
-import { useState } from 'react';
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { CustomButton } from '@/components/ui/custom-button';
-import Image from 'next/image';
+import { ArrowDown, ArrowDownToLine, ChevronDown, Menu, X } from "lucide-react";
+import { useState } from "react";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { CustomButton } from "@/components/ui/custom-button";
+import Image from "next/image";
 
 const navLinks = [
-  { label: 'Home', href: '/' },
-  { label: 'Medical Organizations', href: '/login' },
-  { label: 'Medical Professionals', href: '/login' },
-  { label: 'Patients', href: '/login' },
+  { label: "Home", href: "/" },
+  { label: "Medical Organizations", href: "/" },
+  { label: "Medical Professionals", href: "/" },
+  { label: "Patients", href: "/" },
   {
-    label: 'AI Features', href: '/login', submenu: [
-      { label: 'Feature 1', href: '/ai/feature1' },
-      { label: 'Feature 2', href: '/ai/feature2' },
-    ]
+    label: "AI Features",
+    href: "/",
+    submenu: [
+      { label: "Feature 1", href: "/" },
+      { label: "Feature 2", href: "/" },
+    ],
   },
   {
-    label: 'Company', href: '/login', submenu: [
-      { label: 'About Us', href: '/company/about' },
-      { label: 'Careers', href: '/company/careers' },
-    ]
+    label: "Company",
+    href: "/",
+    submenu: [
+        { label: "About Us", href: "/" },
+        { label: "Careers", href: "/" },
+        { label: "Blog", href: "/" },
+        { label: "Contact Us", href: "/" },
+    ],
   },
 ];
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [active, setActive] = useState('Home');
+  const [active, setActive] = useState("Home");
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
 
   const toggleSubmenu = (label: string) => {
@@ -41,7 +47,7 @@ export default function Header() {
       <div className="flex items-center gap-2">
         {/* Mobile Menu Button */}
         <Button
-          className="lg:hidden rounded p-2 z-20"
+          className="xl:hidden rounded p-2 z-20"
           onClick={() => setMobileOpen((o) => !o)}
         >
           {mobileOpen ? <X size={20} /> : <Menu size={20} />}
@@ -50,29 +56,30 @@ export default function Header() {
         {/* Logo */}
         <div className="flex-shrink-0 w-40 md:w-48 lg:w-[200px] flex items-center">
           <Image
-            src="/img/logo.png"
+            src="/images/ui/medfaster-logo.png"
             height={50}
             width={200}
             alt="MeDFaster"
             objectFit="contain"
+            quality={100}
             priority
           />
         </div>
       </div>
 
       {/* Desktop Navigation */}
-      <nav className="hidden lg:flex bg-gray-100 rounded-full p-2 items-center gap-1 relative">
+      <nav className="hidden xl:flex bg-gray-100 rounded-full p-2 items-center gap-1 relative">
         {navLinks.map((link) => {
           const hasSubmenu = link.submenu && link.submenu.length > 0;
           const isSubmenuOpen = openSubmenu === link.label;
           return (
             <div key={link.label} className="relative">
               <Button
-                className={
+                className={`rounded-full font-medium px-3 py-2 whitespace-nowrap inline-flex items-center gap-1 ${
                   active === link.label
-                    ? 'bg-[#F4781B] text-white rounded-full font-medium px-6 py-2 whitespace-nowrap inline-flex items-center gap-1'
-                    : 'bg-transparent text-gray-700 rounded-full font-medium px-6 py-2 whitespace-nowrap inline-flex items-center gap-1'
-                }
+                    ? "bg-[#F4781B] text-white"
+                    : "bg-transparent text-gray-700"
+                }`}
                 variant="ghost"
                 asChild
                 onClick={() => {
@@ -87,9 +94,11 @@ export default function Header() {
                 <div className="inline-flex items-center gap-1">
                   <Link href={link.href}>{link.label}</Link>
                   {hasSubmenu && (
-                    <ArrowDownToLine
-                      className={`${isSubmenuOpen ? 'rotate-180' : ''} transition-transform`}
-                      size={16}
+                    <ChevronDown
+                      className={`${
+                        isSubmenuOpen ? "rotate-180" : ""
+                      } transition-transform`}
+                      size={18}
                     />
                   )}
                 </div>
@@ -97,7 +106,7 @@ export default function Header() {
 
               {/* Submenu */}
               {hasSubmenu && isSubmenuOpen && (
-                <div className="absolute top-full mt-2 bg-white rounded-lg shadow-lg py-2 min-w-[150px] z-50 flex flex-col">
+                <div className="absolute top-full mt-2 bg-white rounded-lg shadow-lg p-2 min-w-[150px] z-50 flex flex-col border border-gray-200">
                   {link.submenu!.map((subLink) => (
                     <Link
                       key={subLink.label}
@@ -106,7 +115,11 @@ export default function Header() {
                         setActive(subLink.label);
                         setOpenSubmenu(null);
                       }}
-                      className="px-4 py-2 hover:bg-[#F4781B] hover:text-white rounded-md whitespace-nowrap"
+                      className={`px-4 py-2 text-gray-700 text-sm rounded-md whitespace-nowrap font-medium ${
+                        active === subLink.label
+                          ? "bg-[#F4781B] text-white"
+                          : "hover:bg-[#F4781B] hover:text-white"
+                      }`}
                     >
                       {subLink.label}
                     </Link>
@@ -119,13 +132,14 @@ export default function Header() {
       </nav>
 
       {/* Download Button - Desktop Only */}
-      <CustomButton className="hidden md:flex my-0" rightIcon={ArrowDownToLine}>
-        Download App
-      </CustomButton>
+      <div className="flex items-center gap-2">
+        <CustomButton className="hidden md:flex my-0 py-2">Find Jobs</CustomButton>
+        <CustomButton className="hidden md:flex my-0 py-2" variant="secondary">Login</CustomButton>
+      </div>
 
       {/* Mobile Navigation Drawer */}
       {mobileOpen && (
-        <div className="absolute top-[calc(100%+10px)] left-0 w-full max-w-sm min-h-[calc(100vh-100%-30px)] z-50 flex flex-col items-center bg-white border-b rounded-lg shadow-lg lg:hidden justify-between">
+        <div className="absolute top-[calc(100%+10px)] left-0 w-full max-w-sm min-h-[calc(100vh-100%-30px)] z-50 flex flex-col items-center bg-white border-b rounded-lg shadow-lg xl:hidden justify-between">
           <div className="w-full max-w-sm py-4 px-4">
             {navLinks.map((link) => {
               const hasSubmenu = link.submenu && link.submenu.length > 0;
@@ -133,11 +147,11 @@ export default function Header() {
               return (
                 <div key={link.label} className="mb-2">
                   <Button
-                    className={
+                    className={`rounded-full font-medium w-full my-1 ${
                       active === link.label
-                        ? 'bg-[#F4781B] text-white rounded-full font-medium w-full my-1'
-                        : 'bg-transparent text-gray-700 rounded-full font-medium w-full my-1 hover:bg-[#F4781B]-100'
-                    }
+                        ? "bg-[#F4781B] text-white"
+                        : "bg-transparent text-gray-700 hover:bg-[#F4781B]-100"
+                    }`}
                     variant="ghost"
                     asChild
                     onClick={() => {
@@ -150,8 +164,16 @@ export default function Header() {
                       }
                     }}
                   >
-                    <span>
+                    <span className="inline-flex items-center gap-1 w-full justify-between">
                       <Link href={link.href}>{link.label}</Link>
+                      {hasSubmenu && (
+                        <ChevronDown
+                          className={`${
+                            isSubmenuOpen ? "rotate-180" : ""
+                          } transition-transform`}
+                          size={18}
+                        />
+                      )}
                     </span>
                   </Button>
 
@@ -161,11 +183,11 @@ export default function Header() {
                       {link.submenu!.map((subLink) => (
                         <Button
                           key={subLink.label}
-                          className={
+                          className={`rounded-full font-medium w-full my-1 ${
                             active === subLink.label
-                              ? 'bg-[#F4781B] text-white rounded-full font-medium w-full my-1'
-                              : 'bg-transparent text-gray-700 rounded-full font-medium w-full my-1 hover:bg-[#F4781B]-100'
-                          }
+                              ? "bg-[#F4781B] text-white"
+                              : "bg-transparent text-gray-700 hover:bg-[#F4781B]-100"
+                          }`}
                           variant="ghost"
                           asChild
                           onClick={() => {
@@ -183,9 +205,12 @@ export default function Header() {
               );
             })}
           </div>
-          <div className="w-full max-w-sm py-4 px-4">
-            <CustomButton className="w-full justify-center my-1" rightIcon={ArrowDownToLine}>
-              Download App
+          <div className="w-full max-w-sm py-4 px-4 flex flex-col gap-2">
+            <CustomButton className="w-full justify-center my-1">
+              Find Jobs
+            </CustomButton>
+            <CustomButton className="w-full justify-center my-1" variant="secondary">
+              Login
             </CustomButton>
           </div>
         </div>

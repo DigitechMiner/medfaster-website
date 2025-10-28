@@ -23,13 +23,14 @@ export function FeatureCard({ title, description, visual, imageFullWidth = false
       {visual && (
         <div className={imageFullWidth ? "w-full mb-6" : ""}>
           {visual.type === "image" && (
-            <div className={imageFullWidth ? "relative w-full aspect-[500/327]" : "relative w-40 h-80 sm:w-48 sm:h-96"}>
+            <div className={imageFullWidth ? "relative w-full aspect-[500/327]" : "relative w-12 h-12 mb-4"}>
               <Image 
                 src={visual.content as string}
                 alt={visual.alt || title}
                 fill
-                className={`object-contain rounded-xl ${imageCenter ? "object-center md:object-left" : "object-left"}`}
-                sizes="(max-width: 768px) 100vw, 50vw"
+                className={`object-contain ${imageCenter ? "object-center md:object-left" : "object-left"}`}
+                sizes={imageFullWidth ? "(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" : "48px"}
+                quality={100}
               />
             </div>
           )}

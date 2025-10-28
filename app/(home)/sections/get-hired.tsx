@@ -2,41 +2,21 @@
 
 import Image from "next/image";
 import { CustomButton } from "@/components/ui/custom-button";
-import { ArrowRight, Wand2, ShieldCheck, Briefcase } from "lucide-react";
-// Removed invalid import from public folder
+import { ArrowRight } from "lucide-react";
 import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/heading";
-import { Paragraph, ResponsiveParagraph } from "@/components/ui/paragraph";
+import { ResponsiveParagraph } from "@/components/ui/paragraph";
+import { GET_HIRED_STEPS } from "@/lib/constants";
 
 export default function GetHiredSection() {
-  // Use string URLs for icons pointing to public folder SVGs
-  const steps = [
-    {
-      iconSrc: "/svg/hiredOne.svg",
-      title: "Create Your Profile",
-      description:
-        "Upload your resume and certificates, and let our AI auto-fill your details instantly.",
-    },
-    {
-      iconSrc: "/svg/hiredTwo.svg",
-      title: "Verify & Pre-Screen",
-      description:
-        "Get your credentials verified and complete a short AI interview to showcase your skills to top employers.",
-    },
-    {
-      iconSrc: "/svg/hiredThree.svg",
-      title: "Start Working",
-      description:
-        "Apply for nearby shifts or full-time roles and get paid directly and reliably through the platform.",
-    },
-  ];
+  const steps = GET_HIRED_STEPS;
 
   return (
     <Section
       backgroundColor="bg-[#F4781B]"
       className="relative overflow-hidden"
       style={{
-        backgroundImage: "url(/img/pattern/01.png)",
+        backgroundImage: "url(/images/patterns/orange-pattern-1.png)",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundBlendMode: "overlay",
@@ -58,10 +38,11 @@ export default function GetHiredSection() {
           <div className="order-2 lg:order-1">
             <div className="relative h-[400px] lg:h-[500px]">
               <Image
-                src="/img/hired.png"
+                src="/images/hero/get-hired.png"
                 alt="Healthcare professional assisting patient"
                 fill
                 className="object-contain"
+                quality={100}
               />
             </div>
           </div>

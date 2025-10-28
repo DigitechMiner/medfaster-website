@@ -1,14 +1,16 @@
 import Header from "@/components/global/header"
-import HeroSection from "./components/hero-section"
-import CompanyLogos from "./components/company-logos"
-import GetHiredSection from "./components/get-hired-section"
-import AIHelpsSection from "./components/ai-helps-section"
+import HeroSection from "./sections/hero"
+import GetHiredSection from "./sections/get-hired"
 import { Footer } from "@/components/global/footer"
-import AllInOneSection from "./components/all-in-one-app"
-import NextCareer from "./components/next-career"
-import Verified from "./components/verified"
-import CareerOnTheGo from "./components/career-on-the-go"
-import TestimonialsSection from "./components/testimonial"
+import TestimonialsSection from "./sections/testimonials"
+import {
+  CompanyLogos,
+  AIHelpsSection,
+  AllInOneSection,
+  VerifiedSection,
+  CareerOnTheGo,
+  NextCareer,
+} from "./sections"
 
 export default function Home() {
   return (
@@ -19,7 +21,7 @@ export default function Home() {
       <GetHiredSection />
       <AIHelpsSection />
       <AllInOneSection />
-      <Verified />
+      <VerifiedSection />
       <TestimonialsSection />
       <NextCareer />
       <CareerOnTheGo />

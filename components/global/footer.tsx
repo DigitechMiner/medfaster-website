@@ -97,10 +97,11 @@ export function Footer() {
           <div className="flex flex-col gap-6 sm:gap-8 lg:flex-row lg:items-center lg:justify-between">
             <div className="relative w-40 md:w-48 lg:w-[200px] h-8 sm:w-40 sm:h-10">
               <Image
-                src="/img/logo.png"
+                src="/images/ui/medfaster-logo.png"
                 alt="MeDFasterrrrr Logo"
                 fill
                 className="object-contain object-left"
+                quality={100}
                 priority
               />
             </div>
@@ -157,7 +158,7 @@ export function Footer() {
           {/* Row 3: Copyright and Social Icons */}
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <ResponsiveParagraph size="xs" className="text-muted-foreground order-2 sm:order-1">
-              Copyright © 2025 MeDFasterrrrr, All Rights Reserved.
+              Copyright © 2025 MeDFaster, All Rights Reserved.
             </ResponsiveParagraph>
 
             <div className="flex gap-3 sm:gap-4 order-1 sm:order-2">

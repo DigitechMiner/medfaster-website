@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { CustomButton } from "@/components/ui/custom-button";
 import InputIcon from "@/components/ui/input-icon";
-import { Search, MapPin, ArrowRight } from "lucide-react";
+import { Search, MapPin, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/heading";
@@ -65,32 +65,28 @@ export default function HeroSection() {
               roles all on your terms.
             </ResponsiveParagraph>
             <div className="flex items-center gap-4">
-              <CustomButton rightIcon={ArrowRight}>
+              <CustomButton rightIcon={ChevronRight}>
                 Browse Nearby Jobs
               </CustomButton>
 
               {/* Profile Pictures */}
-              <div className="flex -space-x-4">
-                <img
-                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face&auto=format"
-                  alt="User 1"
-                  className="w-10 h-10 rounded-full border-2 border-white object-cover"
-                />
-                <img
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face&auto=format"
-                  alt="User 2"
-                  className="w-10 h-10 rounded-full border-2 border-white object-cover"
-                />
-                <img
-                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face&auto=format"
-                  alt="User 1"
-                  className="w-10 h-10 rounded-full border-2 border-white object-cover"
-                />
-                <img
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face&auto=format"
-                  alt="User 2"
-                  className="w-10 h-10 rounded-full border-2 border-white object-cover"
-                />
+              <div className="flex -space-x-6">
+                {[
+                  "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face&auto=format",
+                  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face&auto=format",
+                  "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face&auto=format",
+                  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face&auto=format",
+                ].map((src, index) => (
+                  <Image
+                    key={index}
+                    src={src}
+                    alt={`User ${index + 1}`}
+                    width={40}
+                    height={40}
+                    className="w-10 h-10 rounded-full border-2 border-white object-cover"
+                    unoptimized
+                  />
+                ))}
               </div>
             </div>
           </div>
@@ -103,11 +99,13 @@ export default function HeroSection() {
             {/* Address Image */}
             <div className="md:flex-[3] relative bg-[#f5f5f5] rounded-lg flex items-center justify-center">
               <Image
-                src="/img/ADDRESS.png"
+                src="/images/hero/mobile-address.png"
                 alt="MedFasterrr app interface"
                 width={280}
                 height={450}
                 className="object-contain w-full rounded-lg max-w-[380px] aspect-[280/450]"
+                quality={100}
+                priority
               />
             </div>
 
@@ -129,11 +127,13 @@ export default function HeroSection() {
             {/* Doctor Image - First on mobile, Second on desktop */}
             <div className=" order-1 md:order-2 md:flex-[3] relative bg-[#f5f5f5] rounded-lg flex items-center justify-center">
               <Image
-                src="/img/doctor.png"
+                src="/images/hero/doctor.png"
                 alt="Professional doctor"
                 width={280}
                 height={450}
                 className="object-cover object-top w-full rounded-lg max-w-[380px] aspect-[280/450]"
+                quality={100}
+                priority
               />
             </div>
 
