@@ -1,16 +1,16 @@
-import Header from "@/components/global/header"
-import HeroSection from "./sections/hero"
-import GetHiredSection from "./sections/get-hired"
-import { Footer } from "@/components/global/footer"
-import TestimonialsSection from "./sections/testimonials"
+import Header from "@/components/global/header";
+import HeroSection from "./sections/hero";
+import GetHiredSection from "./sections/get-hired";
+import { Footer } from "@/components/global/footer";
+import TestimonialsSection from "./sections/testimonials";
+import BookADemo from "./sections/book-demo";
 import {
   CompanyLogos,
   AIHelpsSection,
   AllInOneSection,
   VerifiedSection,
-  CareerOnTheGo,
   NextCareer,
-} from "./sections"
+} from "./sections";
 
 export default function Home() {
   return (
@@ -22,9 +22,9 @@ export default function Home() {
       <AIHelpsSection />
       <AllInOneSection />
       <VerifiedSection />
+      <BookADemo />
       <TestimonialsSection />
       <NextCareer />
-      <CareerOnTheGo />
       <Footer />
     </div>
   );

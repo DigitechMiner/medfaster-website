@@ -3,6 +3,7 @@ import Image from "next/image";
 import { LucideIcon } from "lucide-react";
 import { Heading } from "@/components/ui/heading";
 import { Paragraph } from "@/components/ui/paragraph";
+import { cn } from "@/lib/utils";
 
 interface FeatureCardProps {
   title: string;
@@ -14,11 +15,12 @@ interface FeatureCardProps {
   };
   imageFullWidth?: boolean;
   imageCenter?: boolean;
+  className?: string;
 }
 
-export function FeatureCard({ title, description, visual, imageFullWidth = false, imageCenter = false }: FeatureCardProps) {
+export function FeatureCard({ title, description, visual, imageFullWidth = false, imageCenter = false, className }: FeatureCardProps) {
   return (
-    <div className="flex flex-col items-start text-left border-b border-[#E9EAEB] pb-6">
+    <div className={cn("flex flex-col items-start text-left border-b border-[#E9EAEB] pb-6", className)}>
       {/* Visual element (image or icon) */}
       {visual && (
         <div className={imageFullWidth ? "w-full mb-6" : ""}>

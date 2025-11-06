@@ -3,8 +3,8 @@ import "./globals.css";
 import { fonts } from "@/lib/font";
 
 export const metadata: Metadata = {
-  title: "MedFaster Candidate Portal",
-  description: "MedFaster is a platform for finding healthcare jobs",
+  title: "MedFaster",
+  description: "MedFaster is a platform for finding healthcare jobs and candidates",
 };
 
 export default function RootLayout({

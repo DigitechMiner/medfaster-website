@@ -30,13 +30,11 @@ export default function TestimonialsSection() {
         {/* Header */}
         <div>
           <Heading as="h2" size="md" className="text-[#252B37] mb-4">
-            What Our Professionals Are Saying About{" "} <br />
-            <span className="text-[#F4781B] font-bold">MedFaster</span>
+            <span className="text-[#F4781B] font-bold">Real Results,</span>{" "}
+            Real Partnerships
           </Heading>
           <ResponsiveParagraph size="sm" className="text-[#717680] max-w-3xl">
-            Real experiences from nurses, specialists, and therapists who found
-            success on our platform. See how we&apos;ve helped thousands find their
-            ideal roles.
+            Hear from both the professionals finding their dream roles and the hospitals building their dream teams.
           </ResponsiveParagraph>
         </div>
 

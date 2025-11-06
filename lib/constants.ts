@@ -62,57 +62,62 @@ export const GET_HIRED_STEPS: GetHiredStep[] = [
 
 export const AI_FEATURES: AIFeature[] = [
   {
-    icon: "/images/icons/ai-resume-parsing.svg",
-    title: "AI Resume Parsing",
-    description: "Build your professional profile in seconds, not hours. Just upload your documents and our AI does the rest."
+    icon: "/images/icons/ai-feedback.svg",
+    title: "AI Resume Parsing / Automated Screening",
+    description: "Quickly build accurate professional profiles for candidates and automatically screen applicants for organizations."
   },
   {
-    icon: "/images/icons/ai-job-matching.svg",
+    icon: "/images/icons/ai-resume-parsing.svg",
     title: "Smart Job Matching",
-    description: "Stop scrolling through irrelevant listings. Get matched with roles that fit your specific skills and schedule."
+    description: "Connects candidates to ideal roles and organizations to top-fit talent, instantly."
   },
   {
     icon: "/images/icons/ai-predictive-availability.svg",
-    title: "Predictive Availability",
-    description: "Our system anticipates employer needs to show you jobs that match your future availability and experience."
+    title: "Predictive Availability / Predictive Insights",
+    description: "Helps candidates find roles aligning with their future schedules and organizations forecast candidate performance and availability."
   },
   {
-    icon: "/images/icons/ai-feedback.svg",
-    title: "Confidential AI Feedback",
-    description: "After your AI interview, get private feedback on your strengths to help you stand out to employers."
+    icon: "/images/icons/ai-job-matching.svg",
+    title: "Confidential AI Feedback / AI Behavioral Interviews",
+    description: "Gives candidates feedback to improve and organizations objective assessments of communication & professionalism."
   },
   {
     icon: "/images/icons/ai-verified-opportunities.svg",
-    title: "Verified Opportunities",
-    description: "Apply with total confidence. Our system helps verify every employer, so you only see trusted, high-quality roles."
+    title: "Verified Opportunities / Trust Layer",
+    description: "Ensures candidates apply to trusted roles and organizations hire 100% verified, compliant staff."
+  },
+  {
+    icon: "/images/icons/ai-predictive-availability.svg",
+    title: "Unified Communication Tools",
+    description: "Seamless chat for candidates to connect with recruiters, and for recruiters to manage all candidate outreach."
   }
 ];
 
 export const APP_FEATURES: AppFeature[] = [
   {
     screen: "/images/features/resume-upload.png",
-    title: "Resume & Certificate Upload",
-    description: "Securely store all your professional documents in one place to create a comprehensive, standout profile"
+    title: "Profile & Doc Upload",
+    description: "Securely store all your professional documents in one place to create a comprehensive, standout profile."
   },
   {
     screen: "/images/features/document-verification.png",
-    title: "Document Verification",
+    title: "Credential Verification",
     description: "Our system verifies your credentials, giving you a badge of trust that makes your application a priority for top employers."
   },
   {
     screen: "/images/features/map-view.png",
     title: "Map View",
-    description: "Visually discover job openings in your area. See commute times and find shifts close to home.."
+    description: "Visually discover job openings in your area. See commute times and find shifts close to home."
   },
   {
     screen: "/images/features/job-marketplace.png",
-    title: "Job Marketplace",
+    title: "Job / Candidate Marketplace",
     description: "Filter through full-time, contract, and freelance roles to find the perfect opportunity that fits your schedule and skills."
   },
   {
     screen: "/images/features/wallet-payment.png",
     title: "Wallet & Payment History",
-    description: "Track your earnings and manage payments directly within the app. Get paid reliably with full transparency.."
+    description: "Track your earnings and manage payments directly within the app. Get paid reliably with full transparency."
   }
 ];
 
