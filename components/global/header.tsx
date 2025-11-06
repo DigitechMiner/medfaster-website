@@ -13,8 +13,8 @@ const navLinks = [
     label: "Our Platforms",
     href: "/",
     submenu: [
-      { label: "Medical Organizations", href: "https://candidate.medfaster.com/" },
-      { label: "Medical Professionals", href: "https://recruiter.medfaster.com/" },
+      { label: "Medical Organizations", href: "https://recruiter.medfaster.com/" },
+      { label: "Medical Professionals", href: "https://candidate.medfaster.com/" },
       { label: "Patients", href: "http://medfaster.com/" },
     ],
   },
