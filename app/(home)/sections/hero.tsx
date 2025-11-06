@@ -66,36 +66,6 @@ export default function HeroSection() {
               quality={100}
               priority
             />
-
-            {/* Left Overlay Card */}
-            <div className="absolute bottom-4 left-4 md:bottom-8 md:left-8 bg-white rounded-lg shadow-lg p-4 md:p-6 min-w-[180px] md:min-w-[220px]">
-              <div className="flex flex-col items-start">
-                <div className="bg-yellow-100 rounded-lg p-2 md:p-3 mb-3">
-                  <Stethoscope className="w-6 h-6 md:w-8 md:h-8 text-yellow-600" />
-                </div>
-                <div className="text-2xl md:text-3xl font-bold text-[#252B37] mb-1">
-                  40k +
-                </div>
-                <div className="text-sm md:text-base text-gray-600">
-                  Open Healthcare Roles
-                </div>
-              </div>
-            </div>
-
-            {/* Right Overlay Card */}
-            <div className="absolute bottom-4 right-4 md:bottom-8 md:right-8 bg-white rounded-lg shadow-lg p-4 md:p-6 min-w-[180px] md:min-w-[220px]">
-              <div className="flex flex-col items-start">
-                <div className="bg-green-100 rounded-lg p-2 md:p-3 mb-3">
-                  <Users className="w-6 h-6 md:w-8 md:h-8 text-green-600" />
-                </div>
-                <div className="text-2xl md:text-3xl font-bold text-[#252B37] mb-1">
-                  340k +
-                </div>
-                <div className="text-sm md:text-base text-gray-600">
-                  Active Professionals
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>

@@ -8,6 +8,7 @@ import { Heading } from "@/components/ui/heading";
 import { Section } from "@/components/ui/section";
 import { CustomButton } from "@/components/ui/custom-button";
 import { ResponsiveParagraph } from "@/components/ui/paragraph";
+import Image from "next/image";
 
 export type FooterLink = { label: string; href: string };
 export type FooterColumn = { title: string; links: FooterLink[] };
@@ -126,6 +127,17 @@ export function Footer() {
         </div>
 
         <div className="space-y-6 sm:space-y-8">
+
+        <div className="relative w-40 md:w-48 lg:w-[200px] h-8 sm:w-40 sm:h-10">
+              <Image
+                src="/images/ui/medfaster-logo.png"
+                alt="MeDFasterrrrr Logo"
+                fill
+                className="object-contain object-left"
+                quality={100}
+                priority
+              />
+            </div>
           {/* Two-column layout: Left (logo + contact), Right (links) */}
           <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
             {/* Left: Logo + Contact */}
