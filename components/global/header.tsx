@@ -18,9 +18,9 @@ const navLinks = [
       { label: "Patients", href: "http://medfaster.com/" },
     ],
   },
-  { label: "Medfaster AI", href: "/" },
-  { label: "Why Medfaster?", href: "/" },
-  { label: "Contact Us", href: "/" },
+  { label: "Medfaster AI", href: "/coming-soon" },
+  { label: "Why Medfaster?", href: "/coming-soon" },
+  { label: "Contact Us", href: "/contact_us" },
 ];
 
 export default function Header() {
