@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Input } from "@/components/ui/input";
 import { FaFacebook, FaLinkedin, FaInstagram } from "react-icons/fa";
 import { ChevronRight } from "lucide-react";
@@ -27,20 +28,20 @@ export const landingFooterColumns: FooterColumn[] = [
   {
     title: 'Company',
     links: [
-      { label: 'About MedFaster', href: '#about' },
-      { label: 'Mission & Vision', href: '#mission-vision' },
-      { label: 'Our Team', href: '#team' },
-      { label: 'Careers', href: '#careers' },
-      { label: 'Blog', href: '#blog' },
-      { label: 'Contact Us', href: '#contact' },
+      { label: 'About MedFaster', href: '/about' },
+      { label: 'Mission & Vision', href: '/coming_soon' },
+      { label: 'Our Team', href: '/our_team' },
+      { label: 'Careers', href: '/careers' },
+      { label: 'Blog', href: '/blog' },
+      { label: 'Contact Us', href: '/contact_us' },
     ],
   },
   {
     title: 'Support',
     links: [
       { label: 'Help Center', href: '#help-center' },
-      { label: 'Privacy Policy', href: '#privacy' },
-      { label: 'Terms & Conditions', href: '#terms' },
+      { label: 'Privacy Policy', href: '/privacy_policy' },
+      { label: 'Terms & Conditions', href: '/terms_and_conditions' },
       { label: 'Refund Policy', href: '#refund' },
       { label: 'Data Protection (HIPAA/GDPR)', href: '#data-protection' },
       { label: 'Report an Issue', href: '#report-issue' },
@@ -179,15 +180,29 @@ export function Footer() {
                     {column.title}
                   </ResponsiveParagraph>
                   <nav className="flex flex-col gap-3">
-                    {column.links.map((link) => (
-                      <a
-                        key={link.href}
-                        href={link.href}
-                        className="text-sm text-[#717680] hover:text-[#F4781B] transition-colors"
-                      >
-                        {link.label}
-                      </a>
-                    ))}
+                    {column.links.map((link) => {
+                      const isExternal = link.href.startsWith('#') || link.href.startsWith('http');
+                      if (isExternal) {
+                        return (
+                          <a
+                            key={link.href}
+                            href={link.href}
+                            className="text-sm text-[#717680] hover:text-[#F4781B] transition-colors"
+                          >
+                            {link.label}
+                          </a>
+                        );
+                      }
+                      return (
+                        <Link
+                          key={link.href}
+                          href={link.href}
+                          className="text-sm text-[#717680] hover:text-[#F4781B] transition-colors"
+                        >
+                          {link.label}
+                        </Link>
+                      );
+                    })}
                   </nav>
                 </div>
               ))}

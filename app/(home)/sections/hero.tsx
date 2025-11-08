@@ -6,7 +6,6 @@ import Image from "next/image";
 import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/heading";
 import { ResponsiveParagraph } from "@/components/ui/paragraph";
-import { Stethoscope, Users } from "lucide-react";
 
 export default function HeroSection() {
   return (
