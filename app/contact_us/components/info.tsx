@@ -36,7 +36,7 @@ export function ContactInfoSection() {
       <div className="pb-8 mb-2">
         <Heading as="h2" size="md" className="text-[#252B37] mb-4">
           Got a Question?<br />
-          Let&apos;s <span className="text-[#F4781B] font-bold">Talk</span>
+          Let&apos;s <span className="text-[#F4781B] font-semibold">Talk</span>
         </Heading>
         <ResponsiveParagraph
           size="base"

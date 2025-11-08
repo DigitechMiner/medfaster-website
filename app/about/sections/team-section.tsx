@@ -80,7 +80,7 @@ export function TeamSection() {
       <div className="flex justify-between items-start mb-12">
         <div>
           <Heading as="h2" size="md" className="text-[#252B37] mb-3">
-            Meet our <span className="text-[#F4781B]">Team</span>
+            Meet our Team
           </Heading>
           <Paragraph size="sm" className="text-[#717680] max-w-2xl">
             Our philosophy is simple—hire a team of diverse, passionate people and foster a culture that empowers you to do your best work.

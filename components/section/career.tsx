@@ -24,10 +24,10 @@ export function CareerCTASection() {
           <Section backgroundColor="bg-transparent" className="lg:col-span-2">
             <Heading
               as="h2"
-              size="lg"
+              size="md"
               className="text-white mb-4 leading-tight"
             >
-              Where Your Career Goals Meet Real Opportunity
+              Where Your Career Goals<br /> Meet Real Opportunity
             </Heading>
 
             <Paragraph
@@ -55,7 +55,7 @@ export function CareerCTASection() {
               src="/images/team/girl-with-specs.svg"
               alt="Career opportunity"
               fill
-              className="object-contain object-bottom object-center overflow-hidden"
+              className="object-contain object-center overflow-hidden"
               quality={100}
             />
           </div>

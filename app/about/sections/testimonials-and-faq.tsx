@@ -103,7 +103,7 @@ function TestimonialCard({ testimonial }: { testimonial: (typeof TESTIMONIALS)[0
   return (
     <div className="bg-neutral-100 rounded-2xl p-6 border border-gray-200 shadow-sm hover:shadow-md transition-shadow max-w-md flex-shrink-0">
       {/* Rating Stars */}
-      <div className="flex gap-1 mb-4">
+      <div className="flex gap-1 mb-4 ">
         {[...Array(5)].map((_, i) => (
           <span
             key={i}
@@ -254,12 +254,12 @@ export function AboutTestimonialsSection() {
   return (
     <Section>
 
-        <Heading as="h2" size="md" className="text-[#252B37] mb-4 text-center">
+        <Heading as="h2" size="md" className="text-[#252B37] mb-4 text-left">
           What Our <span className="text-[#F4781B]">Professionals</span> Are Saying
         </Heading>
         <ResponsiveParagraph
           size="sm"
-          className="text-[#717680] text-center max-w-2xl mx-auto mb-12"
+          className="text-[#717680] max-w-2xl mb-12 text-left"
         >
           Real results from healthcare partners who have transformed their hiring process. See how we help them save time, ensure compliance, and hire top-tier talent.
         </ResponsiveParagraph>

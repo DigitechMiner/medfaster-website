@@ -78,8 +78,8 @@ export function StatsSection() {
       <div className="mb-16 lg:mb-24">
         <Heading
           as="h2"
-          size="lg"
-          weight="bold"
+          size="md"
+          weight="medium"
           className="text-[#252B37] mb-6"
         >
           Where <span className="text-[#F4781B]">AI-Powered</span> Hiring Meets
@@ -87,7 +87,7 @@ export function StatsSection() {
         </Heading>
         <ResponsiveParagraph
           size="lg"
-          className="text-[#717680] max-w-3xl leading-relaxed"
+          className="text-[#717680] max-w-full leading-relaxed"
         >
           Medfaster was founded by healthcare and tech veterans to fix staffing
           friction. Our platform bridges the gap between hospitals needing staff
@@ -115,10 +115,12 @@ export function StatsSection() {
             <Heading
               as="h3"
               size="xl"
+              weight="normal"
               className="text-[#252B37] mb-4"
             >
               {STATS[0].number}
             </Heading>
+            <div className="grid grid-cols-2">
             <Paragraph
               size="lg"
               className="text-[#252B37] mb-6"
@@ -133,7 +135,7 @@ export function StatsSection() {
                 {STATS[0].description}
               </ResponsiveParagraph>
             )}
-            
+            </div>
           </div>
         </div>
 
@@ -144,6 +146,7 @@ export function StatsSection() {
             <Heading
               as="h3"
               size="lg"
+              weight="normal"
               className="text-[#252B37] mb-2"
             >
               {STATS[1].number}
@@ -161,6 +164,7 @@ export function StatsSection() {
             <Heading
               as="h3"
               size="lg"
+              weight="normal"
               className="text-[#252B37] mb-2"
             >
               {STATS[2].number}

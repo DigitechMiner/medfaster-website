@@ -41,7 +41,7 @@ export function CoreGoalsSection() {
         </Heading>
         <ResponsiveParagraph
           size="sm"
-          className="text-[#717680] mt-4 max-w-3xl"
+          className="text-[#717680] mt-4 max-w-full"
         >
           Our main goal is to build the fastest and most reliable medical
           staffing network in India and beyond, supporting every part of the
@@ -97,13 +97,13 @@ export function WhyMedFasterSection() {
     <Section className="bg-gray-50">
       <div className="max-w-7xl mx-auto">
         <Heading as="h2" size="md" className="text-[#252B37] mb-12">
-          Why <span className="text-[#F4781B]">MedFaster</span>?
+          Why <span className="text-[#F4781B]">MedFaster?</span>
         </Heading>
 
         {/* Timeline with connector line */}
         <div className="relative">
           {/* Connector line - hidden on mobile, stops at last circle */}
-          <div className="hidden lg:block absolute top-8 left-8 right-[calc(25%-2rem)] h-1 bg-gray-300 z-0"></div>
+          <div className="hidden lg:block absolute top-8 left-8 right-[calc(25%-2rem)] h-0.5 bg-gray-300 z-0"></div>
 
           {/* Cards grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
@@ -123,7 +123,7 @@ export function WhyMedFasterSection() {
                 {/* Content */}
                 <div className="flex flex-col gap-2">
                   <Paragraph
-                    size="base"
+                    size="lg"
                     weight="semibold"
                     className="text-[#252B37]"
                   >

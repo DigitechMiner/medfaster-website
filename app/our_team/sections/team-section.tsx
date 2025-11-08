@@ -86,7 +86,7 @@ export function TeamSection() {
           </Paragraph>
           <div className="flex justify-between items-start mb-8">
             <div>
-              <Heading as="h2" size="lg" className="text-[#252B37] mb-3">
+              <Heading as="h2" size="sm" className="text-[#252B37] mb-3 font-semibold">
                 The Minds Behind Health Intelligence
               </Heading>
               <Paragraph size="base" className="text-[#717680] max-w-2xl">

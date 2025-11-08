@@ -276,7 +276,7 @@ export default function BlogPage() {
       <Section>
         <div className="flex justify-between items-start mb-8">
           <div>
-            <Heading as="h2" size="lg" className="text-[#252B37] mb-3">
+            <Heading as="h2" size="sm" className="text-[#252B37] mb-3 font-semibold">
               Latest writings
             </Heading>
             <Paragraph size="base" className="text-[#717680]">
