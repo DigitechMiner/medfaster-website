@@ -35,39 +35,64 @@ export function JourneySection() {
     <Section
       padding={false}
       style={{
-        background: "linear-gradient(180deg, #ffffff 0%, #FFF5F0 100%)",
+          background: "linear-gradient(180deg, rgba(255,255,255,1) 30%, rgba(244,120,27,0.3) 100%)",
       }}
     >
-      <div className="w-full mx-auto px-6 py-12 md:py-16 lg:py-20 relative">
-        {/* Heading */}
-        <Heading as="h2" size="md" className="text-[#252B37] mb-16 ml-8">
+      <div className="w-full mx-auto px-6 py-12 md:py-16 lg:py-16 relative">
+        {/* Heading - Unchanged */}
+        <Heading as="h2" size="md" className="text-[#252B37] mb-32 ml-8">
           Our <span className="text-[#F4781B]">Journey</span>
         </Heading>
 
-        {/* Desktop Layout */}
-        <div className="hidden lg:block relative pb-32">
-          {/* Top Row: 4 Items */}
-          <div className="flex items-center gap-1 mb-24">
+        {/* Desktop Layout - Now 80% width */}
+        <div className="hidden lg:block relative w-4/5  ml-30">
+          {/* Top Row: 4 Cards */}
+          <div className="flex items-start justify-start mb-8 -ml-7 scale-120">
+            {/* Lifeline before Card 1 */}
+            <Image
+              src="/images/patterns/lifeline.svg"
+              alt="lifeline"
+              width={40}
+              height={25}
+              className="w-16 h-8 flex-shrink-0 object-contain mt-8"
+              quality={100}
+            />
+
+            {/* Card 1 */}
+            <div className="p-5 rounded-lg bg-white border border-gray-200 w-1/6">
+              <Paragraph
+                size="sm"
+                weight="semibold"
+                className="text-[#252B37] mb-2 whitespace-nowrap"
+              >
+                {TIMELINE[0].title} ({TIMELINE[0].year})
+              </Paragraph>
+              <Paragraph size="xs" className="text-[#717680] leading-relaxed overflow-hidden">
+                {TIMELINE[0].description}
+              </Paragraph>
+            </div>
+
             {/* Lifeline 1 */}
             <Image
               src="/images/patterns/lifeline.svg"
               alt="lifeline"
               width={40}
               height={25}
-              className="w-18 h-10 flex-shrink-0 object-contain"
+              className="w-16 h-8 flex-shrink-0 object-contain mt-8"
               quality={100}
             />
 
-            <div className="flex-1 max-w-sm p-5 rounded-lg bg-white border border-gray-200">
+            {/* Card 2 */}
+            <div className="p-3 rounded-lg bg-white border border-gray-200 w-1/6">
               <Paragraph
                 size="sm"
                 weight="semibold"
-                className="text-[#252B37] mb-2"
+                className="text-[#252B37] mb-2 whitespace-nowrap"
               >
-                {TIMELINE[0].title} ({TIMELINE[0].year})
+                {TIMELINE[1].title} ({TIMELINE[1].year})
               </Paragraph>
-              <Paragraph size="xs" className="text-[#717680] leading-relaxed">
-                {TIMELINE[0].description}
+              <Paragraph size="xs" className="text-[#717680] leading-relaxed overflow-hidden">
+                {TIMELINE[1].description}
               </Paragraph>
             </div>
 
@@ -77,20 +102,21 @@ export function JourneySection() {
               alt="lifeline"
               width={40}
               height={25}
-              className="w-16 h-8 flex-shrink-0 object-contain"
+              className="w-16 h-8 flex-shrink-0 object-contain mt-8"
               quality={100}
             />
 
-            <div className="flex-1 max-w-sm p-5 rounded-lg bg-white border border-gray-200">
+            {/* Card 3 */}
+            <div className="p-4 rounded-lg bg-white border border-gray-200 w-1/6">
               <Paragraph
                 size="sm"
                 weight="semibold"
-                className="text-[#252B37] mb-2"
+                className="text-[#252B37] mb-2 whitespace-nowrap"
               >
-                {TIMELINE[1].title} ({TIMELINE[1].year})
+                {TIMELINE[2].title} ({TIMELINE[2].year})
               </Paragraph>
-              <Paragraph size="xs" className="text-[#717680] leading-relaxed">
-                {TIMELINE[1].description}
+              <Paragraph size="xs" className="text-[#717680] leading-relaxed overflow-hidden">
+                {TIMELINE[2].description}
               </Paragraph>
             </div>
 
@@ -100,20 +126,38 @@ export function JourneySection() {
               alt="lifeline"
               width={40}
               height={25}
-              className="w-16 h-8 flex-shrink-0 object-contain"
+              className="w-16 h-8 flex-shrink-0 object-contain mt-8"
               quality={100}
             />
 
-            <div className="flex-1 max-w-sm p-5 rounded-lg bg-white border border-gray-200">
+            {/* Card 4 */}
+            <div className="p-3 rounded-lg bg-white border border-gray-200 w-1/6">
               <Paragraph
                 size="sm"
                 weight="semibold"
-                className="text-[#252B37] mb-2"
+                className="text-[#252B37] mb-2 whitespace-nowrap"
               >
-                {TIMELINE[2].title} ({TIMELINE[2].year})
+                {TIMELINE[3].title} ({TIMELINE[3].year})
               </Paragraph>
-              <Paragraph size="xs" className="text-[#717680] leading-relaxed">
-                {TIMELINE[2].description}
+              <Paragraph size="xs" className="text-[#717680] leading-relaxed overflow-hidden">
+                {TIMELINE[3].description}
+              </Paragraph>
+            </div>
+          </div>
+
+          {/* Bottom Row: 3 Cards */}
+          <div className="flex items-start justify-start mt-32 ml-18 scale-110">
+            {/* Card 5 */}
+            <div className="p-5 rounded-lg bg-white border border-gray-200 w-1/5">
+              <Paragraph
+                size="sm"
+                weight="semibold"
+                className="text-[#252B37] mb-2 whitespace-nowrap"
+              >
+                {TIMELINE[4]?.title || TIMELINE[0].title} ({TIMELINE[4]?.year || TIMELINE[0].year})
+              </Paragraph>
+              <Paragraph size="xs" className="text-[#717680] leading-relaxed overflow-hidden">
+                {TIMELINE[4]?.description || TIMELINE[0].description}
               </Paragraph>
             </div>
 
@@ -123,101 +167,62 @@ export function JourneySection() {
               alt="lifeline"
               width={40}
               height={25}
-              className="w-16 h-8 flex-shrink-0 object-contain"
+              className="w-16 h-8 flex-shrink-0 object-contain mt-8"
               quality={100}
             />
 
-            <div className="flex-1 max-w-sm p-5 rounded-lg bg-white border border-gray-200">
+            {/* Card 6 */}
+            <div className="p-5 rounded-lg bg-white border border-gray-200 w-1/4">
               <Paragraph
                 size="sm"
                 weight="semibold"
-                className="text-[#252B37] mb-2"
+                className="text-[#252B37] mb-2 whitespace-nowrap"
               >
-                {TIMELINE[3].title} ({TIMELINE[3].year})
+                {TIMELINE[5]?.title || TIMELINE[1].title} ({TIMELINE[5]?.year || TIMELINE[1].year})
               </Paragraph>
-              <Paragraph size="xs" className="text-[#717680] leading-relaxed">
-                {TIMELINE[3].description}
-              </Paragraph>
-            </div>
-          </div>
-
-          {/* Bottom Row: 3 Items - shifted right */}
-          <div className="flex items-center absolute right-50">
-            <div className="flex-1 max-w-3xs p-5 rounded-lg bg-white border border-gray-200">
-              <Paragraph
-                size="sm"
-                weight="semibold"
-                className="text-[#252B37] mb-2"
-              >
-                {TIMELINE[0].title} ({TIMELINE[0].year})
-              </Paragraph>
-              <Paragraph size="xs" className="text-[#717680] leading-relaxed">
-                {TIMELINE[0].description}
+              <Paragraph size="xs" className="text-[#717680] leading-relaxed overflow-hidden">
+                {TIMELINE[5]?.description || TIMELINE[1].description}
               </Paragraph>
             </div>
 
-            {/* Lifeline 2 */}
+            {/* Lifeline 5 */}
             <Image
               src="/images/patterns/lifeline.svg"
               alt="lifeline"
               width={40}
               height={25}
-              className="w-16 h-8 flex-shrink-0 object-contain"
+              className="w-16 h-8 flex-shrink-0 object-contain mt-8"
               quality={100}
             />
 
-            <div className="flex-1 max-w-3xs p-5 rounded-lg bg-white border border-gray-200">
+            {/* Card 7 */}
+            <div className="p-5 rounded-lg bg-white border border-gray-200 w-1/5">
               <Paragraph
                 size="sm"
                 weight="semibold"
-                className="text-[#252B37] mb-2"
+                className="text-[#252B37] mb-2 whitespace-nowrap"
               >
-                {TIMELINE[1].title} ({TIMELINE[1].year})
+                {TIMELINE[6]?.title || TIMELINE[2].title} ({TIMELINE[6]?.year || TIMELINE[2].year})
               </Paragraph>
-              <Paragraph size="xs" className="text-[#717680] leading-relaxed">
-                {TIMELINE[1].description}
+              <Paragraph size="xs" className="text-[#717680] leading-relaxed overflow-hidden">
+                {TIMELINE[6]?.description || TIMELINE[2].description}
               </Paragraph>
             </div>
 
-            {/* Lifeline 3 */}
-            <Image
-              src="/images/patterns/lifeline.svg"
-              alt="lifeline"
-              width={40}
-              height={25}
-              className="w-16 h-8 flex-shrink-0 object-contain"
-              quality={100}
-            />
-
-            <div className="flex-1 max-w-3xs p-5 rounded-lg bg-white border border-gray-200">
-              <Paragraph
-                size="sm"
-                weight="semibold"
-                className="text-[#252B37] mb-2"
-              >
-                {TIMELINE[2].title} ({TIMELINE[2].year})
-              </Paragraph>
-              <Paragraph size="xs" className="text-[#717680] leading-relaxed">
-                {TIMELINE[2].description}
-              </Paragraph>
-            </div>
-          </div>
-
-          {/* Vertical Arrow - Right side */}
-          <div className="absolute right-29 top-1/5 h-80 flex items-start pointer-events-none">
+            {/* Vertical Connector after Card 7 */}
             <Image
               src="/images/patterns/vertical.svg"
               alt="vertical arrow"
               width={50}
-              height={300}
-              className="w-21 h-80 object-contain"
+              height={150}
+              className="w-40 h-60 object-contain -mt-47 -ml-6"
               quality={100}
             />
           </div>
         </div>
 
-        {/* Tablet & Mobile: Simple Grid */}
-        <div className="lg:hidden grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Tablet & Mobile: Simple Grid - Also 80% width */}
+        <div className="lg:hidden w-4/5 mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
           {TIMELINE.map((item) => (
             <div
               key={item.year}
