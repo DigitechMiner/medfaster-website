@@ -95,7 +95,6 @@ export function WhyMedFasterSection() {
 
   return (
     <Section className="bg-gray-50">
-      <div className="max-w-7xl mx-auto">
         <Heading as="h2" size="md" className="text-[#252B37] mb-12">
           Why <span className="text-[#F4781B]">MedFaster?</span>
         </Heading>
@@ -140,7 +139,6 @@ export function WhyMedFasterSection() {
             ))}
           </div>
         </div>
-      </div>
     </Section>
   );
 }
