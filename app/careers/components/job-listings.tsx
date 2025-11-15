@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { JobCard } from "./job-card";
 import { JOBS, ITEMS_PER_PAGE } from "./constants";
+import { CustomButton } from "@/components/ui/custom-button";
 
 export function JobListingsSection() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -148,58 +149,65 @@ export function JobListingsSection() {
         ))}
       </div>
 
-      {/* Pagination */}
-      <div className="flex justify-between items-center pb-8">
-        <Button
-          variant="ghost"
-          onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
-          disabled={currentPage === 1}
-          className="text-[#717680] text-sm font-semibold hover:text-[#F4781B] disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          Previous
-        </Button>
+    <div className="flex justify-center items-center gap-4 pb-8">
+  {/* Prev Button */}
+  <CustomButton
+    onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
+    disabled={currentPage === 1}
+    className={`
+      flex items-center px-4 h-[44px] rounded-full bg-white border-none
+      text-[#717680] font-semibold text-base
+      ${currentPage === 1 ? "cursor-not-allowed" : "hover:text-[#F4781B] hover:bg-gray-100"}
+      transition
+    `}
+    rightIcon={ArrowRight}
+    iconClassName="text-[#A5A5A5]"
+    iconContainerClassName="bg-[#F6F6F8]"
+  >
+    Prev
+  </CustomButton>
 
-        <div className="flex gap-2">
-          {getPaginationPages().map((page, index) => {
-            if (typeof page === "string") {
-              // Render ellipsis
-              return (
-                <span
-                  key={`${page}-${index}`}
-                  className="w-8 h-8 flex items-center justify-center text-[#252B37] font-semibold text-sm"
-                >
-                  ...
-                </span>
-              );
-            }
-            return (
-              <Button
-                key={page}
-                variant="ghost"
-                onClick={() => setCurrentPage(page)}
-                className={`w-8 h-8 rounded-full font-semibold text-sm transition-colors ${
-                  currentPage === page
-                    ? "bg-[#F4781B] text-white hover:bg-[#F4781B]"
-                    : "text-[#252B37] hover:text-[#F4781B]"
-                }`}
-              >
-                {page}
-              </Button>
-            );
-          })}
-        </div>
-
-        <Button
-          variant="ghost"
-          onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
-          disabled={currentPage === totalPages}
-          className="text-[#717680] text-sm font-semibold hover:text-[#F4781B] disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+  {/* Page Numbers */}
+  <div className="flex gap-4">
+    {[1, 2, 3].map(page => {
+      const isActive = currentPage === page;
+      return (
+        <CustomButton
+          key={page}
+          onClick={() => setCurrentPage(page)}
+          className={`
+            !w-12 !h-12 !rounded-full !p-0 flex items-center justify-center
+            font-semibold text-base transition
+            ${isActive 
+              ? "bg-[#F4781B] text-white" 
+              : "bg-white text-[#252B37] border border-[#F6F6F8]"}
+          `}
         >
-          Next
-          <ArrowRight className="w-4 h-4" />
-        </Button>
-      </div>
+          {page.toString().padStart(2, '0')}
+        </CustomButton>
+      );
+    })}
+  </div>
+
+  {/* Next Button (full orange, matches active page) */}
+  <CustomButton
+  onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
+  disabled={currentPage === totalPages}
+  className={`
+    flex items-center px-4 h-[44px] rounded-full !bg-[#F4781B] !border-[#F4781B] border-2
+    text-white font-semibold text-base
+    ${currentPage === totalPages ? "bg-[#F4781B]" : "bg-[#F4781B]"}
+    
+  `}
+  rightIcon={ArrowRight}
+  iconClassName="text-black"
+  iconContainerClassName="bg-white"
+>
+  Next
+</CustomButton>
+
+</div>
+
     </Section>
   );
 }
