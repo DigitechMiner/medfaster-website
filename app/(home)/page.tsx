@@ -6,7 +6,6 @@ import GetHiredSection from "./sections/get-hired";
 import { Footer } from "@/components/global/footer";
 import TestimonialsSection from "./sections/testimonials";
 import BookADemo from "./sections/book-demo";
-import LoginModal from "./sections/login-modal";
 import {
   CompanyLogos,
   AIHelpsSection,
@@ -15,13 +14,10 @@ import {
   NextCareer,
 } from "./sections";
 import { Screen } from "@/components/global/screen";
-import { LoginModalProvider, useLoginModal } from "@/contexts/login-modal-context";
 
-function HomeContent() {
-  const { isOpen, closeLogin } = useLoginModal();
-
+export default function Home() {
   return (
-    <>
+    <Screen>
       <Header>
         <HeroSection />
       </Header>
@@ -34,18 +30,6 @@ function HomeContent() {
       <TestimonialsSection />
       <NextCareer />
       <Footer />
-      
-      <LoginModal isOpen={isOpen} onClose={closeLogin} />
-    </>
-  );
-}
-
-export default function Home() {
-  return (
-    <Screen>
-      <LoginModalProvider>
-        <HomeContent />
-      </LoginModalProvider>
     </Screen>
   );
 }

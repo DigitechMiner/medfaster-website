@@ -50,13 +50,7 @@ export type VerifyOtpResult =
   | { ok: true; token: string; data: VerifyOtpData }
   | { ok: false; message?: string };
 
-export type ProfileResult =
-  | { ok: true; profile: Record<string, any> }
-  | { ok: false; message?: string };
-
 export interface AuthState {
-  token: string | null;
-  tokenSetAt: number | null;
   user: Record<string, any> | null; // Changed from UserProfile to Record<string, any>
   userType: UserType | null;
   otpCredential: OtpCredential | null;
@@ -69,12 +63,10 @@ export interface AuthState {
 export interface AuthStoreActions {
   setOtpCredential: (value: OtpCredential | null) => void;
   setOtpError: (value: string | null) => void;
-  setToken: (token: string | null) => void;
   setUser: (user: Record<string, any> | null) => void;
   setUserType: (userType: UserType | null) => void;
   sendOtp: (params: SendOtpParams) => Promise<SendOtpResult>;
   verifyOtp: (code: string, userType: UserType) => Promise<VerifyOtpResult>;
-  getProfile: (token: string, userType: UserType) => Promise<ProfileResult>;
   logout: () => void;
 }
 

@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { fonts } from "@/lib/font";
-import { LoginModalProvider } from "@/contexts/login-modal-context";
+import GoogleOAuthProviderWrapper from "@/components/providers/GoogleOAuthProvider";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const metadata: Metadata = {
   title: "MedFaster",
@@ -16,9 +18,21 @@ export default function RootLayout({
   return (
     <html lang="en" className={fonts}>
       <body className="font-sans">
-        <LoginModalProvider>
+        <GoogleOAuthProviderWrapper>
           {children}
-        </LoginModalProvider>
+        </GoogleOAuthProviderWrapper>
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
       </body>
     </html>
   );

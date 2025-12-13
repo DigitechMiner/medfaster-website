@@ -7,8 +7,7 @@ import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { CustomButton } from "@/components/ui/custom-button";
 import Image from "next/image";
-import { useLoginModal } from "@/contexts/login-modal-context"; 
-import LoginModal from "@/app/(home)/sections/login-modal";
+import LoginModal from "@/components/global/otpModal";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -38,7 +37,7 @@ interface HeaderProps {
 
 export default function Header({ children }: HeaderProps) {
   const pathname = usePathname();
-  const { isOpen, openLogin, closeLogin } = useLoginModal(); // Updated: destructure correct methods
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [active, setActive] = useState("");
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
@@ -158,7 +157,7 @@ export default function Header({ children }: HeaderProps) {
           <div className="flex items-center gap-2">
             <CustomButton 
               className="hidden md:flex my-0 py-2"
-              onClick={openLogin} // Updated: use openModal
+              onClick={() => setIsLoginModalOpen(true)}
             >
               Login/Register
             </CustomButton>
@@ -234,7 +233,7 @@ export default function Header({ children }: HeaderProps) {
               <div className="w-full max-w-sm py-4 px-4 flex flex-col gap-2">
                 <CustomButton 
                   className="w-full justify-center my-1"
-                  onClick={openLogin} // Updated: use openModal
+                  onClick={() => setIsLoginModalOpen(true)}
                 >
                   Login/Register
                 </CustomButton>
@@ -246,7 +245,7 @@ export default function Header({ children }: HeaderProps) {
       </div>
       
       {/* Add the LoginModal component */}
-      <LoginModal isOpen={isOpen} onClose={closeLogin} />
+      <LoginModal isOpen={isLoginModalOpen} onClose={() => setIsLoginModalOpen(false)} />
     </>
   );
 }

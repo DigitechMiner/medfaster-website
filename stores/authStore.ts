@@ -1,14 +1,15 @@
+'use client';
+
 import { create } from 'zustand';
 import { devtools, persist, createJSONStorage } from 'zustand/middleware';
-import authService from '@/lib/services/auth.service';
-import { TOKEN_EXPIRATION_MS } from '@/lib/constants';
-import {
+import { useApiStore } from './apiStore';
+import { ENDPOINTS } from './endpoints';
+import {  
   AuthState,
   AuthStore,
   OtpCredential,
   OtpRequestPayload,
   VerifyOtpResult,
-  ProfileResult,
   ApiEnvelope,
   VerifyOtpData,
   UserType,
@@ -51,8 +52,6 @@ const extractPayload = <T>(payload: any): T => {
 };
 
 const initialState: AuthState = {
-  token: null,
-  tokenSetAt: null,
   user: null,
   userType: null,
   otpCredential: null,
@@ -60,15 +59,6 @@ const initialState: AuthState = {
   otpSending: false,
   otpError: null,
   otpLastSentAt: null,
-};
-
-/**
- * Check if token is expired (24 hours)
- */
-const isTokenExpired = (tokenSetAt: number | null): boolean => {
-  if (!tokenSetAt) return true;
-  const tokenAge = Date.now() - tokenSetAt;
-  return tokenAge >= TOKEN_EXPIRATION_MS;
 };
 
 export const useAuthStore = create<AuthStore>()(
@@ -79,10 +69,6 @@ export const useAuthStore = create<AuthStore>()(
         
         setOtpCredential: (value) => set({ otpCredential: value }),
         setOtpError: (value) => set({ otpError: value }),
-        setToken: (token) => set({ 
-          token, 
-          tokenSetAt: token ? Date.now() : null 
-        }),
         setUser: (user) => set({ user }),
         setUserType: (userType) => set({ userType }),
 
@@ -99,7 +85,11 @@ export const useAuthStore = create<AuthStore>()(
                 ? { email: target }
                 : { phone: target, country_code: resolvedCountryCode };
 
-            const responseData = await authService.sendOtp(apiPayload, userType);
+            const endpoint = userType === 'patient' 
+              ? ENDPOINTS.PATIENT.SEND_OTP 
+              : ENDPOINTS.CANDIDATE.SEND_OTP;
+
+            const responseData = await useApiStore.getState().post(endpoint, apiPayload);
             const response = responseData.data as ApiEnvelope;
 
             if (!response?.success) {
@@ -155,7 +145,11 @@ export const useAuthStore = create<AuthStore>()(
 
           try {
             console.log('verifyOtp', payload);
-            const res = await authService.verifyOtp(payload, userType);
+            const endpoint = userType === 'patient'
+              ? ENDPOINTS.PATIENT.VALIDATE_OTP
+              : ENDPOINTS.CANDIDATE.VALIDATE_OTP;
+
+            const res = await useApiStore.getState().post(endpoint, payload);
             console.log('verifyOtp response', res);
             const json = res.data as ApiEnvelope<VerifyOtpData> & { token?: string };
             const success =
@@ -171,8 +165,8 @@ export const useAuthStore = create<AuthStore>()(
               return { ok: false, message: 'Token missing in response' };
             }
 
-            // Set token with timestamp for 24-hour expiration
-            set({ token, tokenSetAt: Date.now(), userType });
+            // Backend sets cookies automatically, no need to store token
+            set({ userType });
 
             // Mark as logged in for modal
             if (typeof window !== 'undefined') {
@@ -182,31 +176,6 @@ export const useAuthStore = create<AuthStore>()(
             return { ok: true, token, data: json.data };
           } catch (error: any) {
             const message = error?.message || 'Network error';
-            return { ok: false, message };
-          }
-        },
-
-        getProfile: async (token: string, userType: UserType): Promise<ProfileResult> => {
-          try {
-            console.log('getProfile api call', token, userType);
-            const res = await authService.getProfile(token, userType);
-            const json = res.data as ApiEnvelope<Record<string, any>>;
-
-            const success =
-              typeof json?.success === 'boolean' ? json.success : isHttpSuccess(res.status);
-
-            if (!success) {
-              return { ok: false, message: json?.message || 'Failed to fetch profile' };
-            }
-
-            const profile = json?.data ?? extractPayload<Record<string, any>>(json);
-            
-            // Update user in store
-            set({ user: profile });
-            
-            return { ok: true, profile };
-          } catch (error: any) {
-            const message = error?.message || 'Failed to fetch profile';
             return { ok: false, message };
           }
         },
@@ -230,23 +199,9 @@ export const useAuthStore = create<AuthStore>()(
         name: 'auth-storage',
         storage: createJSONStorage(() => localStorage),
         partialize: (state) => ({
-          token: state.token,
-          tokenSetAt: state.tokenSetAt,
           user: state.user,
           userType: state.userType,
         }),
-        onRehydrateStorage: () => (state) => {
-          // Check token expiration when store is rehydrated from localStorage
-          if (state?.token && state?.tokenSetAt) {
-            if (isTokenExpired(state.tokenSetAt)) {
-              console.log('Token expired, clearing auth state');
-              // Clear expired token and user
-              state.setToken(null);
-              state.setUser(null);
-              state.setUserType(null);
-            }
-          }
-        },
       },
     ),
     { name: 'AuthStore' }

@@ -7,7 +7,7 @@ import { Heading } from "@/components/ui/heading";
 import { Paragraph, ResponsiveParagraph } from "@/components/ui/paragraph";
 import { CustomButton } from "@/components/ui/custom-button";
 import { ArrowRight, Calendar } from "lucide-react";
-import { COMPANY_LOGOS, AI_FEATURES, APP_FEATURES } from "@/lib/constants";
+import { COMPANY_LOGOS, AI_FEATURES, APP_FEATURES } from "@/utils/constant";
 
 // Company Logos Section
 export function CompanyLogos() {

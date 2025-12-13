@@ -7,7 +7,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/heading";
 import { ResponsiveParagraph, Paragraph } from "@/components/ui/paragraph";
-import { TESTIMONIALS } from "@/lib/constants";
+import { TESTIMONIALS } from "@/utils/constant";
 
 export default function TestimonialsSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
