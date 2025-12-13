@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
-import { Mail, ArrowLeft, Loader2 } from "lucide-react";
+import { Mail, Loader2 } from "lucide-react";
 import { CustomButton } from "@/components/ui/custom-button";
 import { OTP_RESEND_TIMER_SECONDS } from "@/utils/otp";
 
@@ -14,7 +14,6 @@ interface OtpVerificationFormProps {
   onOtpKeyDown: (index: number, e: React.KeyboardEvent) => void;
   onVerifyOTP: (e: React.FormEvent) => void;
   onResendOTP: () => void;
-  onBackToSignIn: () => void;
 }
 
 export default function OtpVerificationForm({
@@ -26,7 +25,6 @@ export default function OtpVerificationForm({
   onOtpKeyDown,
   onVerifyOTP,
   onResendOTP,
-  onBackToSignIn,
 }: OtpVerificationFormProps) {
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
   const [resendTimer, setResendTimer] = useState(0); // Timer in seconds
@@ -233,7 +231,7 @@ export default function OtpVerificationForm({
 
       {/* Resend OTP */}
       <p className="mt-4 text-center text-sm text-[#717680]">
-        Didn't receive the code?{" "}
+        Didn&apos;t receive the code?{" "}
         <button
           type="button"
           onClick={handleResendClick}

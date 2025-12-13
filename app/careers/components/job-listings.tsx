@@ -3,8 +3,7 @@
 import { useState } from "react";
 import { Section } from "@/components/ui/section";
 import { Paragraph } from "@/components/ui/paragraph";
-import { Button } from "@/components/ui/button";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { JobCard } from "./job-card";
 import { JOBS, ITEMS_PER_PAGE } from "./constants";
 import { CustomButton } from "@/components/ui/custom-button";
@@ -54,70 +53,6 @@ export function JobListingsSection() {
     setCurrentPage(1);
   };
 
-  // Generate pagination array: first, current-1, current, current+1, last
-  const getPaginationPages = () => {
-    const pages: (number | string)[] = [];
-
-    if (totalPages <= 5) {
-      // If 5 or fewer pages, show all
-      return Array.from({ length: totalPages }, (_, i) => i + 1);
-    }
-
-    // Calculate range around current page (current-1, current, current+1)
-    const prevPage = currentPage - 1;
-    const nextPage = currentPage + 1;
-
-    // Determine which pages to show around current (current-1, current, current+1)
-    // Exclude pages that are already shown as first/last
-    const pagesToShow = new Set<number>();
-
-    if (prevPage > 1 && prevPage !== totalPages) {
-      pagesToShow.add(prevPage);
-    }
-    if (currentPage !== 1 && currentPage !== totalPages) {
-      pagesToShow.add(currentPage);
-    }
-    if (nextPage < totalPages && nextPage !== 1) {
-      pagesToShow.add(nextPage);
-    }
-
-    // Always show first page
-    pages.push(1);
-
-    // Add ellipsis and middle pages only if there are pages to show
-    if (pagesToShow.size > 0) {
-      // Add ellipsis after first page if there's a gap
-      const minPageToShow = Math.min(...Array.from(pagesToShow));
-      if (minPageToShow > 2) {
-        pages.push("ellipsis-start");
-      }
-
-      // Add pages around current page (sorted)
-      Array.from(pagesToShow)
-        .sort((a, b) => a - b)
-        .forEach((page) => {
-          pages.push(page);
-        });
-
-      // Add ellipsis before last page if there's a gap
-      const maxPageToShow = Math.max(...Array.from(pagesToShow));
-      if (maxPageToShow < totalPages - 1) {
-        pages.push("ellipsis-end");
-      }
-    } else {
-      // If no middle pages, check if we need ellipsis between first and last
-      if (totalPages > 2) {
-        pages.push("ellipsis-start");
-      }
-    }
-
-    // Always show last page (if it's not already shown)
-    if (totalPages > 1 && !pagesToShow.has(totalPages)) {
-      pages.push(totalPages);
-    }
-
-    return pages;
-  };
 
   return (
     <Section>

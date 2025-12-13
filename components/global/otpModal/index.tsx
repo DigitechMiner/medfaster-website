@@ -27,8 +27,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
     verifyOtp, 
     otpSending, 
     otpError , 
-    setOtpError,
-    userType 
+    setOtpError
   } = useAuthStore();
 
   // Reset form when modal closes
@@ -89,7 +88,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
     setOtp(newOtp);
   };
 
-  const handleOtpKeyDown = (index: number, e: React.KeyboardEvent) => {
+  const handleOtpKeyDown = () => {
     // Focus handling is now done in OtpVerificationForm component
     // This handler is kept for any additional key handling if needed
   };
@@ -130,12 +129,6 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
     }
   };
 
-  const handleBackToSignIn = () => {
-    setShowOTP(false);
-    setOtp(['', '', '', '']);
-    setOtpError(null);
-  };
-
   // Shared form content with conditional rendering
   const formContent = !showOTP ? (
     <SignInForm
@@ -165,7 +158,6 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
       onOtpKeyDown={handleOtpKeyDown}
       onVerifyOTP={handleVerifyOTP}
       onResendOTP={handleResendOTP}
-      onBackToSignIn={handleBackToSignIn}
     />
   );
 
