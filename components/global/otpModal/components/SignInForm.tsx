@@ -66,10 +66,6 @@ export default function SignInForm({
           const userInfo = await userInfoResponse.json();
           const email = userInfo.email;
           
-          // Console log the email as requested
-          console.log('Google Sign In - Email:', email);
-          console.log('Google Sign In - Full User Info:', userInfo);
-          
           // Send OTP with the email from Google
           if (sendOtp && email) {
             try {
@@ -84,7 +80,6 @@ export default function SignInForm({
               });
               
               if (result.ok) {
-                console.log('OTP sent successfully to:', email);
                 // Call the callback to show OTP form
                 if (onOtpSent) {
                   onOtpSent();

@@ -114,7 +114,7 @@ export default function CountryCodeSelector({
         <div className="fixed inset-0 z-[10000] flex items-center justify-center bg-black/40 p-4">
           <div
             ref={modalRef}
-            className="bg-white rounded-xl w-full max-w-md max-h-[70vh] flex flex-col shadow-2xl"
+            className="bg-white rounded-xl w-full max-w-md max-h-[70vh] flex flex-col shadow-2xl overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}

@@ -3,7 +3,7 @@
 import { create } from 'zustand';
 import { devtools, persist, createJSONStorage } from 'zustand/middleware';
 import { useApiStore } from './apiStore';
-import { ENDPOINTS } from './endpoints';
+import { ENDPOINTS } from '@/api/endpoints';
 import {  
   AuthState,
   AuthStore,
@@ -144,14 +144,12 @@ export const useAuthStore = create<AuthStore>()(
                 };
 
           try {
-            console.log('verifyOtp', payload);
             const endpoint = userType === 'patient'
               ? ENDPOINTS.PATIENT.VALIDATE_OTP
               : ENDPOINTS.CANDIDATE.VALIDATE_OTP;
 
             const res = await useApiStore.getState().post(endpoint, payload);
-            console.log('verifyOtp response', res);
-            const json = res.data as ApiEnvelope<VerifyOtpData> & { token?: string };
+            const json = res.data as ApiEnvelope<VerifyOtpData>;
             const success =
               typeof json?.success === 'boolean' ? json.success : isHttpSuccess(res.status);
 
@@ -159,13 +157,7 @@ export const useAuthStore = create<AuthStore>()(
               return { ok: false, message: json?.message || 'Invalid OTP' };
             }
 
-            const token = json.data.token ?? json.token;
-
-            if (!token) {
-              return { ok: false, message: 'Token missing in response' };
-            }
-
-            // Backend sets cookies automatically, no need to store token
+            // Backend sets cookies automatically for authentication
             set({ userType });
 
             // Mark as logged in for modal
@@ -173,25 +165,10 @@ export const useAuthStore = create<AuthStore>()(
               localStorage.setItem('isLoggedIn', 'true');
             }
 
-            return { ok: true, token, data: json.data };
+            return { ok: true, data: json.data };
           } catch (error: any) {
             const message = error?.message || 'Network error';
             return { ok: false, message };
-          }
-        },
-
-        logout: () => {
-          // Clear localStorage
-          if (typeof window !== 'undefined') {
-            localStorage.removeItem('isLoggedIn');
-          }
-          
-          // Reset all state to initial state
-          set({ ...initialState });
-          
-          // Reload page
-          if (typeof window !== 'undefined') {
-            window.location.href = '/';
           }
         },
       }),

@@ -43,11 +43,10 @@ export interface VerifyOtpData {
   isNewCredential: boolean;
   userId: string;
   profileId: string;
-  token: string;
 }
 
 export type VerifyOtpResult =
-  | { ok: true; token: string; data: VerifyOtpData }
+  | { ok: true; data: VerifyOtpData }
   | { ok: false; message?: string };
 
 export interface AuthState {
@@ -67,7 +66,6 @@ export interface AuthStoreActions {
   setUserType: (userType: UserType | null) => void;
   sendOtp: (params: SendOtpParams) => Promise<SendOtpResult>;
   verifyOtp: (code: string, userType: UserType) => Promise<VerifyOtpResult>;
-  logout: () => void;
 }
 
 export type AuthStore = AuthState & AuthStoreActions;

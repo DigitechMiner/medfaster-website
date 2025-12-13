@@ -56,17 +56,11 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
     // Extract country code number (remove + sign)
     const countryCodeNumber = countryCode.replace('+', '');
 
-    console.log('contactValue', contactValue);
-    console.log('countryCodeNumber', countryCodeNumber);
-    console.log('activeTab', activeTab);
-
     const result = await sendOtp({
       target: contactValue,
       countryCode: countryCodeNumber,
       userType: activeTab,
     });
-
-    console.log('result', result);
 
     if (result.ok) {
       setShowOTP(true);
