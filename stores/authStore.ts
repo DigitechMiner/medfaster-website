@@ -16,7 +16,13 @@ import {
 } from './types';
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const DEFAULT_COUNTRY_CODE = '1'; // USA/Canada
+
+// 🎯 NEW: E.164 formatter (ONLY addition)
+const formatPhoneE164 = (phone: string, countryCode: string = '91'): string => {
+  const clean = phone.replace(/\D/g, '');
+  if (/^[6789]\d{9}$/.test(clean)) return `+${countryCode}${clean}`;
+  return phone.startsWith('+') ? phone : `+${countryCode}${clean}`;
+};
 
 const OTP_ERROR_MESSAGES: Record<string, string> = {
   '429': 'Too many OTP requests. Please try again later.',
@@ -25,6 +31,7 @@ const OTP_ERROR_MESSAGES: Record<string, string> = {
   default: 'Something went wrong. Please try again.',
 };
 
+// ✅ YOUR HELPERS (ALL KEPT)
 const resolveStatusMessage = (status: number | undefined, messages: Record<string, string>) => {
   if (status !== undefined) {
     const mapped = messages[String(status)];
@@ -79,38 +86,33 @@ export const useAuthStore = create<AuthStore>()(
 
         try {
           const resolvedType = targetType ?? (EMAIL_REGEX.test(target) ? 'email' : 'phone');
-          const resolvedCountryCode =
-            resolvedType === 'phone' ? countryCode || DEFAULT_COUNTRY_CODE : undefined;
+          
+          // 🎯 FIX #1: Backend expects E.164 (NO country_code)
+          const apiPayload = resolvedType === 'email'
+            ? { email: target }
+            : { phone: formatPhoneE164(target, countryCode || '91') };  // +917...
 
-          const apiPayload =
-            resolvedType === 'email'
-              ? { email: target }
-              : { phone: target, country_code: resolvedCountryCode };
-
-          const endpoint =
-            userType === 'patient'
-              ? ENDPOINTS.PATIENT.SEND_OTP
-              : ENDPOINTS.CANDIDATE.SEND_OTP;
+          const endpoint = userType === 'patient'
+            ? ENDPOINTS.PATIENT.SEND_OTP
+            : ENDPOINTS.CANDIDATE.SEND_OTP;
 
           const responseData = await useApiStore.getState().post(endpoint, apiPayload);
           const response = responseData.data as ApiEnvelope;
 
           if (!response?.success) {
-            const errorMessage =
-              response?.message || resolveStatusMessage(responseData.status, OTP_ERROR_MESSAGES);
+            const errorMessage = response?.message || resolveStatusMessage(responseData.status, OTP_ERROR_MESSAGES);
             set({ otpError: errorMessage });
             return { ok: false, message: errorMessage };
           }
 
-          const credential: OtpCredential =
-            resolvedType === 'email'
-              ? { type: 'email', email: target }
-              : { type: 'phone', phone: target, countryCode: resolvedCountryCode ?? null };
+          const credential: OtpCredential = resolvedType === 'email'
+            ? { type: 'email', email: target }
+            : { type: 'phone', phone: apiPayload.phone as string, countryCode: countryCode ?? null };
 
           const payload: OtpRequestPayload = {
             target,
             targetType: resolvedType,
-            countryCode: resolvedType === 'phone' ? resolvedCountryCode : undefined,
+            countryCode: resolvedType === 'phone' ? countryCode : undefined,
           };
 
           set({
@@ -137,33 +139,25 @@ export const useAuthStore = create<AuthStore>()(
           return { ok: false, message: 'OTP session expired. Please resend the code.' };
         }
 
-        const payload =
-          otpCredential.type === 'email'
-            ? { email: otpCredential.email, otp: code }
-            : {
-                phone: otpCredential.phone,
-                otp: code,
-                country_code: otpCredential.countryCode ?? undefined,
-              };
+        // 🎯 FIX #2: Backend expects NO country_code
+        const payload = otpCredential.type === 'email'
+          ? { email: otpCredential.email, otp: code }
+          : { phone: otpCredential.phone, otp: code };  // E.164 only
 
         try {
-          const endpoint =
-            userType === 'patient'
-              ? ENDPOINTS.PATIENT.VALIDATE_OTP
-              : ENDPOINTS.CANDIDATE.VALIDATE_OTP;
+          const endpoint = userType === 'patient'
+            ? ENDPOINTS.PATIENT.VALIDATE_OTP
+            : ENDPOINTS.CANDIDATE.VALIDATE_OTP;
 
           const res = await useApiStore.getState().post(endpoint, payload);
           const json = res.data as ApiEnvelope<VerifyOtpData>;
-          const success =
-            typeof json?.success === 'boolean' ? json.success : isHttpSuccess(res.status);
+          const success = typeof json?.success === 'boolean' ? json.success : isHttpSuccess(res.status);
 
           if (!success || !json?.data) {
             return { ok: false, message: json?.message || 'Invalid OTP' };
           }
 
-          // Backend sets cookies for auth; just track userType in memory
           set({ userType });
-
           return { ok: true, data: json.data };
         } catch (error: any) {
           const message = error?.message || 'Network error';
