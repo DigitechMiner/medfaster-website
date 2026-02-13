@@ -6,8 +6,8 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export const metadata: Metadata = {
-  title: "MedFaster",
-  description: "MedFaster is a platform for finding healthcare jobs and candidates",
+  title: "KeRaeva",
+  description: "KeRaeva is a platform for finding healthcare jobs and candidates",
 };
 
 export default function RootLayout({

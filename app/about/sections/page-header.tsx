@@ -7,7 +7,7 @@ export function AboutUsPageHeader() {
   return (
     <div className="space-y-4">
       <Heading as="h1" size="lg" className="text-[#252B37]">
-        About MedFaster
+        About KeRaeva
       </Heading>
 
       <div className="flex items-center gap-2">

@@ -4,7 +4,7 @@ import { FaFacebook, FaLinkedin, FaInstagram } from "react-icons/fa";
 export const CONTACT_INFO = {
   location: {
     label: "Location",
-    value: "MedFaster Canada Head Office",
+    value: "KeRaeva Canada Head Office",
     icon: MapPin,
   },
   phone: {

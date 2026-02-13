@@ -28,7 +28,7 @@ export const landingFooterColumns: FooterColumn[] = [
   {
     title: 'Company',
     links: [
-      { label: 'About MedFaster', href: '/about' },
+      { label: 'About KeRaeva', href: '/about' },
       { label: 'Mission & Vision', href: '/coming_soon' },
       { label: 'Our Team', href: '/our_team' },
       { label: 'Careers', href: '/careers' },
@@ -131,8 +131,8 @@ export function Footer() {
 
         <div className="relative w-40 md:w-48 lg:w-[200px] h-8 sm:w-40 sm:h-10">
               <Image
-                src="/images/ui/medfaster-logo.png"
-                alt="MeDFaster Logo"
+                src="/images/ui/KeRaeva-logo.svg"
+                alt="KeRaeva Logo"
                 fill
                 className="object-contain object-left"
                 quality={100}
@@ -152,7 +152,7 @@ export function Footer() {
                     Email Address
                   </ResponsiveParagraph>
                   <ResponsiveParagraph size="sm" className="whitespace-nowrap">
-                    info@medfaster.com
+                    info@KeRaeva.com
                   </ResponsiveParagraph>
                 </div>
                 <div className="space-y-1 mt-4 sm:mt-0">
@@ -215,7 +215,7 @@ export function Footer() {
                 size="xs"
                 className="text-muted-foreground order-2 sm:order-1"
               >
-                Copyright © 2025 MeDFaster, All Rights Reserved.
+                Copyright © 2025 KeRaeva, All Rights Reserved.
               </ResponsiveParagraph>
 
               <div className="flex gap-3 sm:gap-4 order-1 sm:order-2">

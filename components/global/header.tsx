@@ -26,8 +26,8 @@ const navLinks = [
       { label: "Patients", href: "http://medfaster.com/" },
     ],
   },
-  { label: "Medfaster AI", href: "/coming_soon" },
-  { label: "Why Medfaster?", href: "/coming_soon" },
+  { label: "KeRaeva AI", href: "/coming_soon" },
+  { label: "Why KeRaeva?", href: "/coming_soon" },
   { label: "Contact Us", href: "/contact_us" },
 ];
 
@@ -79,10 +79,10 @@ export default function Header({ children }: HeaderProps) {
 
             <div className="flex-shrink-0 w-40 md:w-48 lg:w-[200px] flex items-center">
               <Image
-                src="/images/ui/medfaster-logo.png"
+                src="/images/ui/KeRaeva-logo.svg"
                 height={50}
                 width={200}
-                alt="MeDFaster"
+                alt="KeRaeva"
                 objectFit="contain"
                 quality={100}
                 priority

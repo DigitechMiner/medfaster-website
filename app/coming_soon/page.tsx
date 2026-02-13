@@ -5,9 +5,9 @@ import { ComingSoon } from "@/components/global/coming-soon";
 import { Screen } from "@/components/global/screen";
 
 export const metadata: Metadata = {
-  title: "Coming Soon | MedFaster",
+  title: "Coming Soon | KeRaeva",
   description:
-    "Something exciting is coming to MedFaster. Stay tuned for updates!",
+    "Something exciting is coming to KeRaeva. Stay tuned for updates!",
 };
 
 export default function ComingSoonPage() {

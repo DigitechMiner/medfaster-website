@@ -23,9 +23,9 @@ import {
 import { CompanyLogos } from "../(home)/sections";
 
 export const metadata: Metadata = {
-  title: "About MedFaster | Revolutionizing Healthcare Hiring",
+  title: "About KeRaeva | Revolutionizing Healthcare Hiring",
   description:
-    "Learn about MedFaster's mission to revolutionize healthcare recruitment with AI-powered matching and human-centric care.",
+    "Learn about KeRaeva's mission to revolutionize healthcare recruitment with AI-powered matching and human-centric care.",
 };
 
 export default function AboutUsPage() {
@@ -41,7 +41,7 @@ export default function AboutUsPage() {
               weight="normal"
               className="text-[#252B37]"
             >
-              About MedFaster
+              About KeRaeva
             </Heading>
 
             {/* Breadcrumb */}

@@ -27,7 +27,7 @@ export default function HeroSection() {
         {/* Sub-text */}
         <div className="max-w-2xl">
           <ResponsiveParagraph size="base" className="text-[#252B37]">
-            MedFaster connects top-tier talent with leading healthcare
+            KeRaeva connects top-tier talent with leading healthcare
             institutions across Canada, powered by smart AI.
           </ResponsiveParagraph>
         </div>

@@ -19,8 +19,8 @@ export const CloseButton = ({ className, onClose }: CloseButtonProps) => (
 export const Logo = () => (
   <div className="mb-6 flex justify-center">
     <Image
-      src="/images/ui/medfaster-logo.png"
-      alt="MedFaster"
+      src="/images/ui/KeRaeva-logo.svg"
+      alt="KeRaeva"
       width={150}
       height={40}
     />

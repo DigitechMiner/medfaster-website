@@ -11,7 +11,7 @@ const TESTIMONIALS = [
   {
     id: 1,
     rating: 5,
-    quote: "Medfaster's dashboard is a game-changer. We filled three critical nursing roles in one day with 100% verified candidates. It saved our team countless hours.",
+    quote: "KeRaeva's dashboard is a game-changer. We filled three critical nursing roles in one day with 100% verified candidates. It saved our team countless hours.",
     author: "David L.",
     role: "HR Manager, Vancouver General Hospital",
     company: "Canadian Hospital",
@@ -31,7 +31,7 @@ const TESTIMONIALS = [
   {
     id: 3,
     rating: 4,
-    quote: "I love the flexibility. MedFaster gave me control over my schedule, getting verified shifts that work with my family.",
+    quote: "I love the flexibility. KeRaeva gave me control over my schedule, getting verified shifts that work with my family.",
     author: "Marcus Cole",
     role: "Licensed Practical Nurse",
     company: "Partner Hospital",
@@ -61,7 +61,7 @@ const TESTIMONIALS = [
   {
     id: 6,
     rating: 5,
-    quote: "We had an urgent, last-minute need for three night shift nurses. Through MedFaster, we had all three positions confirmed with verified staff in under an hour.",
+    quote: "We had an urgent, last-minute need for three night shift nurses. Through KeRaeva, we had all three positions confirmed with verified staff in under an hour.",
     author: "Tom Bishop",
     role: "Staffing Coordinator",
     company: "Partner Hospital",
@@ -72,12 +72,12 @@ const TESTIMONIALS = [
 
 const FAQS = [
   {
-    question: "How does MedFaster's AI matching work?",
+    question: "How does KeRaeva's AI matching work?",
     answer:
       "Our AI analyzes professional profiles, skills, experience, and preferences to match them with opportunities that fit their career goals and lifestyle.",
   },
   {
-    question: "Is my data secure on MedFaster?",
+    question: "Is my data secure on KeRaeva?",
     answer:
       "Yes, we're fully HIPAA and GDPR compliant. Your sensitive information is encrypted and protected with enterprise-level security.",
   },

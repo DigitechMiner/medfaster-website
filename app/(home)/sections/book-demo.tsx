@@ -29,7 +29,7 @@ export default function BookADemo() {
               src="/images/company/white-logo.png"
               height={50}
               width={300}
-              alt="MeDFaster"
+              alt="KeRaeva"
               objectFit="contain"
               priority
             />

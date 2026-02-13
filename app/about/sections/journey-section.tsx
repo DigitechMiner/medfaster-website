@@ -7,7 +7,7 @@ const TIMELINE = [
     year: "2021",
     title: "The Question",
     description:
-      "MedFaster began with a simple question: 'Why should healthcare still struggle with time?' Founded by doctors and technologists, we saw how traditional staffing delayed care.",
+      "KeRaeva began with a simple question: 'Why should healthcare still struggle with time?' Founded by doctors and technologists, we saw how traditional staffing delayed care.",
   },
   {
     year: "2022",
@@ -31,7 +31,7 @@ const TIMELINE = [
     year: "2026",
     title: "The Question",
     description:
-      "MedFaster began with a simple question: 'Why should healthcare still struggle with time?' Founded by doctors and technologists, we saw how traditional staffing delayed care.",
+      "KeRaeva began with a simple question: 'Why should healthcare still struggle with time?' Founded by doctors and technologists, we saw how traditional staffing delayed care.",
   },
   {
     year: "2027",

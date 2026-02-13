@@ -12,7 +12,7 @@ export function AboutHeroSection() {
         <div className="relative w-full aspect-[16/10] rounded-lg md:rounded-xl lg:rounded-2xl xl:rounded-3xl overflow-hidden shadow-md lg:col-span-2">
           <Image
             src="/images/hero/hero-image-2.png"
-            alt="MedFaster Team"
+            alt="KeRaeva Team"
             fill
             className="object-cover"
           />
@@ -38,7 +38,7 @@ export function AboutHeroSection() {
 
             {/* Description */}
             <p className="text-sm font-light lg:text-sm leading-relaxed opacity-95">
-              Welcome to Medfaster. We are Canada&apos;s AI-powered platform built to
+              Welcome to KeRaeva. We are Canada&apos;s AI-powered platform built to
               connect leading hospitals and clinics with verified, hire-ready
               healthcare professionals. We&apos;re rebuilding the foundation of
               healthcare staffing—making it faster, smarter, and more reliable.
@@ -89,7 +89,7 @@ export function StatsSection() {
           size="lg"
           className="text-[#717680] max-w-full leading-relaxed"
         >
-          Medfaster was founded by healthcare and tech veterans to fix staffing
+          KeRaeva was founded by healthcare and tech veterans to fix staffing
           friction. Our platform bridges the gap between hospitals needing staff
           and professionals seeking good-fit jobs by automating verification,
           matching, and scheduling.
