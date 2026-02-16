@@ -39,7 +39,7 @@ export function ComingSoon() {
             <input
               type="email"
               placeholder="Enter your email address"
-              className="flex-1 max-w-md px-4 py-3 border border-gray-300 text-[#252B37] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#F4781B] bg-white !rounded-full"
+              className="flex-1 max-w-md px-4 py-3 border border-gray-300 text-[#252B37] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#F3651B] bg-white !rounded-full"
             />
             <CustomButton
               rightIcon={ChevronRight}

@@ -57,8 +57,8 @@ const CustomButton = React.forwardRef<HTMLButtonElement, CustomButtonProps>(
 
     // Variant styles
     const variantStyles = variant === "secondary" 
-      ? "bg-white border border-[#F4781B] text-[#F4781B] hover:bg-[#F4781B] hover:text-white"
-      : "bg-[#F4781B] text-white shadow hover:opacity-90";
+      ? "bg-white border border-[#F3651B] text-[#F3651B] hover:bg-[#F3651B] hover:text-white"
+      : "bg-[#F3651B] text-white shadow hover:opacity-90";
 
     return (
       <button

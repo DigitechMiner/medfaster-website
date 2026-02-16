@@ -149,7 +149,7 @@ export default function BlogPage() {
             <div className="flex items-center gap-2">
               <Link
                 href="/"
-                className="text-[#252B37] hover:text-[#F4781B] transition-colors text-lg"
+                className="text-[#252B37] hover:text-[#F3651B] transition-colors text-lg"
               >
                 Home
               </Link>
@@ -176,7 +176,7 @@ export default function BlogPage() {
 
         {/* Featured Post Info */}
         <div className="space-y-4">
-          <Paragraph size="sm" className="text-[#F4781B] font-semibold">
+          <Paragraph size="sm" className="text-[#F3651B] font-semibold">
             Olivia Rhye • 20 Jan 2025
           </Paragraph>
 
@@ -198,7 +198,7 @@ export default function BlogPage() {
 
           {/* Tags */}
           <div className="flex flex-wrap gap-2 pt-2">
-            <span className="text-xs px-3 py-1 bg-orange-50 text-[#F4781B] rounded-full">
+            <span className="text-xs px-3 py-1 bg-orange-50 text-[#F3651B] rounded-full">
               Medical
             </span>
             <span className="text-xs px-3 py-1 bg-blue-50 text-blue-600 rounded-full">
@@ -223,7 +223,7 @@ export default function BlogPage() {
               variant="ghost"
               onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
               disabled={currentPage === 1}
-              className="text-[#717680] text-sm font-semibold hover:text-[#F4781B] disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+              className="text-[#717680] text-sm font-semibold hover:text-[#F3651B] disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
             >
               <ArrowLeft className="w-4 h-4" />
               Previous
@@ -249,8 +249,8 @@ export default function BlogPage() {
                     onClick={() => setCurrentPage(page)}
                     className={`w-8 h-8 rounded-full font-semibold text-sm transition-colors ${
                       currentPage === page
-                        ? "bg-[#F4781B] text-white hover:bg-[#F4781B]"
-                        : "text-[#252B37] hover:text-[#F4781B]"
+                        ? "bg-[#F3651B] text-white hover:bg-[#F3651B]"
+                        : "text-[#252B37] hover:text-[#F3651B]"
                     }`}
                   >
                     {page}
@@ -263,7 +263,7 @@ export default function BlogPage() {
               variant="ghost"
               onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
               disabled={currentPage === totalPages}
-              className="text-[#717680] text-sm font-semibold hover:text-[#F4781B] disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+              className="text-[#717680] text-sm font-semibold hover:text-[#F3651B] disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
             >
               Next
               <ArrowRight className="w-4 h-4" />
@@ -310,7 +310,7 @@ export default function BlogPage() {
               size="icon"
               onClick={handlePreviousCard}
               disabled={latestWritingsIndex === 0}
-              className="w-10 h-10 rounded-full border border-gray-300 text-[#717680] hover:border-[#F4781B] hover:text-[#F4781B] bg-transparent disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-10 h-10 rounded-full border border-gray-300 text-[#717680] hover:border-[#F3651B] hover:text-[#F3651B] bg-transparent disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <ArrowLeft className="w-5 h-5" />
             </Button>
@@ -319,7 +319,7 @@ export default function BlogPage() {
               size="icon"
               onClick={handleNextCard}
               disabled={latestWritingsIndex === BLOG_POSTS.length - 1}
-              className="w-10 h-10 rounded-full border border-gray-300 text-[#717680] hover:border-[#F4781B] hover:text-[#F4781B] bg-transparent disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-10 h-10 rounded-full border border-gray-300 text-[#717680] hover:border-[#F3651B] hover:text-[#F3651B] bg-transparent disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <ArrowRight className="w-5 h-5" />
             </Button>

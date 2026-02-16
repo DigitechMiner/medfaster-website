@@ -100,7 +100,7 @@ export default function Header({ children }: HeaderProps) {
                   <Button
                     className={`rounded-full font-medium px-3 py-2 whitespace-nowrap inline-flex items-center gap-1 ${
                       active === link.label
-                        ? "bg-[#F4781B] text-white"
+                        ? "bg-[#F3651B] text-white"
                         : "bg-transparent text-gray-700"
                     }`}
                     variant="ghost"
@@ -139,8 +139,8 @@ export default function Header({ children }: HeaderProps) {
                           }}
                           className={`px-4 py-2 text-gray-700 text-sm rounded-md whitespace-nowrap font-medium ${
                             active === subLink.label
-                              ? "bg-[#F4781B] text-white"
-                              : "hover:bg-[#F4781B] hover:text-white"
+                              ? "bg-[#F3651B] text-white"
+                              : "hover:bg-[#F3651B] hover:text-white"
                           }`}
                         >
                           {subLink.label}
@@ -175,8 +175,8 @@ export default function Header({ children }: HeaderProps) {
                       <Button
                         className={`rounded-full font-medium w-full my-1 ${
                           active === link.label
-                            ? "bg-[#F4781B] text-white"
-                            : "bg-transparent text-gray-700 hover:bg-[#F4781B]-100"
+                            ? "bg-[#F3651B] text-white"
+                            : "bg-transparent text-gray-700 hover:bg-[#F3651B]-100"
                         }`}
                         variant="ghost"
                         asChild
@@ -210,8 +210,8 @@ export default function Header({ children }: HeaderProps) {
                               key={subLink.label}
                               className={`rounded-full font-medium w-full my-1 ${
                                 active === subLink.label
-                                  ? "bg-[#F4781B] text-white"
-                                  : "bg-transparent text-gray-700 hover:bg-[#F4781B]-100"
+                                  ? "bg-[#F3651B] text-white"
+                                  : "bg-transparent text-gray-700 hover:bg-[#F3651B]-100"
                               }`}
                               variant="ghost"
                               asChild

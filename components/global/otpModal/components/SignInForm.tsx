@@ -185,7 +185,7 @@ export default function SignInForm({
             Email / Mobile No <span className="text-red-500">*</span>
           </label>
           <div
-  className={`relative flex overflow-visible items-center border border-gray-200 rounded-lg focus-within:ring-2 focus-within:ring-[#F4781B] focus-within:border-transparent bg-white ${
+  className={`relative flex overflow-visible items-center border border-gray-200 rounded-lg focus-within:ring-2 focus-within:ring-[#F3651B] focus-within:border-transparent bg-white ${
     !isPhoneNumber ? 'px-0' : ''
   }`}
 >

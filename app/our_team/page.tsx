@@ -99,7 +99,7 @@ export default function TeamPage() {
             <div className="flex items-center gap-2 ">
               <Link
                 href="/about_us"
-                className="text-[#252B37] hover:text-[#F4781B] transition-colors text-lg"
+                className="text-[#252B37] hover:text-[#F3651B] transition-colors text-lg"
               >
                 About MedFaster
               </Link>
@@ -116,7 +116,7 @@ export default function TeamPage() {
       <Section>
         {/* Section Header */}
         <div className="mb-12">
-          <Paragraph size="sm" className="text-[#F4781B] font-semibold mb-2">
+          <Paragraph size="sm" className="text-[#F3651B] font-semibold mb-2">
             Our Tech minds
           </Paragraph>
           <div className="flex justify-between items-start mb-8">
@@ -129,7 +129,7 @@ export default function TeamPage() {
               </Paragraph>
             </div>
             <CustomButton
-              className="bg-[#F4781B] text-white hover:bg-[#E85C0F]"
+              className="bg-[#F3651B] text-white hover:bg-[#E85C0F]"
               size="lg"
             >
               Open positions

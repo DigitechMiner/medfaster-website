@@ -64,7 +64,7 @@ export function AIHelpsSection() {
     <Section backgroundColor="bg-white">
       <div className="mb-12">
         <Heading as="h2" size="md" className="text-[#252B37] mb-4">
-          <span className="text-[#F4781B] font-extrabold">Intelligent AI</span>
+          <span className="text-[#F3651B] font-extrabold">Intelligent AI</span>
           {", Working Medical Professionals & Medical Organisations"}
         </Heading>
         <Paragraph className="text-[#717680] max-w-3xl">
@@ -105,7 +105,7 @@ export function AllInOneSection() {
       <div className="mb-12">
         <Heading as="h2" size="md" className="text-[#252B37] mb-4">
           Manage Your{" "}
-          <span className="text-[#F4781B]">
+          <span className="text-[#F3651B]">
             Entire Career & Hiring Journey,
           </span>{" "}
           Mobile-First
@@ -139,7 +139,7 @@ export function AllInOneSection() {
             size="sm"
             className="!text-2xl md:!text-2xl lg:!text-3xl font-semibold mb-6"
           >
-            <span className="text-[#F4781B]">Download</span>{" "}
+            <span className="text-[#F3651B]">Download</span>{" "}
             <span className="text-[#252B37]">the App</span>
           </Heading>
 
@@ -185,13 +185,13 @@ export function VerifiedSection() {
           <Heading as="h2" size="md" className="text-[#252B37] leading-tight">
             Medical Professional will
             <br />
-            earn a <span className="text-[#F4781B] font-bold">
+            earn a <span className="text-[#F3651B] font-bold">
               Verified
             </span>{" "}
             badge to
             <br />
             get hired faster and get snooze{" "}
-            <span className="text-[#F4781B] font-bold">Faster</span>
+            <span className="text-[#F3651B] font-bold">Faster</span>
           </Heading>
 
           <ResponsiveParagraph
@@ -242,7 +242,7 @@ export function NextCareer() {
       padding={false}
     >
       {/* Left Card - Job Seeker */}
-      <Section backgroundColor="bg-[#F4781B]" padding={false} style={cardStyle}>
+      <Section backgroundColor="bg-[#F3651B]" padding={false} style={cardStyle}>
         <div className="p-4 md:p-8 lg:p-12 xl:p-16 flex flex-col min-h-[300px] md:min-h-[400px]">
           <div className="space-y-4 md:space-y-6">
             <Heading
@@ -263,10 +263,10 @@ export function NextCareer() {
 
             <div className="pt-2">
               <CustomButton
-                className="bg-white text-[#F4781B] hover:bg-gray-100"
+                className="bg-white text-[#F3651B] hover:bg-gray-100"
                 rightIcon={ArrowRight}
                 iconClassName="text-white"
-                iconContainerClassName="bg-[#F4781B]"
+                iconContainerClassName="bg-[#F3651B]"
               >
                 Create Free Profile
               </CustomButton>
@@ -276,7 +276,7 @@ export function NextCareer() {
       </Section>
 
       {/* Right Card - Employer */}
-      <Section backgroundColor="bg-[#F4781B]" padding={false} style={cardStyle}>
+      <Section backgroundColor="bg-[#F3651B]" padding={false} style={cardStyle}>
         <div className="p-4 md:p-8 lg:p-12 xl:p-16 flex flex-col min-h-[300px] md:min-h-[400px]">
           <div className="space-y-4 md:space-y-6">
             <Heading
@@ -297,19 +297,19 @@ export function NextCareer() {
 
             <div className="flex flex-col sm:flex-row gap-3 pt-2">
               <CustomButton
-                className="bg-white text-[#F4781B] hover:bg-gray-100"
+                className="bg-white text-[#F3651B] hover:bg-gray-100"
                 rightIcon={ArrowRight}
                 iconClassName="text-white"
-                iconContainerClassName="bg-[#F4781B]"
+                iconContainerClassName="bg-[#F3651B]"
               >
                 Post a Job
               </CustomButton>
 
               <CustomButton
-                className="bg-white text-[#F4781B] hover:bg-gray-100"
+                className="bg-white text-[#F3651B] hover:bg-gray-100"
                 rightIcon={Calendar}
                 iconClassName="text-white"
-                iconContainerClassName="bg-[#F4781B]"
+                iconContainerClassName="bg-[#F3651B]"
               >
                 Schedule Demo
               </CustomButton>

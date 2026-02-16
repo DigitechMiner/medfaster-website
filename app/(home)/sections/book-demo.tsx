@@ -10,7 +10,7 @@ import { Calendar } from "lucide-react";
 export default function BookADemo() {
   return (
     <Section
-        backgroundColor="bg-[#F4781B]"
+        backgroundColor="bg-[#F3651B]"
         padding={false} 
       style={{
         backgroundImage: "url(/images/patterns/orange-pattern-2.png)",
@@ -26,7 +26,7 @@ export default function BookADemo() {
           {/* Logo */}
           <div className="flex-shrink-0 w-56 md:w-64 lg:w-80 flex items-center">
             <Image
-              src="/images/company/white-logo.png"
+              src="/images/company/white-logo.svg"
               height={50}
               width={300}
               alt="KeRaeva"
@@ -45,7 +45,7 @@ export default function BookADemo() {
             size="lg"
             rightIcon={Calendar}
             className="!bg-white !text-gray-800 hover:shadow-xl transition-all duration-300"
-            iconContainerClassName="!bg-[#F4781B]"
+            iconContainerClassName="!bg-[#F3651B]"
             iconClassName="!text-white"
           >
             Book a Demo
@@ -72,7 +72,7 @@ export default function BookADemo() {
               <ResponsiveParagraph
                 size="lg"
                 weight="bold"
-                className=" text-[#F4781B] mb-2"
+                className=" text-[#F3651B] mb-2"
               >
                 $12,500
               </ResponsiveParagraph>

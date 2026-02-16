@@ -7,7 +7,7 @@ import { ChevronRight } from "lucide-react";
 export function CTASection() {
   return (
     <Section
-      backgroundColor="bg-[#F4781B]"
+      backgroundColor="bg-[#F3651B]"
       style={{
         backgroundImage: "url(/images/patterns/orange-pattern-2.png)",
         backgroundSize: "cover",
@@ -30,7 +30,7 @@ export function CTASection() {
         className="bg-white text-black hover:bg-gray-100 border-1 py-1"
         rightIcon={ChevronRight}
         iconClassName="text-white"
-        iconContainerClassName="bg-[#F4781B] rounded-full"
+        iconContainerClassName="bg-[#F3651B] rounded-full"
         size="lg"
       >
         Get Started Now

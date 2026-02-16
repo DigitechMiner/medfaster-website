@@ -37,7 +37,7 @@ export function MissionSection() {
         <div className="text-center mb-12">
           <Heading as="h2" size="md" className="text-[#252B37] mb-4">
             Where{" "}
-            <span className="text-[#F4781B] font-bold">AI-Powered Hiring</span>{" "}
+            <span className="text-[#F3651B] font-bold">AI-Powered Hiring</span>{" "}
             Meets Human-Centric Care
           </Heading>
           <ResponsiveParagraph
@@ -59,7 +59,7 @@ export function MissionSection() {
                 className="flex flex-col items-center text-center space-y-3"
               >
                 <div className="w-16 h-16 rounded-full bg-orange-100 flex items-center justify-center">
-                  <Icon className="w-8 h-8 text-[#F4781B]" />
+                  <Icon className="w-8 h-8 text-[#F3651B]" />
                 </div>
                 <Paragraph
                   size="sm"
@@ -102,8 +102,8 @@ export function PurposeSection() {
     <Section>
       <div className="mb-12">
         <Heading as="h2" size="md" className="text-[#252B37] mb-4">
-          Driving Our <span className="text-[#F4781B]">Purpose:</span> The{" "}
-          <span className="text-[#F4781B]">Mission</span> at Our Core
+          Driving Our <span className="text-[#F3651B]">Purpose:</span> The{" "}
+          <span className="text-[#F3651B]">Mission</span> at Our Core
         </Heading>
         <ResponsiveParagraph size="base" className="text-[#717680]">
           To revolutionize healthcare accessibility through intelligent,

@@ -20,7 +20,7 @@ export default function HeroSection() {
             className="text-[#252B37] mb-6"
           >
             Find Your Next Healthcare Role, Or Your Next{" "}
-            <span className="text-[#F4781B] font-medium">Great Hire</span>
+            <span className="text-[#F3651B] font-medium">Great Hire</span>
           </Heading>
         </div>
 

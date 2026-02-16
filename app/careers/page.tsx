@@ -29,7 +29,7 @@ export default function CareersPage() {
             <div className="flex items-center gap-2 ">
               <Link
                 href="/about_us"
-                className="text-[#252B37] hover:text-[#F4781B] transition-colors text-lg"
+                className="text-[#252B37] hover:text-[#F3651B] transition-colors text-lg"
               >
                 About KeRaeva
               </Link>

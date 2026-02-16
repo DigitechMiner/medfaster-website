@@ -50,7 +50,7 @@ export default function InputIcon({
             paddingRight: Icon && iconPosition === 'right' ? '2.5rem' : '1.5rem'
           }}
           className={cn(
-            "w-full py-3 border border-gray-200 rounded-full focus:outline-none focus:ring-2 focus:ring-[#F4781B] focus:border-transparent shadow-sm",
+            "w-full py-3 border border-gray-200 rounded-full focus:outline-none focus:ring-2 focus:ring-[#F3651B] focus:border-transparent shadow-sm",
             className
           )}
         />

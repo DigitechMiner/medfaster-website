@@ -218,7 +218,7 @@ export function ContactForm({ onSubmitSuccess }: ContactFormProps) {
             placeholder="I'm a hospital looking to post jobs, or I'm a nurse with a question about verification"
             maxLength={MESSAGE_MAX_LENGTH}
             rows={4}
-            className={`w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F4781B] focus:border-transparent resize-none ${
+            className={`w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F3651B] focus:border-transparent resize-none ${
               errors.message ? "border-red-500 focus:ring-red-500" : ""
             }`}
             required

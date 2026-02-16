@@ -29,7 +29,7 @@ const STEPS = [
 export function ThreeStepsSection() {
   return (
     <Section
-      backgroundColor="bg-[#F4781B]"
+      backgroundColor="bg-[#F3651B]"
       className="relative overflow-hidden"
       style={{
         backgroundImage: "url(/images/patterns/orange-pattern-1.png)",
@@ -109,7 +109,7 @@ export function ThreeStepsSection() {
               className="bg-white text-black hover:bg-gray-100"
               rightIcon={ArrowRight}
               iconClassName="text-white"
-              iconContainerClassName="bg-[#F4781B]"
+              iconContainerClassName="bg-[#F3651B]"
             >
               Get Started
             </CustomButton>

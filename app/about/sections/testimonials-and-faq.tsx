@@ -108,7 +108,7 @@ function TestimonialCard({ testimonial }: { testimonial: (typeof TESTIMONIALS)[0
           <span
             key={i}
             className={`text-xl ${
-              i < testimonial.rating ? "text-[#F4781B]" : "text-gray-300"
+              i < testimonial.rating ? "text-[#F3651B]" : "text-gray-300"
             }`}
           >
             ★
@@ -255,7 +255,7 @@ export function AboutTestimonialsSection() {
     <Section>
 
         <Heading as="h2" size="md" className="text-[#252B37] mb-4 text-left">
-          What Our <span className="text-[#F4781B]">Professionals</span> Are Saying
+          What Our <span className="text-[#F3651B]">Professionals</span> Are Saying
         </Heading>
         <ResponsiveParagraph
           size="sm"
@@ -284,13 +284,13 @@ function FAQItemComponent({
     <div className="border-b border-gray-200">
       <button
         onClick={onToggle}
-        className="w-full py-4 flex items-center justify-between hover:text-[#F4781B] transition-colors text-left"
+        className="w-full py-4 flex items-center justify-between hover:text-[#F3651B] transition-colors text-left"
       >
         <Paragraph size="base" weight="semibold" className="text-[#252B37]">
           {item.question}
         </Paragraph>
         <ChevronDown
-          className={`w-5 h-5 text-[#F4781B] flex-shrink-0 transition-transform ${
+          className={`w-5 h-5 text-[#F3651B] flex-shrink-0 transition-transform ${
             isOpen ? "rotate-180" : ""
           }`}
         />
@@ -314,7 +314,7 @@ export function FAQSection() {
   return (
     <Section >
      <Heading as="h2" size="md" className="text-[#252B37] mb-4">
-          Have <span className="text-[#F4781B]">Questions?</span> We Have Answers
+          Have <span className="text-[#F3651B]">Questions?</span> We Have Answers
         </Heading>
         <ResponsiveParagraph
           size="sm"

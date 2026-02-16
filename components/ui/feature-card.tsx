@@ -37,7 +37,7 @@ export function FeatureCard({ title, description, visual, imageFullWidth = false
             </div>
           )}
           {visual.type === "icon" && (
-            <>{React.createElement(visual.content as LucideIcon, { className: "w-12 h-12 text-[#F4781B] mb-4" })}</>
+            <>{React.createElement(visual.content as LucideIcon, { className: "w-12 h-12 text-[#F3651B] mb-4" })}</>
           )}
         </div>
       )}

@@ -20,7 +20,7 @@ export function AboutHeroSection() {
 
         {/* Right Column - Orange Card (1 grid column) */}
         <div
-          className="relative bg-[#F4781B] rounded-3xl p-6 text-white shadow-lg flex flex-col justify-end lg:col-span-1 overflow-hidden"
+          className="relative bg-[#F3651B] rounded-3xl p-6 text-white shadow-lg flex flex-col justify-end lg:col-span-1 overflow-hidden"
           style={{
             backgroundImage: "url('/images/patterns/pattern-3.png')",
             backgroundSize: "cover",
@@ -82,7 +82,7 @@ export function StatsSection() {
           weight="medium"
           className="text-[#252B37] mb-6"
         >
-          Where <span className="text-[#F4781B]">AI-Powered</span> Hiring Meets
+          Where <span className="text-[#F3651B]">AI-Powered</span> Hiring Meets
           Human-Centric Care.
         </Heading>
         <ResponsiveParagraph

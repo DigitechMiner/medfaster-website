@@ -44,12 +44,12 @@ export function JobCard({ job }: { job: Job }) {
 
       {/* Bottom row - Experience and Apply */}
       <div className="flex justify-between items-center">
-        <Paragraph size="sm" weight="semibold" className="text-[#F4781B]">
+        <Paragraph size="sm" weight="semibold" className="text-[#F3651B]">
           {job.experience}
         </Paragraph>
         <a
           href="#"
-          className="text-[#F4781B] font-semibold hover:text-[#E85C0F] transition-colors inline-flex items-center gap-1 group text-sm"
+          className="text-[#F3651B] font-semibold hover:text-[#E85C0F] transition-colors inline-flex items-center gap-1 group text-sm"
         >
           Apply now
           <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

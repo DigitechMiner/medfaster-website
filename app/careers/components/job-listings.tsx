@@ -92,7 +92,7 @@ export function JobListingsSection() {
     className={`
       flex items-center px-4 h-[44px] rounded-full bg-white border-none
       text-[#717680] font-semibold text-base
-      ${currentPage === 1 ? "cursor-not-allowed" : "hover:text-[#F4781B] hover:bg-gray-100"}
+      ${currentPage === 1 ? "cursor-not-allowed" : "hover:text-[#F3651B] hover:bg-gray-100"}
       transition
     `}
     rightIcon={ArrowRight}
@@ -114,7 +114,7 @@ export function JobListingsSection() {
             !w-12 !h-12 !rounded-full !p-0 flex items-center justify-center
             font-semibold text-base transition
             ${isActive 
-              ? "bg-[#F4781B] text-white" 
+              ? "bg-[#F3651B] text-white" 
               : "bg-white text-[#252B37] border border-[#F6F6F8]"}
           `}
         >
@@ -129,9 +129,9 @@ export function JobListingsSection() {
   onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
   disabled={currentPage === totalPages}
   className={`
-    flex items-center px-4 h-[44px] rounded-full !bg-[#F4781B] !border-[#F4781B] border-2
+    flex items-center px-4 h-[44px] rounded-full !bg-[#F3651B] !border-[#F3651B] border-2
     text-white font-semibold text-base
-    ${currentPage === totalPages ? "bg-[#F4781B]" : "bg-[#F4781B]"}
+    ${currentPage === totalPages ? "bg-[#F3651B]" : "bg-[#F3651B]"}
     
   `}
   rightIcon={ArrowRight}

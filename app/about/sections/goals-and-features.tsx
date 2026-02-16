@@ -37,7 +37,7 @@ export function CoreGoalsSection() {
     <Section>
       <div className="mb-12">
         <Heading as="h2" size="md" className="text-[#252B37]">
-          Our Core <span className="text-[#F4781B]">Goals</span>
+          Our Core <span className="text-[#F3651B]">Goals</span>
         </Heading>
         <ResponsiveParagraph
           size="sm"
@@ -96,7 +96,7 @@ export function WhyMedFasterSection() {
   return (
     <Section className="bg-gray-50">
         <Heading as="h2" size="md" className="text-[#252B37] mb-12">
-          Why <span className="text-[#F4781B]">MedFaster?</span>
+          Why <span className="text-[#F3651B]">MedFaster?</span>
         </Heading>
 
         {/* Timeline with connector line */}
@@ -112,7 +112,7 @@ export function WhyMedFasterSection() {
                 <div
                   className={`w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0 font-bold text-lg ${
                     index % 2 === 1
-                      ? "bg-[#F4781B] text-white"
+                      ? "bg-[#F3651B] text-white"
                       : "bg-gray-200 text-[#717680]"
                   }`}
                 >

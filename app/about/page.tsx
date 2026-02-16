@@ -48,7 +48,7 @@ export default function AboutUsPage() {
             <div className="flex items-center gap-2 ">
               <Link
                 href="/"
-                className="text-[#252B37] hover:text-[#F4781B] transition-colors text-lg"
+                className="text-[#252B37] hover:text-[#F3651B] transition-colors text-lg"
               >
                 Home
               </Link>

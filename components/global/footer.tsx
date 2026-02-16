@@ -84,7 +84,7 @@ export function Footer() {
           <div className="flex-1">
             <Heading as="h2" size="md" className="leading-tight">
             Hiring Insights & Top Candidate{" "}
-              <span className="text-[#F4781B]">Alerts</span>
+              <span className="text-[#F3651B]">Alerts</span>
             </Heading>
           </div>
 
@@ -187,7 +187,7 @@ export function Footer() {
                           <a
                             key={link.href}
                             href={link.href}
-                            className="text-sm text-[#717680] hover:text-[#F4781B] transition-colors"
+                            className="text-sm text-[#717680] hover:text-[#F3651B] transition-colors"
                           >
                             {link.label}
                           </a>
@@ -197,7 +197,7 @@ export function Footer() {
                         <Link
                           key={link.href}
                           href={link.href}
-                          className="text-sm text-[#717680] hover:text-[#F4781B] transition-colors"
+                          className="text-sm text-[#717680] hover:text-[#F3651B] transition-colors"
                         >
                           {link.label}
                         </Link>

@@ -17,7 +17,7 @@ function ContactInfoCard({
 }: ContactInfoCardProps) {
   return (
     <div className="flex items-start gap-4">
-      <div className="flex-shrink-0 w-12 h-12 rounded-full bg-[#F4781B] flex items-center justify-center">
+      <div className="flex-shrink-0 w-12 h-12 rounded-full bg-[#F3651B] flex items-center justify-center">
         <Icon className="w-6 h-6 text-white" />
       </div>
       <div>
@@ -36,7 +36,7 @@ export function ContactInfoSection() {
       <div className="pb-8 mb-2">
         <Heading as="h2" size="md" className="text-[#252B37] mb-4">
           Got a Question?<br />
-          Let&apos;s <span className="text-[#F4781B] font-semibold">Talk</span>
+          Let&apos;s <span className="text-[#F3651B] font-semibold">Talk</span>
         </Heading>
         <ResponsiveParagraph
           size="base"
@@ -77,7 +77,7 @@ export function ContactInfoSection() {
       {/* Social Links Card */}
       <div className="pt-8">
         <div className="flex items-start gap-4">
-          <div className="flex-shrink-0 w-12 h-12 rounded-full bg-[#F4781B] flex items-center justify-center">
+          <div className="flex-shrink-0 w-12 h-12 rounded-full bg-[#F3651B] flex items-center justify-center">
             <Share2 className="w-6 h-6 text-white" />
           </div>
           <div className="flex-1">

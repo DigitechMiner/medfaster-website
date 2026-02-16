@@ -13,7 +13,7 @@ export function AboutUsPageHeader() {
       <div className="flex items-center gap-2">
         <Link
           href="/"
-          className="text-[#252B37] hover:text-[#F4781B] transition-colors text-sm"
+          className="text-[#252B37] hover:text-[#F3651B] transition-colors text-sm"
         >
           Home
         </Link>

@@ -74,7 +74,7 @@ export function JourneySection() {
         size="md"
         className="text-[#252B37] p-4 md:p-8 lg:p-16"
       >
-        Our <span className="text-[#F4781B]">Journey</span>
+        Our <span className="text-[#F3651B]">Journey</span>
       </Heading>
       <div className="relative p-4 md:py-8 lg:py-16 md:px-4 lg:px-8 overflow-hidden">
         {/* Heading - Unchanged */}

@@ -170,7 +170,7 @@ export default function OtpVerificationForm({
       {/* OTP Verification Screen */}
       <div className="flex justify-center mb-6">
         <div className="w-16 h-16 bg-[#FFF4ED] rounded-full flex items-center justify-center">
-          <Mail className="w-8 h-8 text-[#F4781B]" />
+          <Mail className="w-8 h-8 text-[#F3651B]" />
         </div>
       </div>
 
@@ -201,7 +201,7 @@ export default function OtpVerificationForm({
               onKeyDown={(e) => handleKeyDown(index, e)}
               onPaste={handlePaste}
               disabled={otpSending}
-              className="w-16 h-16 text-center text-2xl font-bold border-2 border-[#F4781B] rounded-lg focus:outline-none focus:border-[3px] focus:border-[#F4781B] text-[#F4781B] disabled:opacity-50"
+              className="w-16 h-16 text-center text-2xl font-bold border-2 border-[#F3651B] rounded-lg focus:outline-none focus:border-[3px] focus:border-[#F3651B] text-[#F3651B] disabled:opacity-50"
             />
           ))}
         </div>
@@ -236,7 +236,7 @@ export default function OtpVerificationForm({
           type="button"
           onClick={handleResendClick}
           disabled={otpSending || resendTimer > 0}
-          className="text-[#F4781B] font-semibold hover:opacity-80 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="text-[#F3651B] font-semibold hover:opacity-80 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {resendTimer > 0 ? `Resend in ${formatTimer(resendTimer)}` : "Click to resend"}
         </button>

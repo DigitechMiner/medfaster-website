@@ -8,7 +8,7 @@ import Image from "next/image";
 export function CareerCTASection() {
   return (
     <Section
-      backgroundColor="bg-[#F4781B]"
+      backgroundColor="bg-[#F3651B]"
       padding={false}
       style={{
         backgroundImage: "url(/images/patterns/orange-pattern-2.png)",
@@ -40,10 +40,10 @@ export function CareerCTASection() {
             </Paragraph>
 
             <CustomButton
-              className="bg-white text-[#F4781B] py-1"
+              className="bg-white text-[#F3651B] py-1"
               rightIcon={ChevronRight}
               iconClassName="text-white"
-              iconContainerClassName="bg-[#F4781B] rounded-full"
+              iconContainerClassName="bg-[#F3651B] rounded-full"
               size="lg"
             >
               Get Started Now
