@@ -17,13 +17,12 @@ const navLinks = [
     submenu: [
       {
         label: "Medical Organizations",
-        href: "https://recruiter.medfaster.com/",
+        href: "/medical_organizations",
       },
       {
         label: "Medical Professionals",
         href: "https://candidate.medfaster.com/",
       },
-      { label: "Patients", href: "http://medfaster.com/" },
     ],
   },
   { label: "KeRaeva AI", href: "/coming_soon" },
@@ -157,9 +156,9 @@ export default function Header({ children }: HeaderProps) {
           <div className="flex items-center gap-2">
             <CustomButton 
               className="hidden md:flex my-0 py-2"
-              onClick={() => setIsLoginModalOpen(true)}
+               onClick={() => window.location.href = 'https://recruiter.keraeva.com'}
             >
-              Login/Register
+              Login as Recruiter
             </CustomButton>
           </div>
 
@@ -233,9 +232,9 @@ export default function Header({ children }: HeaderProps) {
               <div className="w-full max-w-sm py-4 px-4 flex flex-col gap-2">
                 <CustomButton 
                   className="w-full justify-center my-1"
-                  onClick={() => setIsLoginModalOpen(true)}
+                   onClick={() => window.location.href = 'https://recruiter.keraeva.com'}
                 >
-                  Login/Register
+                  Login as Recruiter
                 </CustomButton>
               </div>
             </div>
