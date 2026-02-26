@@ -21,7 +21,7 @@ const navLinks = [
       },
       {
         label: "Medical Professionals",
-        href: "https://candidate.medfaster.com/",
+        href: "/medical_professionals",
       },
     ],
   },
