@@ -15,14 +15,8 @@ const navLinks = [
     label: "Our Platforms",
     href: "/",
     submenu: [
-      {
-        label: "Medical Organizations",
-        href: "/medical_organizations",
-      },
-      {
-        label: "Medical Professionals",
-        href: "/medical_professionals",
-      },
+      { label: "Medical Organizations", href: "/medical_organizations" },
+      { label: "Medical Professionals", href: "/medical_professionals" },
     ],
   },
   { label: "KeRaeva AI", href: "/coming_soon" },
@@ -43,17 +37,23 @@ export default function Header({ children }: HeaderProps) {
 
   useEffect(() => {
     const matchingLink = navLinks.find((link) => {
-      if (link.href === pathname) {
-        return true;
-      }
-      if (link.href !== "/" && pathname.startsWith(link.href)) {
-        return true;
+      if (link.href === pathname) return true;
+      if (link.href !== "/" && pathname.startsWith(link.href)) return true;
+      if (link.submenu) {
+        return link.submenu.some((sub) => pathname === sub.href);
       }
       return false;
     });
 
     if (matchingLink) {
-      setActive(matchingLink.label);
+      if (matchingLink.submenu) {
+        const matchedSub = matchingLink.submenu.find(
+          (sub) => pathname === sub.href
+        );
+        setActive(matchedSub ? matchedSub.label : matchingLink.label);
+      } else {
+        setActive(matchingLink.label);
+      }
     } else {
       setActive("Home");
     }
@@ -63,10 +63,20 @@ export default function Header({ children }: HeaderProps) {
     setOpenSubmenu((prev) => (prev === label ? null : label));
   };
 
+  // Close submenu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = () => setOpenSubmenu(null);
+    if (openSubmenu) {
+      document.addEventListener("click", handleClickOutside);
+    }
+    return () => document.removeEventListener("click", handleClickOutside);
+  }, [openSubmenu]);
+
   return (
     <>
-      <div className="w-full bg-white rounded-lg md:rounded-xl lg:rounded-2xl xl:rounded-3xl ">
+      <div className="w-full bg-white rounded-lg md:rounded-xl lg:rounded-2xl xl:rounded-3xl">
         <header className="relative w-full flex items-center justify-between p-2 md:p-4 lg:p-6 xl:p-8 px-4 md:px-8 lg:px-16 xl:px-16">
+
           {/* Left Side - Mobile Menu + Logo */}
           <div className="flex items-center gap-2">
             <Button
@@ -89,22 +99,23 @@ export default function Header({ children }: HeaderProps) {
             </div>
           </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden xl:flex bg-gray-100 rounded-full p-1 items-center gap-1 relative">
+          {/* Desktop Navigation — fixed height prevents layout shift on submenu open */}
+          <nav className="hidden xl:flex bg-gray-100 rounded-full p-1 items-center gap-1 relative h-[44px]">
             {navLinks.map((link) => {
               const hasSubmenu = link.submenu && link.submenu.length > 0;
               const isSubmenuOpen = openSubmenu === link.label;
+
               return (
-                <div key={link.label} className="relative">
+                <div key={link.label} className="relative h-full flex items-center">
                   <Button
                     className={`rounded-full font-medium px-3 py-2 whitespace-nowrap inline-flex items-center gap-1 ${
-                      active === link.label
+                      active === link.label && !hasSubmenu
                         ? "bg-[#F3651B] text-white"
                         : "bg-transparent text-gray-700"
                     }`}
                     variant="ghost"
-                    asChild
-                    onClick={() => {
+                    onClick={(e) => {
+                      e.stopPropagation(); // prevent outside-click handler firing
                       if (hasSubmenu) {
                         toggleSubmenu(link.label);
                       } else {
@@ -113,21 +124,32 @@ export default function Header({ children }: HeaderProps) {
                       }
                     }}
                   >
-                    <div className="inline-flex items-center gap-1">
-                      <Link href={link.href}>{link.label}</Link>
-                      {hasSubmenu && (
+                    {hasSubmenu ? (
+                      <span className="inline-flex items-center gap-1">
+                        {link.label}
                         <ChevronDown
                           className={`${
                             isSubmenuOpen ? "rotate-180" : ""
                           } transition-transform`}
                           size={18}
                         />
-                      )}
-                    </div>
+                      </span>
+                    ) : (
+                      <Link
+                        href={link.href}
+                        className="inline-flex items-center gap-1"
+                      >
+                        {link.label}
+                      </Link>
+                    )}
                   </Button>
 
+                  {/* Desktop Submenu Dropdown — absolutely positioned, doesn't affect nav height */}
                   {hasSubmenu && isSubmenuOpen && (
-                    <div className="absolute top-full mt-2 bg-white rounded-lg shadow-lg p-2 min-w-[150px] z-50 flex flex-col border border-gray-200">
+                    <div
+                      className="absolute left-0 top-[calc(100%+8px)] bg-white rounded-lg shadow-lg p-1.5 min-w-[180px] z-50 flex gap-1 flex-col border border-gray-200"
+                      onClick={(e) => e.stopPropagation()}
+                    >
                       {link.submenu!.map((subLink) => (
                         <Link
                           key={subLink.label}
@@ -136,7 +158,7 @@ export default function Header({ children }: HeaderProps) {
                             setActive(subLink.label);
                             setOpenSubmenu(null);
                           }}
-                          className={`px-4 py-2 text-gray-700 text-sm rounded-md whitespace-nowrap font-medium ${
+                          className={`px-3 py-1.5 text-gray-700 text-sm rounded-md whitespace-nowrap font-medium transition-colors ${
                             active === subLink.label
                               ? "bg-[#F3651B] text-white"
                               : "hover:bg-[#F3651B] hover:text-white"
@@ -154,9 +176,11 @@ export default function Header({ children }: HeaderProps) {
 
           {/* Login/Register Button - Desktop Only */}
           <div className="flex items-center gap-2">
-            <CustomButton 
+            <CustomButton
               className="hidden md:flex my-0 py-2"
-               onClick={() => window.location.href = 'https://recruiter.keraeva.com'}
+              onClick={() =>
+                (window.location.href = "https://recruiter.keraeva.com")
+              }
             >
               Login as Recruiter
             </CustomButton>
@@ -169,16 +193,16 @@ export default function Header({ children }: HeaderProps) {
                 {navLinks.map((link) => {
                   const hasSubmenu = link.submenu && link.submenu.length > 0;
                   const isSubmenuOpen = openSubmenu === link.label;
+
                   return (
                     <div key={link.label} className="mb-2">
                       <Button
                         className={`rounded-full font-medium w-full my-1 ${
-                          active === link.label
+                          active === link.label && !hasSubmenu
                             ? "bg-[#F3651B] text-white"
-                            : "bg-transparent text-gray-700 hover:bg-[#F3651B]-100"
+                            : "bg-transparent text-gray-700"
                         }`}
                         variant="ghost"
-                        asChild
                         onClick={() => {
                           if (hasSubmenu) {
                             toggleSubmenu(link.label);
@@ -189,38 +213,48 @@ export default function Header({ children }: HeaderProps) {
                           }
                         }}
                       >
-                        <span className="inline-flex items-center gap-1 w-full justify-between">
-                          <Link href={link.href}>{link.label}</Link>
-                          {hasSubmenu && (
+                        {hasSubmenu ? (
+                          <span className="inline-flex items-center gap-1 w-full justify-between">
+                            {link.label}
                             <ChevronDown
                               className={`${
                                 isSubmenuOpen ? "rotate-180" : ""
                               } transition-transform`}
                               size={18}
                             />
-                          )}
-                        </span>
+                          </span>
+                        ) : (
+                          <Link href={link.href} className="w-full text-left">
+                            {link.label}
+                          </Link>
+                        )}
                       </Button>
 
+                      {/* Mobile Submenu Items */}
                       {hasSubmenu && isSubmenuOpen && (
                         <div className="flex flex-col ml-4 mt-1">
                           {link.submenu!.map((subLink) => (
                             <Button
                               key={subLink.label}
-                              className={`rounded-full font-medium w-full my-1 ${
+                              className={`rounded-full font-medium w-full my-0.5 h-8 text-sm ${
                                 active === subLink.label
                                   ? "bg-[#F3651B] text-white"
-                                  : "bg-transparent text-gray-700 hover:bg-[#F3651B]-100"
+                                  : "bg-transparent text-gray-700"
                               }`}
                               variant="ghost"
-                              asChild
+                              size="sm"
                               onClick={() => {
                                 setActive(subLink.label);
                                 setMobileOpen(false);
                                 setOpenSubmenu(null);
                               }}
                             >
-                              <Link href={subLink.href}>{subLink.label}</Link>
+                              <Link
+                                href={subLink.href}
+                                className="w-full text-left"
+                              >
+                                {subLink.label}
+                              </Link>
                             </Button>
                           ))}
                         </div>
@@ -229,10 +263,13 @@ export default function Header({ children }: HeaderProps) {
                   );
                 })}
               </div>
+
               <div className="w-full max-w-sm py-4 px-4 flex flex-col gap-2">
-                <CustomButton 
+                <CustomButton
                   className="w-full justify-center my-1"
-                   onClick={() => window.location.href = 'https://recruiter.keraeva.com'}
+                  onClick={() =>
+                    (window.location.href = "https://recruiter.keraeva.com")
+                  }
                 >
                   Login as Recruiter
                 </CustomButton>
@@ -242,9 +279,11 @@ export default function Header({ children }: HeaderProps) {
         </header>
         {children}
       </div>
-      
-      {/* Add the LoginModal component */}
-      <LoginModal isOpen={isLoginModalOpen} onClose={() => setIsLoginModalOpen(false)} />
+
+      <LoginModal
+        isOpen={isLoginModalOpen}
+        onClose={() => setIsLoginModalOpen(false)}
+      />
     </>
   );
 }

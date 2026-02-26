@@ -15,7 +15,9 @@ import { Screen } from "@/components/global/screen"
 export default function MedicalProfessionalsPage() {
   return (
     <Screen>
+      <Header>
       <HeroSection />
+      </Header>
       <CompanyLogos />
       <GetHiredSection />
       <AIHelpsSection />
