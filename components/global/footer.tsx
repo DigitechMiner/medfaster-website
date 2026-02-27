@@ -18,11 +18,10 @@ export const landingFooterColumns: FooterColumn[] = [
   {
     title: 'Platform',
     links: [
-      { label: 'Hospitals & Recruiters', href: '#hospitals-recruiters' },
-      { label: 'Medical Professionals', href: '#medical-professionals' },
-      { label: 'Patients', href: '#patients' },
-      { label: 'AI Features', href: '#ai-features' },
-      { label: 'Subscription Plans', href: '#subscription-plans' },
+      { label: 'Medical Organizations', href: '/medical_organizations' },
+      { label: 'Medical Professionals', href: '/medical_professionals' },
+      { label: 'KeRaeva AI', href: '/coming_soon' },
+      { label: 'Subscription Plans', href: '/subscriptions' },
     ],
   },
   {
@@ -39,12 +38,12 @@ export const landingFooterColumns: FooterColumn[] = [
   {
     title: 'Support',
     links: [
-      { label: 'Help Center', href: '#help-center' },
+      { label: 'Help Center', href: '/help_center' },
       { label: 'Privacy Policy', href: '/privacy_policy' },
       { label: 'Terms & Conditions', href: '/terms_and_conditions' },
       { label: 'Refund Policy', href: '#refund' },
       { label: 'Data Protection (HIPAA/GDPR)', href: '#data-protection' },
-      { label: 'Report an Issue', href: '#report-issue' },
+      { label: 'Report an Issue', href: '/report_an_issue' },
     ],
   },
 ];
