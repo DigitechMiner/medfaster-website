@@ -10,12 +10,12 @@ const faqs = [
   {
     question: "Is the platform free to use?",
     answer:
-      "Yes, completely. Medfasterrr is 100% free for doctors, nurses, and healthcare staff looking for jobs. We only charge hospitals and clinics to post vacancies. You will never be asked to pay to apply for a role.",
+      "Yes, completely. KeRaeva is 100% free for doctors, nurses, and healthcare staff looking for jobs. We only charge hospitals and clinics to post vacancies. You will never be asked to pay to apply for a role.",
   },
   {
     question: "Can I search for remote or part-time jobs?",
     answer:
-      "Yes, MedFaster supports filtering by remote, part-time, full-time, and contract roles so you can find exactly what suits your schedule.",
+      "Yes, KeRaeva supports filtering by remote, part-time, full-time, and contract roles so you can find exactly what suits your schedule.",
   },
   {
     question: "How can I improve my chances of getting hired?",

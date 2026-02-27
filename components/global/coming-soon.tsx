@@ -30,7 +30,7 @@ export function ComingSoon() {
             size="base"
             className="text-[#717680] leading-relaxed"
           >
-            Get the latest updates on the MedFaster platform, exclusive
+            Get the latest updates on the KeRaeva platform, exclusive
             invites, and early access for healthcare professionals and
             recruiters in Canada.
           </ResponsiveParagraph>
