@@ -123,8 +123,8 @@ export default function HeroSection() {
                 Total Flexibility & Control
               </Heading>
               <Paragraph className="text-white leading-relaxed">
-                Take charge of your career. Filter for full-time, part-time, or
-                single on-demand shifts that fit your schedule. Get instant alerts
+                Take charge of your career. Filter for full-time, freelance on-demand shifts, or
+                real time that fits your schedule. Get instant alerts
                 for jobs you actually want.
               </Paragraph>
             </div>
@@ -151,7 +151,7 @@ export default function HeroSection() {
                 Direct & Verified Opportunities
               </Heading>
               <Paragraph className="text-white leading-relaxed font-light">
-                Connect directly with top-tier hospitals and clinics. Our
+                Connect directly with top-tier hospitals, health care facilities  and clinics. Our
                 AI-powered system verifies every listing, so you can apply with
                 confidence. No recruiters, no hassle.
               </Paragraph>

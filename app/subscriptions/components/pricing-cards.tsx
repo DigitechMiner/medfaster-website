@@ -20,7 +20,7 @@ const PLANS = {
       "Professional Profile Listing",
       "Appointment & Schedule Management",
       "Appear in Standard Search Results",
-      "Secure Patient Chat",
+      "Secure Chat",
       "Standard Partner Support",
       "15% Commission per booking",
     ],

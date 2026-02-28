@@ -7,13 +7,13 @@ const TIMELINE = [
     year: "2021",
     title: "The Question",
     description:
-      "KeRaeva began with a simple question: 'Why should healthcare still struggle with time?' Founded by doctors and technologists, we saw how traditional staffing delayed care.",
+      "KeRaeva began with a simple question: 'Why should healthcare still struggle with time?' Founded by “health care providers, we saw how traditional staffing delayed care.",
   },
   {
     year: "2022",
     title: "The Concept",
     description:
-      "What started as a concept to fill last-minute hospital shifts and test our AI models.",
+      "What started as a concept to fill last-minute health care facility shifts and test our AI models.",
   },
   {
     year: "2024",
