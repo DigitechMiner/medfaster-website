@@ -127,7 +127,7 @@ export function Footer() {
         </div>
 
         <div className="space-y-6 sm:space-y-8">
-
+          <Link href="/">
         <div className="relative w-40 md:w-48 lg:w-[200px] h-8 sm:w-40 sm:h-10">
               <Image
                 src="/images/ui/KeRaeva-logo.svg"
@@ -138,6 +138,7 @@ export function Footer() {
                 priority
               />
             </div>
+            </Link>
           {/* Two-column layout: Left (logo + contact), Right (links) */}
           <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
             {/* Left: Logo + Contact */}

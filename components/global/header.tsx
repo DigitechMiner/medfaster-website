@@ -86,17 +86,19 @@ export default function Header({ children }: HeaderProps) {
               {mobileOpen ? <X size={20} /> : <Menu size={20} />}
             </Button>
 
-            <div className="flex-shrink-0 w-40 md:w-48 lg:w-[200px] flex items-center">
-              <Image
-                src="/images/ui/KeRaeva-logo.svg"
-                height={50}
-                width={200}
-                alt="KeRaeva"
-                objectFit="contain"
-                quality={100}
-                priority
-              />
-            </div>
+           <Link href="/">
+              <div className="flex-shrink-0 w-40 md:w-48 lg:w-[200px] flex items-center cursor-pointer">
+                <Image
+                  src="/images/ui/KeRaeva-logo.svg"
+                  height={50}
+                  width={200}
+                  alt="KeRaeva"
+                  objectFit="contain"
+                  quality={100}
+                  priority
+                />
+              </div>
+            </Link>
           </div>
 
           {/* Desktop Navigation — fixed height prevents layout shift on submenu open */}
