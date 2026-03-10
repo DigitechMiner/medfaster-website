@@ -13,7 +13,7 @@ export default function BookADemo() {
       backgroundColor="bg-transparent"
       padding={false}
       style={{
-        background: 'linear-gradient(225deg, #EB001B 0%, #F79E1B 100%), url("/img/patterns/pattern-02.png")',
+        background: 'linear-gradient(225deg, #EB001B 0%, #F79E1B 100%), url("/images/patterns/orange-pattern-2.png")',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundBlendMode: 'overlay',

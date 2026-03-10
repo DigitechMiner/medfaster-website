@@ -226,7 +226,7 @@ export function CareerOnTheGo() {
       >
         <div className="relative mt-10 max-w-2xl mx-auto">
           <Image
-            src="/images/ui/mobile-screen.png"
+            src="/images/ui/mobile-screen.svg"
             alt="Mobile app showing job search interface"
             width={500}
             height={900}

@@ -59,7 +59,7 @@ export function HeroSection() {
       >
         <div className="relative mt-10 max-w-7xl mx-auto">
           <Image
-            src="/img/dashboard/dashboard-hero.png"
+            src="/img/dashboard/dashboard-hero.svg"
             alt="Verified score card showing Dr. Noah Liam profile"
             width={1200}
             height={600}
@@ -133,7 +133,7 @@ export function HiredSection() {
       backgroundColor="bg-transparent"
       className="relative overflow-hidden"
       style={{
-        background: 'linear-gradient(225deg, #EB001B 0%, #F79E1B 100%), url("/img/patterns/pattern-01.png")',
+        background: 'linear-gradient(225deg, #EB001B 0%, #F79E1B 100%), url("/img/patterns/orange-pattern-1.png")',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundBlendMode: 'overlay',
@@ -297,7 +297,7 @@ export function StartHiring() {
       backgroundColor="bg-transparent"
       padding={false}
       style={{
-        background: 'linear-gradient(225deg, #EB001B 0%, #F79E1B 100%), url("/img/patterns/pattern-02.png")',
+        background: 'linear-gradient(225deg, #EB001B 0%, #F79E1B 100%), url("/images/patterns/orange-pattern-02.png")',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundBlendMode: 'overlay',

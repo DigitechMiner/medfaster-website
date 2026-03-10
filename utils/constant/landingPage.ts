@@ -51,12 +51,12 @@ export const testimonials: Testimonial[] = [
 
 export type DashboardFeature = { screen: string; title: string };
 export const dashboardFeatures: DashboardFeature[] = [
-  { screen: "/img/dashboard/feature-candidate-pipeline.png", title: "Candidate Piepline" },
-  { screen: "/img/dashboard/feature-ai-ranking.png", title: "AI Ranking" },
-  { screen: "/img/dashboard/feature-interview-scheduling.png", title: "Interview Scheduling" },
-  { screen: "/img/dashboard/feature-notes-logs.png", title: "Notes & Logs" },
-  { screen: "/img/dashboard/feature-analytics-dashboard.png", title: "Analytics Dashboard" },
-  { screen: "/img/dashboard/feature-communication-tools.png", title: "Communication Tools" },
+  { screen: "/img/dashboard/feature-candidate-pipeline.svg", title: "Candidate Piepline" },
+  { screen: "/img/dashboard/feature-ai-ranking.svg", title: "AI Ranking" },
+  { screen: "/img/dashboard/feature-interview-scheduling.svg", title: "Interview Scheduling" },
+  { screen: "/img/dashboard/feature-candidate-pipeline.svg", title: "Notes & Logs" },
+  { screen: "/img/dashboard/feature-analytics-dashboard.svg", title: "Analytics Dashboard" },
+  { screen: "/img/dashboard/feature-candidate-pipeline.svg", title: "Communication Tools" },
 ];
 
 export type HiringStep = { icon?: any; title: string; description: string };

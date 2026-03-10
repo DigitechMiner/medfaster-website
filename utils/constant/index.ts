@@ -105,17 +105,17 @@ export interface CompanyLogo {
       description: "Our system verifies your credentials, giving you a badge of trust that makes your application a priority for top employers."
     },
     {
-      screen: "/images/features/map-view.png",
+      screen: "/images/features/map-view.svg",
       title: "Map View",
       description: "Visually discover job openings in your area. See commute times and find shifts close to home."
     },
     {
-      screen: "/images/features/job-marketplace.png",
+      screen: "/images/features/job-marketplace.svg",
       title: "Job / Candidate Marketplace",
       description: "Filter through full-time, contract, and freelance roles to find the perfect opportunity that fits your schedule and skills."
     },
     {
-      screen: "/images/features/wallet-payment.png",
+      screen: "/images/features/wallet-payment.svg",
       title: "Wallet & Payment History",
       description: "Track your earnings and manage payments directly within the app. Get paid reliably with full transparency."
     }

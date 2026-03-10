@@ -107,7 +107,7 @@ export default function HeroSection() {
             {/* Address Image */}
             <div className="md:flex-[3] relative bg-[#f5f5f5] rounded-lg flex items-center justify-center">
               <Image
-                src="/images/hero/mobile-address.png"
+                src="/images/hero/mobile-address.svg"
                 alt="KeRaeva app interface"
                 width={280}
                 height={450}
