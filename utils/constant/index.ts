@@ -100,11 +100,6 @@ export interface CompanyLogo {
       description: "Securely store all your professional documents in one place to create a comprehensive, standout profile."
     },
     {
-      screen: "/images/features/document-verification.png",
-      title: "Credential Verification",
-      description: "Our system verifies your credentials, giving you a badge of trust that makes your application a priority for top employers."
-    },
-    {
       screen: "/images/features/map-view.svg",
       title: "Map View",
       description: "Visually discover job openings in your area. See commute times and find shifts close to home."

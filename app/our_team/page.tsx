@@ -106,7 +106,7 @@ const TEAM_MEMBERS = [
   },
   {
     id: 11,
-    name: "Srujan Hema",
+    name: "Srujan K",
     role: "Backend Developer",
     category: "dev",
     image: "/images/team/member-1.jpg",

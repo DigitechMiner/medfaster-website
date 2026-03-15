@@ -279,6 +279,7 @@ export function NextCareer() {
                 rightIcon={ArrowRight}
                 iconClassName="text-white"
                 iconContainerClassName="bg-[#F3651B]"
+                onClick={() => window.open("https://recruiter.keraeva.com/registration")}
               >
                 Post a Job
               </CustomButton>

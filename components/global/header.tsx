@@ -19,8 +19,7 @@ const navLinks = [
       { label: "Medical Professionals", href: "/medical_professionals" },
     ],
   },
-  { label: "KeRaeva AI", href: "/coming_soon" },
-  { label: "Why KeRaeva?", href: "/coming_soon" },
+  { label: "Why KeRaeva?", href: "/about" },
   { label: "Contact Us", href: "/contact_us" },
 ];
 

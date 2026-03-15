@@ -48,6 +48,7 @@ export default function HeroSection() {
             size="lg"
             variant="secondary"
             className="text-[#252B37] border-none bg-gray-100 py-3"
+            onClick={() => window.open("https://recruiter.keraeva.com/registration")}
           >
             Post a Job
           </CustomButton>

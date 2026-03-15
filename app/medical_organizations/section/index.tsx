@@ -133,7 +133,7 @@ export function HiredSection() {
       backgroundColor="bg-transparent"
       className="relative overflow-hidden"
       style={{
-        background: 'linear-gradient(225deg, #EB001B 0%, #F79E1B 100%), url("/img/patterns/orange-pattern-1.png")',
+        background: 'linear-gradient(225deg, #EB001B 0%, #F79E1B 100%), url("/images/patterns/orange-pattern-1.png")',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundBlendMode: 'overlay',
@@ -188,6 +188,7 @@ export function HiredSection() {
               rightIcon={ArrowRight}
               iconClassName="text-white"
               iconContainerClassName="bg-[#F4781B]"
+              onClick={() => window.open("https://recruiter.keraeva.com/registration")}
             >
               Post a job
             </CustomButton>
@@ -254,7 +255,7 @@ export function DataDrivenHiring() {
         {/* Right Button */}
         <div className="flex-shrink-0">
           <button className="bg-[#F4781B] text-white px-8 py-3.5 rounded-full font-medium text-base hover:bg-[#E06A15] transition-all duration-300 hover:shadow-lg hover:scale-105">
-            Book Demo
+            Show Demo
           </button>
         </div>
       </div>
@@ -297,7 +298,7 @@ export function StartHiring() {
       backgroundColor="bg-transparent"
       padding={false}
       style={{
-        background: 'linear-gradient(225deg, #EB001B 0%, #F79E1B 100%), url("/images/patterns/orange-pattern-02.png")',
+        background: 'linear-gradient(225deg, #EB001B 0%, #F79E1B 100%), url("/images/patterns/orange-pattern-2.png")',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundBlendMode: 'overlay',
@@ -323,6 +324,7 @@ export function StartHiring() {
                 rightIcon={ArrowRight}
                 iconClassName="text-white"
                 iconContainerClassName="bg-[#F4781B]"
+                onClick={() => window.open("https://recruiter.keraeva.com/registration")}
               >
                 Post a Job
               </CustomButton>

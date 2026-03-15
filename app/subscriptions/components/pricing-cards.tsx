@@ -121,7 +121,7 @@ export function PricingCards({ billing, selectedPlan, onSelectPlan }: PricingCar
               </Paragraph>
             )}
             <Heading as="h2" size="lg"   className="text-[#252B37]">
-              ${billing === "yearly" ? 59 : 79}
+              ${billing === "yearly" ? 89 : 99}
             </Heading>
           </div>
           <Paragraph size="sm" className="text-[#717680] mt-1">

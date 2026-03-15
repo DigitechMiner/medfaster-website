@@ -2,7 +2,7 @@ export type NavLink = { label: string; href: string };
 export const landingNavLinks: NavLink[] = [
   { label: 'Home', href: '/' },
   { label: 'Why KeRaeva?', href: '/coming-soon' },
-  { label: 'Post a Job', href: '/jobs' },
+  { label: 'Post a Job', href: 'https://recruiter.keraeva.com/registration' },
   { label: 'Our Subscriptions', href: '/coming-soon' },
   { label: 'Hiring Blog', href: '/coming-soon' },
 ];

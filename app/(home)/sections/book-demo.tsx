@@ -5,7 +5,8 @@ import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/heading";
 import { Paragraph, ResponsiveParagraph } from "@/components/ui/paragraph";
 import { CustomButton } from "@/components/ui/custom-button";
-import { Calendar } from "lucide-react";
+import { ArrowBigRight, ArrowRight, Calendar } from "lucide-react";
+import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
 
 export default function BookADemo() {
   return (
@@ -43,12 +44,13 @@ export default function BookADemo() {
           {/* CTA Button */}
           <CustomButton
             size="lg"
-            rightIcon={Calendar}
+            rightIcon={ArrowRight}
             className="!bg-white !text-gray-800 hover:shadow-xl transition-all duration-300"
             iconContainerClassName="!bg-[#F3651B]"
             iconClassName="!text-white"
+            onClick={() => window.open("https://youtu.be/4Rd9ZeAYZgc?si=0zWtfUsrjAJRqWbO", "_blank")}
           >
-            Book a Demo
+            Show Demo
           </CustomButton>
         </div>
 
@@ -62,8 +64,8 @@ export default function BookADemo() {
                 <Image
                   src="/images/company/canadian-health.png"
                   alt="Company Logo"
-                  width={40}
-                  height={40}
+                  width={50}
+                  height={50}
                   className="h-10 w-auto mb-2 object-contain"
                 />
               </div>
@@ -82,7 +84,7 @@ export default function BookADemo() {
                 size="sm"
                 className="md:text-base text-[#252B37] mb-1 text-center"
               >
-                Assistant of audiology
+                Registered Nurse
               </Paragraph>
 
               {/* Status */}

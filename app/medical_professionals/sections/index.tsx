@@ -269,15 +269,6 @@ export function NextCareer() {
             <div className="flex flex-col sm:flex-row sm:gap-4">
               <CustomButton
                 className="bg-white text-black hover:bg-gray-100"
-                rightIcon={ArrowRight}
-                iconClassName="text-white"
-                iconContainerClassName="bg-[#F4781B]"
-              >
-                Get Started
-              </CustomButton>
-
-              <CustomButton
-                className="bg-white text-black hover:bg-gray-100"
                 rightIcon={Download}
                 iconClassName="text-white"
                 iconContainerClassName="bg-[#F4781B]"

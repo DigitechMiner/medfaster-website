@@ -47,8 +47,9 @@ export default function BookADemo() {
             className="!bg-white !text-gray-800 hover:shadow-xl transition-all duration-300"
             iconContainerClassName="!bg-[#F4781B]"
             iconClassName="!text-white"
+            onClick={() => window.open("https://youtu.be/4Rd9ZeAYZgc?si=0zWtfUsrjAJRqWbO", "_blank")}
           >
-            Book a Demo
+            Show Demo
           </CustomButton>
         </div>
 
@@ -82,7 +83,7 @@ export default function BookADemo() {
                 size="sm"
                 className="md:text-base text-[#252B37] mb-1 text-center"
               >
-                Assistant of audiology
+                Registered Nurse
               </Paragraph>
 
               {/* Status */}
