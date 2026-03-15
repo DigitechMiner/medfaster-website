@@ -6,7 +6,7 @@ interface TeamMemberCardProps {
   id: number;
   name: string;
   role: string;
-  bio: string;
+  bio?: string;
   image: string;
   social?: {
     twitter?: string;

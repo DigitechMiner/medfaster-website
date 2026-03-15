@@ -156,7 +156,7 @@ export function VerifiedSection() {
       <Section padding={false} className="flex overflow-hidden items-center justify-end">
         <div className="relative mx-auto max-w-2xl">
           <Image 
-            src="/images/ui/verified-card.png" 
+            src="/images/ui/verified-card.svg" 
             alt="Verified score card showing Dr. Noah Liam profile"
             width={500}
             height={1000}

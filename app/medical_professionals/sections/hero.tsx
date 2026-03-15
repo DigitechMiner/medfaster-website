@@ -23,7 +23,7 @@ export default function HeroSection() {
         <div className="flex flex-col justify-between h-full space-y-8">
           {/* Main Heading */}
           <div className="text-left">
-            <Heading as="h1" size="md" weight="normal" className="text-[#252B37] mb-6">
+            <Heading as="h1" size="lg" weight="normal" className="text-[#252B37] mb-6">
               Find Healthcare Jobs Near You
               <span className="text-[#F4781B] font-medium">
                 {" "}
