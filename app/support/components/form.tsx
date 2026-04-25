@@ -1,16 +1,16 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { ChevronRight, Plus } from "lucide-react";
+import { ChevronRight, Plus, Lock, LockIcon } from "lucide-react";
 import { CustomButton } from "@/components/custom/custom-button";
+import { LockClosedIcon } from "@heroicons/react/24/outline";
 
 const issueTypes = [
-  "Appointment & Booking",
-  "Payment & Billing",
-  "Technical Issue",
-  "Account Access",
-  "Job Posting Problem",
-  "Verification Issue",
+  "Job / Shift Issue",
+  "Payment / Earnings",
+  "Check-in / Attendance",
+  "Account / Verification",
+  "Referral / Rewards",
   "Other",
 ];
 
@@ -59,7 +59,7 @@ export function ReportIssueForm() {
               className="w-full appearance-none border border-gray-200 rounded-lg px-4 py-2.5 text-sm text-[#252B37] bg-white focus:outline-none focus:ring-2 focus:ring-[#F3651B]/40 pr-10"
             >
               <option value="" disabled>
-                Appointment &amp; Booking
+                Select an issue type
               </option>
               {issueTypes.map((type) => (
                 <option key={type} value={type}>
@@ -155,15 +155,24 @@ export function ReportIssueForm() {
         />
       </div>
 
-      {/* Submit */}
-      <CustomButton
-                type="submit"
-                rightIcon={ChevronRight}
-                size="md"
-                className="w-full sm:w-auto my-0 justify-center"
-              >
-                Submit Report
-              </CustomButton>
+      {/* Submit + Security Notice */}
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <CustomButton
+          type="submit"
+          rightIcon={ChevronRight}
+          size="md"
+          className="w-full sm:w-auto my-0 justify-center"
+          onClick={handleSubmit}
+        >
+          Submit Report
+        </CustomButton>
+
+        <p className="flex items-center gap-1.5 text-xs text-[#717680] sm:text-right">
+          <Lock className="w-3.5 h-3.5 shrink-0" />
+          Your data is securely handled and protected.
+        </p>
+      </div>
+
     </div>
   );
 }
