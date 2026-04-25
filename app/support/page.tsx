@@ -18,7 +18,7 @@ export default function ReportAnIssuePage() {
           <div className="space-y-4">
             {/* Title */}
             <Heading as="h1" size="lg" weight="normal" className="text-[#252B37]">
-              Report an Issue
+              Support
             </Heading>
 
             {/* Breadcrumb */}
@@ -31,7 +31,7 @@ export default function ReportAnIssuePage() {
               </Link>
               <ChevronRight className="w-4 h-4 text-[#717680]" />
               <Paragraph size="lg" className="text-[#717680]">
-                Report an Issue
+                Support
               </Paragraph>
             </div>
           </div>
