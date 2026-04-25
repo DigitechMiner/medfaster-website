@@ -152,7 +152,7 @@ export function Footer() {
                     Email Address
                   </ResponsiveParagraph>
                   <ResponsiveParagraph size="sm" className="whitespace-nowrap">
-                    info@KeRaeva.com
+                    support@keraeva.com
                   </ResponsiveParagraph>
                 </div>
                 <div className="space-y-1 mt-4 sm:mt-0">
@@ -163,7 +163,7 @@ export function Footer() {
                     Phone Number
                   </ResponsiveParagraph>
                   <ResponsiveParagraph size="sm" className="whitespace-nowrap">
-                    (416) 555-0123
+                    (403) 919-6824
                   </ResponsiveParagraph>
                 </div>
               </div>

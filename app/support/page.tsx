@@ -10,6 +10,10 @@ import { Heading } from "@/components/ui/heading";
 import { Paragraph } from "@/components/ui/paragraph";
 import { ReportIssueForm } from "./components/form";
 
+import { ContactInfoSection } from "../contact_us/components/info";
+import { FreqAskQuest } from "./components/FreqAskQuest";
+import { ContactInfo } from "./components/ContactInfo";
+
 export default function ReportAnIssuePage() {
   return (
     <Screen>
@@ -37,12 +41,28 @@ export default function ReportAnIssuePage() {
           </div>
         </Section>
       </Header>
+      <Section>
+        <ContactInfo />
+      </Section>
 
       {/* Form */}
       <Section>
+        <div className="space-y-4">
+            {/* Title */}
+            <Heading as="h1" size="lg" weight="normal" className="text-[#252B37]">
+              Fill the Issue Form 
+            </Heading>
+            <Paragraph size="lg" className="text-[#717680]">
+                Request support for KeRaeva mobile app users. We respond within 24 hours, 🚨 Urgent job issues are prioritized for faster resolutions
+              </Paragraph>
+               </div>
+            <br />
         <ReportIssueForm />
       </Section>
 
+      <Section>
+        <FreqAskQuest />
+      </Section>
       <Footer />
     </Screen>
   );

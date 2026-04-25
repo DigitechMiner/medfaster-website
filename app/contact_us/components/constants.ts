@@ -9,7 +9,7 @@ export const CONTACT_INFO = {
   },
   phone: {
     label: "Phone Number",
-    value: "(416) 555-0123",
+    value: "(403) 919-6824",
     icon: Phone,
   },
   social: {
