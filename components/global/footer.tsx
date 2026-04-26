@@ -39,8 +39,8 @@ export const landingFooterColumns: FooterColumn[] = [
     title: 'Support',
     links: [
       { label: 'Help Center', href: '/help_center' },
-      { label: 'Privacy Policy', href: '/privacy_policy' },
-      { label: 'Terms & Conditions', href: '/terms_and_conditions' },
+      { label: 'Privacy Policy', href: '/privacy-policy' },
+      { label: 'Terms & Conditions', href: '/terms-conditions' },
       { label: 'Refund Policy', href: '#refund' },
       { label: 'Data Protection (HIPAA/GDPR)', href: '#data-protection' },
       { label: 'Support', href: '/support' },
