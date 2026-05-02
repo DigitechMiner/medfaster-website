@@ -313,10 +313,9 @@ Where users are paid or charged in a different currency, exchange rates and any 
 ];
 
 
-export default function TermsConditionsPage() {
+export default function MobileTermsConditionsPage() {
   return (
     <Screen>
-      <Header>
         <Section className="pt-2 md:pt-4 lg:pt-6 xl:pt-8">
           <div className="space-y-4">
             {/* Title */}
@@ -344,7 +343,6 @@ export default function TermsConditionsPage() {
             </div>
           </div>
         </Section>
-      </Header>
 
       {/* Content Section */}
       <Section className="bg-white">
@@ -364,9 +362,6 @@ export default function TermsConditionsPage() {
           </div>
         </div>
       </Section>
-
-      {/* Footer */}
-      <Footer />
     </Screen>
   );
 }

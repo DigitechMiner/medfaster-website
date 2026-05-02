@@ -205,10 +205,9 @@ Last Updated: April 26, 2026`,
   },
 ];
 
-export default function PrivacyPolicyPage() {
+export default function MobilePrivacyPolicyPage() {
   return (
     <Screen>
-      <Header>
         <Section className="pt-2 md:pt-4 lg:pt-6 xl:pt-8">
           <div className="space-y-4">
             {/* Title */}
@@ -236,7 +235,7 @@ export default function PrivacyPolicyPage() {
             </div>
           </div>
         </Section>
-      </Header>
+
 
       {/* Content Section */}
       <Section className="bg-white">
@@ -257,8 +256,6 @@ export default function PrivacyPolicyPage() {
         </div>
       </Section>
 
-      {/* Footer */}
-      <Footer />
     </Screen>
   );
 }

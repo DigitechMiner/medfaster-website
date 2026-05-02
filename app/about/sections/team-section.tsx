@@ -6,10 +6,9 @@ import { TeamMemberCard } from "@/components/card/team-member-card";
 const TEAM_MEMBERS = [
   {
     id: 1,
-    name: "Sarah Johnson",
-    role: "CEO & Co-founder",
-    bio: "Former healthcare executive with 10+ years experience transforming patient care through technology.",
-    image: "/images/team/member-1.jpg",
+    name: "Kewal Mangukia",
+    role: "CEO & Founder",
+    image: "/images/team/kewal.jpg",
     social: {
       twitter: "https://twitter.com",
       linkedin: "https://linkedin.com"
@@ -17,10 +16,9 @@ const TEAM_MEMBERS = [
   },
   {
     id: 2,
-    name: "Michael Chen",
-    role: "CTO & Co-founder",
-    bio: "Tech leader who previously scaled infrastructure at major health-tech companies.",
-    image: "/images/team/member-2.jpg",
+    name: "Rutvij Patel",
+    role: "CTO , Director & Co-founder",
+    image: "/images/team/rutvij.png",
     social: {
       twitter: "https://twitter.com",
       linkedin: "https://linkedin.com"
@@ -28,43 +26,10 @@ const TEAM_MEMBERS = [
   },
   {
     id: 3,
-    name: "Emily Rodriguez",
-    role: "Head of Operations",
-    bio: "Operations expert driving efficiency and scalability across all departments.",
+    name: "Yash Prajapati",
+    role: "Director & CMO",
+    bio: "",
     image: "/images/team/member-3.jpg",
-    social: {
-      twitter: "https://twitter.com",
-      linkedin: "https://linkedin.com"
-    }
-  },
-  {
-    id: 4,
-    name: "David Thompson",
-    role: "Head of Product",
-    bio: "Product strategist committed to building intuitive solutions for complex problems.",
-    image: "/images/team/member-4.jpg",
-    social: {
-      twitter: "https://twitter.com",
-      linkedin: "https://linkedin.com"
-    }
-  },
-  {
-    id: 5,
-    name: "Lisa Wang",
-    role: "Head of Healthcare Partnerships",
-    bio: "Healthcare partnerships specialist with deep relationships across the industry.",
-    image: "/images/team/member-5.jpg",
-    social: {
-      twitter: "https://twitter.com",
-      linkedin: "https://linkedin.com"
-    }
-  },
-  {
-    id: 6,
-    name: "James O'Brien",
-    role: "Head of AI & Machine Learning",
-    bio: "AI researcher and engineer building intelligent systems for real-world healthcare challenges.",
-    image: "/images/team/member-6.jpg",
     social: {
       twitter: "https://twitter.com",
       linkedin: "https://linkedin.com"
@@ -108,7 +73,10 @@ export function TeamSection() {
 
       {/* View All Team Button */}
       <div className="flex justify-center">
-        <button className="px-8 py-3 border-2 border-gray-300 rounded-lg text-[#252B37] font-semibold hover:border-[#F3651B] hover:text-[#F3651B] transition-colors">
+        <button className="px-8 py-3 border-2 border-gray-300 rounded-lg text-[#252B37] font-semibold hover:border-[#F3651B] hover:text-[#F3651B] transition-colors"
+        
+        
+        >
           View All Team
         </button>
       </div>

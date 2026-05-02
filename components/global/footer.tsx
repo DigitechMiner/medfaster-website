@@ -28,7 +28,6 @@ export const landingFooterColumns: FooterColumn[] = [
     title: 'Company',
     links: [
       { label: 'About KeRaeva', href: '/about' },
-      { label: 'Mission & Vision', href: '/coming_soon' },
       { label: 'Our Team', href: '/our_team' },
       { label: 'Careers', href: '/careers' },
       { label: 'Blog', href: '/blog' },
