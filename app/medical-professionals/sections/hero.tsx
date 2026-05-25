@@ -64,8 +64,8 @@ export default function HeroSection() {
           <div>
             <ResponsiveParagraph size="base" className="text-[#252B37] mb-6">
               The AI-powered platform connecting you directly with verified
-              Health care service providers, such as hospitals, nursing home
-              facilities, medical clinics, dental Clinics, physiotherapy clines
+              healthcare service providers, such as hospitals, nursing home
+              facilities, medical clinics, dental clinics, physiotherapy clinics
               and many more Canada. Discover full-time, part-time, and on-demand
               roles all on your terms.
             </ResponsiveParagraph>
@@ -151,7 +151,7 @@ export default function HeroSection() {
                 Direct & Verified Opportunities
               </Heading>
               <Paragraph className="text-white leading-relaxed font-light">
-                Connect directly with top-tier hospitals, health care facilities  and clinics. Our
+                Connect directly with top-tier hospitals, healthcare facilities  and clinics. Our
                 AI-powered system verifies every listing, so you can apply with
                 confidence. No recruiters, no hassle.
               </Paragraph>

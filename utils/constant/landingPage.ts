@@ -51,7 +51,7 @@ export const testimonials: Testimonial[] = [
 
 export type DashboardFeature = { screen: string; title: string };
 export const dashboardFeatures: DashboardFeature[] = [
-  { screen: "/img/dashboard/feature-candidate-pipeline.svg", title: "Candidate Piepline" },
+  { screen: "/img/dashboard/feature-candidate-pipeline.svg", title: "Candidate Pipeline" },
   { screen: "/img/dashboard/feature-ai-ranking.svg", title: "AI Ranking" },
   { screen: "/img/dashboard/feature-interview-scheduling.svg", title: "Interview Scheduling" },
   { screen: "/img/dashboard/feature-candidate-pipeline.svg", title: "Notes & Logs" },
@@ -94,8 +94,8 @@ export const landingFooterColumns: FooterColumn[] = [
   {
     title: 'Platform',
     links: [
-      { label: 'Medical Organizations', href: '/medical_organizations' },
-      { label: 'Medical Professionals', href: '/medical_professionals' },
+      { label: 'Medical Organizations', href: '/medical-organizations' },
+      { label: 'Medical Professionals', href: '/medical-professionals' },
       { label: 'KeRaeva AI', href: '/coming_soon' },
       { label: 'Subscription Plans', href: '/subscriptions' },
     ],
@@ -105,10 +105,10 @@ export const landingFooterColumns: FooterColumn[] = [
     links: [
       { label: 'About KeRaeva', href: '/about' },
       { label: 'Mission & Vision', href: '#mission-vision' },
-      { label: 'Our Team', href: '/our_team' },
+      { label: 'Our Team', href: '/our-team' },
       { label: 'Careers', href: '/careers' },
       { label: 'Blog', href: '/blog' },
-      { label: 'Contact Us', href: '/contact_us' },
+      { label: 'Contact Us', href: '/contact-us' },
     ],
   },
   {

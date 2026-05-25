@@ -39,7 +39,7 @@ export function AboutHeroSection() {
             {/* Description */}
             <p className="text-sm font-light lg:text-sm leading-relaxed opacity-95">
               Welcome to KeRaeva. We are Canada&apos;s AI-powered platform built to
-              connect leading hospitals, health care facilities and clinics with verified, hire-ready
+              connect leading hospitals, healthcare facilities and clinics with verified, hire-ready
               healthcare professionals. We&apos;re rebuilding the foundation of
               healthcare staffing—making it faster, smarter, and more reliable.
             </p>
@@ -90,7 +90,7 @@ export function StatsSection() {
           className="text-[#717680] max-w-full leading-relaxed"
         >
           KeRaeva was founded by healthcare and tech veterans to fix staffing
-          friction. Our platform bridges the gap between health care organizations needing staff
+          friction. Our platform bridges the gap between healthcare organizations needing staff
           and professionals seeking good-fit jobs by automating verification,
           matching, and scheduling.
         </ResponsiveParagraph>

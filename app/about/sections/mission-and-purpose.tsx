@@ -107,7 +107,7 @@ export function PurposeSection() {
         </Heading>
         <ResponsiveParagraph size="base" className="text-[#717680]">
           To revolutionize healthcare accessibility through intelligent,
-          real-time staffing and service delivery — connecting health Care facilities,
+          real-time staffing and service delivery — connecting healthcare facilities,
           medical professionals, and patients on one transparent, AI-driven
           platform.
         </ResponsiveParagraph>

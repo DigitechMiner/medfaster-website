@@ -215,7 +215,7 @@ export function ContactForm({ onSubmitSuccess }: ContactFormProps) {
             name="message"
             value={formData.message}
             onChange={handleInputChange}
-            placeholder="I'm a health care organization looking to post jobs, or I'm a nurse with a question about verification"
+            placeholder="I'm a healthcare organization looking to post jobs, or I'm a nurse with a question about verification"
             maxLength={MESSAGE_MAX_LENGTH}
             rows={4}
             className={`w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F3651B] focus:border-transparent resize-none ${

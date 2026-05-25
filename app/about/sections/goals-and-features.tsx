@@ -17,7 +17,7 @@ export function CoreGoalsSection() {
       icon: "/images/icons/hospital.svg",
       title: "Zero Downtime for Hospitals",
       description:
-        "We help Health Care Organizations and clinics operate with zero downtime by providing instant access to verified staff.",
+        "We help healthcare Organizations and clinics operate with zero downtime by providing instant access to verified staff.",
     },
     {
       icon: "/images/icons/patient-care.svg",

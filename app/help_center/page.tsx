@@ -9,8 +9,8 @@ import { Screen } from "@/components/global/screen";
 import { Heading } from "@/components/ui/heading";
 import { Paragraph } from "@/components/ui/paragraph";
 import { FaqSection } from "./components/faq";
-import { ContactInfoSection } from "../contact_us/components/info";
-import { ContactForm } from "../contact_us/components/form";
+import { ContactInfoSection } from "../contact-us/components/info";
+import { ContactForm } from "../contact-us/components/form";
 
 export default function HelpCenterPage() {
   return (

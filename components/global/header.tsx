@@ -15,12 +15,12 @@ const navLinks = [
     label: "Our Platforms",
     href: "/",
     submenu: [
-      { label: "Medical Organizations", href: "/medical_organizations" },
-      { label: "Medical Professionals", href: "/medical_professionals" },
+      { label: "Medical Organizations", href: "/medical-organizations" },
+      { label: "Medical Professionals", href: "/medical-professionals" },
     ],
   },
   { label: "Why KeRaeva?", href: "/about" },
-  { label: "Contact Us", href: "/contact_us" },
+  { label: "Contact Us", href: "/contact-us" },
 ];
 
 interface HeaderProps {
