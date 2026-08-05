@@ -28,7 +28,10 @@ const TEAM_MEMBERS = [
     role: "Founder & CEO",
     category: "board",
     image: "/images/team/kewal.jpg",
-    social: { twitter: "https://twitter.com", linkedin: "https://linkedin.com" },
+    social: {
+      twitter: "https://twitter.com",
+      linkedin: "https://linkedin.com",
+    },
   },
   {
     id: 2,
@@ -36,80 +39,96 @@ const TEAM_MEMBERS = [
     role: "Director & CTO",
     category: "board",
     image: "/images/team/rutvij.png",
-    social: { twitter: "https://twitter.com", linkedin: "https://linkedin.com" },
+    social: {
+      twitter: "https://twitter.com",
+      linkedin: "https://linkedin.com",
+    },
   },
   {
     id: 3,
     name: "Yash Prajapati",
-    role: "Director & CMO",
+    role: "BDE",
     category: "marketing",
     image: null,
-    social: { twitter: "https://twitter.com", linkedin: "https://linkedin.com" },
+    social: {
+      twitter: "https://twitter.com",
+      linkedin: "https://linkedin.com",
+    },
   },
   {
     id: 4,
-    name: "Al Mawji",
-    role: "COO & Finance Manager",
-    category: "management",
-    image: null,
-    social: { twitter: "https://twitter.com", linkedin: "https://linkedin.com" },
-  },
-  {
-    id: 5,
     name: "Kevin Parmar",
     role: "Lead Fullstack Developer",
     category: "dev",
     image: "/images/team/kevin.png",
-    social: { twitter: "https://twitter.com", linkedin: "https://linkedin.com" },
+    social: {
+      twitter: "https://twitter.com",
+      linkedin: "https://linkedin.com",
+    },
   },
   {
-    id: 6,
+    id: 5,
     name: "Vaibhav Rawal",
     role: "Lead AI Module Developer",
     category: "dev",
     image: "/images/team/vaibhav.png",
-    social: { twitter: "https://twitter.com", linkedin: "https://linkedin.com" },
+    social: {
+      twitter: "https://twitter.com",
+      linkedin: "https://linkedin.com",
+    },
   },
   {
-    id: 8,
+    id: 6,
     name: "Deep Desai",
     role: "Lead Backend Developer",
     category: "dev",
     image: null,
-    social: { twitter: "https://twitter.com", linkedin: "https://linkedin.com" },
+    social: {
+      twitter: "https://twitter.com",
+      linkedin: "https://linkedin.com",
+    },
   },
   {
-    id: 9,
+    id: 7,
     name: "Sanket Patel",
     role: "Mobile App Developer",
     category: "dev",
     image: null,
-    social: { twitter: "https://twitter.com", linkedin: "https://linkedin.com" },
+    social: {
+      twitter: "https://twitter.com",
+      linkedin: "https://linkedin.com",
+    },
   },
   {
-    id: 10,
+    id: 8,
     name: "Rahul Nishad",
     role: "Web Developer",
     category: "dev",
     image: null,
-    social: { twitter: "https://twitter.com", linkedin: "https://linkedin.com" },
+    social: {
+      twitter: "https://twitter.com",
+      linkedin: "https://linkedin.com",
+    },
   },
   {
-    id: 11,
+    id: 9,
     name: "Srujan K",
     role: "Backend Developer",
     category: "dev",
     image: "/images/team/srujan.png",
-    social: { twitter: "https://twitter.com", linkedin: "https://linkedin.com" },
+    social: {
+      twitter: "https://twitter.com",
+      linkedin: "https://linkedin.com",
+    },
   },
-  {
-    id: 12,
-    name: "Hariprasad Thorve",
-    role: "AI Module Developer",
-    category: "dev",
-    image: null,
-    social: { twitter: "https://twitter.com", linkedin: "https://linkedin.com" },
-  },
+  // {
+  //   id: 12,
+  //   name: "Hariprasad Thorve",
+  //   role: "AI Module Developer",
+  //   category: "dev",
+  //   image: null,
+  //   social: { twitter: "https://twitter.com", linkedin: "https://linkedin.com" },
+  // },
 ];
 
 export default function TeamPage() {
@@ -126,7 +145,12 @@ export default function TeamPage() {
       <Header>
         <Section className="pt-2 md:pt-4 lg:pt-6 xl:pt-8">
           <div className="space-y-3 md:space-y-4">
-            <Heading as="h1" size="lg" weight="normal" className="text-[#252B37]">
+            <Heading
+              as="h1"
+              size="lg"
+              weight="normal"
+              className="text-[#252B37]"
+            >
               Our Team
             </Heading>
 

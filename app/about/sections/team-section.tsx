@@ -11,8 +11,8 @@ const TEAM_MEMBERS = [
     image: "/images/team/kewal.jpg",
     social: {
       twitter: "https://twitter.com",
-      linkedin: "https://linkedin.com"
-    }
+      linkedin: "https://linkedin.com",
+    },
   },
   {
     id: 2,
@@ -21,8 +21,8 @@ const TEAM_MEMBERS = [
     image: "/images/team/rutvij.png",
     social: {
       twitter: "https://twitter.com",
-      linkedin: "https://linkedin.com"
-    }
+      linkedin: "https://linkedin.com",
+    },
   },
   {
     id: 3,
@@ -32,15 +32,14 @@ const TEAM_MEMBERS = [
     image: "/images/team/member-3.jpg",
     social: {
       twitter: "https://twitter.com",
-      linkedin: "https://linkedin.com"
-    }
+      linkedin: "https://linkedin.com",
+    },
   },
 ];
 
 export function TeamSection() {
- return (
-  <Section>
-
+  return (
+    <Section>
       {/* Header with "We're hiring" button */}
       <div className="flex justify-between items-start mb-12">
         <div>
@@ -48,7 +47,8 @@ export function TeamSection() {
             Meet our Team
           </Heading>
           <Paragraph size="sm" className="text-[#717680] max-w-2xl">
-            Our philosophy is simple—hire a team of diverse, passionate people and foster a culture that empowers you to do your best work.
+            Our philosophy is simple—hire a team of diverse, passionate people
+            and foster a culture that empowers you to do your best work.
           </Paragraph>
         </div>
         <button className="bg-[#F3651B] text-white px-6 py-2 rounded-lg text-sm font-semibold hover:bg-[#e56a0f] transition-colors whitespace-nowrap">
@@ -73,14 +73,13 @@ export function TeamSection() {
 
       {/* View All Team Button */}
       <div className="flex justify-center">
-        <button className="px-8 py-3 border-2 border-gray-300 rounded-lg text-[#252B37] font-semibold hover:border-[#F3651B] hover:text-[#F3651B] transition-colors"
-        
-        
+        <button
+          className="px-8 py-3 border-2 border-gray-300 rounded-lg text-[#252B37] font-semibold hover:border-[#F3651B] hover:text-[#F3651B] transition-colors"
+          onClick={() => (window.location.href = "/our-team")}
         >
           View All Team
         </button>
       </div>
-
-  </Section>
-);
+    </Section>
+  );
 }
