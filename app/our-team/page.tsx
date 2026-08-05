@@ -49,7 +49,7 @@ const TEAM_MEMBERS = [
     name: "Yash Prajapati",
     role: "BDE",
     category: "marketing",
-    image: null,
+    image: "/images/team/member-4.jpg",
     social: {
       twitter: "https://twitter.com",
       linkedin: "https://linkedin.com",
@@ -82,7 +82,7 @@ const TEAM_MEMBERS = [
     name: "Deep Desai",
     role: "Lead Backend Developer",
     category: "dev",
-    image: null,
+    image: "/images/team/member-2.jpg",
     social: {
       twitter: "https://twitter.com",
       linkedin: "https://linkedin.com",
@@ -93,7 +93,7 @@ const TEAM_MEMBERS = [
     name: "Sanket Patel",
     role: "Mobile App Developer",
     category: "dev",
-    image: null,
+    image: "/images/team/member-6.jpg",
     social: {
       twitter: "https://twitter.com",
       linkedin: "https://linkedin.com",
@@ -104,7 +104,7 @@ const TEAM_MEMBERS = [
     name: "Rahul Nishad",
     role: "Web Developer",
     category: "dev",
-    image: null,
+    image: "/images/team/member-3.jpg",
     social: {
       twitter: "https://twitter.com",
       linkedin: "https://linkedin.com",
