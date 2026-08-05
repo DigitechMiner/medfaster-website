@@ -64,12 +64,12 @@ export function TeamSection() {
 
       {/* View All Team Button */}
       <div className="flex justify-center">
-        <button
+        <Link
+          href="/our-team"
           className="px-8 py-3 border-2 border-gray-300 rounded-lg text-[#252B37] font-semibold hover:border-[#F3651B] hover:text-[#F3651B] transition-colors"
-          onClick={() => (window.location.href = "/our-team")}
         >
           View All Team
-        </button>
+        </Link>
       </div>
     </Section>
   );
