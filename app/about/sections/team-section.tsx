@@ -8,6 +8,7 @@ const TEAM_MEMBERS = [
     id: 1,
     name: "Kewal Mangukia",
     role: "CEO & Founder",
+    bio: "",
     image: "/images/team/kewal.jpg",
     social: {
       twitter: "https://twitter.com",
@@ -18,6 +19,7 @@ const TEAM_MEMBERS = [
     id: 2,
     name: "Rutvij Patel",
     role: "CTO & Director",
+    bio: "",
     image: "/images/team/rutvij.png",
     social: {
       twitter: "https://twitter.com",
