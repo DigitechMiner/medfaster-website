@@ -2,7 +2,7 @@ import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/heading";
 import { Paragraph } from "@/components/ui/paragraph";
 import { TeamMemberCard } from "@/components/card/team-member-card";
-
+import Link from "next/link";
 const TEAM_MEMBERS = [
   {
     id: 1,
