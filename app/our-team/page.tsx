@@ -219,13 +219,27 @@ export default function TeamPage() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 xl:grid-cols-4">
+        {/* <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 xl:grid-cols-4">
           {filteredMembers.map((member) => (
             <TeamProfileCard
               key={member.id}
               id={member.id}
               name={member.name}
               role={member.role}
+              image={member.image}
+              social={member.social}
+            />
+          ))}
+        </div> */}
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          {TEAM_MEMBERS.map((member) => (
+            <TeamMemberCard
+              key={member.id}
+              id={member.id}
+              name={member.name}
+              role={member.role}
+              //bio={member.bio}
               image={member.image}
               social={member.social}
             />
