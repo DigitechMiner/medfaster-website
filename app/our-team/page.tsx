@@ -121,14 +121,14 @@ const TEAM_MEMBERS = [
       linkedin: "https://linkedin.com",
     },
   },
-  // {
-  //   id: 12,
-  //   name: "Hariprasad Thorve",
-  //   role: "AI Module Developer",
-  //   category: "dev",
-  //   image: null,
-  //   social: { twitter: "https://twitter.com", linkedin: "https://linkedin.com" },
-  // },
+  /*  {
+    id: 12,
+    name: "Hariprasad Thorve",
+    role: "AI Module Developer",
+    category: "dev",
+    image: null,
+    social: { twitter: "https://twitter.com", linkedin: "https://linkedin.com" },
+  },*/
 ];
 
 export default function TeamPage() {

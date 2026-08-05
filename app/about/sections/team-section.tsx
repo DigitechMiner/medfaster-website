@@ -26,17 +26,6 @@ const TEAM_MEMBERS = [
       linkedin: "https://linkedin.com",
     },
   },
-  // {
-  //   id: 3,
-  //   name: "Yash Prajapati",
-  //   role: "BDE",
-  //   bio: "",
-  //   image: "/images/team/member-3.jpg",
-  //   social: {
-  //     twitter: "https://twitter.com",
-  //     linkedin: "https://linkedin.com",
-  //   },
-  // },
 ];
 
 export function TeamSection() {
