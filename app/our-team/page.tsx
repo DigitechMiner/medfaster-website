@@ -240,7 +240,7 @@ export default function TeamPage() {
               name={member.name}
               role={member.role}
               //bio={member.bio}
-              image={member.image}
+              image={member.image ?? "/images/team/default-profile.png"}
               social={member.social}
             />
           ))}
