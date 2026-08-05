@@ -4,6 +4,7 @@ import { fonts } from "@/lib/font";
 import GoogleOAuthProviderWrapper from "@/components/providers/GoogleOAuthProvider";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "KeRaeva",
@@ -33,6 +34,7 @@ export default function RootLayout({
           pauseOnHover
           theme="light"
         />
+        <Analytics />
       </body>
     </html>
   );
