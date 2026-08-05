@@ -12,7 +12,7 @@ import { Paragraph } from "@/components/ui/paragraph";
 import { CustomButton } from "@/components/ui/custom-button";
 import { TeamProfileCard } from "@/components/card/team-profile-card";
 import { CareerCTASection } from "@/components/section/career";
-
+import { TeamMemberCard } from "@/components/card/team-member-card";
 const FILTER_TABS = [
   { id: "all", label: "View All" },
   { id: "board", label: "Board Members" },
