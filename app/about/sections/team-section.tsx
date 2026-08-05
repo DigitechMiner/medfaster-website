@@ -8,7 +8,7 @@ const TEAM_MEMBERS = [
     id: 1,
     name: "Kewal Mangukia",
     role: "CEO & Founder",
-    bio: "",
+    //bio: "",
     image: "/images/team/kewal.jpg",
     social: {
       twitter: "https://twitter.com",
@@ -19,7 +19,7 @@ const TEAM_MEMBERS = [
     id: 2,
     name: "Rutvij Patel",
     role: "CTO & Director",
-    bio: "",
+    //bio: "",
     image: "/images/team/rutvij.png",
     social: {
       twitter: "https://twitter.com",
@@ -55,7 +55,7 @@ export function TeamSection() {
             id={member.id}
             name={member.name}
             role={member.role}
-            bio={member.bio}
+            //bio={member.bio}
             image={member.image}
             social={member.social}
           />
