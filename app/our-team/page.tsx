@@ -36,7 +36,7 @@ const TEAM_MEMBERS = [
   {
     id: 2,
     name: "Rutvij Patel",
-    role: "Director & CTO",
+    role: "CTO & Director",
     category: "board",
     image: "/images/team/rutvij.png",
     social: {

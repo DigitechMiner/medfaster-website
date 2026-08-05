@@ -17,24 +17,24 @@ const TEAM_MEMBERS = [
   {
     id: 2,
     name: "Rutvij Patel",
-    role: "CTO , Director & Co-founder",
+    role: "CTO & Director",
     image: "/images/team/rutvij.png",
     social: {
       twitter: "https://twitter.com",
       linkedin: "https://linkedin.com",
     },
   },
-  {
-    id: 3,
-    name: "Yash Prajapati",
-    role: "Director & CMO",
-    bio: "",
-    image: "/images/team/member-3.jpg",
-    social: {
-      twitter: "https://twitter.com",
-      linkedin: "https://linkedin.com",
-    },
-  },
+  // {
+  //   id: 3,
+  //   name: "Yash Prajapati",
+  //   role: "BDE",
+  //   bio: "",
+  //   image: "/images/team/member-3.jpg",
+  //   social: {
+  //     twitter: "https://twitter.com",
+  //     linkedin: "https://linkedin.com",
+  //   },
+  // },
 ];
 
 export function TeamSection() {
