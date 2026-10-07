@@ -14,7 +14,8 @@
 | Date | Phase | Status |
 |---|---|---|
 | 7 Oct 2026 | Audit, README, footer credit | Merged (PR #5, #6) |
-| 7 Oct 2026 | **Homepage refresh** (task 4) + shared modals + lead endpoint | Branch `feat/homepage-refresh` (see below) |
+| 7 Oct 2026 | **Homepage refresh** (task 4) + shared modals + lead endpoint | Merged (PR #7) |
+| 7 Oct 2026 | **Healthcare Organizations page** (task 5.1) | Committed to `main` |
 
 **Homepage refresh: what changed**
 - Hero: workforce positioning, with working **Find Opportunities** (Get the App modal) and **Start Hiring** (recruiter registration) buttons.
@@ -32,6 +33,24 @@
 - The original QR images (`qr-code-1.png`, `qr-code-2.png`) both encode the literal text `app store`, so they never linked anywhere. `qr-google-play.png` now encodes the live listing `https://play.google.com/store/apps/details?id=com.keraeva` (verified by decoding). The iOS app is **not on the App Store** yet (`iosAppStoreId: null` in the app, and it can't be found in any CA/US/IN storefront), so the App Store badge shows "Coming soon on iOS".
 - The hero image `healthCare.png` has a "40k +" statistic baked into the artwork. It needs a source, or an updated image.
 - Correction to A.3: the live homepage shows 6 AI cards and 4 app cards (from `utils/constant/index.ts`), not 5 and 5.
+
+**Healthcare Organizations page: what changed**
+- Hero: "Build Your Healthcare Workforce, Faster & Smarter", with a **Request Demo** button that now works (opens the modal) and a new **Post a Job** button.
+- Hiring steps: replaced "Predictive Insights" (forecasting performance) with **AI Scorecards**. Removed the unverified "performance rating history". Interview dimensions now match the real scorecard (communication, confidence, accuracy of answers).
+- **New: Urgent Staffing**, shared with the homepage (`components/section/urgent-staffing.tsx`, `variant="organizations"` uses the page's #F4781B gradient). CTAs: Start Hiring / Request Demo.
+- One Dashboard: 4 cards that match what each screenshot really shows (Pipeline, AI Interview Scorecards, Calendar & Scheduling, Hiring Dashboard), each with a description. The subtitle used to be candidate-facing.
+- **New: "Built for Healthcare Staffing"** icon grid (existing `FeatureCard` icon variant): Job Invites, In-House Staff Pool, Rotation Schedules, Direct Messaging, Shift Tracking, Credentials on Every Profile. All are verified against the Candidate App.
+- Hire with Confidence: removed "you'll only see candidates who are… verified"; the copy now describes what the profile shows.
+- Payments block: now "From Shift to Payment", told from the organization's side.
+- Data-Driven Hiring: the raw "Show Demo" button with no handler becomes a `CustomButton` that opens Request Demo. Copy matches the dashboard screenshot.
+- Start Hiring: "Schedule Demo" now works; `<h1>` changed to `<h2>`.
+- Uses the shared `Footer` (deleted the duplicate `LandingFooter` and its constants). Page metadata and Open Graph added. Nav and footer labels changed to "Healthcare Organizations / Professionals" (URLs unchanged).
+
+**New findings from this phase**
+- `feature-notes-logs.png` and `feature-communication-tools.png` show the old **"MedFasterrrr"** branding and duplicate the pipeline screen, so they were not used. The pipeline and calendar SVGs still have a tiny "© copyright reserved by MedFasterrrr" in their footer. Re-export them from the current Recruiter Platform.
+- `feature-ai-ranking.svg` shows the AI interview scorecard, not ranking, so the card is now labelled to match.
+- Recruiter UI pipeline stages (from screenshots): Applied → Shortlisted → Interviewed → Hired. Scorecard rounds: Conversational, Behavioral, Communication analysis, Accuracy of answers.
+- Organization testimonials are still unverified (one has a 3-star rating).
 
 **Still open for the homepage:** real Candidate App screenshots for the Urgent Staffing and AI Interview sections, verified testimonials and logos, and `LEADS_WEBHOOK_URL` configured in Vercel.
 

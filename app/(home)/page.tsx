@@ -10,9 +10,9 @@ import {
   AIHelpsSection,
   AllInOneSection,
   VerifiedSection,
-  UrgentStaffingSection,
   NextCareer,
 } from "./sections";
+import { UrgentStaffingSection } from "@/components/section/urgent-staffing";
 import { Screen } from "@/components/global/screen";
 
 export const metadata: Metadata = {

@@ -2,15 +2,34 @@
 
 import Image from "next/image";
 import { CustomButton } from "@/components/custom/custom-button";
-import { ArrowRight, Wand2, ShieldCheck, Briefcase, ChevronRight, CalendarRange } from "lucide-react";
+import {
+  ArrowRight,
+  Wand2,
+  ShieldCheck,
+  ChevronRight,
+  CalendarRange,
+  Sparkles,
+  Mic,
+  ClipboardList,
+  Send,
+  Users,
+  Repeat,
+  MessageSquare,
+  ClipboardCheck,
+  FileCheck2,
+} from "lucide-react";
 import { Section } from "@/components/custom/section";
 import { Heading } from "@/components/custom/heading";
 import { Paragraph, ResponsiveParagraph } from "@/components/custom/paragraph";
 import { FeatureCard } from "@/components/custom/feature-card";
 import { companyLogos, hiringSteps, dashboardFeatures } from "@/utils/constant/landingPage";
+import { RECRUITER_REGISTRATION_URL } from "@/utils/constant";
+import { useModalStore } from "@/stores/modalStore";
 
 // Hero Section
 export function HeroSection() {
+  const openModal = useModalStore((state) => state.openModal);
+
   return (
     <Section className="!pb-0">
       {/* Two Grid Layout - Side by Side */}
@@ -25,10 +44,10 @@ export function HeroSection() {
               weight="normal"
               className="text-[#252B37] mb-6"
             >
-              Hire Verified Healthcare Professionals —
+              Build Your Healthcare Workforce —
               <span className="text-[#F4781B] font-medium">
                 {" "}
-                Faster than ever
+                Faster & Smarter
               </span>
             </Heading>
           </div>
@@ -37,19 +56,30 @@ export function HeroSection() {
         <div className="flex flex-col justify-start space-y-6">
           {/* Description Text */}
           <p className="text-[#252B37] text-base lg:text-lg leading-relaxed">
-            AI-powered recruitment platform built for Canadian hospitals and
-            clinics. Find pre-screened, credentialed candidates instantly.
+            AI-powered hiring, urgent staffing and shift management for
+            Canadian hospitals, clinics and care organizations. Find
+            pre-screened, credentialed professionals, review AI interview
+            scorecards and fill shifts from one platform.
           </p>
 
-            <CustomButton 
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+            <CustomButton
               rightIcon={ChevronRight}
               className="!bg-transparent"
               style={{
                 background: 'linear-gradient(225deg, #EB001B 0%, #F79E1B 100%)'
               }}
+              onClick={() => openModal("request-demo")}
             >
               Request Demo
             </CustomButton>
+            <CustomButton
+              className="!bg-gray-100 !text-[#252B37] !shadow-none"
+              onClick={() => window.open(RECRUITER_REGISTRATION_URL, "_blank")}
+            >
+              Post a Job
+            </CustomButton>
+          </div>
 
         </div>
       </div>
@@ -60,7 +90,7 @@ export function HeroSection() {
         <div className="relative mt-10 max-w-7xl mx-auto">
           <Image
             src="/img/dashboard/dashboard-hero.svg"
-            alt="Verified score card showing Dr. Noah Liam profile"
+            alt="KeRaeva recruiter dashboard showing open jobs and a candidate pipeline"
             width={1200}
             height={600}
             className="object-contain"
@@ -124,7 +154,7 @@ export function CompanyLogos() {
 // Hired Section
 export function HiredSection() {
   const steps = hiringSteps.map((s, idx) => ({
-    icon: [Wand2, ShieldCheck, Briefcase, Briefcase, Briefcase][idx] || Briefcase,
+    icon: [Wand2, Sparkles, Mic, ClipboardList, ShieldCheck][idx] || ShieldCheck,
     ...s,
   }));
 
@@ -171,7 +201,7 @@ export function HiredSection() {
               {steps.map((step, index) => (
                 <div key={index} className="flex items-start gap-4 border-b border-white/20 pb-6">
                   <div className="flex-shrink-0 w-12 h-12 bg-opacity-20 rounded-full flex items-center justify-center">
-                    <step.icon className="w-10 h-10 text-white" />
+                    <step.icon className="w-10 h-10 text-white" aria-hidden="true" />
                   </div>
                   <div>
                     <Heading as="h3" size="xs" weight="medium" className="text-white mb-2">{step.title}</Heading>
@@ -188,7 +218,7 @@ export function HiredSection() {
               rightIcon={ArrowRight}
               iconClassName="text-white"
               iconContainerClassName="bg-[#F4781B]"
-              onClick={() => window.open("https://recruiter.keraeva.com/registration")}
+              onClick={() => window.open(RECRUITER_REGISTRATION_URL, "_blank")}
             >
               Post a job
             </CustomButton>
@@ -211,8 +241,8 @@ export function OneDashboard() {
           <span className="text-[#F4781B]">One Dashboard</span>{" "}
         </Heading>
         <Paragraph className="text-[#717680] max-w-3xl">
-          &ldquo;Discover the intelligent technology that works behind the scenes to
-          connect you with your next role, faster&rdquo;.
+          Post jobs, review AI-assessed candidates, schedule interviews and
+          track hiring progress from one recruiter dashboard.
         </Paragraph>
       </div>
 
@@ -222,6 +252,7 @@ export function OneDashboard() {
           <FeatureCard
             key={index}
             title={feature.title}
+            description={feature.description}
             imageFullWidth={true}
             visual={{
               type: "image",
@@ -235,8 +266,71 @@ export function OneDashboard() {
   );
 }
 
+// Staffing Capabilities Section
+export function StaffingCapabilities() {
+  const capabilities = [
+    {
+      icon: Send,
+      title: "Job Invites",
+      description: "Invite professionals directly to apply for your open roles.",
+    },
+    {
+      icon: Users,
+      title: "In-House Staff Pool",
+      description: "Invite your existing staff to your organization's in-house pool on KeRaeva.",
+    },
+    {
+      icon: Repeat,
+      title: "Rotation Schedules",
+      description: "Post roles with rotation schedules so professionals see the pattern before they apply.",
+    },
+    {
+      icon: MessageSquare,
+      title: "Direct Messaging",
+      description: "Chat with candidates and professionals directly from the platform.",
+    },
+    {
+      icon: ClipboardCheck,
+      title: "Shift Tracking",
+      description: "Follow shifts from scheduled to completed, with check-in and attendance built in.",
+    },
+    {
+      icon: FileCheck2,
+      title: "Credentials on Every Profile",
+      description: "Review uploaded licences, certifications and documents alongside each candidate.",
+    },
+  ];
+
+  return (
+    <Section>
+      <div className="mb-12">
+        <Heading as="h2" size="md" className="text-[#252B37] mb-4">
+          Built for <span className="text-[#F4781B]">Healthcare Staffing</span>
+        </Heading>
+        <Paragraph className="text-[#717680] max-w-3xl">
+          Beyond hiring, KeRaeva gives your team the tools to staff shifts and
+          keep your workforce connected.
+        </Paragraph>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        {capabilities.map((capability) => (
+          <FeatureCard
+            key={capability.title}
+            title={capability.title}
+            description={capability.description}
+            visual={{ type: "icon", content: capability.icon }}
+          />
+        ))}
+      </div>
+    </Section>
+  );
+}
+
 // Data Driven Hiring Section
 export function DataDrivenHiring() {
+  const openModal = useModalStore((state) => state.openModal);
+
   return (
     <Section>
       <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
@@ -247,16 +341,20 @@ export function DataDrivenHiring() {
             Make <span className="text-[#F4781B] font-semibold">Data-Driven</span> Hiring Decisions
           </Heading>
           <Paragraph className="text-[#717680] leading-relaxed">
-            Get complete visibility into your recruitment performance from time-to-hire to candidate quality. 
-            AI insights help improve efficiency and reduce cost-per-hire.
+            See active jobs, candidates, AI matches, interviews and hires at a
+            glance, so you always know where hiring stands and where to focus next.
           </Paragraph>
         </div>
 
         {/* Right Button */}
         <div className="flex-shrink-0">
-          <button className="bg-[#F4781B] text-white px-8 py-3.5 rounded-full font-medium text-base hover:bg-[#E06A15] transition-all duration-300 hover:shadow-lg hover:scale-105">
-            Show Demo
-          </button>
+          <CustomButton
+            size="lg"
+            rightIcon={ChevronRight}
+            onClick={() => openModal("request-demo")}
+          >
+            Request Demo
+          </CustomButton>
         </div>
       </div>
     </Section>
@@ -273,7 +371,9 @@ export function HireWithConfidence() {
           Hire with <span className="text-[#F4781B] font-semibold">Confidence</span>
         </Heading>
         <Paragraph className="text-[#717680] leading-relaxed max-w-3xl">
-          You&apos;ll only see candidates who are pre-screened, verified, and AI-rated — saving time and ensuring compliance.
+          Every candidate profile brings together uploaded documents,
+          verification status and AI interview results, so you can decide
+          with the full picture.
         </Paragraph>
       </div>
 
@@ -281,7 +381,7 @@ export function HireWithConfidence() {
       <div className="w-full max-w-7xl mx-auto">
         <Image
           src="/img/features/confidence.png"
-          alt="Candidate verification and confidence scoring"
+          alt="Candidate profile with uploaded documents, AI interview scores and strengths"
           width={1200}
           height={600}
           className="w-full h-auto rounded-2xl"
@@ -293,6 +393,8 @@ export function HireWithConfidence() {
 
 // Start Hiring Section
 export function StartHiring() {
+  const openModal = useModalStore((state) => state.openModal);
+
   return (
     <Section 
       backgroundColor="bg-transparent"
@@ -309,12 +411,13 @@ export function StartHiring() {
       <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] ">
         {/* Left Side - Content */}
         <div className="p-4 md:p-8 lg:p-16 flex flex-col gap-6 justify-center">
-            <Heading as="h1" size="md" className="text-white tracking-widest">
+            <Heading as="h2" size="md" className="text-white tracking-widest">
              Start Smart Hiring Today
             </Heading>
 
             <ResponsiveParagraph size="base" className="text-white/90 max-w-xl leading-relaxed">
-              Find trusted healthcare professionals in minutes — powered by AI.
+              Hire verified healthcare professionals and fill urgent shifts, all
+              in one AI-powered platform.
             </ResponsiveParagraph>
 
             {/* Buttons */}
@@ -324,7 +427,7 @@ export function StartHiring() {
                 rightIcon={ArrowRight}
                 iconClassName="text-white"
                 iconContainerClassName="bg-[#F4781B]"
-                onClick={() => window.open("https://recruiter.keraeva.com/registration")}
+                onClick={() => window.open(RECRUITER_REGISTRATION_URL, "_blank")}
               >
                 Post a Job
               </CustomButton>
@@ -334,6 +437,7 @@ export function StartHiring() {
                 rightIcon={CalendarRange}
                 iconClassName="text-white"
                 iconContainerClassName="bg-[#F4781B]"
+                onClick={() => openModal("request-demo")}
               >
                 Schedule Demo
               </CustomButton>

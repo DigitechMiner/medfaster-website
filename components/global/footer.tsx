@@ -19,8 +19,8 @@ export const landingFooterColumns: FooterColumn[] = [
   {
     title: 'Platform',
     links: [
-      { label: 'Medical Organizations', href: '/medical-organizations' },
-      { label: 'Medical Professionals', href: '/medical-professionals' },
+      { label: 'Healthcare Organizations', href: '/medical-organizations' },
+      { label: 'Healthcare Professionals', href: '/medical-professionals' },
       { label: 'KeRaeva AI', href: '/coming-soon' },
       { label: 'Subscription Plans', href: '/subscriptions' },
     ],

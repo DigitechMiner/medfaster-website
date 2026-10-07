@@ -1,12 +1,3 @@
-export type NavLink = { label: string; href: string };
-export const landingNavLinks: NavLink[] = [
-  { label: 'Home', href: '/' },
-  { label: 'Why KeRaeva?', href: '/coming-soon' },
-  { label: 'Post a Job', href: 'https://recruiter.keraeva.com/registration' },
-  { label: 'Our Subscriptions', href: '/coming-soon' },
-  { label: 'Hiring Blog', href: '/coming-soon' },
-];
-
 export type CompanyLogo = { src: string; alt: string };
 export const companyLogos: CompanyLogo[] = [
   { src: "/img/company/canadian-health-logo.png", alt: "Canadian Health" },
@@ -49,79 +40,63 @@ export const testimonials: Testimonial[] = [
   },
 ];
 
-export type DashboardFeature = { screen: string; title: string };
+export type DashboardFeature = { screen: string; title: string; description: string };
 export const dashboardFeatures: DashboardFeature[] = [
-  { screen: "/img/dashboard/feature-candidate-pipeline.svg", title: "Candidate Pipeline" },
-  { screen: "/img/dashboard/feature-ai-ranking.svg", title: "AI Ranking" },
-  { screen: "/img/dashboard/feature-interview-scheduling.svg", title: "Interview Scheduling" },
-  { screen: "/img/dashboard/feature-candidate-pipeline.svg", title: "Notes & Logs" },
-  { screen: "/img/dashboard/feature-analytics-dashboard.svg", title: "Analytics Dashboard" },
-  { screen: "/img/dashboard/feature-candidate-pipeline.svg", title: "Communication Tools" },
+  {
+    screen: "/img/dashboard/feature-candidate-pipeline.svg",
+    title: "Candidate Pipeline",
+    description: "Move candidates from Applied to Shortlisted, Interviewed and Hired, with each person's AI score on their card.",
+  },
+  {
+    screen: "/img/dashboard/feature-ai-ranking.svg",
+    title: "AI Interview Scorecards",
+    description: "Review each candidate's interview rounds, category scores and strengths before you decide.",
+  },
+  {
+    screen: "/img/dashboard/feature-interview-scheduling.svg",
+    title: "Calendar & Scheduling",
+    description: "See interviews and scheduled professionals across the week in one calendar.",
+  },
+  {
+    screen: "/img/dashboard/feature-analytics-dashboard.svg",
+    title: "Hiring Dashboard",
+    description: "Track active jobs, candidates, AI matches, interviews and hires at a glance.",
+  },
 ];
 
-export type HiringStep = { icon?: any; title: string; description: string };
+export type HiringStep = { title: string; description: string };
 export const hiringSteps: HiringStep[] = [
   {
     title: "Automated Screening",
     description:
-      "Our AI instantly parses resumes, verifies licenses, and filters candidates based on your exact criteria, eliminating hours of manual review.",
+      "AI parses resumes into structured profiles, with licences and documents collected upfront, so you spend less time on manual review.",
   },
   {
     title: "Smart Matching",
     description:
-      "Receive a pre-vetted shortlist of top-fit candidates in seconds. Our algorithm ranks professionals by skill, experience, and availability",
-  },
-  {
-    title: "Predictive Insights",
-    description:
-      "Forecast a candidate's potential performance using data-driven insights, helping you make more confident hiring decisions.",
+      "Get a ranked shortlist of top-fit candidates, matched by skills, experience, location and availability.",
   },
   {
     title: "AI-Powered Interviews",
     description:
-      "Automatically and impartially assess a candidate's communication skills and professionalism with our standardized behavioral interviews.",
+      "Candidates complete structured AI interviews, assessed consistently on communication, confidence and accuracy of answers.",
+  },
+  {
+    title: "AI Scorecards",
+    description:
+      "Review category scores, strengths and interview results for every candidate in one scorecard.",
   },
   {
     title: "Built-in Trust Layer",
     description:
-      "Hire with confidence. Every candidate profile includes verified credentials and a performance rating history from past roles on our platform.",
+      "Every profile shows verification status, uploaded credentials and AI interview results before you hire.",
   },
 ];
 
-export type FooterLink = { label: string; href: string };
-export type FooterColumn = { title: string; links: FooterLink[] };
-export const landingFooterColumns: FooterColumn[] = [
-  {
-    title: 'Platform',
-    links: [
-      { label: 'Medical Organizations', href: '/medical-organizations' },
-      { label: 'Medical Professionals', href: '/medical-professionals' },
-      { label: 'KeRaeva AI', href: '/coming-soon' },
-      { label: 'Subscription Plans', href: '/subscriptions' },
-    ],
-  },
-  {
-    title: 'Company',
-    links: [
-      { label: 'About KeRaeva', href: '/about' },
-      { label: 'Mission & Vision', href: '/about' },
-      { label: 'Our Team', href: '/our-team' },
-      { label: 'Careers', href: '/careers' },
-      { label: 'Blog', href: '/blog' },
-      { label: 'Contact Us', href: '/contact-us' },
-    ],
-  },
-  {
-    title: 'Support',
-    links: [
-      { label: 'Help Center', href: '/help_center' },
-      { label: 'Privacy Policy', href: '/privacy-policy' },
-      { label: 'Terms & Conditions', href: '/terms-conditions' },
-      { label: 'Refund Policy', href: '/terms-conditions' },
-      { label: 'Data Protection', href: '/privacy-policy' },
-      { label: 'Support', href: '/support' },
-    ],
-  },
+export const orgWorkforceSteps: string[] = [
+  "Post a job, shift or urgent requirement",
+  "Professional accepts and is scheduled",
+  "Check-in and attendance tracked in the app",
+  "Shift completed and verified",
+  "Professional paid through KeRaeva",
 ];
-
-

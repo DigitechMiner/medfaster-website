@@ -15,8 +15,8 @@ const navLinks = [
     label: "Our Platforms",
     href: "/",
     submenu: [
-      { label: "Medical Organizations", href: "/medical-organizations" },
-      { label: "Medical Professionals", href: "/medical-professionals" },
+      { label: "Healthcare Organizations", href: "/medical-organizations" },
+      { label: "Healthcare Professionals", href: "/medical-professionals" },
     ],
   },
   { label: "Why KeRaeva?", href: "/about" },
