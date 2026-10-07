@@ -224,7 +224,7 @@ export function Footer() {
             <ResponsiveParagraph size="xs" className="text-muted-foreground">
               Designed & Developed by{" "}
               <a
-                href="https://digitechminer.com"
+                href="https://digitechminer.in"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-medium text-[#252B37] hover:text-[#F3651B] transition-colors"

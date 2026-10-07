@@ -93,6 +93,6 @@ Hosted on [Vercel](https://vercel.com).
 
 ## Credits
 
-Designed & Developed by **[Digitech Miner](https://digitechminer.com)**.
+Designed & Developed by **[Digitech Miner](https://digitechminer.in)**.
 
 © KeRaeva. All rights reserved.
