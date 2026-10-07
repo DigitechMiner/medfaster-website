@@ -239,7 +239,7 @@ export function NextCareer() {
       <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr]">
         <div className="p-4 md:p-8 lg:p-16 flex flex-col justify-center">
           <div className="space-y-2 md:space-y-4 lg:space-y-6 xl:space-y-8">
-            <Heading as="h1" size="md" className="text-white tracking-widest">
+            <Heading as="h2" size="md" className="text-white">
               Your Next Career Move Starts Here.
             </Heading>
 

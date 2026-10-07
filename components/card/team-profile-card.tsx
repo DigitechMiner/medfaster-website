@@ -60,7 +60,7 @@ export function TeamProfileCard({
             <h3 className="truncate text-base font-semibold leading-tight text-[#252B37] sm:text-lg">
               {name}
             </h3>
-            <p className="mt-1 line-clamp-2 text-sm text-[#667085] sm:text-[15px]">
+            <p className="mt-1 line-clamp-2 text-sm text-[#717680] sm:text-base">
               {role}
             </p>
 

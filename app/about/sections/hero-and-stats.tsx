@@ -32,12 +32,12 @@ export function AboutHeroSection() {
         >
           <div className="relative z-10 space-y-4" style={{ opacity: 1 }}>
             {/* Heading */}
-            <h2 className="text-l font-bold leading-tight">
+            <Heading as="h2" size="xs" weight="bold" className="leading-tight">
               The Future of Healthcare Staffing is Here.
-            </h2>
+            </Heading>
 
             {/* Description */}
-            <p className="text-sm font-light lg:text-sm leading-relaxed opacity-95">
+            <p className="text-sm leading-relaxed opacity-95">
               Welcome to KeRaeva. We are Canada&apos;s AI-powered platform built to
               connect leading hospitals, healthcare facilities and clinics with verified, hire-ready
               healthcare professionals. We&apos;re rebuilding the foundation of

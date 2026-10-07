@@ -360,7 +360,7 @@ export function StartHiring() {
       <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] ">
         {/* Left Side - Content */}
         <div className="p-4 md:p-8 lg:p-16 flex flex-col gap-6 justify-center">
-            <Heading as="h2" size="md" className="text-white tracking-widest">
+            <Heading as="h2" size="md" className="text-white">
              Start Smart Hiring Today
             </Heading>
 

@@ -150,7 +150,7 @@ export default function HeroSection() {
               <Heading as="h3" size="xs" weight="bold" className="text-white mb-2">
                 Direct & Verified Opportunities
               </Heading>
-              <Paragraph className="text-white leading-relaxed font-light">
+              <Paragraph className="text-white leading-relaxed">
                 Connect directly with top-tier hospitals, healthcare facilities  and clinics. Our
                 AI-powered system verifies every listing, so you can apply with
                 confidence. No recruiters, no hassle.
