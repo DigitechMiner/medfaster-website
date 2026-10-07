@@ -157,7 +157,7 @@ export default function TeamPage() {
             <div className="flex flex-wrap items-center gap-2 text-sm sm:text-base lg:text-lg">
               <Link
                 href="/about_us"
-                className="text-[#252B37] transition-colors hover:text-[#F3651B]"
+                className="inline-block py-1.5 text-[#252B37] transition-colors hover:text-[#F3651B]"
               >
                 About KeRaeva
               </Link>

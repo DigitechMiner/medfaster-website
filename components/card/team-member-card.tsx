@@ -67,7 +67,7 @@ export function TeamMemberCard({
                 {/* Twitter/X */}
                 <a
                   href={social?.twitter || "#"}
-                  className="text-white hover:text-white/70 transition-colors"
+                  className="inline-flex p-1.5 -m-1.5 text-white hover:text-white/70 transition-colors"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -77,7 +77,7 @@ export function TeamMemberCard({
                 {/* LinkedIn */}
                 <a
                   href={social?.linkedin || "#"}
-                  className="text-white hover:text-white/70 transition-colors"
+                  className="inline-flex p-1.5 -m-1.5 text-white hover:text-white/70 transition-colors"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

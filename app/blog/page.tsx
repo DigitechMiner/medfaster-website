@@ -149,7 +149,7 @@ export default function BlogPage() {
             <div className="flex items-center gap-2">
               <Link
                 href="/"
-                className="text-[#252B37] hover:text-[#F3651B] transition-colors text-lg"
+                className="inline-block py-1 text-[#252B37] hover:text-[#F3651B] transition-colors text-lg"
               >
                 Home
               </Link>
@@ -218,18 +218,18 @@ export default function BlogPage() {
           </div>
 
           {/* Pagination */}
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center gap-2">
             <Button
               variant="ghost"
               onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
               disabled={currentPage === 1}
-              className="text-[#717680] text-sm font-semibold hover:text-[#F3651B] disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+              className="text-[#717680] text-sm font-semibold hover:text-[#F3651B] disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 min-w-10 h-10 px-2 sm:px-4"
             >
               <ArrowLeft className="w-4 h-4" />
-              Previous
+              <span className="hidden sm:inline">Previous</span>
             </Button>
 
-            <div className="flex gap-2">
+            <div className="flex flex-wrap justify-center gap-1 sm:gap-2">
               {getPaginationPages().map((page, index) => {
                 if (typeof page === "string") {
                   // Render ellipsis
@@ -247,7 +247,7 @@ export default function BlogPage() {
                     key={page}
                     variant="ghost"
                     onClick={() => setCurrentPage(page)}
-                    className={`w-8 h-8 rounded-full font-semibold text-sm transition-colors ${
+                    className={`w-9 h-9 sm:w-8 sm:h-8 rounded-full font-semibold text-sm transition-colors ${
                       currentPage === page
                         ? "bg-[#F3651B] text-white hover:bg-[#F3651B]"
                         : "text-[#252B37] hover:text-[#F3651B]"
@@ -263,9 +263,9 @@ export default function BlogPage() {
               variant="ghost"
               onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
               disabled={currentPage === totalPages}
-              className="text-[#717680] text-sm font-semibold hover:text-[#F3651B] disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+              className="text-[#717680] text-sm font-semibold hover:text-[#F3651B] disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 min-w-10 h-10 px-2 sm:px-4"
             >
-              Next
+              <span className="hidden sm:inline">Next</span>
               <ArrowRight className="w-4 h-4" />
             </Button>
           </div>

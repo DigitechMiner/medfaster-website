@@ -49,7 +49,7 @@ export function JobCard({ job }: { job: Job }) {
         </Paragraph>
         <a
           href="#"
-          className="text-[#F3651B] font-semibold hover:text-[#E85C0F] transition-colors inline-flex items-center gap-1 group text-sm"
+          className="text-[#F3651B] font-semibold hover:opacity-80 transition-colors inline-flex items-center gap-1 group text-sm py-1.5"
         >
           Apply now
           <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

@@ -8,13 +8,12 @@ import Image from "next/image";
 import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/heading";
 import { Paragraph, ResponsiveParagraph } from "@/components/ui/paragraph";
-import { useRouter } from "next/navigation";
+import { useModalStore } from "@/stores/modalStore";
 
 export default function HeroSection() {
-    const router = useRouter();
-    const handleBrowseJobs = () => {
-    router.push("/nearby-jobs"); // Navigate to nearby jobs page
-  };
+  const openModal = useModalStore((state) => state.openModal);
+  // Job browsing happens in the KeRaeva app
+  const handleBrowseJobs = () => openModal("get-app");
   return (
     <Section>
       {/* Two Grid Layout - Side by Side */}
@@ -111,7 +110,7 @@ export default function HeroSection() {
                 alt="KeRaeva app interface"
                 width={280}
                 height={450}
-                className="object-contain w-full rounded-lg max-w-[380px] aspect-[280/450]"
+                className="object-contain w-full rounded-lg max-w-[240px] sm:max-w-[380px] aspect-[280/450]"
                 quality={100}
                 priority
               />
@@ -133,7 +132,7 @@ export default function HeroSection() {
           {/* Right Side Section */}
           <div className="flex flex-col gap-4 md:gap-6 lg:gap-8">
             {/* Doctor Image - First on mobile, Second on desktop */}
-            <div className=" order-1 md:order-2 md:flex-[3] relative bg-[#f5f5f5] rounded-lg flex items-center justify-center">
+            <div className="hidden order-1 md:order-2 md:flex-[3] relative bg-[#f5f5f5] rounded-lg md:flex items-center justify-center">
               <Image
                 src="/images/hero/doctor.png"
                 alt="Professional doctor"

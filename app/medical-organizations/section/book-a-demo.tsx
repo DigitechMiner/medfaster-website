@@ -81,7 +81,7 @@ export default function BookADemo() {
         <div className="relative flex justify-center lg:justify-end">
           <div className="relative w-full max-w-lg aspect-square overflow-visible flex items-center justify-center">
             {/* Central White Circle */}
-            <div className="relative w-[250px] h-[250px] md:w-[280px] md:h-[280px] lg:w-[300px] lg:h-[300px] bg-white rounded-full shadow-xl flex flex-col items-center justify-center ">
+            <div className="relative w-[200px] h-[200px] sm:w-[250px] sm:h-[250px] md:w-[280px] md:h-[280px] lg:w-[300px] lg:h-[300px] bg-white rounded-full shadow-xl flex flex-col items-center justify-center ">
               {/* Logo */}
               <div className="mb-3 flex flex-col items-center">
                 <Image
@@ -116,7 +116,7 @@ export default function BookADemo() {
               </Paragraph>
 
               {/* Top Right Doctor */}
-              <div className="absolute -right-10 md:-right-14 lg:-right-16 -top-10 md:-top-14 lg:-top-16 w-24 h-24 md:w-32 md:h-32 lg:w-36 lg:h-36 rounded-full bg-white overflow-hidden shadow-xl">
+              <div className="absolute -right-6 sm:-right-10 md:-right-14 lg:-right-16 -top-6 sm:-top-10 md:-top-14 lg:-top-16 w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 lg:w-36 lg:h-36 rounded-full bg-white overflow-hidden shadow-xl">
                 <div className="absolute inset-0">
                   <Image
                     src="/img/hero/doctor.png"
@@ -128,7 +128,7 @@ export default function BookADemo() {
               </div>
 
               {/* Bottom Right Doctor */}
-              <div className="absolute -right-10 md:-right-14 lg:-right-16 -bottom-10 md:-bottom-14 lg:-bottom-16 w-24 h-24 md:w-32 md:h-32 lg:w-36 lg:h-36 rounded-full bg-white overflow-hidden shadow-xl">
+              <div className="absolute -right-6 sm:-right-10 md:-right-14 lg:-right-16 -bottom-6 sm:-bottom-10 md:-bottom-14 lg:-bottom-16 w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 lg:w-36 lg:h-36 rounded-full bg-white overflow-hidden shadow-xl">
                 <div className="absolute inset-0">
                   <Image
                     src="/img/people/nurse-01.png"
@@ -140,7 +140,7 @@ export default function BookADemo() {
               </div>
 
               {/* Bottom Left Doctor */}
-              <div className="absolute -left-10 md:-left-14 lg:-left-16 -bottom-10 md:-bottom-14 lg:-bottom-16 w-24 h-24 md:w-32 md:h-32 lg:w-36 lg:h-36 rounded-full bg-white overflow-hidden shadow-xl">
+              <div className="absolute -left-6 sm:-left-10 md:-left-14 lg:-left-16 -bottom-6 sm:-bottom-10 md:-bottom-14 lg:-bottom-16 w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 lg:w-36 lg:h-36 rounded-full bg-white overflow-hidden shadow-xl">
                 <div className="absolute inset-0">
                   <Image
                     src="/img/people/nurse-02.png"

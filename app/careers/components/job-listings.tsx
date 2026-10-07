@@ -67,7 +67,7 @@ export function JobListingsSection() {
           <select
             value={sortBy}
             onChange={(e) => handleSortChange(e.target.value)}
-            className="border-0 bg-transparent text-sm text-[#252B37] focus:outline-none cursor-pointer"
+            className="border-0 bg-transparent text-sm text-[#252B37] focus:outline-none cursor-pointer py-2"
           >
             <option value="popular">Popular</option>
             <option value="newest">Newest</option>

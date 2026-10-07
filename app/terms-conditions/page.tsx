@@ -333,7 +333,7 @@ export default function TermsConditionsPage() {
             <div className="flex items-center gap-2">
               <Link
                 href="/"
-                className="text-[#252B37] hover:text-[#F3651B] transition-colors text-lg"
+                className="inline-block py-1 text-[#252B37] hover:text-[#F3651B] transition-colors text-lg"
               >
                 Home
               </Link>

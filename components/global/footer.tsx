@@ -158,11 +158,11 @@ export function Footer() {
             </ResponsiveParagraph>
 
             <div className="flex flex-col sm:flex-row lg:flex-col gap-3 sm:gap-8 lg:gap-3">
-              <a href={`mailto:${CONTACT_EMAIL}`} className="inline-flex items-center gap-2 text-sm text-[#252B37] hover:text-[#F3651B] transition-colors">
+              <a href={`mailto:${CONTACT_EMAIL}`} className="inline-flex items-center gap-2 py-1.5 text-sm text-[#252B37] hover:text-[#F3651B] transition-colors">
                 <Mail className="w-4 h-4 text-[#F3651B]" strokeWidth={1.5} aria-hidden="true" />
                 {CONTACT_EMAIL}
               </a>
-              <a href="tel:+14039196824" className="inline-flex items-center gap-2 text-sm text-[#252B37] hover:text-[#F3651B] transition-colors">
+              <a href="tel:+14039196824" className="inline-flex items-center gap-2 py-1.5 text-sm text-[#252B37] hover:text-[#F3651B] transition-colors">
                 <Phone className="w-4 h-4 text-[#F3651B]" strokeWidth={1.5} aria-hidden="true" />
                 {CONTACT_PHONE}
               </a>
