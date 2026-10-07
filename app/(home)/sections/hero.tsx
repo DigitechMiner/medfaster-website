@@ -60,16 +60,16 @@ export default function HeroSection() {
           </CustomButton>
         </div>
 
-        {/* Image Section with Overlay Cards */}
+        {/* Hero Image (photo without baked-in statistics) */}
         <div className="relative w-full mt-6">
           <div className="relative w-full rounded-lg overflow-hidden">
             <Image
-              src="/images/hero/healthCare.png"
-              alt="Healthcare professionals"
-              width={1200}
-              height={600}
-              className="w-full h-auto object-cover rounded-lg"
-              quality={100}
+              src="/images/hero/card-photo.png"
+              alt="A healthcare professional walking with an older patient in a hospital"
+              width={2400}
+              height={2000}
+              className="w-full h-auto aspect-[4/3] sm:aspect-[1264/640] object-cover object-[center_30%] rounded-lg"
+              sizes="(max-width: 1440px) 100vw, 1280px"
               priority
             />
           </div>

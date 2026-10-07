@@ -102,8 +102,8 @@ export function VerifiedSection() {
           
           <ResponsiveParagraph size="sm" className="text-[#717680] leading-relaxed font-[400]">
             Once you complete onboarding and pre-screening, you&apos;ll receive an 
-            AI-generated scorecard. Recruiters see only verified candidates — so 
-            you stand out instantly.
+            AI-generated scorecard. A verified profile with a completed AI
+            interview helps you stand out to recruiters.
           </ResponsiveParagraph>
         </div>
       </Section>

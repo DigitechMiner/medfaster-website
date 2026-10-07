@@ -34,7 +34,7 @@ export const GET_HIRED_STEPS: GetHiredStep[] = [
     icon: UserPlus,
     title: "Create Your Profile",
     description:
-      "Upload your resume and certificates, and let our AI auto-fill your details instantly.",
+      "Upload your resume and certificates, and our AI helps fill in your profile details.",
   },
   {
     icon: ShieldCheck,
@@ -46,7 +46,7 @@ export const GET_HIRED_STEPS: GetHiredStep[] = [
     icon: Briefcase,
     title: "Start Working",
     description:
-      "Apply for nearby shifts or full-time roles and get paid directly and reliably through the platform.",
+      "Apply for nearby shifts or full-time roles, accept urgent shifts and get paid through the platform.",
   },
 ];
 
@@ -54,7 +54,7 @@ export const AI_FEATURES: AIFeature[] = [
   {
     icon: FileText,
     title: "AI Resume Parsing",
-    description: "Build your professional profile in seconds, not hours. Just upload your documents and our AI does the rest."
+    description: "Build your professional profile faster. Upload your resume and our AI structures it into your profile."
   },
   {
     icon: Target,
@@ -63,18 +63,18 @@ export const AI_FEATURES: AIFeature[] = [
   },
   {
     icon: CalendarCheck,
-    title: "Predictive Availability",
-    description: "Our system anticipates employer needs to show you jobs that match your future availability and experience."
+    title: "Availability-Aware Matching",
+    description: "Set when you're available and get matched with jobs and urgent shifts that fit your schedule."
   },
   {
     icon: MessageSquareText,
-    title: "Confidential AI Feedback",
-    description: "After your AI interview, get private feedback on your strengths to help you stand out to employers."
+    title: "AI Interview Scorecard",
+    description: "After your AI interview, see your scorecard and strengths, and choose which interview recruiters see."
   },
   {
     icon: ShieldCheck,
     title: "Verified Opportunities",
-    description: "Apply with total confidence. Our system helps verify every employer, so you only see trusted, high-quality roles."
+    description: "Hiring organizations are reviewed on KeRaeva, so you can apply with confidence."
   }
 ];
 
@@ -82,27 +82,27 @@ export const APP_FEATURES: AppFeature[] = [
   {
     screen: "/images/features/resume-upload.png",
     title: "Resume & Certificate Upload",
-    description: "Securely store all your professional documents in one place to create a comprehensive, standout profile"
+    description: "Keep your professional documents in one place to build a complete, standout profile."
   },
   {
     screen: "/images/features/document-verification.png",
     title: "Document Verification",
-    description: "Our system verifies your credentials, giving you a badge of trust that makes your application a priority for top employers."
+    description: "Upload your licences and certifications and track their verification status. Verified profiles stand out to employers."
   },
   {
     screen: "/images/features/map-view.svg",
     title: "Map View",
-    description: "Visually discover job openings in your area. See commute times and find shifts close to home.."
+    description: "Discover openings around you on a map and find shifts close to home."
   },
   {
     screen: "/images/features/job-marketplace.svg",
     title: "Job Marketplace",
-    description: "Filter through full-time, contract, and freelance roles to find the perfect opportunity that fits your schedule and skills."
+    description: "Browse recommended roles, urgent shifts and job invites, and save the ones that fit your schedule and skills."
   },
   {
     screen: "/images/features/wallet-payment.svg",
     title: "Wallet & Payment History",
-    description: "Track your earnings and manage payments directly within the app. Get paid reliably with full transparency.."
+    description: "Track the earnings for every shift and withdraw to your linked bank account."
   }
 ];
 

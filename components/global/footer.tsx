@@ -24,7 +24,7 @@ export const footerColumns: FooterColumn[] = [
       { label: "Healthcare Organizations", href: "/medical-organizations" },
       { label: "Healthcare Professionals", href: "/medical-professionals" },
       { label: "KeRaeva AI", href: "/coming-soon" },
-      { label: "Subscription Plans", href: "/subscriptions" },
+      { label: "Pricing", href: "/subscriptions" },
       { label: "Request a Demo", modal: "request-demo" },
     ],
   },

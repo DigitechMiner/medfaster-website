@@ -8,7 +8,7 @@ export type Testimonial = {
 export const testimonials: Testimonial[] = [
   {
     quote:
-      "The promise of 100% verified healthcare staff is real. We've had zero compliance issues since switching over, which gives our entire team peace of mind. Totally worth it.",
+      "Seeing every candidate's verification status up front has made our compliance checks much simpler, which gives our entire team peace of mind.",
     name: "Maria R.",
     role: "Compliance Officer",
     avatar: "/img/testimonials/michael.png",
@@ -16,7 +16,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     quote:
-      "KeRaeva cut our hiring time from 6 weeks to just 10 days. The AI matching is incredibly accurate and saves us countless hours of screening.",
+      "KeRaeva has shortened our hiring process noticeably. The AI matching and interview scorecards save us hours of screening.",
     name: "Dr. James Chen",
     role: "Chief Medical Officer",
     avatar: "/img/testimonials/sarah.png",

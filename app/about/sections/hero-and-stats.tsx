@@ -40,8 +40,8 @@ export function AboutHeroSection() {
 
             {/* Description */}
             <p className="text-sm leading-relaxed opacity-95">
-              Welcome to KeRaeva. We are Canada&apos;s AI-powered platform built to
-              connect leading hospitals, healthcare facilities and clinics with verified, hire-ready
+              Welcome to KeRaeva, an AI-powered platform built in Canada to
+              connect hospitals, healthcare facilities and clinics with verified, hire-ready
               healthcare professionals. We&apos;re rebuilding the foundation of
               healthcare staffing—making it faster, smarter, and more reliable.
             </p>
@@ -56,20 +56,20 @@ export function AboutHeroSection() {
 export function StatsSection() {
   const STATS = [
     {
-      number: "10,000+",
-      label: "Verified Professionals",
+      number: "1 Platform",
+      label: "For Hiring & Staffing",
       description:
-        "A growing, active network of pre-screened, credentialed candidates.",
+        "Hiring, AI interviews, urgent staffing, shifts and payments for organizations and professionals.",
       icon: Users,
     },
     {
-      number: "90%",
-      label: "Faster Time-to-Hire",
+      number: "AI",
+      label: "Interviews & Scorecards",
       description: "",
     },
     {
-      number: "100%",
-      label: "Verified Credentials",
+      number: "Canada",
+      label: "Built for Canadian Healthcare",
       description: "",
     },
   ];

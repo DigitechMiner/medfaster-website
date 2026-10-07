@@ -7,7 +7,7 @@ const TIMELINE = [
     year: "2021",
     title: "The Question",
     description:
-      "KeRaeva began with a simple question: 'Why should healthcare still struggle with time?' Founded by “healthcare providers, we saw how traditional staffing delayed care.",
+      "KeRaeva began with a simple question: 'Why should healthcare still struggle with time?' Founded by healthcare providers, we saw how traditional staffing delayed care.",
   },
   {
     year: "2022",
@@ -19,13 +19,13 @@ const TIMELINE = [
     year: "2024",
     title: "The Ecosystem",
     description:
-      "Evolved into a full-scale digital ecosystem that merges AI recruitment, real-time workforce matching, and patient access.",
+      "Evolved into a full-scale digital ecosystem that brings together AI recruitment, real-time workforce matching, shifts and payments.",
   },
   {
     year: "Today",
     title: "The Principle",
     description:
-      "From prototype to a nationwide network, our growth is built on one principle: Speed saves lives.",
+      "From prototype to a growing platform, our work is built on one principle: speed matters in healthcare.",
   },
   {
     year: "2026",
@@ -43,7 +43,7 @@ const TIMELINE = [
     year: "2028",
     title: "The Ecosystem",
     description:
-      "Evolved into a full-scale digital ecosystem that merges AI recruitment, real-time workforce matching, and patient access.",
+      "Evolved into a full-scale digital ecosystem that brings together AI recruitment, real-time workforce matching, shifts and payments.",
   },
 ];
 

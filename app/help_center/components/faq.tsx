@@ -10,22 +10,22 @@ const faqs = [
   {
     question: "Is the platform free to use?",
     answer:
-      "Yes, completely. KeRaeva is 100% free for doctors, nurses, and healthcare staff looking for jobs. We only charge hospitals and clinics to post vacancies. You will never be asked to pay to apply for a role.",
+      "Yes. Creating a profile, applying for jobs and accepting shifts is free for healthcare professionals. You will never be asked to pay to apply for a role.",
   },
   {
     question: "Can I search for remote or part-time jobs?",
     answer:
-      "Yes, KeRaeva supports filtering by remote, part-time, full-time, and contract roles so you can find exactly what suits your schedule.",
+      "Yes. You can browse full-time, part-time, contract and shift-based roles, and use urgent shifts and the map view to find work that suits your schedule.",
   },
   {
     question: "How can I improve my chances of getting hired?",
     answer:
-      "Complete your profile 100%, upload your certifications, and enable AI interview prep to stand out to recruiters.",
+      "Complete your profile, upload your certifications and complete your AI interview to stand out to recruiters.",
   },
   {
     question: "How do I know if a hospital has viewed my application?",
     answer:
-      "You will receive a real-time notification in your app and email when a recruiter views your application.",
+      "You can track the status of every application in the KeRaeva app, and you'll get notifications as it moves forward.",
   },
 ];
 

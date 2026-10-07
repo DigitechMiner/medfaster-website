@@ -21,8 +21,8 @@ export function MissionSection() {
     },
     {
       icon: Shield,
-      title: "Secure & Compliant",
-      description: "Your data is protected always",
+      title: "Privacy-Minded",
+      description: "Your information is handled with care",
     },
     {
       icon: Users,
@@ -84,7 +84,7 @@ export function PurposeSection() {
       icon: Stethoscope,
       title: "Our Mission",
       description:
-        "We aim to eliminate staffing shortages, reduce patient waiting time, and empower healthcare providers to deliver faster, better, and smarter care.",
+        "We aim to reduce staffing shortages and help healthcare organizations and professionals work together faster and more reliably.",
     },
     {
       icon: Globe,
@@ -102,10 +102,9 @@ export function PurposeSection() {
           <span className="text-[#F3651B]">Mission</span> at Our Core
         </Heading>
         <ResponsiveParagraph size="base" className="text-[#717680]">
-          To revolutionize healthcare accessibility through intelligent,
-          real-time staffing and service delivery — connecting healthcare facilities,
-          medical professionals, and patients on one transparent, AI-driven
-          platform.
+          To make healthcare staffing faster and more reliable through
+          intelligent, real-time matching, connecting healthcare organizations
+          and professionals on one transparent, AI-driven platform.
         </ResponsiveParagraph>
       </div>
 

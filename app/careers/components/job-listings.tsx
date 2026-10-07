@@ -3,7 +3,9 @@
 import { useState } from "react";
 import { Section } from "@/components/ui/section";
 import { Paragraph } from "@/components/ui/paragraph";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Briefcase } from "lucide-react";
+import { Heading } from "@/components/ui/heading";
+import { IconChip } from "@/components/ui/icon-chip";
 import { JobCard } from "./job-card";
 import { JOBS, ITEMS_PER_PAGE } from "./constants";
 import { CustomButton } from "@/components/ui/custom-button";
@@ -53,6 +55,31 @@ export function JobListingsSection() {
     setCurrentPage(1);
   };
 
+
+  if (JOBS.length === 0) {
+    return (
+      <Section className="text-center">
+        <div className="max-w-xl mx-auto space-y-4 py-6">
+          <IconChip icon={Briefcase} size="lg" className="mx-auto" />
+          <Heading as="h2" size="sm" className="text-[#252B37]">
+            No Open Roles <span className="text-[#F3651B]">Right Now</span>
+          </Heading>
+          <Paragraph className="text-[#717680]">
+            We don&apos;t have any openings at the moment, but we&apos;re always
+            happy to hear from people who want to improve healthcare staffing.
+            Send us your CV and we&apos;ll be in touch when a role fits.
+          </Paragraph>
+          <a
+            href="mailto:support@keraeva.com?subject=Careers%20at%20KeRaeva"
+            className="inline-flex items-center gap-2 font-semibold text-[#F3651B] hover:opacity-80 transition-opacity py-1.5"
+          >
+            Email support@keraeva.com
+            <ArrowRight className="w-4 h-4" aria-hidden="true" />
+          </a>
+        </div>
+      </Section>
+    );
+  }
 
   return (
     <Section>

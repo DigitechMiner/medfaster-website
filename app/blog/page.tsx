@@ -12,12 +12,14 @@ import {
   ArrowLeft,
   ArrowRight,
   ArrowUpRight,
+  Newspaper,
 } from "lucide-react";
 import Header from "@/components/global/header";
 import Footer from "@/components/global/footer";
 import { Screen } from "@/components/global/screen";
 import Image from "next/image";
 import { BLOG_POSTS } from "./constants";
+import { IconChip } from "@/components/ui/icon-chip";
 import { BlogCard } from "./components/blog-card";
 
 export default function BlogPage() {
@@ -161,6 +163,22 @@ export default function BlogPage() {
           </div>
         </Section>
       </Header>
+      {BLOG_POSTS.length === 0 ? (
+        <Section className="text-center">
+          <div className="max-w-xl mx-auto space-y-4 py-6">
+            <IconChip icon={Newspaper} size="lg" className="mx-auto" />
+            <Heading as="h2" size="sm" className="text-[#252B37]">
+              Articles Are <span className="text-[#F3651B]">On the Way</span>
+            </Heading>
+            <Paragraph className="text-[#717680]">
+              We&apos;re preparing practical guides on healthcare hiring, urgent
+              staffing and building a career in Canadian healthcare. Subscribe
+              below to hear when the first articles are published.
+            </Paragraph>
+          </div>
+        </Section>
+      ) : (
+      <>
       {/* Hero Section - Featured Post */}
       <Section>
         {/* Featured Hero Image */}
@@ -328,6 +346,8 @@ export default function BlogPage() {
       </Section>
 
       {/* Footer */}
+      </>
+      )}
       <Footer />
     </Screen>
   );

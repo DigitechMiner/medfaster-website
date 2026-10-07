@@ -11,21 +11,19 @@ const TESTIMONIALS = [
   {
     id: 1,
     rating: 5,
-    quote: "KeRaeva's dashboard is a game-changer. We filled three critical nursing roles in one day with 100% verified candidates. It saved our team countless hours.",
+    quote: "KeRaeva's dashboard is a game-changer. We filled critical nursing roles quickly with verified candidates. It saved our team countless hours.",
     author: "David L.",
-    role: "HR Manager, Vancouver General Hospital",
+    role: "HR Manager, Hospital",
     company: "Canadian Hospital",
-    companyLogo: "/images/company/canadian-health.png",
     avatar: "/images/testimonials/michael-k.png",
   },
   {
     id: 2,
     rating: 5,
-    quote: "The 'Trust Layer' is what sold us. Knowing every candidate is 100% verified before the interview saves us critical time and eliminates compliance headaches.",
+    quote: "The 'Trust Layer' is what sold us. Seeing each candidate's verification status before the interview saves us time and simplifies compliance checks.",
     author: "Sarah Chen",
-    role: "Clinical Director, Trillium Health Partners",
-    company: "Trillium",
-    companyLogo: "/images/company/canadian-specialist-hospital.png",
+    role: "Clinical Director",
+    company: "Partner Hospital",
     avatar: "/images/testimonials/sarah-m.png",
   },
   {
@@ -35,7 +33,6 @@ const TESTIMONIALS = [
     author: "Marcus Cole",
     role: "Licensed Practical Nurse",
     company: "Partner Hospital",
-    companyLogo: "/images/company/medical-canada.png",
     avatar: "/images/testimonials/michael-k.png",
   },
   {
@@ -45,7 +42,6 @@ const TESTIMONIALS = [
     author: "Priya S.",
     role: "Registered Nurse (RN)",
     company: "Canadian Hospital",
-    companyLogo: "/images/company/canadian-health.png",
     avatar: "/images/testimonials/sarah-m.png",
   },
   {
@@ -55,7 +51,6 @@ const TESTIMONIALS = [
     author: "Amelie Dubois",
     role: "Respiratory Therapist (RRT)",
     company: "Partner",
-    companyLogo: "/images/company/canadian-red-cross.png",
     avatar: "/images/testimonials/michael-k.png",
   },
   {
@@ -65,7 +60,6 @@ const TESTIMONIALS = [
     author: "Tom Bishop",
     role: "Staffing Coordinator",
     company: "Partner Hospital",
-    companyLogo: "/images/company/medical-canada.png",
     avatar: "/images/testimonials/sarah-m.png",
   },
 ];
@@ -79,22 +73,22 @@ const FAQS = [
   {
     question: "Is my data secure on KeRaeva?",
     answer:
-      "Yes, we're fully HIPAA and GDPR compliant. Your sensitive information is encrypted and protected with enterprise-level security.",
+      "We take privacy seriously. Our Privacy Policy explains how we collect, use and protect personal information under Canadian privacy law, including PIPEDA.",
   },
   {
     question: "How long does the hiring process take?",
     answer:
-      "With our AI-powered matching, many professionals get matched within days, compared to weeks with traditional methods.",
+      "It depends on the role. Urgent shifts can be filled as soon as an eligible professional accepts, while permanent roles follow your organization's own interview and hiring steps.",
   },
   {
     question: "Can I update my profile anytime?",
     answer:
-      "Absolutely! You can update your profile, preferences, and availability at any time through your dashboard.",
+      "Yes. You can update your profile, documents and availability at any time in the KeRaeva app.",
   },
   {
     question: "What if I have issues with a placement?",
     answer:
-      "We have a dedicated support team available 24/7 to help resolve any issues or concerns with your placement.",
+      "Contact our support team through the Support page or at support@keraeva.com and we'll help resolve it as quickly as possible.",
   },
 ];
 
@@ -142,17 +136,6 @@ function TestimonialCard({ testimonial }: { testimonial: (typeof TESTIMONIALS)[0
           </Paragraph>
         </div>
 
-        {/* Company Logo */}
-        {testimonial.companyLogo && (
-          <div className="w-8 h-8 relative flex-shrink-0">
-            <Image
-              src={testimonial.companyLogo}
-              alt={testimonial.company}
-              fill
-              className="object-contain"
-            />
-          </div>
-        )}
       </div>
     </div>
   );

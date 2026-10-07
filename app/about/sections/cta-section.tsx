@@ -21,7 +21,7 @@ export function CTASection() {
       </Heading>
 
       <ResponsiveParagraph size="base" className="text-white/90 mb-8">
-        Join Canada&apos;s fastest-growing AI-powered healthcare staffing platform.
+        Join KeRaeva, the AI-powered healthcare workforce platform built for Canada.
         Get started in minutes.
       </ResponsiveParagraph>
 

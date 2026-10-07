@@ -10,7 +10,7 @@ const STEPS = [
     icon: UserPlus,
     title: "Create Your Profile",
     description:
-      "Upload your resume and certificates, and let our AI auto-fill your details instantly.",
+      "Upload your resume and certificates, and and our AI helps fill in your profile details.",
   },
   {
     icon: ShieldCheck,

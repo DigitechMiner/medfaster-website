@@ -16,21 +16,21 @@ export function CoreGoalsSection() {
     },
     {
       icon: Hospital,
-      title: "Zero Downtime for Hospitals",
+      title: "Fewer Staffing Gaps",
       description:
-        "We help healthcare Organizations and clinics operate with zero downtime by providing instant access to verified staff.",
+        "We help hospitals, clinics and care organizations fill open and urgent shifts faster with verified professionals.",
     },
     {
       icon: HeartPulse,
-      title: "Accelerating Patient Care",
+      title: "Supporting Patient Care",
       description:
-        "Our network helps deliver healthcare to patients within minutes — anytime, anywhere.",
+        "When shifts are filled faster, care teams can focus on patients instead of staffing gaps.",
     },
     {
       icon: Sparkles,
-      title: "Empowering Professionals",
+      title: "Smarter Workforce Matching",
       description:
-        "We use AI to predict, not just react — creating proactive healthcare systems that anticipate staffing needs before they become emergencies.",
+        "We use AI to match professionals to the right roles and help organizations respond quickly when staffing needs change.",
     },
   ];
 
@@ -44,9 +44,9 @@ export function CoreGoalsSection() {
           size="sm"
           className="text-[#717680] mt-4 max-w-full"
         >
-          Our main goal is to build the fastest and most reliable medical
-          staffing network in India and beyond, supporting every part of the
-          healthcare ecosystem.
+          Our goal is to build the fastest and most reliable healthcare
+          staffing network in Canada, supporting both the organizations that
+          deliver care and the professionals who provide it.
         </ResponsiveParagraph>
       </div>
 
@@ -75,21 +75,21 @@ export function WhyKeRaevaSection() {
     },
     {
       number: "02",
-      title: "Instant Credential Verification",
+      title: "Credential Verification",
       description:
-        "We automatically verify licenses and credentials, so hospitals can hire with 100% confidence and speed.",
+        "Professionals upload licences and credentials, which are reviewed so organizations can see verification status before they hire.",
     },
     {
       number: "03",
-      title: "Smart Scheduling",
+      title: "Shift Management",
       description:
-        "A dynamic, all-in-one platform to manage open shifts, coordinate staff, and fill gaps in your schedule instantly.",
+        "Manage open shifts, urgent requirements and scheduled professionals in one platform.",
     },
     {
       number: "04",
-      title: "We Accelerate Care",
+      title: "Built for Healthcare",
       description:
-        "We don't just automate—we coordinate all three sides of healthcare to reduce shortages and accelerate patient care.",
+        "We connect healthcare organizations and professionals so staffing gaps are filled faster and care isn't delayed.",
     },
   ];
 

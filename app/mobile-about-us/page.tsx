@@ -22,9 +22,9 @@ import {
 } from "@/app/about/sections";
 
 export const metadata: Metadata = {
-  title: "About KeRaeva | Revolutionizing Healthcare Hiring",
+  title: "About KeRaeva | AI-Powered Healthcare Workforce Platform",
   description:
-    "Learn about KeRaeva's mission to revolutionize healthcare recruitment with AI-powered matching and human-centric care.",
+    "Learn about KeRaeva's mission to make healthcare staffing in Canada faster and more reliable with AI-powered matching and human-centred care.",
 };
 
 export default function MobileAboutUsPage() {

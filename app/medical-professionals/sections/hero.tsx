@@ -65,7 +65,7 @@ export default function HeroSection() {
               The AI-powered platform connecting you directly with verified
               healthcare service providers, such as hospitals, nursing home
               facilities, medical clinics, dental clinics, physiotherapy clinics
-              and many more Canada. Discover full-time, part-time, and on-demand
+              and more across Canada. Discover full-time, part-time, and on-demand
               roles all on your terms.
             </ResponsiveParagraph>
             <div className="flex items-center gap-4">
@@ -122,8 +122,8 @@ export default function HeroSection() {
                 Total Flexibility & Control
               </Heading>
               <Paragraph className="text-white leading-relaxed">
-                Take charge of your career. Filter for full-time, freelance on-demand shifts, or
-                real time that fits your schedule. Get instant alerts
+                Take charge of your career. Choose full-time, part-time or
+                on-demand shifts that fit your schedule, and get instant alerts
                 for jobs you actually want.
               </Paragraph>
             </div>
@@ -150,9 +150,9 @@ export default function HeroSection() {
                 Direct & Verified Opportunities
               </Heading>
               <Paragraph className="text-white leading-relaxed">
-                Connect directly with top-tier hospitals, healthcare facilities  and clinics. Our
-                AI-powered system verifies every listing, so you can apply with
-                confidence. No recruiters, no hassle.
+                Connect directly with hospitals, care facilities and clinics.
+                Apply in a tap, chat with hiring teams and track every
+                application in the app.
               </Paragraph>
             </div>
           </div>

@@ -33,9 +33,8 @@ export default function TestimonialsSection() {
             <span className="text-[#F3651B] font-bold">KeRaeva</span>
           </Heading>
           <ResponsiveParagraph size="sm" className="text-[#717680] max-w-3xl">
-            Real experiences from nurses, specialists, and therapists who found
-            success on our platform. See how we&apos;ve helped thousands find their
-            ideal roles.
+            Real experiences from nurses, specialists and therapists using
+            KeRaeva to find roles and shifts that fit their lives.
           </ResponsiveParagraph>
         </div>
 

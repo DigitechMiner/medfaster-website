@@ -30,13 +30,12 @@ export default function TestimonialsSlider() {
       {/* Header */}
       <div className="mb-8 md:mb-12 lg:mb-16">
         <Heading className="text-[#252B37] mb-4">
-          Why Leading Hospitals Trust{" "}
+          What Healthcare Teams Say About{" "}
           <span className="text-[#F3651B] font-semibold">KeRaeva</span>
         </Heading>
         <Paragraph className="text-[#717680] max-w-3xl">
-          Real results from healthcare partners who have transformed their
-          hiring process. See how we help them save time, ensure compliance, and
-          hire top-tier talent.
+          Feedback from healthcare teams using KeRaeva to hire verified
+          professionals, simplify compliance checks and fill shifts faster.
         </Paragraph>
       </div>
 
