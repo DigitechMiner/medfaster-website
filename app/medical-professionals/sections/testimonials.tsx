@@ -31,7 +31,7 @@ export default function TestimonialsSection() {
         <div>
           <Heading as="h2" size="md" className="text-[#252B37] mb-4">
             What Our Professionals Are Saying About{" "} <br />
-            <span className="text-[#F4781B] font-bold">KeRaeva</span>
+            <span className="text-[#F3651B] font-bold">KeRaeva</span>
           </Heading>
           <ResponsiveParagraph size="sm" className="text-[#717680] max-w-3xl">
             Real experiences from nurses, specialists, and therapists who found
@@ -56,7 +56,7 @@ export default function TestimonialsSection() {
                       key={i} 
                       className={`w-5 h-5 ${
                         i < testimonial.rating 
-                          ? 'text-[#F4781B]' 
+                          ? 'text-[#F3651B]' 
                           : 'text-gray-200'
                       }`} 
                     />
@@ -94,17 +94,17 @@ export default function TestimonialsSection() {
         <div className="flex gap-4">
           <button
             onClick={prevTestimonial}
-            className="w-12 h-12 rounded-full border-2 border-neutral-100 flex items-center justify-center hover:bg-[#F4781B] hover:text-white transition-all group"
+            className="w-12 h-12 rounded-full border-2 border-neutral-100 flex items-center justify-center hover:bg-[#F3651B] hover:text-white transition-all group"
             aria-label="Previous testimonials"
           >
-            <ArrowLeft className="w-6 h-6 text-[#F4781B] group-hover:text-white" />
+            <ArrowLeft className="w-6 h-6 text-[#F3651B] group-hover:text-white" />
           </button>
           <button
             onClick={nextTestimonial}
-            className="w-12 h-12 rounded-full border-2 border-neutral-100 flex items-center justify-center hover:bg-[#F4781B] hover:text-white transition-all group"
+            className="w-12 h-12 rounded-full border-2 border-neutral-100 flex items-center justify-center hover:bg-[#F3651B] hover:text-white transition-all group"
             aria-label="Next testimonials"
           >
-            <ArrowRight className="w-6 h-6 text-[#F4781B] group-hover:text-white" />
+            <ArrowRight className="w-6 h-6 text-[#F3651B] group-hover:text-white" />
           </button>
         </div>
       </div>

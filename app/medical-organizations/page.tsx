@@ -38,7 +38,7 @@ export default function MedicalOrganizationsPage() {
       </Header>
       <CompanyLogos />
       <HiredSection />
-      <UrgentStaffingSection variant="organizations" />
+      <UrgentStaffingSection audience="organizations" />
       <OneDashboard />
       <StaffingCapabilities />
       <HireWithConfidence />

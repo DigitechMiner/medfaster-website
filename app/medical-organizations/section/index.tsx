@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { CustomButton } from "@/components/custom/custom-button";
+import { CustomButton } from "@/components/ui/custom-button";
 import {
   ArrowRight,
   Wand2,
@@ -18,10 +18,10 @@ import {
   ClipboardCheck,
   FileCheck2,
 } from "lucide-react";
-import { Section } from "@/components/custom/section";
-import { Heading } from "@/components/custom/heading";
-import { Paragraph, ResponsiveParagraph } from "@/components/custom/paragraph";
-import { FeatureCard } from "@/components/custom/feature-card";
+import { Section } from "@/components/ui/section";
+import { Heading } from "@/components/ui/heading";
+import { Paragraph, ResponsiveParagraph } from "@/components/ui/paragraph";
+import { FeatureCard } from "@/components/ui/feature-card";
 import { companyLogos, hiringSteps, dashboardFeatures } from "@/utils/constant/landingPage";
 import { RECRUITER_REGISTRATION_URL } from "@/utils/constant";
 import { useModalStore } from "@/stores/modalStore";
@@ -45,7 +45,7 @@ export function HeroSection() {
               className="text-[#252B37] mb-6"
             >
               Build Your Healthcare Workforce —
-              <span className="text-[#F4781B] font-medium">
+              <span className="text-[#F3651B] font-medium">
                 {" "}
                 Faster & Smarter
               </span>
@@ -65,10 +65,6 @@ export function HeroSection() {
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
             <CustomButton
               rightIcon={ChevronRight}
-              className="!bg-transparent"
-              style={{
-                background: 'linear-gradient(225deg, #EB001B 0%, #F79E1B 100%)'
-              }}
               onClick={() => openModal("request-demo")}
             >
               Request Demo
@@ -160,10 +156,10 @@ export function HiredSection() {
 
   return (
     <Section 
-      backgroundColor="bg-transparent"
+      backgroundColor="bg-[#F3651B]"
       className="relative overflow-hidden"
       style={{
-        background: 'linear-gradient(225deg, #EB001B 0%, #F79E1B 100%), url("/images/patterns/orange-pattern-1.png")',
+        backgroundImage: "url(/images/patterns/orange-pattern-1.png)",
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundBlendMode: 'overlay',
@@ -217,7 +213,7 @@ export function HiredSection() {
               className="bg-white text-black hover:bg-gray-100"
               rightIcon={ArrowRight}
               iconClassName="text-white"
-              iconContainerClassName="bg-[#F4781B]"
+              iconContainerClassName="bg-[#F3651B]"
               onClick={() => window.open(RECRUITER_REGISTRATION_URL, "_blank")}
             >
               Post a job
@@ -238,7 +234,7 @@ export function OneDashboard() {
       <div className=" mb-12">
         <Heading as="h2" size="md" className="text-[#252B37] mb-4">
           Everything You Need, in{" "}
-          <span className="text-[#F4781B]">One Dashboard</span>{" "}
+          <span className="text-[#F3651B]">One Dashboard</span>{" "}
         </Heading>
         <Paragraph className="text-[#717680] max-w-3xl">
           Post jobs, review AI-assessed candidates, schedule interviews and
@@ -305,7 +301,7 @@ export function StaffingCapabilities() {
     <Section>
       <div className="mb-12">
         <Heading as="h2" size="md" className="text-[#252B37] mb-4">
-          Built for <span className="text-[#F4781B]">Healthcare Staffing</span>
+          Built for <span className="text-[#F3651B]">Healthcare Staffing</span>
         </Heading>
         <Paragraph className="text-[#717680] max-w-3xl">
           Beyond hiring, KeRaeva gives your team the tools to staff shifts and
@@ -338,7 +334,7 @@ export function DataDrivenHiring() {
         {/* Left Content */}
         <div className="flex-1 max-w-3xl">
           <Heading className="text-[#252B37] mb-6">
-            Make <span className="text-[#F4781B] font-semibold">Data-Driven</span> Hiring Decisions
+            Make <span className="text-[#F3651B] font-semibold">Data-Driven</span> Hiring Decisions
           </Heading>
           <Paragraph className="text-[#717680] leading-relaxed">
             See active jobs, candidates, AI matches, interviews and hires at a
@@ -368,7 +364,7 @@ export function HireWithConfidence() {
       {/* Header - Title and Description */}
       <div className="mb-12 lg:mb-16">
         <Heading className="text-[#252B37] mb-6">
-          Hire with <span className="text-[#F4781B] font-semibold">Confidence</span>
+          Hire with <span className="text-[#F3651B] font-semibold">Confidence</span>
         </Heading>
         <Paragraph className="text-[#717680] leading-relaxed max-w-3xl">
           Every candidate profile brings together uploaded documents,
@@ -397,10 +393,10 @@ export function StartHiring() {
 
   return (
     <Section 
-      backgroundColor="bg-transparent"
+      backgroundColor="bg-[#F3651B]"
       padding={false}
       style={{
-        background: 'linear-gradient(225deg, #EB001B 0%, #F79E1B 100%), url("/images/patterns/orange-pattern-2.png")',
+        backgroundImage: "url(/images/patterns/orange-pattern-2.png)",
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundBlendMode: 'overlay',
@@ -426,7 +422,7 @@ export function StartHiring() {
                 className="bg-white text-black hover:bg-gray-100 mr-2 md:mr-4"
                 rightIcon={ArrowRight}
                 iconClassName="text-white"
-                iconContainerClassName="bg-[#F4781B]"
+                iconContainerClassName="bg-[#F3651B]"
                 onClick={() => window.open(RECRUITER_REGISTRATION_URL, "_blank")}
               >
                 Post a Job
@@ -436,7 +432,7 @@ export function StartHiring() {
                 className="bg-white text-black hover:bg-gray-100"
                 rightIcon={CalendarRange}
                 iconClassName="text-white"
-                iconContainerClassName="bg-[#F4781B]"
+                iconContainerClassName="bg-[#F3651B]"
                 onClick={() => openModal("request-demo")}
               >
                 Schedule Demo

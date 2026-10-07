@@ -1,10 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { Section } from "@/components/custom/section";
-import { Heading } from "@/components/custom/heading";
-import { Paragraph, ResponsiveParagraph } from "@/components/custom/paragraph";
-import { CustomButton } from "@/components/custom/custom-button";
+import { Section } from "@/components/ui/section";
+import { Heading } from "@/components/ui/heading";
+import { Paragraph, ResponsiveParagraph } from "@/components/ui/paragraph";
+import { CustomButton } from "@/components/ui/custom-button";
 import { Calendar } from "lucide-react";
 import { orgWorkforceSteps } from "@/utils/constant/landingPage";
 import { DEMO_VIDEO_URL } from "@/utils/constant";
@@ -12,10 +12,10 @@ import { DEMO_VIDEO_URL } from "@/utils/constant";
 export default function BookADemo() {
   return (
     <Section
-      backgroundColor="bg-transparent"
+      backgroundColor="bg-[#F3651B]"
       padding={false}
       style={{
-        background: 'linear-gradient(225deg, #EB001B 0%, #F79E1B 100%), url("/images/patterns/orange-pattern-2.png")',
+        backgroundImage: "url(/images/patterns/orange-pattern-2.png)",
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundBlendMode: 'overlay',
@@ -56,7 +56,7 @@ export default function BookADemo() {
                 key={step}
                 className="flex items-center gap-3 border-b border-white/20 pb-3 last:border-b-0 text-white"
               >
-                <span className="flex-shrink-0 w-7 h-7 rounded-full bg-white text-[#F4781B] text-sm font-semibold flex items-center justify-center">
+                <span className="flex-shrink-0 w-7 h-7 rounded-full bg-white text-[#F3651B] text-sm font-semibold flex items-center justify-center">
                   {index + 1}
                 </span>
                 <Paragraph className="text-white">{step}</Paragraph>
@@ -69,7 +69,7 @@ export default function BookADemo() {
             size="lg"
             rightIcon={Calendar}
             className="!bg-white !text-gray-800 hover:shadow-xl transition-all duration-300"
-            iconContainerClassName="!bg-[#F4781B]"
+            iconContainerClassName="!bg-[#F3651B]"
             iconClassName="!text-white"
             onClick={() => window.open(DEMO_VIDEO_URL, "_blank")}
           >
@@ -97,7 +97,7 @@ export default function BookADemo() {
               <ResponsiveParagraph
                 size="lg"
                 weight="bold"
-                className=" text-[#F4781B] mb-2"
+                className=" text-[#F3651B] mb-2"
               >
                 $12,500
               </ResponsiveParagraph>

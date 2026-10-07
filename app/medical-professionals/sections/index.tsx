@@ -71,7 +71,7 @@ export function AIHelpsSection() {
       <div className=" mb-12">
         <Heading as="h2" size="md" className="text-[#252B37] mb-4">
           How{" "}
-          <span className="text-[#F4781B] font-extrabold">AI Helps You</span>{" "}
+          <span className="text-[#F3651B] font-extrabold">AI Helps You</span>{" "}
           Get the Right Job Faster
         </Heading>
         <Paragraph className="text-[#717680] max-w-3xl">
@@ -105,7 +105,7 @@ export function AllInOneSection() {
       <div className=" mb-12">
         <Heading as="h2" size="md" className="text-[#252B37] mb-4">
           Your{" "}
-          <span className="text-[#F4781B]">All-in-One</span>{" "}
+          <span className="text-[#F3651B]">All-in-One</span>{" "}
           Healthcare career App
         </Heading>
         <Paragraph className="text-[#717680] max-w-3xl">
@@ -141,7 +141,7 @@ export function VerifiedSection() {
         <div className="space-y-4 font-[500]">
           <Heading as="h2" size="md" className="text-[#252B37] leading-tight">
             Earn a{" "}
-            <span className="text-[#F4781B] font-bold">Verified</span>{" "}
+            <span className="text-[#F3651B] font-bold">Verified</span>{" "}
             Score.
             <br />
             Get Hired Faster.
@@ -184,7 +184,7 @@ export function CareerOnTheGo() {
         <div className="space-y-4">
           <Heading as="h2" size="md" className="text-[#252B37] leading-tight">
             Your Career, Your Control{" "}
-            <span className="text-[#F4781B]">On the Go.</span>{" "}
+            <span className="text-[#F3651B]">On the Go.</span>{" "}
           </Heading>
 
           <ResponsiveParagraph
@@ -273,7 +273,7 @@ export function NextCareer() {
 
   return (
     <Section 
-      backgroundColor="bg-[#F4781B]"
+      backgroundColor="bg-[#F3651B]"
       padding={false}
       style={{
         backgroundImage: "url(/images/patterns/orange-pattern-2.png)",
@@ -300,7 +300,7 @@ export function NextCareer() {
                 className="bg-white text-black hover:bg-gray-100"
                 rightIcon={Download}
                 iconClassName="text-white"
-                iconContainerClassName="bg-[#F4781B]"
+                iconContainerClassName="bg-[#F3651B]"
                 onClick={() => openModal("get-app")}
               >
                 Download app

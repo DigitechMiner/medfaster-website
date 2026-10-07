@@ -2,7 +2,7 @@
 
 import { useState, useRef } from "react";
 import { ChevronRight, Plus, Lock, LockIcon } from "lucide-react";
-import { CustomButton } from "@/components/custom/custom-button";
+import { CustomButton } from "@/components/ui/custom-button";
 import { LockClosedIcon } from "@heroicons/react/24/outline";
 
 const issueTypes = [

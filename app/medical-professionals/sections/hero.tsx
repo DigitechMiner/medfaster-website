@@ -25,7 +25,7 @@ export default function HeroSection() {
           <div className="text-left">
             <Heading as="h1" size="lg" weight="normal" className="text-[#252B37] mb-6">
               Find Healthcare Jobs Near You
-              <span className="text-[#F4781B] font-medium">
+              <span className="text-[#F3651B] font-medium">
                 {" "}
                 Instantly
               </span>
@@ -54,7 +54,7 @@ export default function HeroSection() {
                   className="bg-white rounded-lg md:rounded-full"
                 />
               </div>
-              <Button className="bg-[#F4781B] hover:bg-[#E06A0A] text-white w-12 h-12 rounded-lg md:rounded-full p-0 flex-shrink-0">
+              <Button className="bg-[#F3651B] hover:opacity-90 text-white w-12 h-12 rounded-lg md:rounded-full p-0 flex-shrink-0">
                 <Search className="w-5 h-5 " />
               </Button>
             </div>
@@ -118,7 +118,7 @@ export default function HeroSection() {
             </div>
 
             {/* Total Flexibility & Control Box */}
-            <div className="md:flex-[1] bg-[#F4781B] rounded-lg p-4 text-white flex flex-col justify-center">
+            <div className="md:flex-[1] bg-[#F3651B] rounded-lg p-4 text-white flex flex-col justify-center">
               <Heading as="h3" size="xs" weight="bold" className="text-white mb-2">
                 Total Flexibility & Control
               </Heading>
@@ -146,7 +146,7 @@ export default function HeroSection() {
             </div>
 
             {/* Direct & Verified Opportunities Box - Second on mobile, First on desktop */}
-            <div className="order-2 md:order-1 md:flex-[1] bg-[#F4781B] rounded-lg p-4 text-white flex flex-col justify-center">
+            <div className="order-2 md:order-1 md:flex-[1] bg-[#F3651B] rounded-lg p-4 text-white flex flex-col justify-center">
               <Heading as="h3" size="xs" weight="bold" className="text-white mb-2">
                 Direct & Verified Opportunities
               </Heading>

@@ -1,6 +1,5 @@
 "use client";
 
-import { CSSProperties } from "react";
 import { ArrowRight, BellRing, BrainCircuit, CalendarCheck, Siren, UserCheck } from "lucide-react";
 import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/heading";
@@ -11,45 +10,14 @@ import { RECRUITER_REGISTRATION_URL, URGENT_STAFFING_STEPS } from "@/utils/const
 
 const STEP_ICONS = [Siren, BrainCircuit, BellRing, UserCheck, CalendarCheck];
 
-// "home" matches the #F3651B home palette; "organizations" matches the
-// #F4781B + gradient treatment used on the Healthcare Organizations page.
-const VARIANTS = {
-  home: {
-    accentText: "text-[#F3651B]",
-    primaryButton: "",
-    secondaryButton: "",
-    panelBackground: "bg-[#F3651B]",
-    panelStyle: {
-      backgroundImage: "url(/images/patterns/orange-pattern-1.png)",
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      backgroundBlendMode: "overlay",
-      backgroundRepeat: "no-repeat",
-    } as CSSProperties,
-  },
-  organizations: {
-    accentText: "text-[#F4781B]",
-    primaryButton: "bg-[#F4781B]",
-    secondaryButton: "border-[#F4781B] text-[#F4781B] hover:bg-[#F4781B]",
-    panelBackground: "bg-transparent",
-    panelStyle: {
-      background: 'linear-gradient(225deg, #EB001B 0%, #F79E1B 100%), url("/images/patterns/orange-pattern-1.png")',
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      backgroundBlendMode: "overlay",
-      backgroundRepeat: "no-repeat",
-    } as CSSProperties,
-  },
-};
-
 interface UrgentStaffingSectionProps {
-  variant?: keyof typeof VARIANTS;
+  // Adjusts the copy and secondary CTA; the palette is the same everywhere
+  audience?: "everyone" | "organizations";
 }
 
-export function UrgentStaffingSection({ variant = "home" }: UrgentStaffingSectionProps) {
+export function UrgentStaffingSection({ audience = "everyone" }: UrgentStaffingSectionProps) {
   const openModal = useModalStore((state) => state.openModal);
-  const styles = VARIANTS[variant];
-  const isOrganizations = variant === "organizations";
+  const isOrganizations = audience === "organizations";
 
   return (
     <Section
@@ -60,7 +28,7 @@ export function UrgentStaffingSection({ variant = "home" }: UrgentStaffingSectio
       {/* Left - Copy */}
       <Section className="flex flex-col justify-center">
         <div className="space-y-4 md:space-y-6">
-          <Paragraph size="sm" className={`${styles.accentText} font-semibold uppercase tracking-wider`}>
+          <Paragraph size="sm" className="text-[#F3651B] font-semibold uppercase tracking-wider">
             Urgent Staffing
           </Paragraph>
           <Heading
@@ -69,7 +37,7 @@ export function UrgentStaffingSection({ variant = "home" }: UrgentStaffingSectio
             className="text-[#252B37] leading-snug text-2xl md:text-3xl lg:text-4xl"
           >
             When a Shift Can&apos;t Wait,{" "}
-            <span className={`${styles.accentText} font-bold`}>KeRaeva</span> Finds
+            <span className="text-[#F3651B] font-bold">KeRaeva</span> Finds
             Who Can Work
           </Heading>
           <ResponsiveParagraph size="sm" className="text-[#717680] leading-relaxed">
@@ -85,7 +53,7 @@ export function UrgentStaffingSection({ variant = "home" }: UrgentStaffingSectio
 
           <div className="flex flex-col sm:flex-row gap-3 pt-2">
             <CustomButton
-              className={`w-full sm:w-auto justify-between ${styles.primaryButton}`}
+              className="w-full sm:w-auto justify-between"
               rightIcon={ArrowRight}
               onClick={() => window.open(RECRUITER_REGISTRATION_URL, "_blank")}
             >
@@ -93,7 +61,7 @@ export function UrgentStaffingSection({ variant = "home" }: UrgentStaffingSectio
             </CustomButton>
             <CustomButton
               variant="secondary"
-              className={`w-full sm:w-auto justify-center py-2.5 ${styles.secondaryButton}`}
+              className="w-full sm:w-auto justify-center py-2.5"
               onClick={() => openModal(isOrganizations ? "request-demo" : "get-app")}
             >
               {isOrganizations ? "Request Demo" : "Get the App"}
@@ -103,7 +71,16 @@ export function UrgentStaffingSection({ variant = "home" }: UrgentStaffingSectio
       </Section>
 
       {/* Right - Flow */}
-      <Section backgroundColor={styles.panelBackground} style={styles.panelStyle}>
+      <Section
+        backgroundColor="bg-[#F3651B]"
+        style={{
+          backgroundImage: "url(/images/patterns/orange-pattern-1.png)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundBlendMode: "overlay",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
         <ol className="space-y-6 text-white">
           {URGENT_STAFFING_STEPS.map((step, index) => {
             const Icon = STEP_ICONS[index] ?? CalendarCheck;
@@ -113,7 +90,7 @@ export function UrgentStaffingSection({ variant = "home" }: UrgentStaffingSectio
                 className="flex items-start gap-4 border-b border-white/20 pb-6 last:border-b-0 last:pb-0"
               >
                 <div className="flex-shrink-0 w-12 h-12 rounded-full bg-white flex items-center justify-center">
-                  <Icon className={`w-6 h-6 ${styles.accentText}`} aria-hidden="true" />
+                  <Icon className="w-6 h-6 text-[#F3651B]" aria-hidden="true" />
                 </div>
                 <div>
                   <Heading as="h3" size="xs" weight="medium" className="text-white mb-1">

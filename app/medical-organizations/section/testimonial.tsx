@@ -3,9 +3,9 @@
 import { useState } from "react";
 import Image from "next/image";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { Section } from "@/components/custom/section";
-import { Heading } from "@/components/custom/heading";
-import { Paragraph, ResponsiveParagraph } from "@/components/custom/paragraph";
+import { Section } from "@/components/ui/section";
+import { Heading } from "@/components/ui/heading";
+import { Paragraph, ResponsiveParagraph } from "@/components/ui/paragraph";
 import { FaStar } from "react-icons/fa";
 import { testimonials as landingTestimonials } from "@/utils/constant/landingPage";
 
@@ -32,7 +32,7 @@ export default function TestimonialsSlider() {
       <div className="mb-8 md:mb-12 lg:mb-16">
         <Heading className="text-[#252B37] mb-4">
           Why Leading Hospitals Trust{" "}
-          <span className="text-[#F4781B] font-semibold">KeRaeva</span>
+          <span className="text-[#F3651B] font-semibold">KeRaeva</span>
         </Heading>
         <Paragraph className="text-[#717680] max-w-3xl">
           Real results from healthcare partners who have transformed their
@@ -63,7 +63,7 @@ export default function TestimonialsSlider() {
                 <FaStar
                   key={i}
                   className={`w-5 h-5 ${
-                    i < currentTestimonial.rating ? "text-[#F4781B]" : "text-gray-200"
+                    i < currentTestimonial.rating ? "text-[#F3651B]" : "text-gray-200"
                   }`}
                 />
               ))}
@@ -101,17 +101,17 @@ export default function TestimonialsSlider() {
       <div className="flex gap-4 mt-8">
         <button
           onClick={prevSlide}
-          className="w-12 h-12 rounded-full border-2 border-neutral-100 flex items-center justify-center hover:bg-[#F4781B] hover:text-white transition-all group"
+          className="w-12 h-12 rounded-full border-2 border-neutral-100 flex items-center justify-center hover:bg-[#F3651B] hover:text-white transition-all group"
           aria-label="Previous testimonials"
         >
-          <ArrowLeft className="w-6 h-6 text-[#F4781B] group-hover:text-white" />
+          <ArrowLeft className="w-6 h-6 text-[#F3651B] group-hover:text-white" />
         </button>
         <button
           onClick={nextSlide}
-          className="w-12 h-12 rounded-full border-2 border-neutral-100 flex items-center justify-center hover:bg-[#F4781B] hover:text-white transition-all group"
+          className="w-12 h-12 rounded-full border-2 border-neutral-100 flex items-center justify-center hover:bg-[#F3651B] hover:text-white transition-all group"
           aria-label="Next testimonials"
         >
-          <ArrowRight className="w-6 h-6 text-[#F4781B] group-hover:text-white" />
+          <ArrowRight className="w-6 h-6 text-[#F3651B] group-hover:text-white" />
         </button>
       </div>
     </Section>

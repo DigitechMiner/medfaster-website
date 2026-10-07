@@ -16,6 +16,7 @@
 | 7 Oct 2026 | Audit, README, footer credit | Merged (PR #5, #6) |
 | 7 Oct 2026 | **Homepage refresh** (task 4) + shared modals + lead endpoint | Merged (PR #7) |
 | 7 Oct 2026 | **Healthcare Organizations page** (task 5.1) | Committed to `main` |
+| 7 Oct 2026 | **Palette unified** on the Organizations and Professionals pages to match the homepage | Committed to `main` |
 
 **Homepage refresh: what changed**
 - Hero: workforce positioning, with working **Find Opportunities** (Get the App modal) and **Start Hiring** (recruiter registration) buttons.
@@ -459,7 +460,7 @@ Net change: **2 new sections, 0 new visual patterns.** The anti-redesign check p
 3. **Timesheets:** is there a timesheet submit/approve step on the recruiter side, or is attendance (check-in/out) the timesheet?
 4. **Compliance language:** confirm wording to replace "HIPAA/GDPR compliant" (e.g. "designed with PIPEDA and provincial privacy requirements in mind"), pending legal review.
 5. **Stats, logos and testimonials:** which are real and approved for publication?
-6. **Brand orange:** `#F3651B` vs `#F4781B` / gradient. Which one is canonical? (No change made. Both are preserved for now.)
+6. ~~**Brand orange:** `#F3651B` vs `#F4781B` / gradient.~~ **Resolved:** the homepage palette is canonical. All pages now use `#F3651B` with the orange-pattern overlay, the `#EB001B → #F79E1B` gradient and `#F4781B` are removed, and the duplicate `components/custom/*` primitives have been deleted in favour of `components/ui/*`.
 7. **Web login modal:** remove it, or repurpose it for professionals? The Patient tab should go either way.
 8. **App store links:** live App Store / Google Play URLs.
 9. **Public job search:** is there a public (unauthenticated) jobs API so `/jobs` could exist, or should search hand off to the app?
