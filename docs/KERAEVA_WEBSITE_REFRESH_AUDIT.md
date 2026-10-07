@@ -9,6 +9,34 @@
 
 ---
 
+## Progress log
+
+| Date | Phase | Status |
+|---|---|---|
+| 7 Oct 2026 | Audit, README, footer credit | Merged (PR #5, #6) |
+| 7 Oct 2026 | **Homepage refresh** (task 4) + shared modals + lead endpoint | Branch `feat/homepage-refresh` (see below) |
+
+**Homepage refresh: what changed**
+- Hero: workforce positioning, with working **Find Opportunities** (Get the App modal) and **Start Hiring** (recruiter registration) buttons.
+- Journey section: 3 cards became 8 lifecycle steps (Profile → Verify → AI Interview → Match → Hire/Fill → Work → Get Paid → Stay in the Loop). Same white cards; they swipe on mobile.
+- **New: Urgent Staffing section** (two-panel layout from `VerifiedSection` plus the step list from `HiredSection`), covering requirement → eligible professionals → alert → accept/decline → confirmed.
+- AI section: 6 verified capabilities (removed "Predictive Availability" and the "100% verified" claim). "AI Recruiter Features" → `/medical-organizations`.
+- Verified section becomes **AI Interview + Verified Scorecard**. Fixed the "get snooze Faster" typo and removed the unverified "recruiters see only verified candidates" claim.
+- App section: descriptions match real app features. The QR codes are now real (see below).
+- "Manage Payments" becomes **From Shift to Payment**: shift → check-in → attendance verified → wallet → withdraw.
+- Closing CTAs wired: Create Free Profile opens Get the App, Schedule Demo opens Request Demo. Only one `<h1>` per page.
+- Shared: `Get Started` chooser / `Get the App` modal, `Request Demo` modal, `POST /api/leads`. Footer newsletter (both footers) now really submits. Fixed footer links (`/coming_soon`, `#refund`, `#data-protection`, `#mission-vision`). Removed "HIPAA/GDPR" from the footer label.
+- SEO/a11y: homepage metadata and Open Graph (the page is now a server component), root description, mobile menu `aria-label`/`aria-expanded`, keyboard focus ring on `CustomButton`, labelled form fields, and dialogs with Escape, focus handling and scroll lock.
+
+**New findings from this phase**
+- The original QR images (`qr-code-1.png`, `qr-code-2.png`) both encode the literal text `app store`, so they never linked anywhere. `qr-google-play.png` now encodes the live listing `https://play.google.com/store/apps/details?id=com.keraeva` (verified by decoding). The iOS app is **not on the App Store** yet (`iosAppStoreId: null` in the app, and it can't be found in any CA/US/IN storefront), so the App Store badge shows "Coming soon on iOS".
+- The hero image `healthCare.png` has a "40k +" statistic baked into the artwork. It needs a source, or an updated image.
+- Correction to A.3: the live homepage shows 6 AI cards and 4 app cards (from `utils/constant/index.ts`), not 5 and 5.
+
+**Still open for the homepage:** real Candidate App screenshots for the Urgent Staffing and AI Interview sections, verified testimonials and logos, and `LEADS_WEBHOOK_URL` configured in Vercel.
+
+---
+
 ## 0. Executive summary: what is still missing
 
 | Area | Count | Highlights |

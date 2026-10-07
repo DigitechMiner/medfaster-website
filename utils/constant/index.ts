@@ -62,57 +62,57 @@ export interface CompanyLogo {
   
   export const AI_FEATURES: AIFeature[] = [
     {
-      icon: "/images/icons/ai-feedback.svg",
-      title: "AI Resume Parsing / Automated Screening",
-      description: "Quickly build accurate professional profiles for candidates and automatically screen applicants for organizations."
-    },
-    {
       icon: "/images/icons/ai-resume-parsing.svg",
-      title: "Smart Job Matching",
-      description: "Connects candidates to ideal roles and organizations to top-fit talent, instantly."
-    },
-    {
-      icon: "/images/icons/ai-predictive-availability.svg",
-      title: "Predictive Availability / Predictive Insights",
-      description: "Helps candidates find roles aligning with their future schedules and organizations forecast candidate performance and availability."
+      title: "AI Resume Parsing",
+      description: "Professionals upload a resume and KeRaeva structures it into a complete profile, giving organizations consistent candidate information."
     },
     {
       icon: "/images/icons/ai-job-matching.svg",
-      title: "Confidential AI Feedback / AI Behavioral Interviews",
-      description: "Gives candidates feedback to improve and organizations objective assessments of communication & professionalism."
+      title: "Smart Matching",
+      description: "Matches professionals and roles using profession, skills, experience, location and availability."
     },
     {
-      icon: "/images/icons/ai-verified-opportunities.svg",
-      title: "Verified Opportunities / Trust Layer",
-      description: "Ensures candidates apply to trusted roles and organizations hire 100% verified, compliant staff."
+      icon: "/images/icons/ai-feedback.svg",
+      title: "AI Interviews",
+      description: "Structured AI interviews professionals complete once and reuse, plus job-specific interviews when an organization requests one."
+    },
+    {
+      icon: "/images/icons/ai-powered.svg",
+      title: "AI Scorecards",
+      description: "Every completed interview produces a scorecard with category scores, a summary and a full transcript recruiters can review."
     },
     {
       icon: "/images/icons/ai-predictive-availability.svg",
-      title: "Unified Communication Tools",
-      description: "Seamless chat for candidates to connect with recruiters, and for recruiters to manage all candidate outreach."
+      title: "Availability-Aware Staffing",
+      description: "Professionals choose when they're available, so urgent shifts reach people nearby who can actually work."
+    },
+    {
+      icon: "/images/icons/ai-verified-opportunities.svg",
+      title: "Verified Profiles & Opportunities",
+      description: "Identity, documents and credentials are reviewed, and verification status is visible before anyone commits."
     }
   ];
   
   export const APP_FEATURES: AppFeature[] = [
     {
       screen: "/images/features/resume-upload.png",
-      title: "Profile & Doc Upload",
-      description: "Securely store all your professional documents in one place to create a comprehensive, standout profile."
+      title: "Profile & Document Upload",
+      description: "Upload your resume, licences and certifications once, then track their verification status in one place."
     },
     {
       screen: "/images/features/map-view.svg",
       title: "Map View",
-      description: "Visually discover job openings in your area. See commute times and find shifts close to home."
+      description: "See opportunities around you on a map and search within the distance you're willing to travel."
     },
     {
       screen: "/images/features/job-marketplace.svg",
-      title: "Job / Candidate Marketplace",
-      description: "Filter through full-time, contract, and freelance roles to find the perfect opportunity that fits your schedule and skills."
+      title: "Job Marketplace",
+      description: "Browse recommended roles, urgent shifts, job invites and hiring organizations. Save the ones you like and track every application."
     },
     {
       screen: "/images/features/wallet-payment.svg",
-      title: "Wallet & Payment History",
-      description: "Track your earnings and manage payments directly within the app. Get paid reliably with full transparency."
+      title: "Wallet & Payments",
+      description: "See the earnings and transaction history for every shift, and withdraw to your linked bank account."
     }
   ];
   
@@ -174,3 +174,87 @@ export interface CompanyLogo {
       alt: "User 4"
     },
   ];
+  // Platform journey (Home)
+  export interface JourneyStep {
+    title: string;
+    description: string;
+  }
+
+  export const PLATFORM_JOURNEY: JourneyStep[] = [
+    {
+      title: "Build Your Profile",
+      description: "Professionals upload a resume and credentials. Organizations post jobs and shifts.",
+    },
+    {
+      title: "Get Verified",
+      description: "Identity, documents and credentials are reviewed before work begins.",
+    },
+    {
+      title: "Complete an AI Interview",
+      description: "A structured interview produces a scorecard recruiters can rely on.",
+    },
+    {
+      title: "Smart AI Matching",
+      description: "Our AI finds ideal job and candidate fits based on skills, availability and location.",
+    },
+    {
+      title: "Hire or Fill Shifts",
+      description: "Apply to roles, respond to job invites, or accept urgent shifts in a tap.",
+    },
+    {
+      title: "Work Your Shifts",
+      description: "Upcoming shifts, check-in and shift history, all in one place.",
+    },
+    {
+      title: "Get Paid",
+      description: "Earnings are credited to your wallet once attendance is verified.",
+    },
+    {
+      title: "Stay in the Loop",
+      description: "Real-time notifications, chat and application status for both sides.",
+    },
+  ];
+
+  // Urgent staffing flow (Home)
+  export const URGENT_STAFFING_STEPS: JourneyStep[] = [
+    {
+      title: "Urgent Requirement Posted",
+      description: "An organization needs a Registered Nurse for tonight's shift.",
+    },
+    {
+      title: "KeRaeva Finds Who's Eligible",
+      description: "The requirement is matched against professionals' role, availability and location.",
+    },
+    {
+      title: "Instant Opportunity Alert",
+      description: "Eligible professionals get the shift details (location, timing and pay) on their phone.",
+    },
+    {
+      title: "Accept or Decline in a Tap",
+      description: "Professionals review the shift and respond. Shifts are filled on a first-accept basis.",
+    },
+    {
+      title: "Shift Confirmed",
+      description: "The shift moves to the professional's upcoming work, and the organization knows it's covered.",
+    },
+  ];
+
+  // Shift-to-payment flow (Home)
+  export const WORKFORCE_STEPS: string[] = [
+    "Shift scheduled",
+    "Check in and out from the app",
+    "Attendance verified",
+    "Earnings credited to the wallet",
+    "Withdraw to a linked bank account",
+  ];
+
+  // External links
+  export const RECRUITER_REGISTRATION_URL = "https://recruiter.keraeva.com/registration";
+
+  export const APP_STORE_LINKS = {
+    googlePlay: "https://play.google.com/store/apps/details?id=com.keraeva",
+    // iOS app is not yet published on the App Store
+    appStore: null as string | null,
+  };
+
+  export const DEMO_VIDEO_URL = "https://youtu.be/4Rd9ZeAYZgc?si=0zWtfUsrjAJRqWbO";

@@ -81,6 +81,8 @@ export default function Header({ children }: HeaderProps) {
             <Button
               className="xl:hidden rounded p-2 z-20"
               onClick={() => setMobileOpen((o) => !o)}
+              aria-label={mobileOpen ? "Close menu" : "Open menu"}
+              aria-expanded={mobileOpen}
             >
               {mobileOpen ? <X size={20} /> : <Menu size={20} />}
             </Button>

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Input } from "@/components/ui/input";
 import { FaFacebook, FaLinkedin, FaInstagram } from "react-icons/fa";
 import { ChevronRight } from "lucide-react";
+import { submitLead } from "@/utils/leads";
 import { Heading } from "@/components/ui/heading";
 import { Section } from "@/components/ui/section";
 import { CustomButton } from "@/components/ui/custom-button";
@@ -20,7 +21,7 @@ export const landingFooterColumns: FooterColumn[] = [
     links: [
       { label: 'Medical Organizations', href: '/medical-organizations' },
       { label: 'Medical Professionals', href: '/medical-professionals' },
-      { label: 'KeRaeva AI', href: '/coming_soon' },
+      { label: 'KeRaeva AI', href: '/coming-soon' },
       { label: 'Subscription Plans', href: '/subscriptions' },
     ],
   },
@@ -40,8 +41,8 @@ export const landingFooterColumns: FooterColumn[] = [
       { label: 'Help Center', href: '/help_center' },
       { label: 'Privacy Policy', href: '/privacy-policy' },
       { label: 'Terms & Conditions', href: '/terms-conditions' },
-      { label: 'Refund Policy', href: '#refund' },
-      { label: 'Data Protection (HIPAA/GDPR)', href: '#data-protection' },
+      { label: 'Refund Policy', href: '/terms-conditions' },
+      { label: 'Data Protection', href: '/privacy-policy' },
       { label: 'Support', href: '/support' },
     ],
   },
@@ -63,16 +64,15 @@ export function Footer() {
     setIsSubmitting(true);
     setMessage("");
 
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+    const result = await submitLead({ type: "newsletter", email });
 
-      setMessage(`✓ Successfully subscribed with ${email}!`);
+    if (result.ok) {
+      setMessage(`✓ Subscribed with ${email}. Thank you!`);
       setEmail("");
-    } catch {
-      setMessage("✗ Something went wrong. Please try again.");
-    } finally {
-      setIsSubmitting(false);
+    } else {
+      setMessage(`✗ ${result.message}`);
     }
+    setIsSubmitting(false);
   };
 
   return (
@@ -96,6 +96,7 @@ export function Footer() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email address"
+                aria-label="Email address"
                 className="rounded-full h-12 lg:w-[420px] px-5 text-sm sm:text-base sm:flex-1"
                 disabled={isSubmitting}
                 required
@@ -184,7 +185,7 @@ export function Footer() {
                       if (isExternal) {
                         return (
                           <a
-                            key={link.href}
+                            key={link.label}
                             href={link.href}
                             className="text-sm text-[#717680] hover:text-[#F3651B] transition-colors"
                           >
@@ -194,7 +195,7 @@ export function Footer() {
                       }
                       return (
                         <Link
-                          key={link.href}
+                          key={link.label}
                           href={link.href}
                           className="text-sm text-[#717680] hover:text-[#F3651B] transition-colors"
                         >

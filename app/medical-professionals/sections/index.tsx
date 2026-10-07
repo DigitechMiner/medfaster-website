@@ -6,12 +6,14 @@ import { FeatureCard } from "@/components/ui/feature-card";
 import { Heading } from "@/components/ui/heading";
 import { Paragraph, ResponsiveParagraph } from "@/components/ui/paragraph";
 import { CustomButton } from "@/components/ui/custom-button";
-import { ArrowRight, Download } from "lucide-react";
+import { Download } from "lucide-react";
 import { 
   COMPANY_LOGOS, 
   AI_FEATURES, 
   APP_FEATURES 
 } from "@/lib/constants";
+import { APP_STORE_LINKS } from "@/utils/constant";
+import { useModalStore } from "@/stores/modalStore";
 
 // Company Logos Section
 export function CompanyLogos() {
@@ -195,28 +197,53 @@ export function CareerOnTheGo() {
         </div>
 
         <div className="relative w-full max-w-2xl mx-auto flex justify-center items-start gap-4 md:gap-6 lg:gap-8 mt-10 overflow-hidden">
-          <div className="w-[200px] h-[180px] md:h-[220px] overflow-hidden flex items-center">
+          {/* Google Play - scannable QR linking to the live listing */}
+          <a
+            href={APP_STORE_LINKS.googlePlay}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-[150px] md:w-[180px] flex items-center"
+            aria-label="Get KeRaeva on Google Play"
+          >
             <Image
-              src="/images/ui/qr-code-1.png"
-              alt="QR Code 1"
-              width={250}
-              height={220}
-              className="object-contain w-full h-full"
+              src="/images/ui/qr-google-play.png"
+              alt="QR code to download KeRaeva on Google Play"
+              width={186}
+              height={223}
+              className="object-contain w-full h-auto"
               quality={100}
-              priority
             />
-          </div>
-          <div className="w-[200px] h-[180px] md:h-[220px] overflow-hidden flex items-center">
-            <Image
-              src="/images/ui/qr-code-2.png"
-              alt="QR Code 2"
-              width={250}
-              height={220}
-              className="object-contain w-full h-full"
-              quality={100}
-              priority
-            />
-          </div>
+          </a>
+
+          {/* App Store - link once the iOS app is published */}
+          {APP_STORE_LINKS.appStore ? (
+            <a
+              href={APP_STORE_LINKS.appStore}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-[150px] md:w-[180px] self-end"
+              aria-label="Download KeRaeva on the App Store"
+            >
+              <Image
+                src="/images/ui/badge-app-store.png"
+                alt="Download on the App Store"
+                width={169}
+                height={55}
+                className="object-contain w-full h-auto"
+              />
+            </a>
+          ) : (
+            <div className="w-[150px] md:w-[180px] self-end flex flex-col items-center gap-1">
+              <Image
+                src="/images/ui/badge-app-store.png"
+                alt="App Store"
+                width={169}
+                height={55}
+                className="object-contain w-full h-auto opacity-40"
+              />
+              <span className="text-xs text-[#717680]">Coming soon on iOS</span>
+            </div>
+          )}
         </div>
       </Section>
 
@@ -242,6 +269,8 @@ export function CareerOnTheGo() {
 
 // Next Career Section
 export function NextCareer() {
+  const openModal = useModalStore((state) => state.openModal);
+
   return (
     <Section 
       backgroundColor="bg-[#F4781B]"
@@ -272,6 +301,7 @@ export function NextCareer() {
                 rightIcon={Download}
                 iconClassName="text-white"
                 iconContainerClassName="bg-[#F4781B]"
+                onClick={() => openModal("get-app")}
               >
                 Download app
               </CustomButton>

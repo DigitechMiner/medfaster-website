@@ -6,8 +6,12 @@ import Image from "next/image";
 import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/heading";
 import { ResponsiveParagraph } from "@/components/ui/paragraph";
+import { useModalStore } from "@/stores/modalStore";
+import { RECRUITER_REGISTRATION_URL } from "@/utils/constant";
 
 export default function HeroSection() {
+  const openModal = useModalStore((state) => state.openModal);
+
   return (
     <Section>
       <div className="flex flex-col items-center text-center space-y-8">
@@ -19,16 +23,17 @@ export default function HeroSection() {
             weight="normal"
             className="text-[#252B37] mb-6"
           >
-            Find Your Next Healthcare Role, Or Your Next{" "}
-            <span className="text-[#F3651B] font-medium">Great Hire</span>
+            Healthcare Workforce, Powered by{" "}
+            <span className="text-[#F3651B] font-medium">Intelligence</span>
           </Heading>
         </div>
 
         {/* Sub-text */}
         <div className="max-w-2xl">
           <ResponsiveParagraph size="base" className="text-[#252B37]">
-            KeRaeva connects top-tier talent with leading healthcare
-            institutions across Canada, powered by smart AI.
+            KeRaeva connects healthcare organizations and professionals across
+            Canada to hire, verify, match, fill urgent shifts and get paid, all
+            in one AI-powered platform.
           </ResponsiveParagraph>
         </div>
 
@@ -40,17 +45,18 @@ export default function HeroSection() {
             size="lg"
             iconClassName="text-black"
             iconContainerClassName="bg-white border-0"
+            onClick={() => openModal("get-app")}
           >
-            Get Started Now
+            Find Opportunities
           </CustomButton>
 
           <CustomButton
             size="lg"
             variant="secondary"
             className="text-[#252B37] border-none bg-gray-100 py-3"
-            onClick={() => window.open("https://recruiter.keraeva.com/registration")}
+            onClick={() => window.open(RECRUITER_REGISTRATION_URL, "_blank")}
           >
-            Post a Job
+            Start Hiring
           </CustomButton>
         </div>
 

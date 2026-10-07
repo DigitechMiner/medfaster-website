@@ -35,7 +35,10 @@ Create `.env.local`:
 ```bash
 NEXT_PUBLIC_API_URL=<KeRaeva API base URL>
 NEXT_PUBLIC_GOOGLE_CLIENT_ID=<Google OAuth client ID>
+LEADS_WEBHOOK_URL=<webhook that receives demo requests and newsletter sign-ups>
 ```
+
+`LEADS_WEBHOOK_URL` is server-only. `POST /api/leads` validates demo and newsletter submissions and forwards them as JSON to this URL (for example a CRM, Zapier/Make, Slack or Google Apps Script hook). Without it, the forms show a "not connected yet" message pointing to support@keraeva.com instead of a fake success.
 
 ### Scripts
 
@@ -59,10 +62,12 @@ app/
   mobile-*/               Header-less pages rendered inside the mobile app WebView
 components/
   global/                 Header, Footer, Screen wrapper, OTP login modal
+  global/modals/          Site-wide modals (Get Started / Get the App, Request Demo)
   ui/ custom/             Section, Heading, Paragraph, CustomButton, FeatureCard
   card/ section/          Shared cards and CTA sections
 lib/ utils/constant/      Page content constants
-stores/ api/              Zustand stores and Axios client
+stores/ api/              Zustand stores (incl. modalStore) and Axios client
+app/api/leads/            Demo request + newsletter endpoint
 public/images, public/img Brand, product and illustration assets
 docs/                     Project documentation
 ```
@@ -76,6 +81,7 @@ Keep the existing KeRaeva visual identity. Build new sections from the existing 
 - Orange panels use `/images/patterns/orange-pattern-*.png` with an overlay blend
 - Buttons: `CustomButton` (pill with an icon chip)
 - Cards: `FeatureCard`, white `rounded-2xl` cards
+- Modals: open with `useModalStore().openModal("get-started" | "get-app" | "request-demo")`
 
 ## Documentation
 
