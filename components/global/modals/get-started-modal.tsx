@@ -6,6 +6,7 @@ import { ArrowLeft, Briefcase, ChevronRight, Stethoscope } from "lucide-react";
 import { Heading } from "@/components/ui/heading";
 import { Paragraph } from "@/components/ui/paragraph";
 import { ModalShell } from "./modal-shell";
+import { IconChip } from "@/components/ui/icon-chip";
 import { useModalStore } from "@/stores/modalStore";
 import { APP_STORE_LINKS, RECRUITER_REGISTRATION_URL } from "@/utils/constant";
 
@@ -38,9 +39,7 @@ export function GetStartedModal() {
 
           <div className="space-y-4">
             <button type="button" className={cardClass} onClick={() => setView("app")}>
-              <span className="flex-shrink-0 w-12 h-12 rounded-full bg-[#FEF0E7] flex items-center justify-center">
-                <Stethoscope className="w-6 h-6 text-[#F3651B]" />
-              </span>
+              <IconChip icon={Stethoscope} />
               <span className="flex-1">
                 <span className="block font-medium text-[#252B37]">I&apos;m a Healthcare Professional</span>
                 <span className="block text-sm text-[#717680] mt-1">
@@ -51,9 +50,7 @@ export function GetStartedModal() {
             </button>
 
             <a href={RECRUITER_REGISTRATION_URL} target="_blank" rel="noopener noreferrer" className={cardClass} onClick={closeModal}>
-              <span className="flex-shrink-0 w-12 h-12 rounded-full bg-[#FEF0E7] flex items-center justify-center">
-                <Briefcase className="w-6 h-6 text-[#F3651B]" />
-              </span>
+              <IconChip icon={Briefcase} />
               <span className="flex-1">
                 <span className="block font-medium text-[#252B37]">I&apos;m Hiring</span>
                 <span className="block text-sm text-[#717680] mt-1">

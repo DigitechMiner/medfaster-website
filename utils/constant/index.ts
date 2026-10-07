@@ -1,13 +1,10 @@
+import { CalendarCheck, ClipboardList, Facebook, FileText, Instagram, Linkedin, Mic, ShieldCheck, Target, type LucideIcon } from "lucide-react";
+
 // Home page constants
 
-export interface GetHiredStep {
-    iconSrc: string;
-    title: string;
-    description: string;
-  }
   
   export interface AIFeature {
-    icon: string;
+    icon: LucideIcon;
     title: string;
     description: string;
   }
@@ -27,55 +24,35 @@ export interface GetHiredStep {
     review: string;
   }
   
-export const GET_HIRED_STEPS: GetHiredStep[] = [
-    {
-      iconSrc: "/images/icons/create-profile.svg",
-      title: "Create Your Profile",
-      description:
-        "Upload your resume and certificates, and let our AI auto-fill your details instantly.",
-    },
-    {
-      iconSrc: "/images/icons/verify-screening.svg",
-      title: "Verify & Pre-Screen",
-      description:
-        "Get your credentials verified and complete a short AI interview to showcase your skills to top employers.",
-    },
-    {
-      iconSrc: "/images/icons/start-working.svg",
-      title: "Start Working",
-      description:
-        "Apply for nearby shifts or full-time roles and get paid directly and reliably through the platform.",
-    },
-  ];
   
   export const AI_FEATURES: AIFeature[] = [
     {
-      icon: "/images/icons/ai-resume-parsing.svg",
+      icon: FileText,
       title: "AI Resume Parsing",
       description: "Professionals upload a resume and KeRaeva structures it into a complete profile, giving organizations consistent candidate information."
     },
     {
-      icon: "/images/icons/ai-job-matching.svg",
+      icon: Target,
       title: "Smart Matching",
       description: "Matches professionals and roles using profession, skills, experience, location and availability."
     },
     {
-      icon: "/images/icons/ai-feedback.svg",
+      icon: Mic,
       title: "AI Interviews",
       description: "Structured AI interviews professionals complete once and reuse, plus job-specific interviews when an organization requests one."
     },
     {
-      icon: "/images/icons/ai-powered.svg",
+      icon: ClipboardList,
       title: "AI Scorecards",
       description: "Every completed interview produces a scorecard with category scores, a summary and a full transcript recruiters can review."
     },
     {
-      icon: "/images/icons/ai-predictive-availability.svg",
+      icon: CalendarCheck,
       title: "Availability-Aware Staffing",
       description: "Professionals choose when they're available, so urgent shifts reach people nearby who can actually work."
     },
     {
-      icon: "/images/icons/ai-verified-opportunities.svg",
+      icon: ShieldCheck,
       title: "Verified Profiles & Opportunities",
       description: "Identity, documents and credentials are reviewed, and verification status is visible before anyone commits."
     }
@@ -246,3 +223,14 @@ export const GET_HIRED_STEPS: GetHiredStep[] = [
   };
 
   export const DEMO_VIDEO_URL = "https://youtu.be/4Rd9ZeAYZgc?si=0zWtfUsrjAJRqWbO";
+
+  // Social profiles: an icon is shown only once its URL is set
+  export const SOCIAL_LINKS: { label: string; icon: LucideIcon; href: string | null }[] = [
+    { label: "LinkedIn", icon: Linkedin, href: null },
+    { label: "Facebook", icon: Facebook, href: null },
+    { label: "Instagram", icon: Instagram, href: null },
+  ];
+
+  export const ACTIVE_SOCIAL_LINKS = SOCIAL_LINKS.filter(
+    (link): link is { label: string; icon: LucideIcon; href: string } => Boolean(link.href)
+  );

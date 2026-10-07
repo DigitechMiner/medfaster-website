@@ -2,11 +2,10 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, Star, Quote } from "lucide-react";
 import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/heading";
 import { Paragraph, ResponsiveParagraph } from "@/components/ui/paragraph";
-import { FaStar } from "react-icons/fa";
 import { testimonials as landingTestimonials } from "@/utils/constant/landingPage";
 
 export default function TestimonialsSlider() {
@@ -46,13 +45,7 @@ export default function TestimonialsSlider() {
         <div className="flex flex-col md:flex-row items-start gap-6">
           {/* Left Side - Quote Icon */}
           <div className="flex-shrink-0 w-9 h-9 md:w-12 md:h-12 lg:w-16 lg:h-16">
-            <Image
-              src='/icon/quote.svg'
-              alt="Quote"
-              width={64}
-              height={64}
-              className="w-full h-full object-contain"
-            />
+            <Quote className="w-full h-full text-[#F3651B]" fill="currentColor" strokeWidth={0} aria-hidden="true" />
           </div>
 
           {/* Right Side - Stars, Description, Author */}
@@ -60,11 +53,13 @@ export default function TestimonialsSlider() {
             {/* Star Rating */}
             <div className="flex gap-1 mb-6">
               {[...Array(5)].map((_, i) => (
-                <FaStar
+                <Star
                   key={i}
                   className={`w-5 h-5 ${
                     i < currentTestimonial.rating ? "text-[#F3651B]" : "text-gray-200"
                   }`}
+                      fill="currentColor"
+                      aria-hidden="true"
                 />
               ))}
             </div>

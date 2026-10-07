@@ -1,7 +1,7 @@
 "use client";
 
 import { CustomButton } from "@/components/ui/custom-button";
-import { ChevronRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/heading";
@@ -41,7 +41,7 @@ export default function HeroSection() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <CustomButton
             className="py-1"
-            rightIcon={ChevronRight}
+            rightIcon={ArrowRight}
             size="lg"
             iconClassName="text-black"
             iconContainerClassName="bg-white border-0"

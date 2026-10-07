@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Heading } from "@/components/ui/heading";
 import { ResponsiveParagraph, Paragraph } from "@/components/ui/paragraph";
 import { CustomButton } from "@/components/ui/custom-button";
-import { ChevronRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Section } from "@/components/ui/section";
 
 export function ComingSoon() {
@@ -42,7 +42,7 @@ export function ComingSoon() {
               className="flex-1 max-w-md px-4 py-3 border border-gray-300 text-[#252B37] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#F3651B] bg-white !rounded-full"
             />
             <CustomButton
-              rightIcon={ChevronRight}
+              rightIcon={ArrowRight}
               size="md"
             >
               Notify Me

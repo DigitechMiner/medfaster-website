@@ -2,22 +2,7 @@
 
 import Image from "next/image";
 import { CustomButton } from "@/components/ui/custom-button";
-import {
-  ArrowRight,
-  Wand2,
-  ShieldCheck,
-  ChevronRight,
-  CalendarRange,
-  Sparkles,
-  Mic,
-  ClipboardList,
-  Send,
-  Users,
-  Repeat,
-  MessageSquare,
-  ClipboardCheck,
-  FileCheck2,
-} from "lucide-react";
+import { ArrowRight, Wand2, ShieldCheck, Sparkles, Mic, ClipboardList, Send, Users, Repeat, MessageSquare, ClipboardCheck, FileCheck2, Calendar } from "lucide-react";
 import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/heading";
 import { Paragraph, ResponsiveParagraph } from "@/components/ui/paragraph";
@@ -64,7 +49,7 @@ export function HeroSection() {
 
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
             <CustomButton
-              rightIcon={ChevronRight}
+              rightIcon={ArrowRight}
               onClick={() => openModal("request-demo")}
             >
               Request Demo
@@ -150,7 +135,7 @@ export function HiredSection() {
               {steps.map((step, index) => (
                 <div key={index} className="flex items-start gap-4 border-b border-white/20 pb-6">
                   <div className="flex-shrink-0 w-12 h-12 bg-opacity-20 rounded-full flex items-center justify-center">
-                    <step.icon className="w-10 h-10 text-white" aria-hidden="true" />
+                    <step.icon className="w-10 h-10 text-white" strokeWidth={1.5} aria-hidden="true" />
                   </div>
                   <div>
                     <Heading as="h3" size="xs" weight="medium" className="text-white mb-2">{step.title}</Heading>
@@ -299,7 +284,7 @@ export function DataDrivenHiring() {
         <div className="flex-shrink-0">
           <CustomButton
             size="lg"
-            rightIcon={ChevronRight}
+            rightIcon={ArrowRight}
             onClick={() => openModal("request-demo")}
           >
             Request Demo
@@ -383,7 +368,7 @@ export function StartHiring() {
 
               <CustomButton
                 className="bg-white text-black hover:bg-gray-100"
-                rightIcon={CalendarRange}
+                rightIcon={Calendar}
                 iconClassName="text-white"
                 iconContainerClassName="bg-[#F3651B]"
                 onClick={() => openModal("request-demo")}

@@ -1,10 +1,10 @@
 import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/heading";
 import { ResponsiveParagraph, Paragraph } from "@/components/ui/paragraph";
-import { Heart, Shield, Users, Zap } from "lucide-react";
+import { Globe, Heart, Shield, Stethoscope, Users, Zap, ArrowRight } from "lucide-react";
 import { CustomButton } from "@/components/ui/custom-button";
-import { ChevronRight } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { IconChip } from "@/components/ui/icon-chip";
 
 // Mission Section
 export function MissionSection() {
@@ -58,9 +58,7 @@ export function MissionSection() {
                 key={index}
                 className="flex flex-col items-center text-center space-y-3"
               >
-                <div className="w-16 h-16 rounded-full bg-orange-100 flex items-center justify-center">
-                  <Icon className="w-8 h-8 text-[#F3651B]" />
-                </div>
+                <IconChip icon={Icon} size="lg" />
                 <Paragraph
                   size="sm"
                   weight="semibold"
@@ -83,15 +81,13 @@ export function MissionSection() {
 export function PurposeSection() {
   const MISSION_VISION_CARDS = [
     {
-      icon: "/images/icons/sthetoscope.svg",
-      iconAlt: "Stethoscope",
+      icon: Stethoscope,
       title: "Our Mission",
       description:
         "We aim to eliminate staffing shortages, reduce patient waiting time, and empower healthcare providers to deliver faster, better, and smarter care.",
     },
     {
-      icon: "/images/icons/globe.svg",
-      iconAlt: "Globe",
+      icon: Globe,
       title: "Our Vision",
       description:
         "To become the world's most trusted digital healthcare ecosystem—a future where no patient waits, no hospital runs short-staffed, and every medical professional works at their full potential.",
@@ -119,7 +115,6 @@ export function PurposeSection() {
           <Card
             key={index}
             icon={card.icon}
-            iconAlt={card.iconAlt}
             title={card.title}
             description={card.description}
           />
@@ -127,7 +122,7 @@ export function PurposeSection() {
       </div>
 
       {/* Learn More Button */}
-      <CustomButton rightIcon={ChevronRight} size="md" className="my-0">
+      <CustomButton rightIcon={ArrowRight} size="md" className="my-0">
         Learn More
       </CustomButton>
     </Section>

@@ -1,9 +1,8 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { ChevronRight, Plus, Lock, LockIcon } from "lucide-react";
+import { ChevronRight, Plus, Lock, ArrowRight } from "lucide-react";
 import { CustomButton } from "@/components/ui/custom-button";
-import { LockClosedIcon } from "@heroicons/react/24/outline";
 
 const issueTypes = [
   "Job / Shift Issue",
@@ -159,7 +158,7 @@ export function ReportIssueForm() {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <CustomButton
           type="submit"
-          rightIcon={ChevronRight}
+          rightIcon={ArrowRight}
           size="md"
           className="w-full sm:w-auto my-0 justify-center"
           onClick={handleSubmit}

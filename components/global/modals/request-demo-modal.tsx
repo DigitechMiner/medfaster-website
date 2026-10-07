@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { CheckCircle2, ChevronRight } from "lucide-react";
+import { CheckCircle2, ArrowRight } from "lucide-react";
 import { Heading } from "@/components/ui/heading";
 import { Paragraph } from "@/components/ui/paragraph";
 import { Input } from "@/components/ui/input";
@@ -190,7 +190,7 @@ export function RequestDemoModal() {
           <CustomButton
             type="submit"
             disabled={isSubmitting}
-            rightIcon={ChevronRight}
+            rightIcon={ArrowRight}
             className="w-full justify-center my-0"
           >
             {isSubmitting ? "Sending..." : "Request Demo"}

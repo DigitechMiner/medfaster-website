@@ -5,6 +5,7 @@ import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/heading";
 import { Paragraph, ResponsiveParagraph } from "@/components/ui/paragraph";
 import { CustomButton } from "@/components/ui/custom-button";
+import { IconChip } from "@/components/ui/icon-chip";
 import { useModalStore } from "@/stores/modalStore";
 import { RECRUITER_REGISTRATION_URL, URGENT_STAFFING_STEPS } from "@/utils/constant";
 
@@ -89,9 +90,7 @@ export function UrgentStaffingSection({ audience = "everyone" }: UrgentStaffingS
                 key={step.title}
                 className="flex items-start gap-4 border-b border-white/20 pb-6 last:border-b-0 last:pb-0"
               >
-                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-white flex items-center justify-center">
-                  <Icon className="w-6 h-6 text-[#F3651B]" aria-hidden="true" />
-                </div>
+                <IconChip icon={Icon} variant="white" />
                 <div>
                   <Heading as="h3" size="xs" weight="medium" className="text-white mb-1">
                     {step.title}

@@ -39,7 +39,7 @@ export function AIHelpsSection() {
             title={feature.title}
             description={feature.description}
             visual={{
-              type: "image",
+              type: "icon",
               content: feature.icon
             }}
           />

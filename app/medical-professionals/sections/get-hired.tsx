@@ -56,14 +56,7 @@ export default function GetHiredSection() {
                   className="flex items-start gap-4 border-b border-white/20 pb-6"
                 >
                   <div className="flex-shrink-0 w-12 h-12 bg-opacity-20 rounded-full flex items-center justify-center">
-                    {/* Use Image component to render icon */}
-                    <Image
-                      src={step.iconSrc}
-                      alt={step.title + " icon"}
-                      width={40}
-                      height={40}
-                      className="object-contain"
-                    />
+                    <step.icon className="w-10 h-10 text-white" strokeWidth={1.5} aria-hidden="true" />
                   </div>
 
                   <div>

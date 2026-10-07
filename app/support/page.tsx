@@ -53,7 +53,7 @@ export default function ReportAnIssuePage() {
               Fill the Issue Form 
             </Heading>
             <Paragraph size="lg" className="text-[#717680]">
-                Request support for KeRaeva mobile app users. We respond within 24 hours, 🚨 Urgent job issues are prioritized for faster resolutions
+                Request support for KeRaeva mobile app users. We respond within 24 hours. Urgent job issues are prioritized for faster resolutions
               </Paragraph>
                </div>
             <br />

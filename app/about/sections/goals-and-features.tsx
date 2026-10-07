@@ -3,30 +3,31 @@ import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/heading";
 import { ResponsiveParagraph, Paragraph } from "@/components/ui/paragraph";
 import { Card } from "@/components/ui/card";
+import { HeartPulse, Hospital, Sparkles, UserRound } from "lucide-react";
 
 // Core Goals Section - (Keep previous version)
 export function CoreGoalsSection() {
   const CORE_GOALS = [
     {
-      icon: "/images/icons/professionals.svg",
+      icon: UserRound,
       title: "Empowering Professionals",
       description:
         "We empower professionals to find meaningful, flexible work that fits their lives and skills.",
     },
     {
-      icon: "/images/icons/hospital.svg",
+      icon: Hospital,
       title: "Zero Downtime for Hospitals",
       description:
         "We help healthcare Organizations and clinics operate with zero downtime by providing instant access to verified staff.",
     },
     {
-      icon: "/images/icons/patient-care.svg",
+      icon: HeartPulse,
       title: "Accelerating Patient Care",
       description:
         "Our network helps deliver healthcare to patients within minutes — anytime, anywhere.",
     },
     {
-      icon: "/images/icons/ai-powered.svg",
+      icon: Sparkles,
       title: "Empowering Professionals",
       description:
         "We use AI to predict, not just react — creating proactive healthcare systems that anticipate staffing needs before they become emergencies.",
@@ -54,7 +55,6 @@ export function CoreGoalsSection() {
           <Card
             key={index}
             icon={goal.icon}
-            iconAlt={goal.title}
             title={goal.title}
             description={goal.description}
           />

@@ -43,7 +43,7 @@ export function AIHelpsSection() {
             className="bg-[#FAFAFA] p-3 sm:p-4 rounded-lg"
             title={feature.title}
             description={feature.description}
-            visual={{ type: "image", content: feature.icon }}
+            visual={{ type: "icon", content: feature.icon }}
           />
         ))}
       </div>

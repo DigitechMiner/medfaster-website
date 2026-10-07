@@ -1,11 +1,11 @@
 import React from "react";
-import Image from "next/image";
+import { LucideIcon } from "lucide-react";
+import { IconChip } from "@/components/ui/icon-chip";
 import { Paragraph } from "@/components/ui/paragraph";
 import { cn } from "@/lib/utils";
 
 interface CardProps {
-  icon?: string;
-  iconAlt?: string;
+  icon?: LucideIcon;
   title: string;
   description: string;
   className?: string;
@@ -14,7 +14,6 @@ interface CardProps {
 
 export function Card({
   icon,
-  iconAlt,
   title,
   description,
   className,
@@ -34,16 +33,7 @@ export function Card({
 
     >
       {/* Icon */}
-      {icon && (
-        <div className="flex-shrink-0 mb-4 ">
-        <Image
-          src={icon}
-          alt={iconAlt || title}
-          width={100}
-          height={100}
-        />
-      </div>
-      )}
+      {icon && <IconChip icon={icon} size="lg" className="mb-4" />}
 
       <div className="flex flex-col items-start gap-4 relative z-10">
         <Paragraph

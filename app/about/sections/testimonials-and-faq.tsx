@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/heading";
 import { ResponsiveParagraph, Paragraph } from "@/components/ui/paragraph";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Star } from "lucide-react";
 import Image from "next/image";
 
 const TESTIMONIALS = [
@@ -105,14 +105,14 @@ function TestimonialCard({ testimonial }: { testimonial: (typeof TESTIMONIALS)[0
       {/* Rating Stars */}
       <div className="flex gap-1 mb-4 ">
         {[...Array(5)].map((_, i) => (
-          <span
+          <Star
             key={i}
-            className={`text-xl ${
-              i < testimonial.rating ? "text-[#F3651B]" : "text-gray-300"
+            className={`w-5 h-5 ${
+              i < testimonial.rating ? "text-[#F3651B]" : "text-gray-200"
             }`}
-          >
-            ★
-          </span>
+            fill="currentColor"
+            aria-hidden="true"
+          />
         ))}
       </div>
 

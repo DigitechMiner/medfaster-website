@@ -1,20 +1,19 @@
 import { Heading } from "@/components/ui/heading";
 import { ResponsiveParagraph, Paragraph } from "@/components/ui/paragraph";
-import { Mail, Share2 } from "lucide-react";
-import { MapPin, Phone } from "lucide-react";
-import { FaFacebook, FaLinkedin, FaInstagram } from "react-icons/fa";
+import { Mail, MapPin, Phone, type LucideIcon } from "lucide-react";
+import { IconChip } from "@/components/ui/icon-chip";
 
 import React from "react";
 
 interface ContactInfoCardProps {
-  icon: React.ComponentType<{ className: string }>;
+  icon: LucideIcon;
   label: string;
   content: React.ReactNode;
 }
 const CONTACT_INFO = {
   location: {
     label: "Location",
-    value: "Medfaster Canada Head Office",
+    value: "KeRaeva Canada Head Office",
     icon: MapPin,
   },
   phone: {
@@ -36,9 +35,7 @@ function ContactInfoC({
 }: ContactInfoCardProps) {
   return (
     <div className="flex items-start gap-4">
-      <div className="flex-shrink-0 w-12 h-12 rounded-full bg-[#F3651B] flex items-center justify-center">
-        <Icon className="w-6 h-6 text-white" />
-      </div>
+      <IconChip icon={Icon} variant="solid" />
       <div>
         <Paragraph size="sm" weight="medium" className="text-[#717680]">
           {label}

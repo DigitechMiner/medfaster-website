@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { CustomButton } from "@/components/ui/custom-button";
 import InputIcon from "@/components/ui/input-icon";
-import { Search, MapPin, ChevronRight } from "lucide-react";
+import { Search, MapPin, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/heading";
@@ -71,7 +71,7 @@ export default function HeroSection() {
             </ResponsiveParagraph>
             <div className="flex items-center gap-4">
               <CustomButton 
-              rightIcon={ChevronRight}
+              rightIcon={ArrowRight}
               onClick={handleBrowseJobs}
               >
                 Browse Nearby Jobs

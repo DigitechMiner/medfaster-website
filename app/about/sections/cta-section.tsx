@@ -2,7 +2,7 @@ import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/heading";
 import { ResponsiveParagraph } from "@/components/ui/paragraph";
 import { CustomButton } from "@/components/ui/custom-button";
-import { ChevronRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export function CTASection() {
   return (
@@ -28,7 +28,7 @@ export function CTASection() {
       {/* CTA Button */}
       <CustomButton
         className="bg-white text-black hover:bg-gray-100 border-1 py-1"
-        rightIcon={ChevronRight}
+        rightIcon={ArrowRight}
         iconClassName="text-white"
         iconContainerClassName="bg-[#F3651B] rounded-full"
         size="lg"

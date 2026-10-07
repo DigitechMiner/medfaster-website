@@ -3,23 +3,23 @@ import { Heading } from "@/components/ui/heading";
 import { ResponsiveParagraph } from "@/components/ui/paragraph";
 import { CustomButton } from "@/components/ui/custom-button";
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Briefcase, ShieldCheck, UserPlus } from "lucide-react";
 
 const STEPS = [
   {
-    iconSrc: "/images/icons/create-profile.svg",
+    icon: UserPlus,
     title: "Create Your Profile",
     description:
       "Upload your resume and certificates, and let our AI auto-fill your details instantly.",
   },
   {
-    iconSrc: "/images/icons/verify-screening.svg",
+    icon: ShieldCheck,
     title: "Verify & Pre-Screen",
     description:
       "Get your credentials verified and complete a short AI interview to showcase your skills to top employers.",
   },
   {
-    iconSrc: "/images/icons/start-working.svg",
+    icon: Briefcase,
     title: "Start Working",
     description:
       "Apply for nearby shifts or full-time roles and get paid directly and reliably through the platform.",
@@ -75,14 +75,7 @@ export function ThreeStepsSection() {
                   className="flex items-start gap-4 border-b border-white/20 pb-6"
                 >
                   <div className="flex-shrink-0 w-12 h-12 bg-opacity-20 rounded-full flex items-center justify-center">
-                    {/* Use Image component to render icon */}
-                    <Image
-                      src={step.iconSrc}
-                      alt={step.title + " icon"}
-                      width={40}
-                      height={40}
-                      className="object-contain"
-                    />
+                    <step.icon className="w-10 h-10 text-white" strokeWidth={1.5} aria-hidden="true" />
                   </div>
 
                   <div>

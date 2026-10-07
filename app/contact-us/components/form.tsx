@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Paragraph } from "@/components/ui/paragraph";
 import { Input } from "@/components/ui/input";
 import { CustomButton } from "@/components/ui/custom-button";
@@ -252,7 +252,7 @@ export function ContactForm({ onSubmitSuccess }: ContactFormProps) {
           type="submit"
 
           disabled={isSubmitting}
-          rightIcon={ChevronRight}
+          rightIcon={ArrowRight}
           size="lg"
           className="w-full sm:w-auto my-0 justify-center items-center py-1"
         >

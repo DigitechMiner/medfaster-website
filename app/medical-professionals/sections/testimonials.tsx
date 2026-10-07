@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { FaStar } from "react-icons/fa";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, Star } from "lucide-react";
 import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/heading";
 import { ResponsiveParagraph, Paragraph } from "@/components/ui/paragraph";
@@ -52,13 +51,15 @@ export default function TestimonialsSection() {
                 {/* Star Rating */}
                 <div className="flex gap-1 mb-4">
                   {[...Array(5)].map((_, i) => (
-                    <FaStar 
+                    <Star 
                       key={i} 
                       className={`w-5 h-5 ${
                         i < testimonial.rating 
                           ? 'text-[#F3651B]' 
                           : 'text-gray-200'
-                      }`} 
+                      }`}
+                      fill="currentColor"
+                      aria-hidden="true" 
                     />
                   ))}
                 </div>

@@ -1,5 +1,7 @@
 import Image from "next/image";
+import { Users } from "lucide-react";
 import { Section } from "@/components/ui/section";
+import { IconChip } from "@/components/ui/icon-chip";
 import { Heading } from "@/components/ui/heading";
 import { ResponsiveParagraph, Paragraph } from "@/components/ui/paragraph";
 
@@ -58,7 +60,7 @@ export function StatsSection() {
       label: "Verified Professionals",
       description:
         "A growing, active network of pre-screened, credentialed candidates.",
-      icon: "/images/icons/people.svg",
+      icon: Users,
     },
     {
       number: "90%",
@@ -102,13 +104,7 @@ export function StatsSection() {
         <div className="border border-gray-200 rounded-lg p-8 lg:p-10 flex flex-col justify-between">
           {STATS[0].icon && (
             <div className="mb-6">
-              <Image
-                src={STATS[0].icon}
-                alt={STATS[0].label}
-                width={64}
-                height={64}
-                className="w-12 h-12 lg:w-16 lg:h-16"
-              />
+              <IconChip icon={STATS[0].icon} size="lg" />
             </div>
           )}
           <div>

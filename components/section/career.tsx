@@ -2,7 +2,7 @@ import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/heading";
 import { Paragraph } from "@/components/ui/paragraph";
 import { CustomButton } from "@/components/ui/custom-button";
-import { ChevronRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 
 export function CareerCTASection() {
@@ -41,7 +41,7 @@ export function CareerCTASection() {
 
             <CustomButton
               className="bg-white text-[#F3651B] py-1"
-              rightIcon={ChevronRight}
+              rightIcon={ArrowRight}
               iconClassName="text-white"
               iconContainerClassName="bg-[#F3651B] rounded-full"
               size="lg"

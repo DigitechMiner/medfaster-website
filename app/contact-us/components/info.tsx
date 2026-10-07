@@ -1,11 +1,13 @@
 import { Heading } from "@/components/ui/heading";
 import { ResponsiveParagraph, Paragraph } from "@/components/ui/paragraph";
-import { Share2 } from "lucide-react";
+import { Share2, type LucideIcon } from "lucide-react";
+import { IconChip } from "@/components/ui/icon-chip";
+import { ACTIVE_SOCIAL_LINKS } from "@/utils/constant";
 import { CONTACT_INFO } from "./constants";
 import React from "react";
 
 interface ContactInfoCardProps {
-  icon: React.ComponentType<{ className: string }>;
+  icon: LucideIcon;
   label: string;
   content: React.ReactNode;
 }
@@ -17,9 +19,7 @@ function ContactInfoCard({
 }: ContactInfoCardProps) {
   return (
     <div className="flex items-start gap-4">
-      <div className="flex-shrink-0 w-12 h-12 rounded-full bg-[#F3651B] flex items-center justify-center">
-        <Icon className="w-6 h-6 text-white" />
-      </div>
+      <IconChip icon={Icon} variant="solid" />
       <div>
         <Paragraph size="sm" weight="medium" className="text-[#717680]">
           {label}
@@ -74,39 +74,36 @@ export function ContactInfoSection() {
         />
       </div>
 
-      {/* Social Links Card */}
-      <div className="pt-8">
-        <div className="flex items-start gap-4">
-          <div className="flex-shrink-0 w-12 h-12 rounded-full bg-[#F3651B] flex items-center justify-center">
-            <Share2 className="w-6 h-6 text-white" />
-          </div>
-          <div className="flex-1">
-            <Paragraph size="sm" weight="medium" className="text-[#717680] mb-4">
-              {CONTACT_INFO.social.label}
-            </Paragraph>
-            <div className="flex gap-4">
-              {CONTACT_INFO.social.links.map((social) => {
-                const Icon = social.icon;
-                return (
-                  <a
-                    key={social.label}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:opacity-80 transition-opacity"
-                    aria-label={social.label}
-                  >
-                    <Icon
-                      className="w-6 h-6"
-                      style={{ color: social.color }}
-                    />
-                  </a>
-                );
-              })}
+      {/* Social Links Card - shown once social profile URLs are set */}
+      {ACTIVE_SOCIAL_LINKS.length > 0 && (
+        <div className="pt-8">
+          <div className="flex items-start gap-4">
+            <IconChip icon={Share2} variant="solid" />
+            <div className="flex-1">
+              <Paragraph size="sm" weight="medium" className="text-[#717680] mb-4">
+                Follow Us
+              </Paragraph>
+              <div className="flex gap-4">
+                {ACTIVE_SOCIAL_LINKS.map((social) => {
+                  const Icon = social.icon;
+                  return (
+                    <a
+                      key={social.label}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[#717680] hover:text-[#F3651B] transition-colors"
+                      aria-label={social.label}
+                    >
+                      <Icon className="w-6 h-6" strokeWidth={1.5} />
+                    </a>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

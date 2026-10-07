@@ -3,9 +3,9 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Input } from "@/components/ui/input";
-import { FaFacebook, FaLinkedin, FaInstagram } from "react-icons/fa";
-import { ChevronRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { submitLead } from "@/utils/leads";
+import { ACTIVE_SOCIAL_LINKS } from "@/utils/constant";
 import { Heading } from "@/components/ui/heading";
 import { Section } from "@/components/ui/section";
 import { CustomButton } from "@/components/ui/custom-button";
@@ -104,7 +104,7 @@ export function Footer() {
               <CustomButton
                 type="submit"
                 disabled={isSubmitting}
-                rightIcon={ChevronRight}
+                rightIcon={ArrowRight}
                 size="md"
                 className="w-full sm:w-auto my-0 justify-center"
               >
@@ -234,35 +234,25 @@ export function Footer() {
                 </ResponsiveParagraph>
               </div>
 
-              <div className="flex gap-3 sm:gap-4 order-1 sm:order-2">
-                <a
-                  href="https://facebook.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:-translate-y-1 transition-transform"
-                  aria-label="Facebook"
-                >
-                  <FaFacebook className="h-5 w-5 sm:h-6 sm:w-6 text-[#1877F2]" />
-                </a>
-                <a
-                  href="https://linkedin.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:-translate-y-1 transition-transform"
-                  aria-label="LinkedIn"
-                >
-                  <FaLinkedin className="h-5 w-5 sm:h-6 sm:w-6 text-[#0A66C2]" />
-                </a>
-                <a
-                  href="https://instagram.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:-translate-y-1 transition-transform"
-                  aria-label="Instagram"
-                >
-                  <FaInstagram className="h-5 w-5 sm:h-6 sm:w-6 text-[#E4405F]" />
-                </a>
-              </div>
+              {ACTIVE_SOCIAL_LINKS.length > 0 && (
+                <div className="flex gap-3 sm:gap-4 order-1 sm:order-2">
+                  {ACTIVE_SOCIAL_LINKS.map((social) => {
+                    const Icon = social.icon;
+                    return (
+                      <a
+                        key={social.label}
+                        href={social.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[#717680] hover:text-[#F3651B] hover:-translate-y-1 transition-all"
+                        aria-label={social.label}
+                      >
+                        <Icon className="h-5 w-5 sm:h-6 sm:w-6" strokeWidth={1.5} />
+                      </a>
+                    );
+                  })}
+                </div>
+              )}
             </div>
           </div>
        

@@ -1,13 +1,15 @@
+import { CalendarCheck, Briefcase, FileText, MessageSquareText, ShieldCheck, Target, UserPlus, type LucideIcon } from "lucide-react";
+
 // Home page constants
 
 export interface GetHiredStep {
-  iconSrc: string;
+  icon: LucideIcon;
   title: string;
   description: string;
 }
 
 export interface AIFeature {
-  icon: string;
+  icon: LucideIcon;
   title: string;
   description: string;
 }
@@ -29,19 +31,19 @@ export interface Testimonial {
 
 export const GET_HIRED_STEPS: GetHiredStep[] = [
   {
-    iconSrc: "/images/icons/create-profile.svg",
+    icon: UserPlus,
     title: "Create Your Profile",
     description:
       "Upload your resume and certificates, and let our AI auto-fill your details instantly.",
   },
   {
-    iconSrc: "/images/icons/verify-screening.svg",
+    icon: ShieldCheck,
     title: "Verify & Pre-Screen",
     description:
       "Get your credentials verified and complete a short AI interview to showcase your skills to top employers.",
   },
   {
-    iconSrc: "/images/icons/start-working.svg",
+    icon: Briefcase,
     title: "Start Working",
     description:
       "Apply for nearby shifts or full-time roles and get paid directly and reliably through the platform.",
@@ -50,27 +52,27 @@ export const GET_HIRED_STEPS: GetHiredStep[] = [
 
 export const AI_FEATURES: AIFeature[] = [
   {
-    icon: "/images/icons/ai-resume-parsing.svg",
+    icon: FileText,
     title: "AI Resume Parsing",
     description: "Build your professional profile in seconds, not hours. Just upload your documents and our AI does the rest."
   },
   {
-    icon: "/images/icons/ai-job-matching.svg",
+    icon: Target,
     title: "Smart Job Matching",
     description: "Stop scrolling through irrelevant listings. Get matched with roles that fit your specific skills and schedule."
   },
   {
-    icon: "/images/icons/ai-predictive-availability.svg",
+    icon: CalendarCheck,
     title: "Predictive Availability",
     description: "Our system anticipates employer needs to show you jobs that match your future availability and experience."
   },
   {
-    icon: "/images/icons/ai-feedback.svg",
+    icon: MessageSquareText,
     title: "Confidential AI Feedback",
     description: "After your AI interview, get private feedback on your strengths to help you stand out to employers."
   },
   {
-    icon: "/images/icons/ai-verified-opportunities.svg",
+    icon: ShieldCheck,
     title: "Verified Opportunities",
     description: "Apply with total confidence. Our system helps verify every employer, so you only see trusted, high-quality roles."
   }
