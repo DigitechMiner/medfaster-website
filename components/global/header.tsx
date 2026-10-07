@@ -57,6 +57,7 @@ export default function Header({ children }: HeaderProps) {
   const [mobileSubmenu, setMobileSubmenu] = useState<string | null>(null);
   const navRef = useRef<HTMLElement>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
 
   const closeAll = useCallback(() => {
     setOpenSubmenu(null);
@@ -85,11 +86,12 @@ export default function Header({ children }: HeaderProps) {
     };
   }, [openSubmenu, mobileOpen, closeAll]);
 
-  // Lock page scroll behind the open mobile menu
+  // Lock page scroll behind the open mobile menu and move focus into it
   useEffect(() => {
     if (!mobileOpen) return;
     const previous = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+    closeButtonRef.current?.focus();
     return () => {
       document.body.style.overflow = previous;
     };
@@ -265,133 +267,167 @@ export default function Header({ children }: HeaderProps) {
             </CustomButton>
           </div>
 
-          {/* Mobile Navigation - always mounted so it can animate */}
-          <div
-            id="mobile-navigation"
-            className={cn(
-              "xl:hidden absolute top-[calc(100%+8px)] left-0 right-0 z-50 mx-2 md:mx-4 origin-top",
-              motion,
-              mobileOpen
-                ? "opacity-100 translate-y-0 visible"
-                : "opacity-0 -translate-y-2 invisible pointer-events-none"
-            )}
-          >
-            <nav
-              aria-label="Mobile"
-              className="bg-white rounded-2xl shadow-xl border border-gray-200 p-3 max-h-[calc(100vh-120px)] overflow-y-auto"
-            >
-              <ul className="flex flex-col gap-1">
-                {navLinks.map((link) => {
-                  const submenu = link.submenu;
-                  if (!submenu) {
-                    const active = isActive(pathname, link.href);
-                    return (
-                      <li key={link.label}>
-                        <Link
-                          href={link.href}
-                          aria-current={active ? "page" : undefined}
-                          className={cn(
-                            "block rounded-xl px-4 py-3 font-medium",
-                            motion,
-                            active ? "bg-[#F3651B] text-white" : "text-gray-700 hover:bg-gray-100"
-                          )}
-                        >
-                          {link.label}
-                        </Link>
-                      </li>
-                    );
-                  }
-
-                  const isOpen = mobileSubmenu === link.label;
-                  return (
-                    <li key={link.label}>
-                      <button
-                        type="button"
-                        className={cn(
-                          "w-full flex items-center justify-between rounded-xl px-4 py-3 font-medium text-gray-700 hover:bg-gray-100",
-                          motion
-                        )}
-                        aria-expanded={isOpen}
-                        onClick={() => setMobileSubmenu(isOpen ? null : link.label)}
-                      >
-                        {link.label}
-                        <ChevronDown size={18} className={cn(motion, isOpen && "rotate-180")} />
-                      </button>
-
-                      {/* Accordion - animates height via grid rows */}
-                      <div
-                        className={cn(
-                          "grid",
-                          motion,
-                          isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
-                        )}
-                      >
-                        <ul className="overflow-hidden">
-                          {submenu.map((sub) => {
-                            const active = isActive(pathname, sub.href);
-                            return (
-                              <li key={sub.label}>
-                                <Link
-                                  href={sub.href}
-                                  tabIndex={isOpen ? undefined : -1}
-                                  aria-current={active ? "page" : undefined}
-                                  className={cn(
-                                    "block rounded-xl ml-3 px-4 py-2.5 mt-1",
-                                    motion,
-                                    active ? "bg-[#FEF0E7]" : "hover:bg-gray-50"
-                                  )}
-                                >
-                                  <span className={cn("block text-sm font-medium", active ? "text-[#F3651B]" : "text-[#252B37]")}>
-                                    {sub.label}
-                                  </span>
-                                  {sub.description && (
-                                    <span className="block text-xs text-[#717680] mt-0.5">{sub.description}</span>
-                                  )}
-                                </Link>
-                              </li>
-                            );
-                          })}
-                        </ul>
-                      </div>
-                    </li>
-                  );
-                })}
-              </ul>
-
-              <div className="border-t border-gray-100 mt-3 pt-3 flex flex-col gap-2">
-                <CustomButton
-                  variant="secondary"
-                  className="w-full justify-center my-0 py-2.5"
-                  onClick={() => {
-                    setMobileOpen(false);
-                    openModal("get-app");
-                  }}
-                >
-                  Get the App
-                </CustomButton>
-                <CustomButton
-                  className="w-full justify-center my-0 py-2.5"
-                  onClick={() => (window.location.href = RECRUITER_LOGIN_URL)}
-                >
-                  Login as Recruiter
-                </CustomButton>
-              </div>
-            </nav>
-          </div>
         </header>
         {children}
       </div>
 
-      {/* Dim the page behind the open mobile menu */}
+      {/* Mobile Navigation - full-screen panel that slides in from the left */}
       <div
-        aria-hidden="true"
-        onClick={() => setMobileOpen(false)}
+        id="mobile-navigation"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Menu"
         className={cn(
-          "xl:hidden fixed inset-0 z-40 bg-black/20",
-          motion,
-          mobileOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"
+          "xl:hidden fixed inset-0 z-[60] bg-white flex flex-col",
+          "transition-[translate,visibility] duration-300 ease-out motion-reduce:transition-none",
+          mobileOpen ? "translate-x-0 visible" : "-translate-x-full invisible"
         )}
-      />
+      >
+        {/* Panel top bar - mirrors the header */}
+        <div className="flex items-center justify-between px-4 md:px-8 py-4 border-b border-gray-100">
+          <Link href="/" aria-label="KeRaeva home" className="w-40 md:w-48">
+            <Image src="/images/ui/KeRaeva-logo.svg" height={50} width={200} alt="KeRaeva" />
+          </Link>
+          <button
+            ref={closeButtonRef}
+            type="button"
+            onClick={() => setMobileOpen(false)}
+            aria-label="Close menu"
+            className={cn(
+              "w-10 h-10 rounded-full bg-[#F3651B] text-white flex items-center justify-center shadow hover:opacity-90",
+              motion,
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F3651B]/50 focus-visible:ring-offset-2"
+            )}
+          >
+            <X size={20} />
+          </button>
+        </div>
+
+        {/* Links */}
+        <nav aria-label="Mobile" className="flex-1 overflow-y-auto px-4 md:px-8 py-4">
+          <ul className="flex flex-col">
+            {navLinks.map((link, index) => {
+              const submenu = link.submenu;
+              // Staggered entrance for each row
+              const rowClass = cn(
+                "border-b border-gray-100",
+                "transition-all duration-300 ease-out motion-reduce:transition-none",
+                mobileOpen ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-4"
+              );
+              const rowStyle = { transitionDelay: mobileOpen ? `${100 + index * 50}ms` : "0ms" };
+
+              if (!submenu) {
+                const active = isActive(pathname, link.href);
+                return (
+                  <li key={link.label} className={rowClass} style={rowStyle}>
+                    <Link
+                      href={link.href}
+                      aria-current={active ? "page" : undefined}
+                      className={cn(
+                        "flex items-center justify-between py-4 text-xl font-medium",
+                        motion,
+                        active ? "text-[#F3651B]" : "text-[#252B37] hover:text-[#F3651B]"
+                      )}
+                    >
+                      {link.label}
+                      {active && <span className="w-2 h-2 rounded-full bg-[#F3651B]" aria-hidden="true" />}
+                    </Link>
+                  </li>
+                );
+              }
+
+              const isOpen = mobileSubmenu === link.label;
+              const hasActiveChild = submenu.some((sub) => isActive(pathname, sub.href));
+              return (
+                <li key={link.label} className={rowClass} style={rowStyle}>
+                  <button
+                    type="button"
+                    className={cn(
+                      "w-full flex items-center justify-between py-4 text-xl font-medium",
+                      motion,
+                      hasActiveChild ? "text-[#F3651B]" : "text-[#252B37] hover:text-[#F3651B]"
+                    )}
+                    aria-expanded={isOpen}
+                    onClick={() => setMobileSubmenu(isOpen ? null : link.label)}
+                  >
+                    {link.label}
+                    <ChevronDown size={22} className={cn(motion, isOpen && "rotate-180")} />
+                  </button>
+
+                  {/* Accordion - animates height via grid rows */}
+                  <div
+                    className={cn(
+                      "grid",
+                      motion,
+                      isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                    )}
+                  >
+                    <ul className="overflow-hidden">
+                      {submenu.map((sub) => {
+                        const active = isActive(pathname, sub.href);
+                        return (
+                          <li key={sub.label} className="pb-2">
+                            <Link
+                              href={sub.href}
+                              tabIndex={isOpen ? undefined : -1}
+                              aria-current={active ? "page" : undefined}
+                              className={cn(
+                                "block rounded-xl px-4 py-3",
+                                motion,
+                                active ? "bg-[#FEF0E7]" : "bg-gray-50 hover:bg-[#FEF0E7]"
+                              )}
+                            >
+                              <span className={cn("block font-medium", active ? "text-[#F3651B]" : "text-[#252B37]")}>
+                                {sub.label}
+                              </span>
+                              {sub.description && (
+                                <span className="block text-sm text-[#717680] mt-0.5">{sub.description}</span>
+                              )}
+                            </Link>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+
+        {/* Bottom actions */}
+        <div
+          className={cn(
+            "px-4 md:px-8 pt-4 pb-6 border-t border-gray-100 flex flex-col gap-3",
+            "transition-all duration-300 ease-out motion-reduce:transition-none",
+            mobileOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+          )}
+          style={{ transitionDelay: mobileOpen ? "300ms" : "0ms" }}
+        >
+          <CustomButton
+            variant="secondary"
+            className="w-full justify-center my-0 py-2.5"
+            onClick={() => {
+              setMobileOpen(false);
+              openModal("get-app");
+            }}
+          >
+            Get the App
+          </CustomButton>
+          <CustomButton
+            className="w-full justify-center my-0 py-2.5"
+            onClick={() => (window.location.href = RECRUITER_LOGIN_URL)}
+          >
+            Login as Recruiter
+          </CustomButton>
+          <a
+            href="mailto:support@keraeva.com"
+            className="text-center text-sm text-[#717680] hover:text-[#F3651B] py-1.5"
+          >
+            support@keraeva.com
+          </a>
+        </div>
+      </div>
 
       <LoginModal
         isOpen={isLoginModalOpen}
