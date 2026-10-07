@@ -60,7 +60,7 @@ const getTagColors = (tag: string) => {
     return { text: '#475569', bg: '#F1F5F9' }; // dark slate / light slate
   }
   
-  // Default - Orange theme (MedFaster brand)
+  // Default - Orange theme (KeRaeva brand)
   return { text: '#C2410C', bg: '#FFEDD5' };
 };
 

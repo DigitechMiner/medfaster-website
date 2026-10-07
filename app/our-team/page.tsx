@@ -159,7 +159,7 @@ export default function TeamPage() {
                 href="/about_us"
                 className="text-[#252B37] transition-colors hover:text-[#F3651B]"
               >
-                About Medfaster
+                About KeRaeva
               </Link>
               <ChevronRight className="h-4 w-4 text-[#717680]" />
               <Paragraph size="lg" className="text-[#717680]">

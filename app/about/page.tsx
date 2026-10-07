@@ -13,7 +13,7 @@ import {
   PurposeSection,
   ThreeStepsSection,
   CoreGoalsSection,
-  WhyMedFasterSection,
+  WhyKeRaevaSection,
   JourneySection,
   TeamSection,
   AboutTestimonialsSection,
@@ -65,7 +65,7 @@ export default function AboutUsPage() {
       <PurposeSection />
       <ThreeStepsSection />
       <CoreGoalsSection />
-      <WhyMedFasterSection />
+      <WhyKeRaevaSection />
       <JourneySection />
       <TeamSection />
       <AboutTestimonialsSection />

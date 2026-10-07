@@ -64,9 +64,9 @@ export function CoreGoalsSection() {
   );
 }
 
-// Why MedFaster Section - Updated with numbered circles and connector line
-export function WhyMedFasterSection() {
-  const WHY_MEDFASTER = [
+// Why KeRaeva Section - Updated with numbered circles and connector line
+export function WhyKeRaevaSection() {
+  const WHY_KERAEVA = [
     {
       number: "01",
       title: "AI Matching",
@@ -96,7 +96,7 @@ export function WhyMedFasterSection() {
   return (
     <Section className="bg-gray-50">
         <Heading as="h2" size="md" className="text-[#252B37] mb-12">
-          Why <span className="text-[#F3651B]">MedFaster?</span>
+          Why <span className="text-[#F3651B]">KeRaeva?</span>
         </Heading>
 
         {/* Timeline with connector line */}
@@ -106,7 +106,7 @@ export function WhyMedFasterSection() {
 
           {/* Cards grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
-            {WHY_MEDFASTER.map((item, index) => (
+            {WHY_KERAEVA.map((item, index) => (
               <div key={index} className="flex flex-col items-start gap-4">
                 {/* Numbered circle */}
                 <div

@@ -25,7 +25,7 @@ For any privacy concerns, contact: support@keraeva.com`,
   {
     id: 2,
     title: "Introduction",
-    content: `Keraeva ("Platform") is operated in Canada by MedFaster Heath Tech Inc. ("Company," "we," "our," or "us").
+    content: `KeRaeva ("Platform") is operated in Canada by MedFaster Health Tech Inc. ("Company," "we," "our," or "us").
 
 We provide a healthcare workforce marketplace platform connecting licensed healthcare professionals ("Candidates") with healthcare institutions and recruiters ("Recruiters").
 
@@ -34,7 +34,7 @@ This Privacy Policy explains how we collect, use, disclose, store, and protect p
 • Applicable provincial privacy regulations
 • Industry best practices in healthcare data security
 
-By using Keraeva, you consent to the practices described herein.`,
+By using KeRaeva, you consent to the practices described herein.`,
   },
   {
     id: 3,
