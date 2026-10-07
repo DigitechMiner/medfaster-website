@@ -130,3 +130,34 @@
 .Toastify__toast-container {
   --toastify-font-family: var(--font-main), system-ui, sans-serif;
 }
+
+/* KeRaeva logo loader */
+@keyframes kr-logo-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
+}
+@keyframes kr-loader-bar {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(300%); }
+}
+.kr-logo-pulse {
+  animation: kr-logo-pulse 1.6s ease-in-out infinite;
+}
+.kr-loader-bar {
+  animation: kr-loader-bar 1.2s ease-in-out infinite;
+}
+
+/* Safety net: hide the preloader even if JavaScript never runs */
+@keyframes kr-preloader-fallback {
+  to { opacity: 0; visibility: hidden; }
+}
+.kr-preloader {
+  animation: kr-preloader-fallback 0.3s ease-out 6s forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kr-logo-pulse,
+  .kr-loader-bar {
+    animation: none;
+  }
+}

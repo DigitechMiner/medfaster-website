@@ -6,6 +6,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Analytics } from "@vercel/analytics/next";
 import { GlobalModals } from "@/components/global/modals";
+import { Preloader } from "@/components/global/preloader";
 
 export const metadata: Metadata = {
   title: "KeRaeva",
@@ -21,6 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={fonts}>
       <body className="font-sans">
+        <Preloader />
         <GoogleOAuthProviderWrapper>
           {children}
         </GoogleOAuthProviderWrapper>
