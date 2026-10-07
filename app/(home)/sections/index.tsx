@@ -51,9 +51,9 @@ export function AIHelpsSection() {
       <CustomButton
         className="w-full sm:w-auto"
         rightIcon={ArrowRight}
-        onClick={() => router.push("/medical-organizations")}
+        onClick={() => router.push("/keraeva-ai")}
       >
-        AI Recruiter Features
+        Explore KeRaeva AI
       </CustomButton>
     </Section>
   );

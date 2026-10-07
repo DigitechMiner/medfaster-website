@@ -29,6 +29,11 @@ const navLinks: NavLink[] = [
         href: "/medical-professionals",
         description: "Find jobs and shifts, get verified and get paid",
       },
+      {
+        label: "KeRaeva AI",
+        href: "/keraeva-ai",
+        description: "Every AI and smart feature across the platform",
+      },
     ],
   },
   { label: "Why KeRaeva?", href: "/about" },
