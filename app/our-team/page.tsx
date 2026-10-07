@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { ChevronRight } from "lucide-react";
 import { Section } from "@/components/ui/section";
 import Header from "@/components/global/header";
@@ -132,6 +133,7 @@ const TEAM_MEMBERS = [
 ];
 
 export default function TeamPage() {
+  const router = useRouter();
   const [activeTab, setActiveTab] = useState("all");
 
   const filteredMembers = useMemo(() => {
@@ -193,9 +195,9 @@ export default function TeamPage() {
             </div>
 
             <CustomButton
-              className="w-full rounded-xl bg-[#F3651B] text-white hover:bg-[#E85C0F] sm:w-fit"
+              className="w-full sm:w-fit"
               size="lg"
-            >
+             onClick={() => router.push("/careers")}>
               View Open positions
             </CustomButton>
           </div>

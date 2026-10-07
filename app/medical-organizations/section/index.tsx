@@ -55,7 +55,7 @@ export function HeroSection() {
               Request Demo
             </CustomButton>
             <CustomButton
-              className="!bg-gray-100 !text-[#252B37] !shadow-none"
+            variant="muted"
               onClick={() => window.open(RECRUITER_REGISTRATION_URL, "_blank")}
             >
               Post a Job
@@ -148,10 +148,8 @@ export function HiredSection() {
             </div>
 
             <CustomButton
-              className="bg-white text-black hover:bg-gray-100"
+            variant="inverse"
               rightIcon={ArrowRight}
-              iconClassName="text-white"
-              iconContainerClassName="bg-[#F3651B]"
               onClick={() => window.open(RECRUITER_REGISTRATION_URL, "_blank")}
             >
               Post a job
@@ -357,20 +355,17 @@ export function StartHiring() {
             {/* Buttons */}
             <div className="flex flex-wrap md:flex-row ">
               <CustomButton
-                className="bg-white text-black hover:bg-gray-100 mr-2 md:mr-4"
+            variant="inverse"
+                className="mr-2 md:mr-4"
                 rightIcon={ArrowRight}
-                iconClassName="text-white"
-                iconContainerClassName="bg-[#F3651B]"
                 onClick={() => window.open(RECRUITER_REGISTRATION_URL, "_blank")}
               >
                 Post a Job
               </CustomButton>
 
               <CustomButton
-                className="bg-white text-black hover:bg-gray-100"
+            variant="inverse"
                 rightIcon={Calendar}
-                iconClassName="text-white"
-                iconContainerClassName="bg-[#F3651B]"
                 onClick={() => openModal("request-demo")}
               >
                 Schedule Demo

@@ -264,10 +264,9 @@ export function NextCareer() {
 
             <div className="pt-2">
               <CustomButton
-                className="bg-white text-[#F3651B] hover:bg-gray-100 w-full sm:w-auto"
+            variant="inverse"
+                className="w-full sm:w-auto"
                 rightIcon={ArrowRight}
-                iconClassName="text-white"
-                iconContainerClassName="bg-[#F3651B]"
                 onClick={() => openModal("get-app")}
               >
                 Create Free Profile
@@ -297,20 +296,18 @@ export function NextCareer() {
             {/* ↓ stack buttons on mobile, row on sm+ */}
             <div className="flex flex-col sm:flex-row gap-3 pt-2">
               <CustomButton
-                className="bg-white text-[#F3651B] hover:bg-gray-100 w-full sm:w-auto"
+            variant="inverse"
+                className="w-full sm:w-auto"
                 rightIcon={ArrowRight}
-                iconClassName="text-white"
-                iconContainerClassName="bg-[#F3651B]"
                 onClick={() => window.open(RECRUITER_REGISTRATION_URL, "_blank")}
               >
                 Post a Job
               </CustomButton>
 
               <CustomButton
-                className="bg-white text-[#F3651B] hover:bg-gray-100 w-full sm:w-auto"
+            variant="inverse"
+                className="w-full sm:w-auto"
                 rightIcon={Calendar}
-                iconClassName="text-white"
-                iconContainerClassName="bg-[#F3651B]"
                 onClick={() => openModal("request-demo")}
               >
                 Schedule Demo

@@ -7,8 +7,10 @@ import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/heading";
 import { ResponsiveParagraph } from "@/components/ui/paragraph";
 import { GET_HIRED_STEPS } from "@/lib/constants";
+import { useModalStore } from "@/stores/modalStore";
 
 export default function GetHiredSection() {
+  const openModal = useModalStore((state) => state.openModal);
   const steps = GET_HIRED_STEPS;
 
   return (
@@ -80,11 +82,9 @@ export default function GetHiredSection() {
             </div>
 
             <CustomButton
-              className="bg-white text-black hover:bg-gray-100"
+            variant="inverse"
               rightIcon={ArrowRight}
-              iconClassName="text-white"
-              iconContainerClassName="bg-[#F3651B]"
-            >
+             onClick={() => openModal("get-app")}>
               Get Started
             </CustomButton>
           </div>

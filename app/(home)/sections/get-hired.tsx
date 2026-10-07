@@ -67,10 +67,8 @@ export default function GetHiredSection() {
 
         {/* Call-to-Action Button */}
         <CustomButton
-          className="bg-white text-black hover:bg-gray-100"
+            variant="inverse"
           rightIcon={ArrowRight}
-          iconClassName="text-white"
-          iconContainerClassName="bg-[#F3651B]"
           onClick={() => openModal("get-started")}
         >
           Get Started

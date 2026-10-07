@@ -1,8 +1,10 @@
+"use client";
+
 import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/heading";
 import { ResponsiveParagraph, Paragraph } from "@/components/ui/paragraph";
 import { Globe, Heart, Shield, Stethoscope, Users, Zap, ArrowRight } from "lucide-react";
-import { CustomButton } from "@/components/ui/custom-button";
+import { ActionButton } from "@/components/ui/action-button";
 import { Card } from "@/components/ui/card";
 import { IconChip } from "@/components/ui/icon-chip";
 
@@ -121,9 +123,9 @@ export function PurposeSection() {
       </div>
 
       {/* Learn More Button */}
-      <CustomButton rightIcon={ArrowRight} size="md" className="my-0">
+      <ActionButton rightIcon={ArrowRight} size="md" className="my-0" href="/medical-organizations">
         Learn More
-      </CustomButton>
+      </ActionButton>
     </Section>
   );
 }

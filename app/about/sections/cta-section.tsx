@@ -1,7 +1,9 @@
+"use client";
+
 import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/heading";
 import { ResponsiveParagraph } from "@/components/ui/paragraph";
-import { CustomButton } from "@/components/ui/custom-button";
+import { ActionButton } from "@/components/ui/action-button";
 import { ArrowRight } from "lucide-react";
 
 export function CTASection() {
@@ -26,15 +28,13 @@ export function CTASection() {
       </ResponsiveParagraph>
 
       {/* CTA Button */}
-      <CustomButton
-        className="bg-white text-black hover:bg-gray-100 border-1 py-1"
+      <ActionButton
+            variant="inverse"
         rightIcon={ArrowRight}
-        iconClassName="text-white"
-        iconContainerClassName="bg-[#F3651B] rounded-full"
         size="lg"
-      >
+       modal="get-started">
         Get Started Now
-      </CustomButton>
+      </ActionButton>
     </Section>
   );
 }

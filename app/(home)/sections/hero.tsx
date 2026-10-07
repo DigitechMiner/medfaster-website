@@ -40,11 +40,8 @@ export default function HeroSection() {
         {/* Call-to-Action Buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <CustomButton
-            className="py-1"
             rightIcon={ArrowRight}
             size="lg"
-            iconClassName="text-black"
-            iconContainerClassName="bg-white border-0"
             onClick={() => openModal("get-app")}
           >
             Find Opportunities
@@ -52,8 +49,7 @@ export default function HeroSection() {
 
           <CustomButton
             size="lg"
-            variant="secondary"
-            className="text-[#252B37] border-none bg-gray-100 py-3"
+            variant="muted"
             onClick={() => window.open(RECRUITER_REGISTRATION_URL, "_blank")}
           >
             Start Hiring

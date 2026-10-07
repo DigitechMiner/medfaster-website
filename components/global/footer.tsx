@@ -171,7 +171,7 @@ export function Footer() {
             <CustomButton
               variant="secondary"
               size="sm"
-              className="my-0 px-4 py-2"
+              className="my-0"
               onClick={() => openModal("get-app")}
             >
               <span className="inline-flex items-center gap-2">

@@ -66,11 +66,9 @@ export default function BookADemo() {
 
           {/* CTA Button */}
           <CustomButton
+            variant="inverse"
             size="lg"
             rightIcon={Calendar}
-            className="!bg-white !text-gray-800 hover:shadow-xl transition-all duration-300"
-            iconContainerClassName="!bg-[#F3651B]"
-            iconClassName="!text-white"
             onClick={() => window.open(DEMO_VIDEO_URL, "_blank")}
           >
             Show Demo

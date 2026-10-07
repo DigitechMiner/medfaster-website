@@ -94,8 +94,6 @@ export function PricingCards() {
                 variant="secondary"
                 className="w-full justify-between my-0"
                 rightIcon={ArrowRight}
-                iconContainerClassName="bg-[#F3651B] border-0"
-                iconClassName="text-white"
                 onClick={() => openModal("get-app")}
               >
                 {plan.cta}

@@ -62,7 +62,7 @@ export function UrgentStaffingSection({ audience = "everyone" }: UrgentStaffingS
             </CustomButton>
             <CustomButton
               variant="secondary"
-              className="w-full sm:w-auto justify-center py-2.5"
+              className="w-full sm:w-auto justify-center"
               onClick={() => openModal(isOrganizations ? "request-demo" : "get-app")}
             >
               {isOrganizations ? "Request Demo" : "Get the App"}

@@ -1,7 +1,9 @@
+"use client";
+
 import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/heading";
 import { ResponsiveParagraph } from "@/components/ui/paragraph";
-import { CustomButton } from "@/components/ui/custom-button";
+import { ActionButton } from "@/components/ui/action-button";
 import Image from "next/image";
 import { ArrowRight, Briefcase, ShieldCheck, UserPlus } from "lucide-react";
 
@@ -98,14 +100,12 @@ export function ThreeStepsSection() {
               ))}
             </div>
 
-            <CustomButton
-              className="bg-white text-black hover:bg-gray-100"
+            <ActionButton
+            variant="inverse"
               rightIcon={ArrowRight}
-              iconClassName="text-white"
-              iconContainerClassName="bg-[#F3651B]"
-            >
+             modal="get-app">
               Get Started
-            </CustomButton>
+            </ActionButton>
           </div>
         </div>
       </div>

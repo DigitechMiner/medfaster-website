@@ -250,11 +250,10 @@ export function ContactForm({ onSubmitSuccess }: ContactFormProps) {
         {/* Submit Button */}
         <CustomButton
           type="submit"
-
           disabled={isSubmitting}
           rightIcon={ArrowRight}
           size="lg"
-          className="w-full sm:w-auto my-0 justify-center items-center py-1"
+          className="w-full sm:w-auto my-0 justify-center"
         >
           {isSubmitting ? "Subscribing..." : "Send Your Message"}
         </CustomButton>

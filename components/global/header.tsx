@@ -254,13 +254,13 @@ export default function Header({ children }: HeaderProps) {
           <div className="flex items-center gap-2">
             <CustomButton
               variant="secondary"
-              className="hidden lg:flex my-0 py-2"
+              className="hidden lg:flex my-0"
               onClick={() => openModal("get-app")}
             >
               Get the App
             </CustomButton>
             <CustomButton
-              className="hidden md:flex my-0 py-2"
+              className="hidden md:flex my-0"
               onClick={() => (window.location.href = RECRUITER_LOGIN_URL)}
             >
               Login as Recruiter
@@ -406,7 +406,7 @@ export default function Header({ children }: HeaderProps) {
         >
           <CustomButton
             variant="secondary"
-            className="w-full justify-center my-0 py-2.5"
+            className="w-full justify-center my-0"
             onClick={() => {
               setMobileOpen(false);
               openModal("get-app");
@@ -415,7 +415,7 @@ export default function Header({ children }: HeaderProps) {
             Get the App
           </CustomButton>
           <CustomButton
-            className="w-full justify-center my-0 py-2.5"
+            className="w-full justify-center my-0"
             onClick={() => (window.location.href = RECRUITER_LOGIN_URL)}
           >
             Login as Recruiter

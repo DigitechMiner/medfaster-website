@@ -1,7 +1,9 @@
+"use client";
+
 import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/heading";
 import { Paragraph } from "@/components/ui/paragraph";
-import { CustomButton } from "@/components/ui/custom-button";
+import { ActionButton } from "@/components/ui/action-button";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 
@@ -39,15 +41,13 @@ export function CareerCTASection() {
               with unparalleled opportunities and talent.
             </Paragraph>
 
-            <CustomButton
-              className="bg-white text-[#F3651B] py-1"
+            <ActionButton
+            variant="inverse"
               rightIcon={ArrowRight}
-              iconClassName="text-white"
-              iconContainerClassName="bg-[#F3651B] rounded-full"
               size="lg"
-            >
+             modal="get-started">
               Get Started Now
-            </CustomButton>
+            </ActionButton>
           </Section>
 
           <div className="relative w-full h-96 lg:h-auto lg:col-span-1">

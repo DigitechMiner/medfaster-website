@@ -114,60 +114,45 @@ export function JobListingsSection() {
     <div className="flex justify-center items-center gap-4 pb-8">
   {/* Prev Button */}
   <CustomButton
+    variant="muted"
     onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
     disabled={currentPage === 1}
-    className={`
-      flex items-center px-4 h-[44px] rounded-full bg-white border-none
-      text-[#717680] font-semibold text-base
-      ${currentPage === 1 ? "cursor-not-allowed" : "hover:text-[#F3651B] hover:bg-gray-100"}
-      transition
-    `}
-    rightIcon={ArrowRight}
-    iconClassName="text-[#A5A5A5]"
-    iconContainerClassName="bg-[#F6F6F8]"
+    className="my-0"
   >
     Prev
   </CustomButton>
 
   {/* Page Numbers */}
-  <div className="flex gap-4">
-    {[1, 2, 3].map(page => {
+  <div className="flex gap-2">
+    {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => {
       const isActive = currentPage === page;
       return (
-        <CustomButton
+        <button
           key={page}
+          type="button"
           onClick={() => setCurrentPage(page)}
-          className={`
-            !w-12 !h-12 !rounded-full !p-0 flex items-center justify-center
-            font-semibold text-base transition
-            ${isActive 
-              ? "bg-[#F3651B] text-white" 
-              : "bg-white text-[#252B37] border border-[#F6F6F8]"}
-          `}
+          aria-current={isActive ? "page" : undefined}
+          className={`w-11 h-11 rounded-full font-semibold text-sm transition-colors ${
+            isActive
+              ? "bg-[#F3651B] text-white"
+              : "bg-white text-[#252B37] border border-gray-200 hover:text-[#F3651B]"
+          }`}
         >
-          {page.toString().padStart(2, '0')}
-        </CustomButton>
+          {page.toString().padStart(2, "0")}
+        </button>
       );
     })}
   </div>
 
-  {/* Next Button (full orange, matches active page) */}
+  {/* Next Button */}
   <CustomButton
-  onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
-  disabled={currentPage === totalPages}
-  className={`
-    flex items-center px-4 h-[44px] rounded-full !bg-[#F3651B] !border-[#F3651B] border-2
-    text-white font-semibold text-base
-    ${currentPage === totalPages ? "bg-[#F3651B]" : "bg-[#F3651B]"}
-    
-  `}
-  rightIcon={ArrowRight}
-  iconClassName="text-black"
-  iconContainerClassName="bg-white"
->
-  Next
-</CustomButton>
-
+    onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
+    disabled={currentPage === totalPages}
+    rightIcon={ArrowRight}
+    className="my-0"
+  >
+    Next
+  </CustomButton>
 </div>
 
     </Section>

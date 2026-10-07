@@ -250,10 +250,8 @@ export function NextCareer() {
 
             <div className="flex flex-col sm:flex-row sm:gap-4">
               <CustomButton
-                className="bg-white text-black hover:bg-gray-100"
+            variant="inverse"
                 rightIcon={Download}
-                iconClassName="text-white"
-                iconContainerClassName="bg-[#F3651B]"
                 onClick={() => openModal("get-app")}
               >
                 Download app
