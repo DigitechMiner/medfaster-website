@@ -12,13 +12,37 @@ import { RECRUITER_REGISTRATION_URL, URGENT_STAFFING_STEPS } from "@/utils/const
 const STEP_ICONS = [Siren, BrainCircuit, BellRing, UserCheck, CalendarCheck];
 
 interface UrgentStaffingSectionProps {
-  // Adjusts the copy and secondary CTA; the palette is the same everywhere
-  audience?: "everyone" | "organizations";
+  // Adjusts the copy and CTAs; the palette is the same everywhere
+  audience?: "everyone" | "organizations" | "professionals";
 }
+
+const COPY = {
+  everyone: {
+    heading: { before: "When a Shift Can\u2019t Wait,", accent: "KeRaeva", after: "Finds Who Can Work" },
+    body: [
+      "Post an urgent requirement and KeRaeva sends it to verified, available professionals nearby. They see the details, accept or decline, and you know right away who\u2019s coming.",
+      "Professionals stay in control: they choose when they\u2019re available and only take the shifts that work for them.",
+    ],
+  },
+  organizations: {
+    heading: { before: "When a Shift Can\u2019t Wait,", accent: "KeRaeva", after: "Finds Who Can Work" },
+    body: [
+      "Post an urgent requirement and KeRaeva sends it to verified, available professionals nearby. They see the details, accept or decline, and you know right away who\u2019s coming.",
+      "Professionals choose when they\u2019re available, so the people you reach are ready to work.",
+    ],
+  },
+  professionals: {
+    heading: { before: "Urgent Shifts,", accent: "On Your Terms", after: "" },
+    body: [
+      "Turn on your availability and KeRaeva can send you urgent shifts nearby that match your role. You see the location, timing and pay before you decide.",
+      "Accept the shifts that work for you and decline the ones that don\u2019t. Accepted shifts go straight to your upcoming work.",
+    ],
+  },
+};
 
 export function UrgentStaffingSection({ audience = "everyone" }: UrgentStaffingSectionProps) {
   const openModal = useModalStore((state) => state.openModal);
-  const isOrganizations = audience === "organizations";
+  const copy = COPY[audience];
 
   return (
     <Section
@@ -30,43 +54,50 @@ export function UrgentStaffingSection({ audience = "everyone" }: UrgentStaffingS
       <Section className="flex flex-col justify-center">
         <div className="space-y-4 md:space-y-6">
           <Paragraph size="sm" className="text-[#F3651B] font-semibold uppercase tracking-wider">
-            Urgent Staffing
+            {audience === "professionals" ? "Urgent Shifts" : "Urgent Staffing"}
           </Paragraph>
           <Heading
             as="h2"
             size="md"
             className="text-[#252B37] leading-snug text-2xl md:text-3xl lg:text-4xl"
           >
-            When a Shift Can&apos;t Wait,{" "}
-            <span className="text-[#F3651B] font-bold">KeRaeva</span> Finds
-            Who Can Work
+            {copy.heading.before}{" "}
+            <span className="text-[#F3651B] font-bold">{copy.heading.accent}</span>
+            {copy.heading.after && ` ${copy.heading.after}`}
           </Heading>
-          <ResponsiveParagraph size="sm" className="text-[#717680] leading-relaxed">
-            Post an urgent requirement and KeRaeva sends it to verified,
-            available professionals nearby. They see the details, accept or
-            decline, and you know right away who&apos;s coming.
-          </ResponsiveParagraph>
-          <ResponsiveParagraph size="sm" className="text-[#717680] leading-relaxed">
-            {isOrganizations
-              ? "Professionals choose when they're available, so the people you reach are ready to work."
-              : "Professionals stay in control: they choose when they're available and only take the shifts that work for them."}
-          </ResponsiveParagraph>
+          {copy.body.map((paragraph) => (
+            <ResponsiveParagraph key={paragraph} size="sm" className="text-[#717680] leading-relaxed">
+              {paragraph}
+            </ResponsiveParagraph>
+          ))}
 
           <div className="flex flex-col sm:flex-row gap-3 pt-2">
-            <CustomButton
-              className="w-full sm:w-auto justify-between"
-              rightIcon={ArrowRight}
-              onClick={() => window.open(RECRUITER_REGISTRATION_URL, "_blank")}
-            >
-              Start Hiring
-            </CustomButton>
-            <CustomButton
-              variant="secondary"
-              className="w-full sm:w-auto justify-center"
-              onClick={() => openModal(isOrganizations ? "request-demo" : "get-app")}
-            >
-              {isOrganizations ? "Request Demo" : "Get the App"}
-            </CustomButton>
+            {audience === "professionals" ? (
+              <CustomButton
+                className="w-full sm:w-auto justify-between"
+                rightIcon={ArrowRight}
+                onClick={() => openModal("get-app")}
+              >
+                Get the App
+              </CustomButton>
+            ) : (
+              <>
+                <CustomButton
+                  className="w-full sm:w-auto justify-between"
+                  rightIcon={ArrowRight}
+                  onClick={() => window.open(RECRUITER_REGISTRATION_URL, "_blank")}
+                >
+                  Start Hiring
+                </CustomButton>
+                <CustomButton
+                  variant="secondary"
+                  className="w-full sm:w-auto justify-center"
+                  onClick={() => openModal(audience === "organizations" ? "request-demo" : "get-app")}
+                >
+                  {audience === "organizations" ? "Request Demo" : "Get the App"}
+                </CustomButton>
+              </>
+            )}
           </div>
         </div>
       </Section>
