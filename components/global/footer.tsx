@@ -210,12 +210,28 @@ export function Footer() {
           <div className="border-t" />
 
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-              <ResponsiveParagraph
-                size="xs"
-                className="text-muted-foreground order-2 sm:order-1"
-              >
-                Copyright © 2025 KeRaeva, All Rights Reserved.
-              </ResponsiveParagraph>
+              <div className="flex flex-col gap-1 order-2 sm:order-1">
+                <ResponsiveParagraph
+                  size="xs"
+                  className="text-muted-foreground"
+                >
+                  Copyright © {new Date().getFullYear()} KeRaeva, All Rights Reserved.
+                </ResponsiveParagraph>
+                <ResponsiveParagraph
+                  size="xs"
+                  className="text-muted-foreground"
+                >
+                  Designed & Developed by{" "}
+                  <a
+                    href="https://digitechminer.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium text-[#252B37] hover:text-[#F3651B] transition-colors"
+                  >
+                    Digitech Miner
+                  </a>
+                </ResponsiveParagraph>
+              </div>
 
               <div className="flex gap-3 sm:gap-4 order-1 sm:order-2">
                 <a
