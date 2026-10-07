@@ -5,10 +5,12 @@ import GoogleOAuthProviderWrapper from "@/components/providers/GoogleOAuthProvid
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Analytics } from "@vercel/analytics/next";
+import { GlobalModals } from "@/components/global/modals";
 
 export const metadata: Metadata = {
   title: "KeRaeva",
-  description: "KeRaeva is a platform for finding healthcare jobs and candidates",
+  description:
+    "KeRaeva is an AI-powered healthcare workforce platform connecting healthcare organizations and professionals across Canada for hiring, urgent staffing, shifts and payments.",
 };
 
 export default function RootLayout({
@@ -22,6 +24,7 @@ export default function RootLayout({
         <GoogleOAuthProviderWrapper>
           {children}
         </GoogleOAuthProviderWrapper>
+        <GlobalModals />
         <ToastContainer
           position="top-right"
           autoClose={3000}

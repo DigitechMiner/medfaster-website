@@ -1,5 +1,4 @@
-'use client';
-
+import type { Metadata } from "next";
 import Header from "@/components/global/header";
 import HeroSection from "./sections/hero";
 import GetHiredSection from "./sections/get-hired";
@@ -11,9 +10,24 @@ import {
   AIHelpsSection,
   AllInOneSection,
   VerifiedSection,
+  UrgentStaffingSection,
   NextCareer,
 } from "./sections";
 import { Screen } from "@/components/global/screen";
+
+export const metadata: Metadata = {
+  title: "KeRaeva | AI-Powered Healthcare Workforce Platform in Canada",
+  description:
+    "Hire, verify and match healthcare professionals, fill urgent shifts and manage shifts and payments with KeRaeva, the AI-powered healthcare workforce platform for Canada.",
+  openGraph: {
+    title: "KeRaeva | Healthcare Workforce, Powered by Intelligence",
+    description:
+      "AI interviews, smart matching, urgent staffing, shifts and payments for healthcare organizations and professionals across Canada.",
+    siteName: "KeRaeva",
+    type: "website",
+    locale: "en_CA",
+  },
+};
 
 export default function Home() {
   return (
@@ -23,9 +37,10 @@ export default function Home() {
       </Header>
       <CompanyLogos />
       <GetHiredSection />
+      <UrgentStaffingSection />
       <AIHelpsSection />
-      <AllInOneSection />
       <VerifiedSection />
+      <AllInOneSection />
       <BookADemo />
       <TestimonialsSection />
       <NextCareer />

@@ -5,6 +5,7 @@ interface HeadingProps {
   size?: "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
   weight?: "normal" | "medium" | "semibold" | "bold";
   className?: string;
+  id?: string;
   children: React.ReactNode;
 }
 
@@ -29,6 +30,7 @@ export function Heading({
   size = "md",
   weight = "medium",
   className = "",
+  id,
   children,
 }: HeadingProps) {
   const Component = as;
@@ -36,7 +38,7 @@ export function Heading({
   const weightClass = weightClasses[weight];
 
   return (
-    <Component className={`${sizeClass} ${weightClass} ${className}`}>
+    <Component id={id} className={`${sizeClass} ${weightClass} ${className}`}>
       {children}
     </Component>
   );

@@ -5,23 +5,12 @@ import { ArrowRight } from "lucide-react";
 import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/heading";
 import { ResponsiveParagraph } from "@/components/ui/paragraph";
-
-const featureCards = [
-  {
-    title: "Connect Your Profile",
-    description: "Professionals upload credentials, while organizations share needs.",
-  },
-  {
-    title: "Smart AI Matching",
-    description: "Our AI finds ideal job/candidate fits based on skills, availability, and compliance.",
-  },
-  {
-    title: "Achieve Your Goals",
-    description: "Professionals start working, organizations make quality hires - seamlessly.",
-  },
-];
+import { PLATFORM_JOURNEY } from "@/utils/constant";
+import { useModalStore } from "@/stores/modalStore";
 
 export default function GetHiredSection() {
+  const openModal = useModalStore((state) => state.openModal);
+
   return (
     <Section
       backgroundColor="bg-[#F3651B]"
@@ -42,34 +31,39 @@ export default function GetHiredSection() {
             A Simpler Path To Success For Everyone
           </Heading>
           <ResponsiveParagraph size="base" className="text-white max-w-2xl">
-            Whether you&apos;re finding a job or filling a role, our streamlined process uses smart technology to get you results faster.
+            From the first profile to the final payment, KeRaeva connects every
+            step of healthcare hiring and staffing for professionals and
+            organizations alike.
           </ResponsiveParagraph>
         </div>
 
-        {/* Feature Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          {featureCards.map((card, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-2xl p-6 flex flex-col"
+        {/* Journey Cards - swipe on mobile, grid from md */}
+        <ol className="flex md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-8 overflow-x-auto md:overflow-visible snap-x snap-mandatory -mx-4 px-4 md:mx-0 md:px-0">
+          {PLATFORM_JOURNEY.map((step, index) => (
+            <li
+              key={step.title}
+              className="bg-white rounded-2xl p-6 flex flex-col flex-shrink-0 w-[75%] sm:w-[45%] md:w-auto snap-start"
             >
+              <span className="text-sm font-semibold text-[#F3651B] mb-2">
+                {String(index + 1).padStart(2, "0")}
+              </span>
               <Heading
                 as="h3"
                 size="xs"
                 weight="medium"
                 className="text-[#252B37] mb-3"
               >
-                {card.title}
+                {step.title}
               </Heading>
               <ResponsiveParagraph
                 size="sm"
                 className="text-[#717680] leading-relaxed"
               >
-                {card.description}
+                {step.description}
               </ResponsiveParagraph>
-            </div>
+            </li>
           ))}
-        </div>
+        </ol>
 
         {/* Call-to-Action Button */}
         <CustomButton
@@ -77,6 +71,7 @@ export default function GetHiredSection() {
           rightIcon={ArrowRight}
           iconClassName="text-white"
           iconContainerClassName="bg-[#F3651B]"
+          onClick={() => openModal("get-started")}
         >
           Get Started
         </CustomButton>

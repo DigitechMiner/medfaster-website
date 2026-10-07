@@ -5,8 +5,8 @@ import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/heading";
 import { Paragraph, ResponsiveParagraph } from "@/components/ui/paragraph";
 import { CustomButton } from "@/components/ui/custom-button";
-import { ArrowBigRight, ArrowRight, Calendar } from "lucide-react";
-import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
+import { ArrowRight } from "lucide-react";
+import { DEMO_VIDEO_URL, WORKFORCE_STEPS } from "@/utils/constant";
 
 export default function BookADemo() {
   return (
@@ -37,9 +37,31 @@ export default function BookADemo() {
           </div>
 
           {/* Heading */}
-          <Heading as="h2" size="md" className="text-white ">
-            Manage <span className="font-bold">Payments</span> Seamlessly
-          </Heading>
+          <div className="space-y-4">
+            <Heading as="h2" size="md" className="text-white ">
+              From Shift to <span className="font-bold">Payment</span>, Seamlessly
+            </Heading>
+            <ResponsiveParagraph size="base" className="text-white/90 max-w-xl">
+              KeRaeva doesn&apos;t stop at the hire. Shifts, attendance and
+              earnings stay connected, so everyone knows what was worked and
+              what&apos;s been paid.
+            </ResponsiveParagraph>
+          </div>
+
+          {/* Shift-to-payment steps */}
+          <ol className="space-y-3 max-w-md">
+            {WORKFORCE_STEPS.map((step, index) => (
+              <li
+                key={step}
+                className="flex items-center gap-3 border-b border-white/20 pb-3 last:border-b-0 text-white"
+              >
+                <span className="flex-shrink-0 w-7 h-7 rounded-full bg-white text-[#F3651B] text-sm font-semibold flex items-center justify-center">
+                  {index + 1}
+                </span>
+                <Paragraph className="text-white">{step}</Paragraph>
+              </li>
+            ))}
+          </ol>
 
           {/* CTA Button */}
           <CustomButton
@@ -48,7 +70,7 @@ export default function BookADemo() {
             className="!bg-white !text-gray-800 hover:shadow-xl transition-all duration-300"
             iconContainerClassName="!bg-[#F3651B]"
             iconClassName="!text-white"
-            onClick={() => window.open("https://youtu.be/4Rd9ZeAYZgc?si=0zWtfUsrjAJRqWbO", "_blank")}
+            onClick={() => window.open(DEMO_VIDEO_URL, "_blank")}
           >
             Show Demo
           </CustomButton>

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { FaFacebook, FaLinkedin, FaInstagram } from "react-icons/fa";
 import { ChevronRight } from "lucide-react";
+import { submitLead } from "@/utils/leads";
 import { Heading } from "@/components/custom/heading";
 import { Section } from "@/components/custom/section";
 import { CustomButton } from "@/components/custom/custom-button";
@@ -26,16 +27,15 @@ export function LandingFooter() {
     setIsSubmitting(true);
     setMessage("");
 
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+    const result = await submitLead({ type: "newsletter", email });
 
-      setMessage(`✓ Successfully subscribed with ${email}!`);
+    if (result.ok) {
+      setMessage(`✓ Subscribed with ${email}. Thank you!`);
       setEmail("");
-    } catch {
-      setMessage("✗ Something went wrong. Please try again.");
-    } finally {
-      setIsSubmitting(false);
+    } else {
+      setMessage(`✗ ${result.message}`);
     }
+    setIsSubmitting(false);
   };
 
   return (
@@ -59,6 +59,7 @@ export function LandingFooter() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email address"
+                aria-label="Email address"
                 className="rounded-full h-12 lg:w-[420px] px-5 text-sm sm:text-base sm:flex-1"
                 disabled={isSubmitting}
                 required
@@ -132,7 +133,7 @@ export function LandingFooter() {
                   <nav className="flex flex-col gap-3">
                     {column.links.map((link) => (
                       <a
-                        key={link.href}
+                        key={link.label}
                         href={link.href}
                         className="text-sm text-[#717680] hover:text-[#F4781B] transition-colors"
                       >

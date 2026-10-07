@@ -6,8 +6,26 @@ import { FeatureCard } from "@/components/ui/feature-card";
 import { Heading } from "@/components/ui/heading";
 import { Paragraph, ResponsiveParagraph } from "@/components/ui/paragraph";
 import { CustomButton } from "@/components/ui/custom-button";
-import { ArrowRight, Calendar } from "lucide-react";
-import { COMPANY_LOGOS, AI_FEATURES, APP_FEATURES } from "@/utils/constant";
+import {
+  ArrowRight,
+  BellRing,
+  BrainCircuit,
+  Calendar,
+  CalendarCheck,
+  CheckCircle2,
+  Siren,
+  UserCheck,
+} from "lucide-react";
+import { useRouter } from "next/navigation";
+import {
+  COMPANY_LOGOS,
+  AI_FEATURES,
+  APP_FEATURES,
+  APP_STORE_LINKS,
+  RECRUITER_REGISTRATION_URL,
+  URGENT_STAFFING_STEPS,
+} from "@/utils/constant";
+import { useModalStore } from "@/stores/modalStore";
 
 // Company Logos Section
 export function CompanyLogos() {
@@ -54,6 +72,7 @@ export function CompanyLogos() {
 // AI Helps Section
 export function AIHelpsSection() {
   const features = AI_FEATURES;
+  const router = useRouter();
 
   return (
     <Section backgroundColor="bg-white">
@@ -61,11 +80,11 @@ export function AIHelpsSection() {
         {/* ↓ text-2xl on mobile, scales up */}
         <Heading as="h2" size="md" className="text-[#252B37] mb-4 text-2xl md:text-3xl lg:text-4xl">
           <span className="text-[#F3651B] font-extrabold">Intelligent AI</span>
-          {", Working Medical Professionals & Medical Organisations"}
+          {", Working for Healthcare Professionals & Organizations"}
         </Heading>
         <Paragraph className="text-[#717680] max-w-3xl text-sm md:text-base">
-          Our advanced AI optimizes every step of the healthcare staffing
-          process, delivering unparalleled efficiency and precision for everyone.
+          AI is built into every step of KeRaeva, from building a profile to
+          interviewing, matching and filling urgent shifts.
         </Paragraph>
       </div>
 
@@ -81,7 +100,11 @@ export function AIHelpsSection() {
         ))}
       </div>
 
-      <CustomButton className="w-full sm:w-auto" rightIcon={ArrowRight}>
+      <CustomButton
+        className="w-full sm:w-auto"
+        rightIcon={ArrowRight}
+        onClick={() => router.push("/medical-organizations")}
+      >
         AI Recruiter Features
       </CustomButton>
     </Section>
@@ -129,24 +152,35 @@ export function AllInOneSection() {
             <span className="text-[#252B37]">the App</span>
           </Heading>
           
-          <div className="flex gap-3 md:gap-4 justify-start items-center mt-4">
-            <div className="w-28 h-28 md:w-32 md:h-32 lg:w-36 lg:h-36 flex-shrink-0">
+          <Paragraph className="text-[#717680] text-sm md:text-base mb-4">
+            Scan to get KeRaeva on Android. iOS is coming soon.
+          </Paragraph>
+
+          <div className="flex gap-3 md:gap-4 justify-start items-end">
+            <a
+              href={APP_STORE_LINKS.googlePlay}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-28 md:w-32 lg:w-36 flex-shrink-0"
+              aria-label="Get KeRaeva on Google Play"
+            >
               <Image
-                src="/images/ui/qr-code-1.png"
-                alt="QR Code for App Store"
-                width={180}
-                height={180}
-                className="object-contain w-full h-full"
+                src="/images/ui/qr-google-play.png"
+                alt="QR code to download KeRaeva on Google Play"
+                width={186}
+                height={223}
+                className="object-contain w-full h-auto"
               />
-            </div>
-            <div className="w-28 h-28 md:w-32 md:h-32 lg:w-36 lg:h-36 flex-shrink-0">
+            </a>
+            <div className="w-28 md:w-32 lg:w-36 flex-shrink-0 flex flex-col items-center gap-1">
               <Image
-                src="/images/ui/qr-code-2.png"
-                alt="QR Code for Google Play"
-                width={180}
-                height={180}
-                className="object-contain w-full h-full"
+                src="/images/ui/badge-app-store.png"
+                alt="App Store"
+                width={169}
+                height={55}
+                className="object-contain w-full h-auto opacity-40"
               />
+              <span className="text-xs text-[#717680]">Coming soon on iOS</span>
             </div>
           </div>
         </div>
@@ -155,8 +189,27 @@ export function AllInOneSection() {
   );
 }
 
-// Verified Section
+// Verified Section - AI interview + verified scorecard
 export function VerifiedSection() {
+  const audiences = [
+    {
+      title: "For Professionals",
+      points: [
+        "Complete a structured AI interview from your phone",
+        "Choose which completed interview recruiters see",
+        "Take job-specific interviews when an organization requests one",
+      ],
+    },
+    {
+      title: "For Organizations",
+      points: [
+        "Consistent, structured assessments for every candidate",
+        "Category scores, a summary and the full transcript",
+        "Credentials and documents alongside the scorecard",
+      ],
+    },
+  ];
+
   return (
     <Section
       padding={false}
@@ -171,20 +224,40 @@ export function VerifiedSection() {
             // ↓ tighter leading on mobile, break only on lg+
             className="text-[#252B37] leading-snug text-2xl md:text-3xl lg:text-4xl"
           >
-            Medical Professional will earn a{" "}
-            <span className="text-[#F3651B] font-bold">Verified</span> badge to
-            get hired faster and get snooze{" "}
-            <span className="text-[#F3651B] font-bold">Faster</span>
+            Interview Once with{" "}
+            <span className="text-[#F3651B] font-bold">AI</span>. Earn a{" "}
+            <span className="text-[#F3651B] font-bold">Verified</span> Scorecard.
           </Heading>
 
           <ResponsiveParagraph
             size="sm"
             className="text-[#717680] leading-relaxed font-[400]"
           >
-            Once you complete onboarding and pre-screening, you&apos;ll receive
-            an AI-generated scorecard. Recruiters see only verified candidates —
-            so you stand out instantly.
+            After onboarding and verification, professionals complete a
+            structured AI interview. It produces a scorecard that travels with
+            their profile, so recruiters can review candidates faster and more
+            consistently.
           </ResponsiveParagraph>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
+            {audiences.map((audience) => (
+              <div key={audience.title}>
+                <Heading as="h3" size="xs" weight="semibold" className="text-[#252B37] !text-lg mb-3">
+                  {audience.title}
+                </Heading>
+                <ul className="space-y-2">
+                  {audience.points.map((point) => (
+                    <li key={point} className="flex items-start gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-[#F3651B] mt-1 shrink-0" />
+                      <Paragraph size="sm" className="text-[#717680] font-[400]">
+                        {point}
+                      </Paragraph>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
       </Section>
 
@@ -196,11 +269,10 @@ export function VerifiedSection() {
         <div className="relative mx-auto max-w-xs md:max-w-sm lg:max-w-2xl w-full">
           <Image
             src="/images/ui/verified-card.svg"
-            alt="Verified score card showing Dr. Noah Liam profile"
+            alt="Verified AI interview scorecard on a KeRaeva professional profile"
             width={500}
             height={1000}
             className="object-contain w-full"
-            priority
           />
         </div>
       </Section>
@@ -208,8 +280,103 @@ export function VerifiedSection() {
   );
 }
 
+// Urgent Staffing Section
+export function UrgentStaffingSection() {
+  const openModal = useModalStore((state) => state.openModal);
+  const stepIcons = [Siren, BrainCircuit, BellRing, UserCheck, CalendarCheck];
+
+  return (
+    <Section
+      padding={false}
+      backgroundColor="bg-neutral-100"
+      className="grid grid-cols-1 lg:grid-cols-2 gap-2 md:gap-4 lg:gap-6 xl:gap-8"
+    >
+      {/* Left - Copy */}
+      <Section className="flex flex-col justify-center">
+        <div className="space-y-4 md:space-y-6">
+          <Paragraph size="sm" className="text-[#F3651B] font-semibold uppercase tracking-wider">
+            Urgent Staffing
+          </Paragraph>
+          <Heading
+            as="h2"
+            size="md"
+            className="text-[#252B37] leading-snug text-2xl md:text-3xl lg:text-4xl"
+          >
+            When a Shift Can&apos;t Wait,{" "}
+            <span className="text-[#F3651B] font-bold">KeRaeva</span> Finds
+            Who Can Work
+          </Heading>
+          <ResponsiveParagraph size="sm" className="text-[#717680] leading-relaxed">
+            Post an urgent requirement and KeRaeva sends it to verified,
+            available professionals nearby. They see the details, accept or
+            decline, and you know right away who&apos;s coming.
+          </ResponsiveParagraph>
+          <ResponsiveParagraph size="sm" className="text-[#717680] leading-relaxed">
+            Professionals stay in control: they choose when they&apos;re
+            available and only take the shifts that work for them.
+          </ResponsiveParagraph>
+
+          <div className="flex flex-col sm:flex-row gap-3 pt-2">
+            <CustomButton
+              className="w-full sm:w-auto justify-between"
+              rightIcon={ArrowRight}
+              onClick={() => window.open(RECRUITER_REGISTRATION_URL, "_blank")}
+            >
+              Start Hiring
+            </CustomButton>
+            <CustomButton
+              variant="secondary"
+              className="w-full sm:w-auto justify-center py-2.5"
+              onClick={() => openModal("get-app")}
+            >
+              Get the App
+            </CustomButton>
+          </div>
+        </div>
+      </Section>
+
+      {/* Right - Flow */}
+      <Section
+        backgroundColor="bg-[#F3651B]"
+        style={{
+          backgroundImage: "url(/images/patterns/orange-pattern-1.png)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundBlendMode: "overlay",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        <ol className="space-y-6 text-white">
+          {URGENT_STAFFING_STEPS.map((step, index) => {
+            const Icon = stepIcons[index] ?? CalendarCheck;
+            return (
+              <li
+                key={step.title}
+                className="flex items-start gap-4 border-b border-white/20 pb-6 last:border-b-0 last:pb-0"
+              >
+                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-white flex items-center justify-center">
+                  <Icon className="w-6 h-6 text-[#F3651B]" aria-hidden="true" />
+                </div>
+                <div>
+                  <Heading as="h3" size="xs" weight="medium" className="text-white mb-1">
+                    {step.title}
+                  </Heading>
+                  <ResponsiveParagraph size="sm" className="text-white/90 leading-relaxed">
+                    {step.description}
+                  </ResponsiveParagraph>
+                </div>
+              </li>
+            );
+          })}
+        </ol>
+      </Section>
+    </Section>
+  );
+}
+
 // Next Career Section
 export function NextCareer() {
+  const openModal = useModalStore((state) => state.openModal);
   const cardStyle = {
     backgroundImage: "url(/images/patterns/orange-pattern-2.png)",
     backgroundSize: "cover",
@@ -229,7 +396,7 @@ export function NextCareer() {
         <div className="p-6 sm:p-8 md:p-8 lg:p-12 xl:p-16 flex flex-col min-h-[260px] md:min-h-[400px]">
           <div className="space-y-4 md:space-y-6">
             <Heading
-              as="h1"
+              as="h2"
               size="md"
               className="text-white font-bold leading-tight text-2xl md:text-3xl lg:text-4xl"
             >
@@ -247,6 +414,7 @@ export function NextCareer() {
                 rightIcon={ArrowRight}
                 iconClassName="text-white"
                 iconContainerClassName="bg-[#F3651B]"
+                onClick={() => openModal("get-app")}
               >
                 Create Free Profile
               </CustomButton>
@@ -260,7 +428,7 @@ export function NextCareer() {
         <div className="p-6 sm:p-8 md:p-8 lg:p-12 xl:p-16 flex flex-col min-h-[260px] md:min-h-[400px]">
           <div className="space-y-4 md:space-y-6">
             <Heading
-              as="h1"
+              as="h2"
               size="md"
               className="text-white font-bold leading-tight text-2xl md:text-3xl lg:text-4xl"
             >
@@ -268,8 +436,8 @@ export function NextCareer() {
             </Heading>
 
             <ResponsiveParagraph size="base" className="text-white/90 leading-relaxed">
-              Access verified healthcare talent in minutes with our AI-powered
-              recruitment solution.
+              Reach verified healthcare professionals, fill urgent shifts and
+              review AI-assessed candidates in one platform.
             </ResponsiveParagraph>
 
             {/* ↓ stack buttons on mobile, row on sm+ */}
@@ -279,7 +447,7 @@ export function NextCareer() {
                 rightIcon={ArrowRight}
                 iconClassName="text-white"
                 iconContainerClassName="bg-[#F3651B]"
-                onClick={() => window.open("https://recruiter.keraeva.com/registration")}
+                onClick={() => window.open(RECRUITER_REGISTRATION_URL, "_blank")}
               >
                 Post a Job
               </CustomButton>
@@ -289,6 +457,7 @@ export function NextCareer() {
                 rightIcon={Calendar}
                 iconClassName="text-white"
                 iconContainerClassName="bg-[#F3651B]"
+                onClick={() => openModal("request-demo")}
               >
                 Schedule Demo
               </CustomButton>

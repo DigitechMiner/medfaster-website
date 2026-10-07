@@ -96,7 +96,7 @@ export const landingFooterColumns: FooterColumn[] = [
     links: [
       { label: 'Medical Organizations', href: '/medical-organizations' },
       { label: 'Medical Professionals', href: '/medical-professionals' },
-      { label: 'KeRaeva AI', href: '/coming_soon' },
+      { label: 'KeRaeva AI', href: '/coming-soon' },
       { label: 'Subscription Plans', href: '/subscriptions' },
     ],
   },
@@ -104,7 +104,7 @@ export const landingFooterColumns: FooterColumn[] = [
     title: 'Company',
     links: [
       { label: 'About KeRaeva', href: '/about' },
-      { label: 'Mission & Vision', href: '#mission-vision' },
+      { label: 'Mission & Vision', href: '/about' },
       { label: 'Our Team', href: '/our-team' },
       { label: 'Careers', href: '/careers' },
       { label: 'Blog', href: '/blog' },
@@ -117,8 +117,8 @@ export const landingFooterColumns: FooterColumn[] = [
       { label: 'Help Center', href: '/help_center' },
       { label: 'Privacy Policy', href: '/privacy-policy' },
       { label: 'Terms & Conditions', href: '/terms-conditions' },
-      { label: 'Refund Policy', href: '#refund' },
-      { label: 'Data Protection (HIPAA/GDPR)', href: '#data-protection' },
+      { label: 'Refund Policy', href: '/terms-conditions' },
+      { label: 'Data Protection', href: '/privacy-policy' },
       { label: 'Support', href: '/support' },
     ],
   },
