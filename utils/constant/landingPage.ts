@@ -1,11 +1,3 @@
-export type CompanyLogo = { src: string; alt: string };
-export const companyLogos: CompanyLogo[] = [
-  { src: "/img/company/canadian-health-logo.png", alt: "Canadian Health" },
-  { src: "/img/company/canadian-specialist-hospital-logo.png", alt: "Canadian Specialist Hospital" },
-  { src: "/img/company/medical-canada-logo.png", alt: "Medical Canada" },
-  { src: "/img/company/canadian-red-cross-logo.png", alt: "Canadian Red Cross" },
-];
-
 export type Testimonial = {
   quote: string;
   name: string;

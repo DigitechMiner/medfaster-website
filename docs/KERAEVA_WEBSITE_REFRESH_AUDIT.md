@@ -17,6 +17,7 @@
 | 7 Oct 2026 | **Homepage refresh** (task 4) + shared modals + lead endpoint | Merged (PR #7) |
 | 7 Oct 2026 | **Healthcare Organizations page** (task 5.1) | Committed to `main` |
 | 7 Oct 2026 | **Palette unified** on the Organizations and Professionals pages to match the homepage | Committed to `main` |
+| 7 Oct 2026 | **Company-logo marquee removed** from Home, Organizations, Professionals, About and the in-app About page (component, data and orphaned images) | Committed to `main` |
 
 **Homepage refresh: what changed**
 - Hero: workforce positioning, with working **Find Opportunities** (Get the App modal) and **Start Hiring** (recruiter registration) buttons.

@@ -1,11 +1,6 @@
 // Home page constants
 
-export interface CompanyLogo {
-    src: string;
-    alt: string;
-  }
-  
-  export interface GetHiredStep {
+export interface GetHiredStep {
     iconSrc: string;
     title: string;
     description: string;
@@ -32,14 +27,7 @@ export interface CompanyLogo {
     review: string;
   }
   
-  export const COMPANY_LOGOS: CompanyLogo[] = [
-    { src: "/images/company/canadian-health.png", alt: "Canadian Health" },
-    { src: "/images/company/canadian-specialist-hospital.png", alt: "Canadian Specialist Hospital" },
-    { src: "/images/company/medical-canada.png", alt: "Medical Canada" },
-    { src: "/images/company/canadian-red-cross.png", alt: "Canadian Red Cross" },
-  ];
-  
-  export const GET_HIRED_STEPS: GetHiredStep[] = [
+export const GET_HIRED_STEPS: GetHiredStep[] = [
     {
       iconSrc: "/images/icons/create-profile.svg",
       title: "Create Your Profile",

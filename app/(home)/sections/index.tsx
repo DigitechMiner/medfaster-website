@@ -9,55 +9,13 @@ import { CustomButton } from "@/components/ui/custom-button";
 import { ArrowRight, Calendar, CheckCircle2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import {
-  COMPANY_LOGOS,
+
   AI_FEATURES,
   APP_FEATURES,
   APP_STORE_LINKS,
   RECRUITER_REGISTRATION_URL,
 } from "@/utils/constant";
 import { useModalStore } from "@/stores/modalStore";
-
-// Company Logos Section
-export function CompanyLogos() {
-  const logos = COMPANY_LOGOS;
-  const duplicatedLogos = [...logos, ...logos, ...logos];
-
-  return (
-    <Section padding={false} className="overflow-hidden">
-      <div className="flex items-center animate-scroll">
-        {duplicatedLogos.map((logo, index) => (
-          <div
-            key={index}
-            className="flex items-center justify-center p-4 md:p-8 lg:p-16 flex-shrink-0"
-          >
-            <Image
-              src={logo.src}
-              alt={logo.alt}
-              width={100}
-              height={100}
-              // ↓ smaller on mobile, normal on md+
-              className="object-contain w-14 h-14 md:w-20 md:h-20 lg:w-[100px] lg:h-[100px] hover:opacity-80 transition-opacity duration-300"
-              quality={100}
-            />
-          </div>
-        ))}
-      </div>
-
-      <style jsx>{`
-        @keyframes scroll {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-        .animate-scroll {
-          animation: scroll 30s linear infinite;
-        }
-        .animate-scroll:hover {
-          animation-play-state: paused;
-        }
-      `}</style>
-    </Section>
-  );
-}
 
 // AI Helps Section
 export function AIHelpsSection() {

@@ -20,7 +20,6 @@ import {
   FAQSection,
   CTASection,
 } from "./sections";
-import { CompanyLogos } from "../(home)/sections";
 
 export const metadata: Metadata = {
   title: "About KeRaeva | Revolutionizing Healthcare Hiring",
@@ -62,7 +61,6 @@ export default function AboutUsPage() {
       </Header>
 
       <AboutHeroSection />
-      <CompanyLogos />
       <StatsSection />
       <PurposeSection />
       <ThreeStepsSection />

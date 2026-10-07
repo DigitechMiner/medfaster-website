@@ -4,7 +4,6 @@ import GetHiredSection from "./sections/get-hired"
 import { Footer } from "@/components/global/footer"
 import TestimonialsSection from "./sections/testimonials"
 import {
-  CompanyLogos,
   AIHelpsSection,
   AllInOneSection,
   VerifiedSection,
@@ -18,7 +17,6 @@ export default function MedicalProfessionalsPage() {
       <Header>
       <HeroSection />
       </Header>
-      <CompanyLogos />
       <GetHiredSection />
       <AIHelpsSection />
       <AllInOneSection />

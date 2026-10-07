@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import {
   HeroSection,
-  CompanyLogos,
   HiredSection,
   OneDashboard,
   StaffingCapabilities,
@@ -36,7 +35,6 @@ export default function MedicalOrganizationsPage() {
       <Header>
         <HeroSection />
       </Header>
-      <CompanyLogos />
       <HiredSection />
       <UrgentStaffingSection audience="organizations" />
       <OneDashboard />

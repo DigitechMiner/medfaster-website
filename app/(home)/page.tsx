@@ -6,7 +6,6 @@ import { Footer } from "@/components/global/footer";
 import TestimonialsSection from "./sections/testimonials";
 import BookADemo from "./sections/book-demo";
 import {
-  CompanyLogos,
   AIHelpsSection,
   AllInOneSection,
   VerifiedSection,
@@ -35,7 +34,6 @@ export default function Home() {
       <Header>
         <HeroSection />
       </Header>
-      <CompanyLogos />
       <GetHiredSection />
       <UrgentStaffingSection />
       <AIHelpsSection />
