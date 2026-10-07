@@ -18,6 +18,24 @@
 | 7 Oct 2026 | **Healthcare Organizations page** (task 5.1) | Committed to `main` |
 | 7 Oct 2026 | **Palette unified** on the Organizations and Professionals pages to match the homepage | Committed to `main` |
 | 7 Oct 2026 | **Company-logo marquee removed** from Home, Organizations, Professionals, About and the in-app About page (component, data and orphaned images) | Committed to `main` |
+| 7 Oct 2026 | **Typography unified** (one type scale, one `<h1>` per page, toast font, no stray letter-spacing/weights) | Committed to `main` |
+| 7 Oct 2026 | **Icons unified** on lucide-react outline style + shared `IconChip`; 3D/emoji icons, Font Awesome and Heroicons removed | Committed to `main` |
+| 7 Oct 2026 | **Footer improved** (dual-audience newsletter, tappable contact, app/demo actions, legal entity line, 2-up mobile links); credit → digitechminer.in | Committed to `main` |
+| 7 Oct 2026 | **Header** animated dropdown + **full-screen sliding mobile menu** | Committed to `main` |
+| 7 Oct 2026 | **MedFaster → KeRaeva** brand mentions (legal entity "MedFaster Health Tech Inc." kept) | Committed to `main` |
+| 7 Oct 2026 | **Mobile responsiveness** audit at 375px / 320px: no sideways scroll, tap targets ≥ 32px | Committed to `main` |
+| 7 Oct 2026 | **Content accuracy pass**: over-promised/unverified claims removed; Pricing, Careers and Blog made honest | Committed to `main` |
+| 7 Oct 2026 | **Buttons unified** (`CustomButton` variants: primary / secondary / inverse / muted) and all dead CTAs wired | Committed to `main` |
+| 7 Oct 2026 | **Professionals page** storytelling sections (urgent shifts, application status, shift-to-payment, more in the app) | Committed to `main` |
+| 7 Oct 2026 | **KeRaeva logo preloader** + route loading state | Committed to `main` |
+
+**Still needs your input (content I could not verify):**
+- Testimonials on Home, Organizations, Professionals and About. Names and photos are placeholders (the same photo is reused for different people). Confirm they're real and approved, or replace them.
+- Social profile URLs: set them in `SOCIAL_LINKS` (`utils/constant/index.ts`) and the icons appear in the footer and on the Contact page. Team-member social links still point to twitter.com / linkedin.com placeholders.
+- Recruiter Platform screenshots: the dashboard images still contain a tiny "© MedFasterrrr" footer.
+- Organization pricing (the Pricing page currently says "Custom, talk to our team").
+- `LEADS_WEBHOOK_URL` in Vercel, so demo, newsletter and notify-me submissions are delivered.
+- Real careers openings and blog posts (both pages show honest empty states until then).
 
 **Homepage refresh: what changed**
 - Hero: workforce positioning, with working **Find Opportunities** (Get the App modal) and **Start Hiring** (recruiter registration) buttons.
