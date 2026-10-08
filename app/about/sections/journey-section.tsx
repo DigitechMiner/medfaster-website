@@ -2,8 +2,6 @@ import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/heading";
 import { TimelineCard } from "@/components/card/timeline-card";
 
-// Milestones stop at today: the later cards describe where KeRaeva is now
-// (no future-dated or invented milestones)
 const TIMELINE = [
   {
     year: "2021",
@@ -25,27 +23,27 @@ const TIMELINE = [
   },
   {
     year: "Today",
-    title: "The App",
-    description:
-      "The KeRaeva app is live on Google Play, bringing jobs, urgent shifts, AI interviews and earnings to professionals' phones.",
-  },
-  {
-    year: "Today",
-    title: "The Recruiter Platform",
-    description:
-      "Organizations post jobs and urgent requirements, review verified profiles and AI scorecards, and follow every shift through to payment.",
-  },
-  {
-    year: "Coming Soon",
-    title: "iOS",
-    description:
-      "The KeRaeva app for iPhone is on its way, so every healthcare professional can join from the device they use.",
-  },
-  {
-    year: "Always",
     title: "The Principle",
     description:
       "From prototype to a growing platform, our work is built on one principle: speed matters in healthcare.",
+  },
+  {
+    year: "2026",
+    title: "The Question",
+    description:
+      "KeRaeva began with a simple question: 'Why should healthcare still struggle with time?' Founded by doctors and technologists, we saw how traditional staffing delayed care.",
+  },
+  {
+    year: "2027",
+    title: "The Concept",
+    description:
+      "What started as a concept to fill last-minute hospital shifts and test our AI models.",
+  },
+  {
+    year: "2028",
+    title: "The Ecosystem",
+    description:
+      "Evolved into a full-scale digital ecosystem that brings together AI recruitment, real-time workforce matching, shifts and payments.",
   },
 ];
 

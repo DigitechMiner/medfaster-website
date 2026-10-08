@@ -19,7 +19,7 @@ Date: 8 October 2026 · Branch: `main` · Scope: fix, clean, verify, polish. The
 | Professionals | Urgent Shifts (shared steps) | Set availability → Matching alert → Review → Accept/Decline → Work the shift | Audience-specific | YES |
 | Professionals | Home's payment section reused | "From Accepted Shift to Your Wallet": upcoming/active, check-in/out, wallet, withdrawals | Pro copy, Get the App CTA | YES |
 | Professionals | Avatar stack of stock faces | Removed | Honesty | YES |
-| About | Timeline with 2026/27/28 duplicates (2 rows) | 2 rows restored; 7 cards stop at today (2021, 2022, 2024, App: Today, Recruiter Platform: Today, iOS: Coming Soon, Principle: Always) | Duplicates removed, layout kept | YES (see J.6) |
+| About | Timeline 2021 to 2028 (2 rows) | Restored to the original 2021 to 2028 journey at the owner's request | No change from original | NEEDS REVIEW (see J.6) |
 | About | Testimonials & FAQ, repeated pro journey | Story → Mission & Vision → Why KeRaeva → Team → CTA | Restructured | YES |
 | Our Team | Stock faces under 4 real names; placeholder socials; empty "Management" tab | Initials on brand panel; socials only for real profiles; tab removed | Honesty | YES |
 | Testimonials (3 pages) | 2 portraits reused under 13 names | Initials avatars; quotes untouched | Honesty | PARTIAL (authenticity unconfirmed, J.3) |
@@ -48,7 +48,7 @@ Date: 8 October 2026 · Branch: `main` · Scope: fix, clean, verify, polish. The
 1. **Contact form:** posts to `/api/leads`. It validates, shows a loading state and the real result, limits messages to 1000 characters, associates every label (5/5), and uses a honeypot. Delivery was verified end-to-end with a local webhook (200, correct payload). With no webhook configured it shows: "This form isn't connected yet. Please email support@keraeva.com."
 2. **Support form:** same treatment. The attachment field is removed (no upload backend). No ticket ID is shown, because none is generated.
 3. **`/about_us`:** breadcrumbs on Careers and Our Team now point to `/about`, and there is a 308 redirect for old links.
-4. **About timeline:** the future-dated 2026/2027/2028 duplicates are removed and the two-row layout is restored (see J.6).
+4. **About timeline:** restored to the original 2021 to 2028 journey at your request (see J.6).
 5. **Duplicate testimonial photos:** replaced by initials avatars. Quotes are unchanged.
 6. **Team stock photos:** replaced by initials. Generic social links and the empty filter are removed.
 7. **Security:** see H.
@@ -146,7 +146,7 @@ The full list is in `docs/PRODUCT_SCREENSHOT_SPEC.md`. The data set is Calgary, 
 3. **Testimonials:** authenticity is unconfirmed. The heading "Real Results, Real Partnerships" overstates this. Confirm the testimonials or remove the sections.
 4. **Real screenshots and team photos:** see E.
 5. **`/mobile-location-policy`:** the candidate app links to it, but it returns 404 on the website. The legal text is needed (not drafted, to avoid inventing legal claims).
-6. **About timeline:** the 3 new cards (App: Today, Recruiter Platform: Today, iOS: Coming Soon) describe the current state, not dated events. If you have real dated milestones (e.g. the Android launch month), they can replace these.
+6. **About timeline:** restored to the original 2021 to 2028 journey at your request. The 2026, 2027 and 2028 cards repeat the 2021, 2022 and 2024 text ("The Question", "The Concept", "The Ecosystem"). Send the real milestones for those years and they can replace the repeated text.
 7. **Firebase key rotation and history purge:** see H.
 8. **`NEXT_PUBLIC_SITE_URL`:** set it if production is not `https://keraeva.com`.
 
