@@ -1,7 +1,7 @@
 "use client";
 
 import { ReactNode, useEffect, useRef } from "react";
-import { CloseButton, Logo } from "@/components/global/otpModal/components";
+import { CloseButton, Logo } from "./modal-parts";
 import { cn } from "@/lib/utils";
 
 interface ModalShellProps {

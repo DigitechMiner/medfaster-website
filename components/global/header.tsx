@@ -6,7 +6,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { CustomButton } from "@/components/ui/custom-button";
 import Image from "@/components/ui/image";
-import LoginModal from "@/components/global/otpModal";
 import { useModalStore } from "@/stores/modalStore";
 import { cn } from "@/lib/utils";
 
@@ -56,7 +55,6 @@ interface HeaderProps {
 export default function Header({ children }: HeaderProps) {
   const pathname = usePathname();
   const openModal = useModalStore((state) => state.openModal);
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
   const [mobileSubmenu, setMobileSubmenu] = useState<string | null>(null);
@@ -432,11 +430,6 @@ export default function Header({ children }: HeaderProps) {
           </a>
         </div>
       </div>
-
-      <LoginModal
-        isOpen={isLoginModalOpen}
-        onClose={() => setIsLoginModalOpen(false)}
-      />
     </>
   );
 }

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { fonts } from "@/lib/font";
-import GoogleOAuthProviderWrapper from "@/components/providers/GoogleOAuthProvider";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Analytics } from "@vercel/analytics/next";
@@ -24,9 +23,7 @@ export default function RootLayout({
     <html lang="en" className={fonts}>
       <body className="font-sans">
         <Preloader />
-        <GoogleOAuthProviderWrapper>
-          {children}
-        </GoogleOAuthProviderWrapper>
+        {children}
         <GlobalModals />
         <ScrollReveal />
         <ToastContainer
