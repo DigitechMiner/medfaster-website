@@ -76,7 +76,6 @@ export default function TestimonialsSection() {
                       alt={testimonial.name}
                       fill
                       className="object-cover"
-                      quality={100}
                     />
                   </div>
                   <div>

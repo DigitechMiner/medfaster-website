@@ -15,7 +15,7 @@ export default function BookADemo() {
       backgroundColor="bg-[#F3651B]"
       padding={false}
       style={{
-        backgroundImage: "url(/images/patterns/orange-pattern-2.png)",
+        backgroundImage: "url(/images/patterns/orange-pattern-2.webp)",
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundBlendMode: 'overlay',
@@ -83,7 +83,7 @@ export default function BookADemo() {
               {/* Logo */}
               <div className="mb-3 flex flex-col items-center">
                 <Image
-                  src="/img/company/canadian-health-logo.png"
+                  src="/img/company/canadian-health-logo.webp"
                   alt="Company Logo"
                   width={40}
                   height={40}
@@ -117,7 +117,7 @@ export default function BookADemo() {
               <div className="absolute -right-6 sm:-right-10 md:-right-14 lg:-right-16 -top-6 sm:-top-10 md:-top-14 lg:-top-16 w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 lg:w-36 lg:h-36 rounded-full bg-white overflow-hidden shadow-xl">
                 <div className="absolute inset-0">
                   <Image
-                    src="/img/hero/doctor.png"
+                    src="/img/hero/doctor.webp"
                     alt="Doctor"
                     fill
                     className="object-cover p-2"
@@ -129,7 +129,7 @@ export default function BookADemo() {
               <div className="absolute -right-6 sm:-right-10 md:-right-14 lg:-right-16 -bottom-6 sm:-bottom-10 md:-bottom-14 lg:-bottom-16 w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 lg:w-36 lg:h-36 rounded-full bg-white overflow-hidden shadow-xl">
                 <div className="absolute inset-0">
                   <Image
-                    src="/img/people/nurse-01.png"
+                    src="/img/people/nurse-01.webp"
                     alt="Doctor"
                     fill
                     className="object-cover p-2"
@@ -141,7 +141,7 @@ export default function BookADemo() {
               <div className="absolute -left-6 sm:-left-10 md:-left-14 lg:-left-16 -bottom-6 sm:-bottom-10 md:-bottom-14 lg:-bottom-16 w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 lg:w-36 lg:h-36 rounded-full bg-white overflow-hidden shadow-xl">
                 <div className="absolute inset-0">
                   <Image
-                    src="/img/people/nurse-02.png"
+                    src="/img/people/nurse-02.webp"
                     alt="Doctor"
                     fill
                     className="object-cover p-2"

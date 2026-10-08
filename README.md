@@ -83,6 +83,16 @@ Keep the existing KeRaeva visual identity. Build new sections from the existing 
 - Cards: `FeatureCard`, white `rounded-2xl` cards
 - Modals: open with `useModalStore().openModal("get-started" | "get-app" | "request-demo")`
 
+## Images
+
+Use WebP for photos and screenshots, and keep SVG only for true vector art (logos, icons). To convert newly added PNG/JPG images (or SVGs that wrap a bitmap) into right-sized WebP files:
+
+```bash
+node scripts/optimize-images.mjs
+```
+
+Then reference the generated `.webp` files in the code. Avoid `quality={100}` and `unoptimized` on `next/image` so Next.js can serve optimized versions.
+
 ## Documentation
 
 - [Website Refresh Audit & Gap Report](docs/KERAEVA_WEBSITE_REFRESH_AUDIT.md): missing pages, flows, modals, broken links, feature-status check and the proposed sitemap.

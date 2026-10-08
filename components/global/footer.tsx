@@ -147,7 +147,6 @@ export function Footer() {
                   alt="KeRaeva"
                   fill
                   className="object-contain object-left"
-                  quality={100}
                 />
               </div>
             </Link>

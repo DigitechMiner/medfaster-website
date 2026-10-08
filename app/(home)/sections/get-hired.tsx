@@ -16,7 +16,7 @@ export default function GetHiredSection() {
       backgroundColor="bg-[#F3651B]"
       className="relative overflow-hidden"
       style={{
-        backgroundImage: "url(/images/patterns/orange-pattern-1.png)",
+        backgroundImage: "url(/images/patterns/orange-pattern-1.webp)",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundBlendMode: "overlay",

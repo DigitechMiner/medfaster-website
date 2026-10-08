@@ -25,7 +25,7 @@ export function Card({
         className
       )}
       style={{
-        backgroundImage: "url('/images/patterns/pattern-4.png')",
+        backgroundImage: "url('/images/patterns/pattern-4.webp')",
         backgroundSize: "auto",
         backgroundPosition: "top right",
         backgroundRepeat: "no-repeat",

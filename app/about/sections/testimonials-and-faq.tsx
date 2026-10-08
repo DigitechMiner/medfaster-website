@@ -15,7 +15,7 @@ const TESTIMONIALS = [
     author: "David L.",
     role: "HR Manager, Hospital",
     company: "Canadian Hospital",
-    avatar: "/images/testimonials/michael-k.png",
+    avatar: "/images/testimonials/michael-k.webp",
   },
   {
     id: 2,
@@ -24,7 +24,7 @@ const TESTIMONIALS = [
     author: "Sarah Chen",
     role: "Clinical Director",
     company: "Partner Hospital",
-    avatar: "/images/testimonials/sarah-m.png",
+    avatar: "/images/testimonials/sarah-m.webp",
   },
   {
     id: 3,
@@ -33,7 +33,7 @@ const TESTIMONIALS = [
     author: "Marcus Cole",
     role: "Licensed Practical Nurse",
     company: "Partner Hospital",
-    avatar: "/images/testimonials/michael-k.png",
+    avatar: "/images/testimonials/michael-k.webp",
   },
   {
     id: 4,
@@ -42,7 +42,7 @@ const TESTIMONIALS = [
     author: "Priya S.",
     role: "Registered Nurse (RN)",
     company: "Canadian Hospital",
-    avatar: "/images/testimonials/sarah-m.png",
+    avatar: "/images/testimonials/sarah-m.webp",
   },
   {
     id: 5,
@@ -51,7 +51,7 @@ const TESTIMONIALS = [
     author: "Amelie Dubois",
     role: "Respiratory Therapist (RRT)",
     company: "Partner",
-    avatar: "/images/testimonials/michael-k.png",
+    avatar: "/images/testimonials/michael-k.webp",
   },
   {
     id: 6,
@@ -60,7 +60,7 @@ const TESTIMONIALS = [
     author: "Tom Bishop",
     role: "Staffing Coordinator",
     company: "Partner Hospital",
-    avatar: "/images/testimonials/sarah-m.png",
+    avatar: "/images/testimonials/sarah-m.webp",
   },
 ];
 
@@ -123,7 +123,6 @@ function TestimonialCard({ testimonial }: { testimonial: (typeof TESTIMONIALS)[0
             alt={testimonial.author}
             fill
             className="object-cover"
-            quality={100}
           />
         </div>
 

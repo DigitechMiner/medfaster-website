@@ -79,19 +79,18 @@ export default function HeroSection() {
               {/* Profile Pictures */}
               <div className="flex -space-x-6">
                 {[
-                  "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face&auto=format",
-                  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face&auto=format",
-                  "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face&auto=format",
-                  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face&auto=format",
+                  "/images/testimonials/sarah-m.webp",
+                  "/images/testimonials/michael-k.webp",
+                  "/images/testimonials/sarah-m.webp",
+                  "/images/testimonials/michael-k.webp",
                 ].map((src, index) => (
                   <Image
                     key={index}
                     src={src}
-                    alt={`User ${index + 1}`}
+                    alt=""
                     width={40}
                     height={40}
                     className="w-10 h-10 rounded-full border-2 border-white object-cover"
-                    unoptimized
                   />
                 ))}
               </div>
@@ -106,12 +105,11 @@ export default function HeroSection() {
             {/* Address Image */}
             <div className="md:flex-[3] relative bg-[#f5f5f5] rounded-lg flex items-center justify-center">
               <Image
-                src="/images/hero/mobile-address.svg"
+                src="/images/hero/mobile-address.webp"
                 alt="KeRaeva app interface"
                 width={280}
                 height={450}
                 className="object-contain w-full rounded-lg max-w-[240px] sm:max-w-[380px] aspect-[280/450]"
-                quality={100}
                 priority
               />
             </div>
@@ -134,12 +132,11 @@ export default function HeroSection() {
             {/* Doctor Image - First on mobile, Second on desktop */}
             <div className="hidden order-1 md:order-2 md:flex-[3] relative bg-[#f5f5f5] rounded-lg md:flex items-center justify-center">
               <Image
-                src="/images/hero/doctor.png"
+                src="/images/hero/doctor.webp"
                 alt="Professional doctor"
                 width={280}
                 height={450}
                 className="object-cover object-top w-full rounded-lg max-w-[380px] aspect-[280/450]"
-                quality={100}
                 priority
               />
             </div>

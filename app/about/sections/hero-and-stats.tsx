@@ -13,7 +13,7 @@ export function AboutHeroSection() {
         {/* Left Column - Image (2 grid columns) */}
         <div className="relative w-full aspect-[16/10] rounded-lg md:rounded-xl lg:rounded-2xl xl:rounded-3xl overflow-hidden shadow-md lg:col-span-2">
           <Image
-            src="/images/hero/hero-image-2.png"
+            src="/images/hero/hero-image-2.webp"
             alt="KeRaeva Team"
             fill
             className="object-cover"
@@ -24,7 +24,7 @@ export function AboutHeroSection() {
         <div
           className="relative bg-[#F3651B] rounded-3xl p-6 text-white shadow-lg flex flex-col justify-end lg:col-span-1 overflow-hidden"
           style={{
-            backgroundImage: "url('/images/patterns/pattern-3.png')",
+            backgroundImage: "url('/images/patterns/pattern-3.webp')",
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",

@@ -240,7 +240,7 @@ export function AIHero() {
       </div>
       <div className="relative mt-10 max-w-5xl mx-auto">
         <Image
-          src="/img/features/confidence.png"
+          src="/img/features/confidence.webp"
           alt="An AI-assessed candidate profile with uploaded documents, interview scores and strengths"
           width={2877}
           height={1356}
@@ -260,7 +260,7 @@ export function AIJourney() {
       backgroundColor="bg-[#F3651B]"
       className="relative overflow-hidden"
       style={{
-        backgroundImage: "url(/images/patterns/orange-pattern-1.png)",
+        backgroundImage: "url(/images/patterns/orange-pattern-1.webp)",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundBlendMode: "overlay",
@@ -385,12 +385,11 @@ export function ScorecardSection() {
       </Section>
       <Section className="flex items-center justify-center">
         <Image
-          src="/img/dashboard/feature-ai-ranking.svg"
+          src="/img/dashboard/feature-ai-ranking.webp"
           alt="KeRaeva AI interview scorecard with conversational and behavioural round scores"
           width={1200}
           height={900}
           className="w-full h-auto object-contain"
-          unoptimized
         />
       </Section>
     </Section>

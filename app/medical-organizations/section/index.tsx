@@ -70,14 +70,12 @@ export function HeroSection() {
       >
         <div className="relative mt-10 max-w-7xl mx-auto">
           <Image
-            src="/img/dashboard/dashboard-hero.svg"
+            src="/img/dashboard/dashboard-hero.webp"
             alt="KeRaeva recruiter dashboard showing open jobs and a candidate pipeline"
             width={1200}
             height={600}
             className="object-contain"
             priority
-            unoptimized
-            quality={100}
           />
         </div>
       </Section>
@@ -97,7 +95,7 @@ export function HiredSection() {
       backgroundColor="bg-[#F3651B]"
       className="relative overflow-hidden"
       style={{
-        backgroundImage: "url(/images/patterns/orange-pattern-1.png)",
+        backgroundImage: "url(/images/patterns/orange-pattern-1.webp)",
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundBlendMode: 'overlay',
@@ -121,7 +119,7 @@ export function HiredSection() {
           <div className="order-2 lg:order-1">
             <div className="relative h-[300px] lg:h-[700px]">
               <Image
-                src="/img/hero/doctor-with-ipad.png"
+                src="/img/hero/doctor-with-ipad.webp"
                 alt="Healthcare professional assisting patient"
                 fill
                 className="object-contain"
@@ -312,7 +310,7 @@ export function HireWithConfidence() {
       {/* Main Content Image */}
       <div className="w-full max-w-7xl mx-auto">
         <Image
-          src="/img/features/confidence.png"
+          src="/img/features/confidence.webp"
           alt="Candidate profile with uploaded documents, AI interview scores and strengths"
           width={1200}
           height={600}
@@ -332,7 +330,7 @@ export function StartHiring() {
       backgroundColor="bg-[#F3651B]"
       padding={false}
       style={{
-        backgroundImage: "url(/images/patterns/orange-pattern-2.png)",
+        backgroundImage: "url(/images/patterns/orange-pattern-2.webp)",
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundBlendMode: 'overlay',
@@ -378,7 +376,7 @@ export function StartHiring() {
         <div className="relative flex items-end justify-center lg:justify-end overflow-hidden md:block">
           <div className="relative w-full h-[250px] md:h-[300px] lg:h-[400px]">
             <Image
-              src="/img/people/nurse-02.png"
+              src="/img/people/nurse-02.webp"
               alt="Healthcare professional"
               fill
               className="object-contain object-bottom lg:object-right-bottom"

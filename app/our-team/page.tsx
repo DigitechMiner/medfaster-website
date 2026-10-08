@@ -28,7 +28,7 @@ const TEAM_MEMBERS = [
     name: "Kewal Mangukia",
     role: "Founder & CEO",
     category: "board",
-    image: "/images/team/kewal.jpg",
+    image: "/images/team/kewal.webp",
     social: {
       twitter: "https://twitter.com",
       linkedin: "https://linkedin.com",
@@ -39,7 +39,7 @@ const TEAM_MEMBERS = [
     name: "Rutvij Patel",
     role: "CTO & Director",
     category: "board",
-    image: "/images/team/rutvij.png",
+    image: "/images/team/rutvij.webp",
     social: {
       twitter: "https://twitter.com",
       linkedin: "https://linkedin.com",
@@ -50,7 +50,7 @@ const TEAM_MEMBERS = [
     name: "Yash Prajapati",
     role: "BDE",
     category: "marketing",
-    image: "/images/team/member-4.jpg",
+    image: "/images/team/member-4.webp",
     social: {
       twitter: "https://twitter.com",
       linkedin: "https://linkedin.com",
@@ -61,7 +61,7 @@ const TEAM_MEMBERS = [
     name: "Kevin Parmar",
     role: "Lead Fullstack Developer",
     category: "dev",
-    image: "/images/team/kevin.png",
+    image: "/images/team/kevin.webp",
     social: {
       twitter: "https://twitter.com",
       linkedin: "https://linkedin.com",
@@ -72,7 +72,7 @@ const TEAM_MEMBERS = [
     name: "Vaibhav Rawal",
     role: "Lead AI Module Developer",
     category: "dev",
-    image: "/images/team/vaibhav.png",
+    image: "/images/team/vaibhav.webp",
     social: {
       twitter: "https://twitter.com",
       linkedin: "https://linkedin.com",
@@ -83,7 +83,7 @@ const TEAM_MEMBERS = [
     name: "Deep Desai",
     role: "Lead Backend Developer",
     category: "dev",
-    image: "/images/team/member-2.jpg",
+    image: "/images/team/member-2.webp",
     social: {
       twitter: "https://twitter.com",
       linkedin: "https://linkedin.com",
@@ -94,7 +94,7 @@ const TEAM_MEMBERS = [
     name: "Sanket Patel",
     role: "Mobile App Developer",
     category: "dev",
-    image: "/images/team/member-6.jpg",
+    image: "/images/team/member-6.webp",
     social: {
       twitter: "https://twitter.com",
       linkedin: "https://linkedin.com",
@@ -105,7 +105,7 @@ const TEAM_MEMBERS = [
     name: "Rahul Nishad",
     role: "Web Developer",
     category: "dev",
-    image: "/images/team/member-3.jpg",
+    image: "/images/team/member-3.webp",
     social: {
       twitter: "https://twitter.com",
       linkedin: "https://linkedin.com",
@@ -116,7 +116,7 @@ const TEAM_MEMBERS = [
     name: "Srujan K",
     role: "Backend Developer",
     category: "dev",
-    image: "/images/team/srujan.png",
+    image: "/images/team/srujan.webp",
     social: {
       twitter: "https://twitter.com",
       linkedin: "https://linkedin.com",

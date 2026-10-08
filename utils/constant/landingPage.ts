@@ -11,7 +11,7 @@ export const testimonials: Testimonial[] = [
       "Seeing every candidate's verification status up front has made our compliance checks much simpler, which gives our entire team peace of mind.",
     name: "Maria R.",
     role: "Compliance Officer",
-    avatar: "/img/testimonials/michael.png",
+    avatar: "/img/testimonials/michael.webp",
     rating: 3,
   },
   {
@@ -19,7 +19,7 @@ export const testimonials: Testimonial[] = [
       "KeRaeva has shortened our hiring process noticeably. The AI matching and interview scorecards save us hours of screening.",
     name: "Dr. James Chen",
     role: "Chief Medical Officer",
-    avatar: "/img/testimonials/sarah.png",
+    avatar: "/img/testimonials/sarah.webp",
     rating: 5,
   },
   {
@@ -27,7 +27,7 @@ export const testimonials: Testimonial[] = [
       "Finally, a platform that understands healthcare recruitment. The credential verification alone is worth the investment.",
     name: "Sarah Mitchell",
     role: "HR Director",
-    avatar: "/img/testimonials/sarah.png",
+    avatar: "/img/testimonials/sarah.webp",
     rating: 4,
   },
 ];
@@ -35,22 +35,22 @@ export const testimonials: Testimonial[] = [
 export type DashboardFeature = { screen: string; title: string; description: string };
 export const dashboardFeatures: DashboardFeature[] = [
   {
-    screen: "/img/dashboard/feature-candidate-pipeline.svg",
+    screen: "/img/dashboard/feature-candidate-pipeline.webp",
     title: "Candidate Pipeline",
     description: "Move candidates from Applied to Shortlisted, Interviewed and Hired, with each person's AI score on their card.",
   },
   {
-    screen: "/img/dashboard/feature-ai-ranking.svg",
+    screen: "/img/dashboard/feature-ai-ranking.webp",
     title: "AI Interview Scorecards",
     description: "Review each candidate's interview rounds, category scores and strengths before you decide.",
   },
   {
-    screen: "/img/dashboard/feature-interview-scheduling.svg",
+    screen: "/img/dashboard/feature-interview-scheduling.webp",
     title: "Calendar & Scheduling",
     description: "See interviews and scheduled professionals across the week in one calendar.",
   },
   {
-    screen: "/img/dashboard/feature-analytics-dashboard.svg",
+    screen: "/img/dashboard/feature-analytics-dashboard.webp",
     title: "Hiring Dashboard",
     description: "Track active jobs, candidates, AI matches, interviews and hires at a glance.",
   },

@@ -30,7 +30,6 @@ export function TeamMemberCard({
           alt={name}
           fill
           className="object-cover rounded-3xl"
-          quality={100}
         />
 
         {/* Floating Frosted Glass Card */}

@@ -122,12 +122,11 @@ export function VerifiedSection() {
       <Section padding={false} className="flex overflow-hidden items-center justify-end">
         <div className="relative mx-auto max-w-2xl">
           <Image 
-            src="/images/ui/verified-card.svg" 
+            src="/images/ui/verified-card.webp" 
             alt="Verified score card showing Dr. Noah Liam profile"
             width={500}
             height={1000}
             className="object-contain"
-            quality={100}
             priority
           />
         </div>
@@ -175,7 +174,6 @@ export function CareerOnTheGo() {
               width={186}
               height={223}
               className="object-contain w-full h-auto"
-              quality={100}
             />
           </a>
 
@@ -217,12 +215,11 @@ export function CareerOnTheGo() {
       >
         <div className="relative mt-10 max-w-2xl mx-auto">
           <Image
-            src="/images/ui/mobile-screen.svg"
+            src="/images/ui/mobile-screen.webp"
             alt="Mobile app showing job search interface"
             width={500}
             height={900}
             className="object-contain"
-            quality={100}
             priority
           />
         </div>
@@ -240,7 +237,7 @@ export function NextCareer() {
       backgroundColor="bg-[#F3651B]"
       padding={false}
       style={{
-        backgroundImage: "url(/images/patterns/orange-pattern-2.png)",
+        backgroundImage: "url(/images/patterns/orange-pattern-2.webp)",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundBlendMode: 'overlay',
@@ -274,11 +271,10 @@ export function NextCareer() {
         <div className="relative flex items-end justify-center lg:justify-end overflow-hidden md:block">
           <div className="relative w-full h-[300px] md:h-[400px] lg:h-[500px] xl:h-full">
             <Image
-              src="/images/hero/nurse.png"
+              src="/images/hero/nurse.webp"
               alt="Healthcare professional"
               fill
               className="object-contain object-bottom lg:object-right-bottom"
-              quality={100}
               priority
               sizes="(max-width: 768px) 33vw, 50vw"
             />

@@ -9,7 +9,7 @@ const TEAM_MEMBERS = [
     name: "Kewal Mangukia",
     role: "CEO & Founder",
     //bio: "",
-    image: "/images/team/kewal.jpg",
+    image: "/images/team/kewal.webp",
     social: {
       twitter: "https://twitter.com",
       linkedin: "https://linkedin.com",
@@ -20,7 +20,7 @@ const TEAM_MEMBERS = [
     name: "Rutvij Patel",
     role: "CTO & Director",
     //bio: "",
-    image: "/images/team/rutvij.png",
+    image: "/images/team/rutvij.webp",
     social: {
       twitter: "https://twitter.com",
       linkedin: "https://linkedin.com",

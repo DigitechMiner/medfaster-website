@@ -18,7 +18,7 @@ export default function GetHiredSection() {
       backgroundColor="bg-[#F3651B]"
       className="relative overflow-hidden"
       style={{
-        backgroundImage: "url(/images/patterns/orange-pattern-1.png)",
+        backgroundImage: "url(/images/patterns/orange-pattern-1.webp)",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundBlendMode: "overlay",
@@ -40,11 +40,10 @@ export default function GetHiredSection() {
           <div className="order-2 lg:order-1">
             <div className="relative h-[400px] lg:h-[500px]">
               <Image
-                src="/images/hero/get-hired.png"
+                src="/images/hero/get-hired.webp"
                 alt="Healthcare professional assisting patient"
                 fill
                 className="object-contain"
-                quality={100}
               />
             </div>
           </div>

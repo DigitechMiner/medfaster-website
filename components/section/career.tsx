@@ -13,7 +13,7 @@ export function CareerCTASection() {
       backgroundColor="bg-[#F3651B]"
       padding={false}
       style={{
-        backgroundImage: "url(/images/patterns/orange-pattern-2.png)",
+        backgroundImage: "url(/images/patterns/orange-pattern-2.webp)",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundBlendMode: "overlay",
@@ -52,11 +52,10 @@ export function CareerCTASection() {
 
           <div className="relative w-full h-96 lg:h-auto lg:col-span-1">
             <Image
-              src="/images/team/girl-with-specs.svg"
+              src="/images/team/girl-with-specs.webp"
               alt="Career opportunity"
               fill
               className="object-contain object-center overflow-hidden"
-              quality={100}
             />
           </div>
         </div>

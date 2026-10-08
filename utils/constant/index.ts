@@ -60,22 +60,22 @@ import { CalendarCheck, ClipboardList, Facebook, FileText, Instagram, Linkedin, 
   
   export const APP_FEATURES: AppFeature[] = [
     {
-      screen: "/images/features/resume-upload.png",
+      screen: "/images/features/resume-upload.webp",
       title: "Profile & Document Upload",
       description: "Upload your resume, licences and certifications once, then track their verification status in one place."
     },
     {
-      screen: "/images/features/map-view.svg",
+      screen: "/images/features/map-view.webp",
       title: "Map View",
       description: "See opportunities around you on a map and search within the distance you're willing to travel."
     },
     {
-      screen: "/images/features/job-marketplace.svg",
+      screen: "/images/features/job-marketplace.webp",
       title: "Job Marketplace",
       description: "Browse recommended roles, urgent shifts, job invites and hiring organizations. Save the ones you like and track every application."
     },
     {
-      screen: "/images/features/wallet-payment.svg",
+      screen: "/images/features/wallet-payment.webp",
       title: "Wallet & Payments",
       description: "See the earnings and transaction history for every shift, and withdraw to your linked bank account."
     }
@@ -86,7 +86,7 @@ import { CalendarCheck, ClipboardList, Facebook, FileText, Instagram, Linkedin, 
       id: 1,
       name: "Sarah M.",
       role: "Registered Nurse",
-      image: "/images/testimonials/sarah-m.png",
+      image: "/images/testimonials/sarah-m.webp",
       rating: 5,
       review:
         "Got a part-time nursing job in 2 days — everything was verified! The smart job recommendations saved me so much time. Highly recommend it!",
@@ -95,7 +95,7 @@ import { CalendarCheck, ClipboardList, Facebook, FileText, Instagram, Linkedin, 
       id: 2,
       name: "David L.",
       role: "Freelance Physiotherapist",
-      image: "/images/testimonials/michael-k.png",
+      image: "/images/testimonials/michael-k.webp",
       rating: 4,
       review:
         "I had been looking for flexible shifts with no luck. The easy payments and map view here made freelancing smooth. Totally worth it.",
@@ -104,7 +104,7 @@ import { CalendarCheck, ClipboardList, Facebook, FileText, Instagram, Linkedin, 
       id: 3,
       name: "Emily R.",
       role: "Healthcare Specialist",
-      image: "/images/testimonials/sarah-m.png",
+      image: "/images/testimonials/sarah-m.webp",
       rating: 5,
       review:
         "The AI matching is incredible! Found my dream job within a week. The verification process gave me confidence in every application.",
@@ -113,32 +113,13 @@ import { CalendarCheck, ClipboardList, Facebook, FileText, Instagram, Linkedin, 
       id: 4,
       name: "Michael K.",
       role: "Medical Technician",
-      image: "/images/testimonials/michael-k.png",
+      image: "/images/testimonials/michael-k.webp",
       rating: 5,
       review:
         "Best platform for healthcare professionals! The instant notifications and easy application process made job hunting stress-free.",
     },
   ];
   
-  // Hero section profile images
-  export const HERO_PROFILE_IMAGES = [
-    {
-      src: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face&auto=format",
-      alt: "User 1"
-    },
-    {
-      src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face&auto=format",
-      alt: "User 2"
-    },
-    {
-      src: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face&auto=format",
-      alt: "User 3"
-    },
-    {
-      src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face&auto=format",
-      alt: "User 4"
-    },
-  ];
   // Platform journey (Home)
   export interface JourneyStep {
     title: string;

@@ -11,7 +11,7 @@ export function CTASection() {
     <Section
       backgroundColor="bg-[#F3651B]"
       style={{
-        backgroundImage: "url(/images/patterns/orange-pattern-2.png)",
+        backgroundImage: "url(/images/patterns/orange-pattern-2.webp)",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundBlendMode: "overlay",

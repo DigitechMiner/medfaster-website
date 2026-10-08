@@ -80,27 +80,27 @@ export const AI_FEATURES: AIFeature[] = [
 
 export const APP_FEATURES: AppFeature[] = [
   {
-    screen: "/images/features/resume-upload.png",
+    screen: "/images/features/resume-upload.webp",
     title: "Resume & Certificate Upload",
     description: "Keep your professional documents in one place to build a complete, standout profile."
   },
   {
-    screen: "/images/features/document-verification.png",
+    screen: "/images/features/document-verification.webp",
     title: "Document Verification",
     description: "Upload your licences and certifications and track their verification status. Verified profiles stand out to employers."
   },
   {
-    screen: "/images/features/map-view.svg",
+    screen: "/images/features/map-view.webp",
     title: "Map View",
     description: "Discover openings around you on a map and find shifts close to home."
   },
   {
-    screen: "/images/features/job-marketplace.svg",
+    screen: "/images/features/job-marketplace.webp",
     title: "Job Marketplace",
     description: "Browse recommended roles, urgent shifts and job invites, and save the ones that fit your schedule and skills."
   },
   {
-    screen: "/images/features/wallet-payment.svg",
+    screen: "/images/features/wallet-payment.webp",
     title: "Wallet & Payment History",
     description: "Track the earnings for every shift and withdraw to your linked bank account."
   }
@@ -111,7 +111,7 @@ export const TESTIMONIALS: Testimonial[] = [
     id: 1,
     name: "Sarah M.",
     role: "Registered Nurse",
-    image: "/images/testimonials/sarah-m.png",
+    image: "/images/testimonials/sarah-m.webp",
     rating: 5,
     review:
       "Got a part-time nursing job in 2 days — everything was verified! The smart job recommendations saved me so much time. Highly recommend it!",
@@ -120,7 +120,7 @@ export const TESTIMONIALS: Testimonial[] = [
     id: 2,
     name: "David L.",
     role: "Freelance Physiotherapist",
-    image: "/images/testimonials/michael-k.png",
+    image: "/images/testimonials/michael-k.webp",
     rating: 4,
     review:
       "I had been looking for flexible shifts with no luck. The easy payments and map view here made freelancing smooth. Totally worth it.",
@@ -129,7 +129,7 @@ export const TESTIMONIALS: Testimonial[] = [
     id: 3,
     name: "Emily R.",
     role: "Healthcare Specialist",
-    image: "/images/testimonials/sarah-m.png",
+    image: "/images/testimonials/sarah-m.webp",
     rating: 5,
     review:
       "The AI matching is incredible! Found my dream job within a week. The verification process gave me confidence in every application.",
@@ -138,30 +138,11 @@ export const TESTIMONIALS: Testimonial[] = [
     id: 4,
     name: "Michael K.",
     role: "Medical Technician",
-    image: "/images/testimonials/michael-k.png",
+    image: "/images/testimonials/michael-k.webp",
     rating: 5,
     review:
       "Best platform for healthcare professionals! The instant notifications and easy application process made job hunting stress-free.",
   },
 ];
 
-// Hero section profile images
-export const HERO_PROFILE_IMAGES = [
-  {
-    src: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face&auto=format",
-    alt: "User 1"
-  },
-  {
-    src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face&auto=format",
-    alt: "User 2"
-  },
-  {
-    src: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face&auto=format",
-    alt: "User 3"
-  },
-  {
-    src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face&auto=format",
-    alt: "User 4"
-  },
-];
 

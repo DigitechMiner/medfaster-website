@@ -154,7 +154,6 @@ export default function Header({ children }: HeaderProps) {
                   height={50}
                   width={200}
                   alt="KeRaeva"
-                  quality={100}
                   priority
                 />
               </div>

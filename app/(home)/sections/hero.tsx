@@ -60,7 +60,7 @@ export default function HeroSection() {
         <div className="relative w-full mt-6">
           <div className="relative w-full rounded-lg overflow-hidden">
             <Image
-              src="/images/hero/card-photo.png"
+              src="/images/hero/card-photo.webp"
               alt="A healthcare professional walking with an older patient in a hospital"
               width={2400}
               height={2000}

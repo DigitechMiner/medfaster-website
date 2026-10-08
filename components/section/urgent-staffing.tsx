@@ -106,7 +106,7 @@ export function UrgentStaffingSection({ audience = "everyone" }: UrgentStaffingS
       <Section
         backgroundColor="bg-[#F3651B]"
         style={{
-          backgroundImage: "url(/images/patterns/orange-pattern-1.png)",
+          backgroundImage: "url(/images/patterns/orange-pattern-1.webp)",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundBlendMode: "overlay",

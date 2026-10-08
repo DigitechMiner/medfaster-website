@@ -216,7 +216,7 @@ export function VerifiedSection() {
       >
         <div className="relative mx-auto max-w-xs md:max-w-sm lg:max-w-2xl w-full">
           <Image
-            src="/images/ui/verified-card.svg"
+            src="/images/ui/verified-card.webp"
             alt="Verified AI interview scorecard on a KeRaeva professional profile"
             width={500}
             height={1000}
@@ -232,7 +232,7 @@ export function VerifiedSection() {
 export function NextCareer() {
   const openModal = useModalStore((state) => state.openModal);
   const cardStyle = {
-    backgroundImage: "url(/images/patterns/orange-pattern-2.png)",
+    backgroundImage: "url(/images/patterns/orange-pattern-2.webp)",
     backgroundSize: "cover",
     backgroundPosition: "center",
     backgroundBlendMode: "overlay" as const,

@@ -32,7 +32,6 @@ export function FeatureCard({ title, description, visual, imageFullWidth = false
                 fill
                 className={`object-contain ${imageCenter ? "object-center md:object-left" : "object-left"}`}
                 sizes={imageFullWidth ? "(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" : "48px"}
-                quality={100}
               />
             </div>
           )}

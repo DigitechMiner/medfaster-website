@@ -34,7 +34,6 @@ export function ComingSoon() {
               width={300}
               height={250}
               className="w-64 h-56 object-contain"
-              quality={100}
               priority
             />
           </div>
