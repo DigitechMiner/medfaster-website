@@ -27,7 +27,10 @@
 | 7 Oct 2026 | **Content accuracy pass**: over-promised/unverified claims removed; Pricing, Careers and Blog made honest | Committed to `main` |
 | 7 Oct 2026 | **Buttons unified** (`CustomButton` variants: primary / secondary / inverse / muted) and all dead CTAs wired | Committed to `main` |
 | 7 Oct 2026 | **Professionals page** storytelling sections (urgent shifts, application status, shift-to-payment, more in the app) | Committed to `main` |
-| 7 Oct 2026 | **KeRaeva logo preloader** + route loading state | Committed to `main` |
+| 7 Oct 2026 | **KeRaeva logo preloader** (route `loading.tsx` later removed: it left a hidden duplicate of each page) | Committed to `main` |
+| 7 Oct 2026 | **KeRaeva AI page** (`/keraeva-ai`): every AI and smart feature, verified against the app | Committed to `main` |
+| 7 Oct 2026 | **Privacy Policy & Terms** rewritten for accuracy and readability, shared by web and in-app pages | Committed to `main` (needs legal review) |
+| 8 Oct 2026 | **Images optimized**: WebP, right-sized, 90 MB → 2 MB; homepage images ~311 KB total | Committed to `main` |
 
 **Still needs your input (content I could not verify):**
 - Testimonials on Home, Organizations, Professionals and About. Names and photos are placeholders (the same photo is reused for different people). Confirm they're real and approved, or replace them.
@@ -36,6 +39,7 @@
 - Organization pricing (the Pricing page currently says "Custom, talk to our team").
 - `LEADS_WEBHOOK_URL` in Vercel, so demo, newsletter and notify-me submissions are delivered.
 - Real careers openings and blog posts (both pages show honest empty states until then).
+- **Legal review** of the updated Privacy Policy and Terms. In particular, Terms section 3.10 ("Subscription Terms") says Professionals are enrolled in a freemium plan with automatic billing, while the website, FAQ and Pricing say KeRaeva is free for professionals. Decide which is correct.
 
 **Homepage refresh: what changed**
 - Hero: workforce positioning, with working **Find Opportunities** (Get the App modal) and **Start Hiring** (recruiter registration) buttons.
