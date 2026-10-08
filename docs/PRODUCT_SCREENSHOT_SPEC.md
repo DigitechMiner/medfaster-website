@@ -33,7 +33,7 @@ Spell-check every visible string (the current map screen says "Totronto, ON").
 | `public/images/features/job-marketplace.webp` | Professionals | "Job Title" placeholders | Job marketplace with urgent shift and invite (Candidate App) |
 | `public/images/features/wallet-payment.webp` | Professionals | Placeholder data | Wallet with a $480 completed RN shift (Candidate App) |
 | `public/images/hero/mobile-address.webp` | Professionals hero | "Hospital Name" placeholders on a map of Herräng, Sweden | Home or job detail screen (Candidate App) |
-| `public/images/ui/verified-card.webp` | Home, Professionals | "Noah Liam, RN" with a placeholder phone ("+1 123 1231 213") and a personal-looking Gmail address | Profile with verified badge and AI interview scorecard, fictional RN (Candidate App) |
+| `public/images/ui/verified-card.webp` | Home, Professionals | "Noah Liam, RN" with a placeholder phone ("+1 123 123 1213") and a personal-looking Gmail address | Profile with verified badge and AI interview scorecard, fictional RN (Candidate App) |
 | `public/img/dashboard/dashboard-hero.webp` | Organizations hero | "Hello, Toronto Hospital", "Narayana Hospital", invented metrics, MedFaster footer | Recruiter dashboard for "Sample Healthcare Organization" (Recruiter Platform) |
 | `public/img/dashboard/*` (pipeline, calendar) | Organizations | "© copyright reserved by MedFasterrrr" | Candidate pipeline and shift calendar (Recruiter Platform) |
 | `public/img/features/confidence.webp` | Organizations, KeRaeva AI | Check data | Candidate profile with documents and scorecard (Recruiter Platform) |
