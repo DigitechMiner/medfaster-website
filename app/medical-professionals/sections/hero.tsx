@@ -22,7 +22,7 @@ export default function HeroSection() {
         <div className="flex flex-col justify-between h-full space-y-8">
           {/* Main Heading */}
           <div className="text-left">
-            <Heading as="h1" size="lg" weight="normal" className="text-[#252B37] mb-6">
+            <Heading as="h1" size="lg" className="text-[#252B37] mb-6" weight="normal">
               Find Healthcare Jobs Near You
               <span className="text-[#F3651B] font-medium">
                 {" "}
@@ -116,7 +116,7 @@ export default function HeroSection() {
 
             {/* Total Flexibility & Control Box */}
             <div className="md:flex-[1] bg-[#F3651B] rounded-lg p-4 text-white flex flex-col justify-center">
-              <Heading as="h3" size="xs" weight="bold" className="text-white mb-2">
+              <Heading as="h3" size="xs" className="text-white mb-2">
                 Total Flexibility & Control
               </Heading>
               <Paragraph className="text-white leading-relaxed">
@@ -143,7 +143,7 @@ export default function HeroSection() {
 
             {/* Direct & Verified Opportunities Box - Second on mobile, First on desktop */}
             <div className="order-2 md:order-1 md:flex-[1] bg-[#F3651B] rounded-lg p-4 text-white flex flex-col justify-center">
-              <Heading as="h3" size="xs" weight="bold" className="text-white mb-2">
+              <Heading as="h3" size="xs" className="text-white mb-2">
                 Direct & Verified Opportunities
               </Heading>
               <Paragraph className="text-white leading-relaxed">

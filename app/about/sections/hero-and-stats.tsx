@@ -34,7 +34,7 @@ export function AboutHeroSection() {
         >
           <div className="relative z-10 space-y-4" style={{ opacity: 1 }}>
             {/* Heading */}
-            <Heading as="h2" size="xs" weight="bold" className="leading-tight">
+            <Heading as="h2" size="xs">
               The Future of Healthcare Staffing is Here.
             </Heading>
 
@@ -78,12 +78,7 @@ export function StatsSection() {
     <Section>
       {/* Header Section */}
       <div className="mb-16 lg:mb-24">
-        <Heading
-          as="h2"
-          size="md"
-          weight="medium"
-          className="text-[#252B37] mb-6"
-        >
+        <Heading as="h2" size="md" className="text-[#252B37] mb-6">
           Where <span className="text-[#F3651B]">AI-Powered</span> Hiring Meets
           Human-Centric Care.
         </Heading>
@@ -108,12 +103,7 @@ export function StatsSection() {
             </div>
           )}
           <div>
-            <Heading
-              as="h3"
-              size="xl"
-              weight="normal"
-              className="text-[#252B37] mb-4"
-            >
+            <Heading as="h3" size="md" className="text-[#252B37] mb-4">
               {STATS[0].number}
             </Heading>
             <div className="grid grid-cols-2">
@@ -139,12 +129,7 @@ export function StatsSection() {
         <div className="flex flex-col space-y-2 md:space-y-4 lg:space-y-6 xl:space-y-8 w-full h-full">
           {/* 90% Box */}
           <div className="border border-gray-200 rounded-lg p-6 lg:p-8 flex flex-col flex-1">
-            <Heading
-              as="h3"
-              size="lg"
-              weight="normal"
-              className="text-[#252B37] mb-2"
-            >
+            <Heading as="h3" size="md" className="text-[#252B37] mb-2">
               {STATS[1].number}
             </Heading>
             <ResponsiveParagraph
@@ -157,12 +142,7 @@ export function StatsSection() {
 
           {/* 100% Box */}
           <div className="border border-gray-200 rounded-lg p-6 lg:p-8 flex flex-col flex-1">
-            <Heading
-              as="h3"
-              size="lg"
-              weight="normal"
-              className="text-[#252B37] mb-2"
-            >
+            <Heading as="h3" size="md" className="text-[#252B37] mb-2">
               {STATS[2].number}
             </Heading>
             <ResponsiveParagraph

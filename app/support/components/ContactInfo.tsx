@@ -51,7 +51,7 @@ export function ContactInfo() {
     <div className="space-y-0">
       <div className="pb-8 mb-2">
         <Heading as="h2" size="md" className="text-[#252B37] mb-4">
-          Get <span className="text-[#F3651B] font-semibold">instant</span> support for jobs, shifts & <br />
+          Get <span className="text-[#F3651B]">instant</span> support for jobs, shifts & <br />
         payment issues
         </Heading>
         <ResponsiveParagraph

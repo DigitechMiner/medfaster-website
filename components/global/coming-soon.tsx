@@ -38,7 +38,7 @@ export function ComingSoon() {
             />
           </div>
 
-          <Heading as="h1" size="lg" className="text-[#252B37]">
+          <Heading as="h1" size="lg" className="text-[#252B37]" weight="normal">
             Stay Tuned
           </Heading>
 

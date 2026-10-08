@@ -35,7 +35,7 @@ export function AIHelpsSection() {
       <div className=" mb-12">
         <Heading as="h2" size="md" className="text-[#252B37] mb-4">
           How{" "}
-          <span className="text-[#F3651B] font-extrabold">AI Helps You</span>{" "}
+          <span className="text-[#F3651B]">AI Helps You</span>{" "}
           Get the Right Job Faster
         </Heading>
         <Paragraph className="text-[#717680] max-w-3xl">
@@ -102,16 +102,16 @@ export function VerifiedSection() {
   return (
     <Section padding={false} backgroundColor="bg-neutral-100" className="grid grid-cols-1 lg:grid-cols-2 gap-2 md:gap-4 lg:gap-6 xl:gap-8">
       <Section className="flex items-start w-full">
-        <div className="space-y-4 font-[500]">
-          <Heading as="h2" size="md" className="text-[#252B37] leading-tight">
+        <div className="space-y-4">
+          <Heading as="h2" size="md" className="text-[#252B37]">
             Earn a{" "}
-            <span className="text-[#F3651B] font-bold">Verified</span>{" "}
+            <span className="text-[#F3651B]">Verified</span>{" "}
             Score.
             <br />
             Get Hired Faster.
           </Heading>
           
-          <ResponsiveParagraph size="sm" className="text-[#717680] leading-relaxed font-[400]">
+          <ResponsiveParagraph size="sm" className="text-[#717680] leading-relaxed">
             Once you complete onboarding and pre-screening, you&apos;ll receive an 
             AI-generated scorecard. A verified profile with a completed AI
             interview helps you stand out to recruiters.
@@ -145,7 +145,7 @@ export function CareerOnTheGo() {
     >
       <Section>
         <div className="space-y-4">
-          <Heading as="h2" size="md" className="text-[#252B37] leading-tight">
+          <Heading as="h2" size="md" className="text-[#252B37]">
             Your Career, Your Control{" "}
             <span className="text-[#F3651B]">On the Go.</span>{" "}
           </Heading>

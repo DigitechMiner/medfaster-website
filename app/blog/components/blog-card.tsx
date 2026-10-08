@@ -81,11 +81,7 @@ export function BlogCard({ post }: { post: BlogPost }) {
           {post.author} • {post.date}
         </Paragraph>
 
-        <Heading
-          as="h3"
-          size="xs"
-          className="text-[#252B37] group-hover:text-[#F3651B] transition-colors"
-        >
+        <Heading as="h3" size="xs" className="text-[#252B37] group-hover:text-[#F3651B] transition-colors">
           {post.title}
         </Heading>
 

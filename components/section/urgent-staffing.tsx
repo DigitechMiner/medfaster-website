@@ -56,13 +56,9 @@ export function UrgentStaffingSection({ audience = "everyone" }: UrgentStaffingS
           <Paragraph size="sm" className="text-[#F3651B] font-semibold uppercase tracking-wider">
             {audience === "professionals" ? "Urgent Shifts" : "Urgent Staffing"}
           </Paragraph>
-          <Heading
-            as="h2"
-            size="md"
-            className="text-[#252B37] leading-snug text-2xl md:text-3xl lg:text-4xl"
-          >
+          <Heading as="h2" size="md" className="text-[#252B37]">
             {copy.heading.before}{" "}
-            <span className="text-[#F3651B] font-bold">{copy.heading.accent}</span>
+            <span className="text-[#F3651B]">{copy.heading.accent}</span>
             {copy.heading.after && ` ${copy.heading.after}`}
           </Heading>
           {copy.body.map((paragraph) => (

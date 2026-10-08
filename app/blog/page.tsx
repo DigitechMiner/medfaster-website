@@ -138,12 +138,7 @@ export default function BlogPage() {
         <Section className="pt-2 md:pt-4 lg:pt-6 xl:pt-8">
           <div className="space-y-4">
             {/* Title */}
-            <Heading
-              as="h1"
-              size="lg"
-              weight="normal"
-              className="text-[#252B37]"
-            >
+            <Heading as="h1" size="lg" className="text-[#252B37]" weight="normal">
               Our Blog
             </Heading>
 
@@ -294,7 +289,7 @@ export default function BlogPage() {
       <Section>
         <div className="flex justify-between items-start mb-8">
           <div>
-            <Heading as="h2" size="sm" className="text-[#252B37] mb-3 font-semibold">
+            <Heading as="h2" size="sm" className="text-[#252B37] mb-3">
               Latest writings
             </Heading>
             <Paragraph size="base" className="text-[#717680]">

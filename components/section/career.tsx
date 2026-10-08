@@ -24,11 +24,7 @@ export function CareerCTASection() {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-0 items-stretch min-h-96 ">
           <Section backgroundColor="bg-transparent" className="lg:col-span-2">
-            <Heading
-              as="h2"
-              size="md"
-              className="text-white mb-4 leading-tight"
-            >
+            <Heading as="h2" size="md" className="text-white mb-4">
               Where Your Career Goals<br /> Meet Real Opportunity
             </Heading>
 

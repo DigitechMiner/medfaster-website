@@ -6,7 +6,7 @@ import { Paragraph } from "@/components/ui/paragraph";
 export function AboutUsPageHeader() {
   return (
     <div className="space-y-4">
-      <Heading as="h1" size="lg" className="text-[#252B37]">
+      <Heading as="h1" size="lg" className="text-[#252B37]" weight="normal">
         About KeRaeva
       </Heading>
 

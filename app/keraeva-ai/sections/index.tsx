@@ -217,7 +217,7 @@ export function AIHero() {
   return (
     <Section className="!pb-0">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-        <Heading as="h1" size="lg" weight="normal" className="text-[#252B37]">
+        <Heading as="h1" size="lg" className="text-[#252B37]" weight="normal">
           Intelligence Built Into{" "}
           <span className="text-[#F3651B] font-medium">Every Step</span>
         </Heading>
@@ -364,9 +364,9 @@ export function ScorecardSection() {
           <Paragraph size="sm" className="text-[#F3651B] font-semibold uppercase tracking-wider">
             AI Interview Scorecard
           </Paragraph>
-          <Heading as="h2" size="md" className="text-[#252B37] leading-snug text-2xl md:text-3xl lg:text-4xl">
+          <Heading as="h2" size="md" className="text-[#252B37]">
             Everything a Hiring Team Needs,{" "}
-            <span className="text-[#F3651B] font-bold">In One Scorecard</span>
+            <span className="text-[#F3651B]">In One Scorecard</span>
           </Heading>
           <ResponsiveParagraph size="sm" className="text-[#717680] leading-relaxed">
             Every completed AI interview produces a structured scorecard, so

@@ -1,4 +1,5 @@
 import React from "react";
+import { cn } from "@/lib/utils";
 
 interface HeadingProps {
   as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
@@ -9,13 +10,17 @@ interface HeadingProps {
   children: React.ReactNode;
 }
 
+// One type scale for the whole site: size + line height live here so pages
+// don't need per-heading overrides.
+//   lg - page titles (h1)        md - section titles (h2)
+//   sm - sub-section titles      xs - card titles (h3)
 const sizeClasses = {
-  xs: "text-xl",
-  sm: "text-2xl md:text-3xl lg:text-4xl",
-  md: "text-3xl md:text-4xl lg:text-5xl",
-  lg: "text-4xl md:text-5xl lg:text-6xl",
-  xl: "text-5xl md:text-6xl lg:text-7xl",
-  "2xl": "text-6xl md:text-7xl lg:text-8xl",
+  xs: "text-xl leading-snug",
+  sm: "text-2xl md:text-3xl lg:text-4xl leading-tight",
+  md: "text-3xl md:text-4xl lg:text-5xl leading-tight",
+  lg: "text-4xl md:text-5xl lg:text-6xl leading-[1.1]",
+  xl: "text-5xl md:text-6xl lg:text-7xl leading-[1.1]",
+  "2xl": "text-6xl md:text-7xl lg:text-8xl leading-[1.1]",
 };
 
 const weightClasses = {
@@ -34,13 +39,10 @@ export function Heading({
   children,
 }: HeadingProps) {
   const Component = as;
-  const sizeClass = sizeClasses[size];
-  const weightClass = weightClasses[weight];
 
   return (
-    <Component id={id} className={`${sizeClass} ${weightClass} ${className}`}>
+    <Component id={id} className={cn(sizeClasses[size], weightClasses[weight], className)}>
       {children}
     </Component>
   );
 }
-

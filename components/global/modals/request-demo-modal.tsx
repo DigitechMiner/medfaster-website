@@ -94,7 +94,7 @@ export function RequestDemoModal() {
       {isSubmitted ? (
         <div className="text-center space-y-4 py-4">
           <CheckCircle2 className="w-12 h-12 text-[#F3651B] mx-auto" />
-          <Heading id="request-demo-title" as="h2" size="xs" weight="semibold" className="!text-2xl text-[#252B37]">
+          <Heading id="request-demo-title" as="h2" size="xs" className="text-[#252B37]">
             Thanks, we&apos;ll be in touch
           </Heading>
           <Paragraph size="sm" className="text-[#717680]">
@@ -107,7 +107,7 @@ export function RequestDemoModal() {
       ) : (
         <form onSubmit={handleSubmit} className="space-y-5">
           <div className="text-center space-y-2">
-            <Heading id="request-demo-title" as="h2" size="xs" weight="semibold" className="!text-2xl text-[#252B37]">
+            <Heading id="request-demo-title" as="h2" size="xs" className="text-[#252B37]">
               Request a <span className="text-[#F3651B]">Demo</span>
             </Heading>
             <Paragraph size="sm" className="text-[#717680]">

@@ -23,12 +23,7 @@ export function HeroSection() {
         <div className="flex flex-col justify-between h-full space-y-8">
           {/* Main Heading */}
           <div className="text-left">
-            <Heading
-              as="h1"
-              size="lg"
-              weight="normal"
-              className="text-[#252B37] mb-6"
-            >
+            <Heading as="h1" size="lg" className="text-[#252B37] mb-6" weight="normal">
               Build Your Healthcare Workforce —
               <span className="text-[#F3651B] font-medium">
                 {" "}
@@ -268,7 +263,7 @@ export function DataDrivenHiring() {
         {/* Left Content */}
         <div className="flex-1 max-w-3xl">
           <Heading className="text-[#252B37] mb-6">
-            Make <span className="text-[#F3651B] font-semibold">Data-Driven</span> Hiring Decisions
+            Make <span className="text-[#F3651B]">Data-Driven</span> Hiring Decisions
           </Heading>
           <Paragraph className="text-[#717680] leading-relaxed">
             See active jobs, candidates, AI matches, interviews and hires at a
@@ -298,7 +293,7 @@ export function HireWithConfidence() {
       {/* Header - Title and Description */}
       <div className="mb-12 lg:mb-16">
         <Heading className="text-[#252B37] mb-6">
-          Hire with <span className="text-[#F3651B] font-semibold">Confidence</span>
+          Hire with <span className="text-[#F3651B]">Confidence</span>
         </Heading>
         <Paragraph className="text-[#717680] leading-relaxed max-w-3xl">
           Every candidate profile brings together uploaded documents,

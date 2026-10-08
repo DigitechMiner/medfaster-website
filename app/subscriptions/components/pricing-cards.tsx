@@ -63,7 +63,7 @@ export function PricingCards() {
             <Paragraph size="sm" className="text-[#252B37] font-semibold mb-3">
               {plan.audience}
             </Paragraph>
-            <Heading as="h2" size="lg" className="text-[#252B37]">
+            <Heading as="h2" size="md" className="text-[#252B37]">
               {plan.price}
             </Heading>
             <Paragraph size="sm" className="text-[#717680] mt-1">

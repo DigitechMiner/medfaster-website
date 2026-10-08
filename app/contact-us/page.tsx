@@ -18,12 +18,7 @@ export default function ContactUsPage() {
         <Section className="pt-2 md:pt-4 lg:pt-6 xl:pt-8">
           <div className="space-y-4">
             {/* Title */}
-            <Heading
-              as="h1"
-              size="lg"
-              weight="normal"
-              className="text-[#252B37]"
-            >
+            <Heading as="h1" size="lg" className="text-[#252B37]" weight="normal">
               Contact Us
             </Heading>
 

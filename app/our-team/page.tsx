@@ -147,12 +147,7 @@ export default function TeamPage() {
       <Header>
         <Section className="pt-2 md:pt-4 lg:pt-6 xl:pt-8">
           <div className="space-y-3 md:space-y-4">
-            <Heading
-              as="h1"
-              size="lg"
-              weight="normal"
-              className="text-[#252B37]"
-            >
+            <Heading as="h1" size="lg" className="text-[#252B37]" weight="normal">
               Our Team
             </Heading>
 
@@ -180,11 +175,7 @@ export default function TeamPage() {
 
           <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-2xl">
-              <Heading
-                as="h2"
-                size="sm"
-                className="mb-3 font-semibold text-[#252B37]"
-              >
+              <Heading as="h2" size="sm" className="mb-3 text-[#252B37]">
                 The Minds Behind Product Intelligence
               </Heading>
 

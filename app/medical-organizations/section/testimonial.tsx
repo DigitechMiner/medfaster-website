@@ -31,7 +31,7 @@ export default function TestimonialsSlider() {
       <div className="mb-8 md:mb-12 lg:mb-16">
         <Heading className="text-[#252B37] mb-4">
           What Healthcare Teams Say About{" "}
-          <span className="text-[#F3651B] font-semibold">KeRaeva</span>
+          <span className="text-[#F3651B]">KeRaeva</span>
         </Heading>
         <Paragraph className="text-[#717680] max-w-3xl">
           Feedback from healthcare teams using KeRaeva to hire verified

@@ -29,7 +29,7 @@ export function GetStartedModal() {
       {view === "choose" ? (
         <div className="space-y-6">
           <div className="text-center space-y-2">
-            <Heading id="get-started-title" as="h2" size="xs" weight="semibold" className="!text-2xl text-[#252B37]">
+            <Heading id="get-started-title" as="h2" size="xs" className="text-[#252B37]">
               How will you use <span className="text-[#F3651B]">KeRaeva</span>?
             </Heading>
             <Paragraph size="sm" className="text-[#717680]">
@@ -85,7 +85,7 @@ export function GetStartedModal() {
           )}
 
           <div className="text-center space-y-2">
-            <Heading id="get-started-title" as="h2" size="xs" weight="semibold" className="!text-2xl text-[#252B37]">
+            <Heading id="get-started-title" as="h2" size="xs" className="text-[#252B37]">
               <span className="text-[#F3651B]">Download</span> the App
             </Heading>
             <Paragraph size="sm" className="text-[#717680]">

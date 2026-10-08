@@ -59,7 +59,7 @@ export function LegalDocument({ document }: { document: LegalDocumentData }) {
         {/* Summary */}
         {document.summary && (
           <div className="bg-[#FDF3EC] rounded-2xl p-6 md:p-8 space-y-3">
-            <Heading as="h2" size="xs" weight="semibold" className="text-[#252B37]">
+            <Heading as="h2" size="xs" className="text-[#252B37]">
               Summary
             </Heading>
             <LegalContent content={document.summary} />
@@ -101,7 +101,7 @@ export function LegalDocument({ document }: { document: LegalDocumentData }) {
           <div key={partIndex} className="space-y-10">
             {part.title && (
               <div className="space-y-2 border-t border-[#E9EAEB] pt-8">
-                <Heading as="h2" size="sm" weight="semibold" className="text-[#252B37]">
+                <Heading as="h2" size="sm" className="text-[#252B37]">
                   {part.title}
                 </Heading>
                 {part.intro && (
@@ -111,12 +111,7 @@ export function LegalDocument({ document }: { document: LegalDocumentData }) {
             )}
             {part.sections.map((section) => (
               <section key={section.id} id={section.id} className="scroll-mt-24 space-y-4">
-                <Heading
-                  as={hasParts ? "h3" : "h2"}
-                  size="xs"
-                  weight="semibold"
-                  className="text-[#252B37]"
-                >
+                <Heading as={hasParts ? "h3" : "h2"} size="xs" className="text-[#252B37]">
                   {section.title}
                 </Heading>
                 <LegalContent content={section.content} />

@@ -20,9 +20,9 @@ export default function SubscriptionsPage() {
         {/* Hero */}
         <Section className="pt-2 md:pt-4 lg:pt-6 xl:pt-8 text-center">
           <div className="space-y-4 max-w-2xl mx-auto">
-            <Heading as="h1" size="lg" weight="normal" className="text-[#252B37]">
+            <Heading as="h1" size="lg" className="text-[#252B37]" weight="normal">
               Simple, Transparent{" "}
-              <span className="text-[#F3651B]">Pricing</span>
+              <span className="text-[#F3651B] font-medium">Pricing</span>
             </Heading>
             <Paragraph size="sm" className="text-[#717680]">
               Free for healthcare professionals. Healthcare organizations get

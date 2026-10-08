@@ -47,12 +47,7 @@ export default function GetHiredSection() {
               <span className="text-sm font-semibold text-[#F3651B] mb-2">
                 {String(index + 1).padStart(2, "0")}
               </span>
-              <Heading
-                as="h3"
-                size="xs"
-                weight="medium"
-                className="text-[#252B37] mb-3"
-              >
+              <Heading as="h3" size="xs" weight="medium" className="text-[#252B37] mb-3">
                 {step.title}
               </Heading>
               <ResponsiveParagraph

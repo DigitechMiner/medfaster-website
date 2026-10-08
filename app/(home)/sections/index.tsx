@@ -26,8 +26,8 @@ export function AIHelpsSection() {
     <Section backgroundColor="bg-white">
       <div className="mb-8 md:mb-12">
         {/* ↓ text-2xl on mobile, scales up */}
-        <Heading as="h2" size="md" className="text-[#252B37] mb-4 text-2xl md:text-3xl lg:text-4xl">
-          <span className="text-[#F3651B] font-extrabold">Intelligent AI</span>
+        <Heading as="h2" size="md" className="text-[#252B37] mb-4">
+          <span className="text-[#F3651B]">Intelligent AI</span>
           {", Working for Healthcare Professionals & Organizations"}
         </Heading>
         <Paragraph className="text-[#717680] max-w-3xl text-sm md:text-base">
@@ -66,7 +66,7 @@ export function AllInOneSection() {
   return (
     <Section>
       <div className="mb-8 md:mb-12">
-        <Heading as="h2" size="md" className="text-[#252B37] mb-4 text-2xl md:text-3xl lg:text-4xl">
+        <Heading as="h2" size="md" className="text-[#252B37] mb-4">
           Manage Your{" "}
           <span className="text-[#F3651B]">Entire Career & Hiring Journey,</span>{" "}
           Mobile-First
@@ -91,11 +91,7 @@ export function AllInOneSection() {
 
         {/* Download the App Card */}
         <div className="flex flex-col border-b border-[#E9EAEB] py-4 md:py-0">
-          <Heading
-            as="h5"
-            size="sm"
-            className="!text-xl md:!text-2xl lg:!text-3xl font-semibold mb-4 md:mb-6"
-          >
+          <Heading as="h3" size="xs" className="mb-4 md:mb-6">
             <span className="text-[#F3651B]">Download</span>{" "}
             <span className="text-[#252B37]">the App</span>
           </Heading>
@@ -165,21 +161,16 @@ export function VerifiedSection() {
       className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 lg:gap-8"
     >
       <Section className="flex items-start w-full">
-        <div className="space-y-4 font-[500]">
-          <Heading
-            as="h2"
-            size="md"
-            // ↓ tighter leading on mobile, break only on lg+
-            className="text-[#252B37] leading-snug text-2xl md:text-3xl lg:text-4xl"
-          >
+        <div className="space-y-4">
+          <Heading as="h2" size="md" className="text-[#252B37]">
             Interview Once with{" "}
-            <span className="text-[#F3651B] font-bold">AI</span>. Earn a{" "}
-            <span className="text-[#F3651B] font-bold">Verified</span> Scorecard.
+            <span className="text-[#F3651B]">AI</span>. Earn a{" "}
+            <span className="text-[#F3651B]">Verified</span> Scorecard.
           </Heading>
 
           <ResponsiveParagraph
             size="sm"
-            className="text-[#717680] leading-relaxed font-[400]"
+            className="text-[#717680] leading-relaxed"
           >
             After onboarding and verification, professionals complete a
             structured AI interview. It produces a scorecard that travels with
@@ -190,14 +181,14 @@ export function VerifiedSection() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
             {audiences.map((audience) => (
               <div key={audience.title}>
-                <Heading as="h3" size="xs" weight="semibold" className="text-[#252B37] !text-lg mb-3">
+                <Heading as="h3" size="xs" className="text-[#252B37] mb-3">
                   {audience.title}
                 </Heading>
                 <ul className="space-y-2">
                   {audience.points.map((point) => (
                     <li key={point} className="flex items-start gap-2">
                       <CheckCircle2 className="w-4 h-4 text-[#F3651B] mt-1 shrink-0" />
-                      <Paragraph size="sm" className="text-[#717680] font-[400]">
+                      <Paragraph size="sm" className="text-[#717680]">
                         {point}
                       </Paragraph>
                     </li>
@@ -249,11 +240,7 @@ export function NextCareer() {
       <Section backgroundColor="bg-[#F3651B]" padding={false} style={cardStyle}>
         <div className="p-6 sm:p-8 md:p-8 lg:p-12 xl:p-16 flex flex-col min-h-[260px] md:min-h-[400px]">
           <div className="space-y-4 md:space-y-6">
-            <Heading
-              as="h2"
-              size="md"
-              className="text-white font-bold leading-tight text-2xl md:text-3xl lg:text-4xl"
-            >
+            <Heading as="h2" size="md" className="text-white">
               Your Next Career Move Starts Here.
             </Heading>
 
@@ -280,11 +267,7 @@ export function NextCareer() {
       <Section backgroundColor="bg-[#F3651B]" padding={false} style={cardStyle}>
         <div className="p-6 sm:p-8 md:p-8 lg:p-12 xl:p-16 flex flex-col min-h-[260px] md:min-h-[400px]">
           <div className="space-y-4 md:space-y-6">
-            <Heading
-              as="h2"
-              size="md"
-              className="text-white font-bold leading-tight text-2xl md:text-3xl lg:text-4xl"
-            >
+            <Heading as="h2" size="md" className="text-white">
               Start Hiring Smarter Today
             </Heading>
 

@@ -39,7 +39,7 @@ export function MissionSection() {
         <div className="text-center mb-12">
           <Heading as="h2" size="md" className="text-[#252B37] mb-4">
             Where{" "}
-            <span className="text-[#F3651B] font-bold">AI-Powered Hiring</span>{" "}
+            <span className="text-[#F3651B]">AI-Powered Hiring</span>{" "}
             Meets Human-Centric Care
           </Heading>
           <ResponsiveParagraph

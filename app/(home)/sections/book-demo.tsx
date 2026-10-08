@@ -38,8 +38,8 @@ export default function BookADemo() {
 
           {/* Heading */}
           <div className="space-y-4">
-            <Heading as="h2" size="md" className="text-white ">
-              From Shift to <span className="font-bold">Payment</span>, Seamlessly
+            <Heading as="h2" size="md" className="text-white">
+              From Shift to <span>Payment</span>, Seamlessly
             </Heading>
             <ResponsiveParagraph size="base" className="text-white/90 max-w-xl">
               KeRaeva doesn&apos;t stop at the hire. Shifts, attendance and

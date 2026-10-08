@@ -30,7 +30,7 @@ export default function TestimonialsSection() {
         <div>
           <Heading as="h2" size="md" className="text-[#252B37] mb-4">
             What Our Professionals Are Saying About{" "} <br />
-            <span className="text-[#F3651B] font-bold">KeRaeva</span>
+            <span className="text-[#F3651B]">KeRaeva</span>
           </Heading>
           <ResponsiveParagraph size="sm" className="text-[#717680] max-w-3xl">
             Real experiences from nurses, specialists and therapists using
@@ -79,7 +79,7 @@ export default function TestimonialsSection() {
                     />
                   </div>
                   <div>
-                    <Heading as="h4" size="xs" weight="semibold" className="text-[#252B37]">
+                    <Heading as="h4" size="xs" className="text-[#252B37]">
                       {testimonial.name}
                     </Heading>
                     <Paragraph size="sm" className="text-[#717680]">{testimonial.role}</Paragraph>

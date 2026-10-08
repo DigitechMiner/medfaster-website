@@ -29,7 +29,7 @@ export default function TestimonialsSection() {
         {/* Header */}
         <div>
           <Heading as="h2" size="md" className="text-[#252B37] mb-4">
-            <span className="text-[#F3651B] font-bold">Real Results,</span>{" "}
+            <span className="text-[#F3651B]">Real Results,</span>{" "}
             Real Partnerships
           </Heading>
           <ResponsiveParagraph size="sm" className="text-[#717680] max-w-3xl">
@@ -78,7 +78,7 @@ export default function TestimonialsSection() {
                     />
                   </div>
                   <div>
-                    <Heading as="h4" size="xs" weight="semibold" className="text-[#252B37]">
+                    <Heading as="h4" size="xs" className="text-[#252B37]">
                       {testimonial.name}
                     </Heading>
                     <Paragraph size="sm" className="text-[#717680]">{testimonial.role}</Paragraph>

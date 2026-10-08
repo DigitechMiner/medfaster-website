@@ -17,12 +17,7 @@ export default function HeroSection() {
       <div className="flex flex-col items-center text-center space-y-8">
         {/* Main Heading */}
         <div className="max-w-4xl">
-          <Heading
-            as="h1"
-            size="lg"
-            weight="normal"
-            className="text-[#252B37] mb-6"
-          >
+          <Heading as="h1" size="lg" className="text-[#252B37] mb-6" weight="normal">
             Healthcare Workforce, Powered by{" "}
             <span className="text-[#F3651B] font-medium">Intelligence</span>
           </Heading>

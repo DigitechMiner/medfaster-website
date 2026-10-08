@@ -80,12 +80,7 @@ export function ThreeStepsSection() {
                   </div>
 
                   <div>
-                    <Heading
-                      as="h3"
-                      size="xs"
-                      weight="medium"
-                      className="text-white mb-2"
-                    >
+                    <Heading as="h3" size="xs" weight="medium" className="text-white mb-2">
                       {step.title}
                     </Heading>
                     <ResponsiveParagraph

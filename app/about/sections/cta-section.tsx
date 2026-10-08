@@ -18,7 +18,7 @@ export function CTASection() {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <Heading as="h2" size="md" className="text-white mb-4 leading-tight">
+      <Heading as="h2" size="md" className="text-white mb-4">
         Find Your Next Hire. Or Your Next Job.
       </Heading>
 
