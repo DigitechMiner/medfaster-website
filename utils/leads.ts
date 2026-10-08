@@ -11,7 +11,25 @@ export type LeadPayload =
       message?: string;
       website?: string;
     }
-  | { type: "newsletter"; email: string; audience?: string; website?: string };
+  | { type: "newsletter"; email: string; audience?: string; website?: string }
+  | {
+      type: "contact";
+      name: string;
+      email: string;
+      message: string;
+      phone?: string;
+      enquiryType?: string;
+      website?: string;
+    }
+  | {
+      type: "support";
+      issueType: string;
+      subject: string;
+      email: string;
+      description: string;
+      phone?: string;
+      website?: string;
+    };
 
 export interface LeadResult {
   ok: boolean;

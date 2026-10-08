@@ -2,8 +2,6 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { Section } from "@/components/ui/section";
-import Header from "@/components/global/header";
-import { Footer } from "@/components/global/footer";
 import { Screen } from "@/components/global/screen";
 import { Heading } from "@/components/ui/heading";
 import { Paragraph } from "@/components/ui/paragraph";
@@ -11,13 +9,9 @@ import {
   AboutHeroSection,
   StatsSection,
   PurposeSection,
-  ThreeStepsSection,
-  CoreGoalsSection,
   WhyKeRaevaSection,
   JourneySection,
   TeamSection,
-  AboutTestimonialsSection,
-  FAQSection,
   CTASection,
 } from "@/app/about/sections";
 
@@ -54,16 +48,17 @@ export default function MobileAboutUsPage() {
           </div>
         </Section>
 
+      {/* 1. Story */}
       <AboutHeroSection />
       <StatsSection />
-      <PurposeSection />
-      <ThreeStepsSection />
-      <CoreGoalsSection />
-      <WhyKeRaevaSection />
       <JourneySection />
+      {/* 2. Mission & Vision */}
+      <PurposeSection />
+      {/* 3. Why KeRaeva */}
+      <WhyKeRaevaSection />
+      {/* 4. Team */}
       <TeamSection />
-      <AboutTestimonialsSection />
-      <FAQSection />
+      {/* 5. CTA */}
       <CTASection />
     </Screen>
   );

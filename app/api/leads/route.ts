@@ -1,9 +1,10 @@
 import { NextResponse } from "next/server";
 
-// Receives demo requests and newsletter sign-ups and forwards them to
+// Receives demo requests, newsletter sign-ups, contact enquiries and support
+// requests and forwards them to
 // LEADS_WEBHOOK_URL (e.g. a CRM, Zapier/Make, Slack or Google Apps Script hook).
 
-type LeadType = "demo" | "newsletter";
+type LeadType = "demo" | "newsletter" | "contact" | "support";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MAX_FIELD_LENGTH = 1000;
@@ -11,11 +12,15 @@ const MAX_FIELD_LENGTH = 1000;
 const REQUIRED_FIELDS: Record<LeadType, string[]> = {
   demo: ["name", "email", "organization"],
   newsletter: ["email"],
+  contact: ["name", "email", "message"],
+  support: ["issueType", "subject", "email", "description"],
 };
 
 const ALLOWED_FIELDS: Record<LeadType, string[]> = {
   demo: ["name", "email", "phone", "organization", "role", "organizationType", "province", "message"],
   newsletter: ["email", "audience"],
+  contact: ["name", "email", "phone", "enquiryType", "message"],
+  support: ["issueType", "subject", "email", "phone", "description"],
 };
 
 export async function POST(request: Request) {

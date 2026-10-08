@@ -27,24 +27,6 @@ const TIMELINE = [
     description:
       "From prototype to a growing platform, our work is built on one principle: speed matters in healthcare.",
   },
-  {
-    year: "2026",
-    title: "The Question",
-    description:
-      "KeRaeva began with a simple question: 'Why should healthcare still struggle with time?' Founded by doctors and technologists, we saw how traditional staffing delayed care.",
-  },
-  {
-    year: "2027",
-    title: "The Concept",
-    description:
-      "What started as a concept to fill last-minute hospital shifts and test our AI models.",
-  },
-  {
-    year: "2028",
-    title: "The Ecosystem",
-    description:
-      "Evolved into a full-scale digital ecosystem that brings together AI recruitment, real-time workforce matching, shifts and payments.",
-  },
 ];
 
 // Reusable Heartbeat Line Component
@@ -73,12 +55,10 @@ export function JourneySection() {
         Our <span className="text-[#F3651B]">Journey</span>
       </Heading>
       <div className="relative p-4 md:py-8 lg:py-16 md:px-4 lg:px-8 overflow-hidden">
-        {/* Heading - Unchanged */}
-
-        {/* Desktop Layout - Now 80% width */}
+        {/* Desktop Layout: one row of milestones */}
         <div className="hidden lg:block relative w-4/5 ml-30">
           {/* Top Row: 4 Cards in Straight Line */}
-          <div className="flex items-center justify-start mb-8 -ml-7 scale-120 relative">
+          <div className="flex items-center justify-start -ml-7 scale-120 relative">
             <HeartbeatLine />
             {TIMELINE.slice(0, 4).map((item, index) => (
               <div key={index} className="contents">
@@ -87,10 +67,6 @@ export function JourneySection() {
                   year={item.year}
                   description={item.description}
                   variant="desktop"
-                  showConnector={index === 3}
-                  connectorHeight={
-                    index === 3 ? "calc(8rem + 128px)" : undefined
-                  }
                   className={
                     index === 0
                       ? "relative"
@@ -103,27 +79,9 @@ export function JourneySection() {
               </div>
             ))}
           </div>
-
-          {/* Bottom Row: 3 Cards Starting from Right */}
-          <div className="flex items-center justify-end mt-32 mr-0 scale-110 relative">
-            {TIMELINE.slice(4, 7)
-              .reverse()
-              .map((item, index) => (
-                <div key={index} className="contents">
-                  <TimelineCard
-                    title={item.title}
-                    year={item.year}
-                    description={item.description}
-                    variant="desktop"
-                    className={index === 2 ? "relative" : undefined}
-                  />
-                  {index < 2 && <HeartbeatLine />}
-                </div>
-              ))}
-          </div>
         </div>
 
-        {/* Tablet & Mobile: Vertical column with one card per row, all 7 cards */}
+        {/* Tablet & Mobile: Vertical column with one card per row */}
         <div className="lg:hidden w-full mx-auto max-w-md">
           {TIMELINE.map((item, index) => (
             <div

@@ -2,7 +2,6 @@ export type Testimonial = {
   quote: string;
   name: string;
   role: string;
-  avatar: string;
   rating: number;
 };
 export const testimonials: Testimonial[] = [
@@ -11,7 +10,6 @@ export const testimonials: Testimonial[] = [
       "Seeing every candidate's verification status up front has made our compliance checks much simpler, which gives our entire team peace of mind.",
     name: "Maria R.",
     role: "Compliance Officer",
-    avatar: "/img/testimonials/michael.webp",
     rating: 3,
   },
   {
@@ -19,7 +17,6 @@ export const testimonials: Testimonial[] = [
       "KeRaeva has shortened our hiring process noticeably. The AI matching and interview scorecards save us hours of screening.",
     name: "Dr. James Chen",
     role: "Chief Medical Officer",
-    avatar: "/img/testimonials/sarah.webp",
     rating: 5,
   },
   {
@@ -27,7 +24,6 @@ export const testimonials: Testimonial[] = [
       "Finally, a platform that understands healthcare recruitment. The credential verification alone is worth the investment.",
     name: "Sarah Mitchell",
     role: "HR Director",
-    avatar: "/img/testimonials/sarah.webp",
     rating: 4,
   },
 ];

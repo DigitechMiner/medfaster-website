@@ -10,10 +10,6 @@ const TEAM_MEMBERS = [
     role: "CEO & Founder",
     //bio: "",
     image: "/images/team/kewal.webp",
-    social: {
-      twitter: "https://twitter.com",
-      linkedin: "https://linkedin.com",
-    },
   },
   {
     id: 2,
@@ -21,10 +17,6 @@ const TEAM_MEMBERS = [
     role: "CTO & Director",
     //bio: "",
     image: "/images/team/rutvij.webp",
-    social: {
-      twitter: "https://twitter.com",
-      linkedin: "https://linkedin.com",
-    },
   },
 ];
 
@@ -57,7 +49,6 @@ export function TeamSection() {
             role={member.role}
             //bio={member.bio}
             image={member.image}
-            social={member.social}
           />
         ))}
       </div>

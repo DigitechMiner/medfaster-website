@@ -11,15 +11,12 @@ import { Screen } from "@/components/global/screen";
 import { Heading } from "@/components/ui/heading";
 import { Paragraph } from "@/components/ui/paragraph";
 import { CustomButton } from "@/components/ui/custom-button";
-import { TeamProfileCard } from "@/components/card/team-profile-card";
-import { CareerCTASection } from "@/components/section/career";
 import { TeamMemberCard } from "@/components/card/team-member-card";
 const FILTER_TABS = [
   { id: "all", label: "View All" },
   { id: "board", label: "Board Members" },
   { id: "dev", label: "Developers & Designers" },
   { id: "marketing", label: "Marketing & Advertising" },
-  { id: "management", label: "Management & Operations" },
 ];
 
 const TEAM_MEMBERS = [
@@ -29,10 +26,6 @@ const TEAM_MEMBERS = [
     role: "Founder & CEO",
     category: "board",
     image: "/images/team/kewal.webp",
-    social: {
-      twitter: "https://twitter.com",
-      linkedin: "https://linkedin.com",
-    },
   },
   {
     id: 2,
@@ -40,21 +33,13 @@ const TEAM_MEMBERS = [
     role: "CTO & Director",
     category: "board",
     image: "/images/team/rutvij.webp",
-    social: {
-      twitter: "https://twitter.com",
-      linkedin: "https://linkedin.com",
-    },
   },
   {
     id: 3,
     name: "Yash Prajapati",
     role: "BDE",
     category: "marketing",
-    image: "/images/team/member-4.webp",
-    social: {
-      twitter: "https://twitter.com",
-      linkedin: "https://linkedin.com",
-    },
+    image: null, // genuine photo pending; initials shown
   },
   {
     id: 4,
@@ -62,10 +47,6 @@ const TEAM_MEMBERS = [
     role: "Lead Fullstack Developer",
     category: "dev",
     image: "/images/team/kevin.webp",
-    social: {
-      twitter: "https://twitter.com",
-      linkedin: "https://linkedin.com",
-    },
   },
   {
     id: 5,
@@ -73,43 +54,27 @@ const TEAM_MEMBERS = [
     role: "Lead AI Module Developer",
     category: "dev",
     image: "/images/team/vaibhav.webp",
-    social: {
-      twitter: "https://twitter.com",
-      linkedin: "https://linkedin.com",
-    },
   },
   {
     id: 6,
     name: "Deep Desai",
     role: "Lead Backend Developer",
     category: "dev",
-    image: "/images/team/member-2.webp",
-    social: {
-      twitter: "https://twitter.com",
-      linkedin: "https://linkedin.com",
-    },
+    image: null, // genuine photo pending; initials shown
   },
   {
     id: 7,
     name: "Sanket Patel",
     role: "Mobile App Developer",
     category: "dev",
-    image: "/images/team/member-6.webp",
-    social: {
-      twitter: "https://twitter.com",
-      linkedin: "https://linkedin.com",
-    },
+    image: null, // genuine photo pending; initials shown
   },
   {
     id: 8,
     name: "Rahul Nishad",
     role: "Web Developer",
     category: "dev",
-    image: "/images/team/member-3.webp",
-    social: {
-      twitter: "https://twitter.com",
-      linkedin: "https://linkedin.com",
-    },
+    image: null, // genuine photo pending; initials shown
   },
   {
     id: 9,
@@ -117,10 +82,6 @@ const TEAM_MEMBERS = [
     role: "Backend Developer",
     category: "dev",
     image: "/images/team/srujan.webp",
-    social: {
-      twitter: "https://twitter.com",
-      linkedin: "https://linkedin.com",
-    },
   },
   /*  {
     id: 12,
@@ -128,7 +89,6 @@ const TEAM_MEMBERS = [
     role: "AI Module Developer",
     category: "dev",
     image: null,
-    social: { twitter: "https://twitter.com", linkedin: "https://linkedin.com" },
   },*/
 ];
 
@@ -153,7 +113,7 @@ export default function TeamPage() {
 
             <div className="flex flex-wrap items-center gap-2 text-sm sm:text-base lg:text-lg">
               <Link
-                href="/about_us"
+                href="/about"
                 className="inline-block py-1.5 text-[#252B37] transition-colors hover:text-[#F3651B]"
               >
                 About KeRaeva
@@ -212,19 +172,6 @@ export default function TeamPage() {
           </div>
         </div>
 
-        {/* <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 xl:grid-cols-4">
-          {filteredMembers.map((member) => (
-            <TeamProfileCard
-              key={member.id}
-              id={member.id}
-              name={member.name}
-              role={member.role}
-              image={member.image}
-              social={member.social}
-            />
-          ))}
-        </div> */}
-
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {filteredMembers.map((member) => (
             <TeamMemberCard
@@ -233,14 +180,11 @@ export default function TeamPage() {
               name={member.name}
               role={member.role}
               //bio={member.bio}
-              image={member.image ?? "/images/icons/people.svg"}
-              social={member.social}
+              image={member.image}
             />
           ))}
         </div>
       </Section>
-
-      <CareerCTASection />
       <Footer />
     </Screen>
   );

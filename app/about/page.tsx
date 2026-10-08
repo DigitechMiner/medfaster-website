@@ -11,13 +11,9 @@ import {
   AboutHeroSection,
   StatsSection,
   PurposeSection,
-  ThreeStepsSection,
-  CoreGoalsSection,
   WhyKeRaevaSection,
   JourneySection,
   TeamSection,
-  AboutTestimonialsSection,
-  FAQSection,
   CTASection,
 } from "./sections";
 
@@ -55,16 +51,17 @@ export default function AboutUsPage() {
         </Section>
       </Header>
 
+      {/* 1. Story */}
       <AboutHeroSection />
       <StatsSection />
-      <PurposeSection />
-      <ThreeStepsSection />
-      <CoreGoalsSection />
-      <WhyKeRaevaSection />
       <JourneySection />
+      {/* 2. Mission & Vision */}
+      <PurposeSection />
+      {/* 3. Why KeRaeva */}
+      <WhyKeRaevaSection />
+      {/* 4. Team */}
       <TeamSection />
-      <AboutTestimonialsSection />
-      <FAQSection />
+      {/* 5. CTA */}
       <CTASection />
 
       <Footer />

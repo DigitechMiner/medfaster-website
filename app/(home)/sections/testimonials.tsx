@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Image from "@/components/ui/image";
+import { InitialsAvatar } from "@/components/ui/initials-avatar";
 import { ArrowLeft, ArrowRight, Star } from "lucide-react";
 import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/heading";
@@ -69,15 +69,7 @@ export default function TestimonialsSection() {
 
                 {/* User Info - stays at bottom */}
                 <div className="flex items-center gap-4">
-                  <div className="relative w-12 h-12 rounded-full overflow-hidden bg-gray-200 flex-shrink-0">
-                    <Image
-                      src={testimonial.image}
-                      alt={testimonial.name}
-                      fill
-                      sizes="64px"
-                      className="object-cover"
-                    />
-                  </div>
+                  <InitialsAvatar name={testimonial.name} size="md" />
                   <div>
                     <Heading as="h4" size="xs" className="text-[#252B37]">
                       {testimonial.name}

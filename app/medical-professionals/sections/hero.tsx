@@ -75,25 +75,6 @@ export default function HeroSection() {
               >
                 Browse Nearby Jobs
               </CustomButton>
-
-              {/* Profile Pictures */}
-              <div className="flex -space-x-6">
-                {[
-                  "/images/testimonials/sarah-m.webp",
-                  "/images/testimonials/michael-k.webp",
-                  "/images/testimonials/sarah-m.webp",
-                  "/images/testimonials/michael-k.webp",
-                ].map((src, index) => (
-                  <Image
-                    key={index}
-                    src={src}
-                    alt=""
-                    width={40}
-                    height={40}
-                    className="w-10 h-10 rounded-full border-2 border-white object-cover"
-                  />
-                ))}
-              </div>
             </div>
           </div>
         </div>

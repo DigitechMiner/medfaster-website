@@ -19,7 +19,6 @@ import { CalendarCheck, ClipboardList, Facebook, FileText, Instagram, Linkedin, 
     id: number;
     name: string;
     role: string;
-    image: string;
     rating: number;
     review: string;
   }
@@ -86,7 +85,6 @@ import { CalendarCheck, ClipboardList, Facebook, FileText, Instagram, Linkedin, 
       id: 1,
       name: "Sarah M.",
       role: "Registered Nurse",
-      image: "/images/testimonials/sarah-m.webp",
       rating: 5,
       review:
         "Got a part-time nursing job in 2 days — everything was verified! The smart job recommendations saved me so much time. Highly recommend it!",
@@ -95,7 +93,6 @@ import { CalendarCheck, ClipboardList, Facebook, FileText, Instagram, Linkedin, 
       id: 2,
       name: "David L.",
       role: "Freelance Physiotherapist",
-      image: "/images/testimonials/michael-k.webp",
       rating: 4,
       review:
         "I had been looking for flexible shifts with no luck. The easy payments and map view here made freelancing smooth. Totally worth it.",
@@ -104,7 +101,6 @@ import { CalendarCheck, ClipboardList, Facebook, FileText, Instagram, Linkedin, 
       id: 3,
       name: "Emily R.",
       role: "Healthcare Specialist",
-      image: "/images/testimonials/sarah-m.webp",
       rating: 5,
       review:
         "The AI matching is incredible! Found my dream job within a week. The verification process gave me confidence in every application.",
@@ -113,7 +109,6 @@ import { CalendarCheck, ClipboardList, Facebook, FileText, Instagram, Linkedin, 
       id: 4,
       name: "Michael K.",
       role: "Medical Technician",
-      image: "/images/testimonials/michael-k.webp",
       rating: 5,
       review:
         "Best platform for healthcare professionals! The instant notifications and easy application process made job hunting stress-free.",

@@ -10,7 +10,6 @@ import { Heading } from "@/components/ui/heading";
 import { Paragraph } from "@/components/ui/paragraph";
 import { ReportIssueForm } from "./components/form";
 
-import { ContactInfoSection } from "../contact-us/components/info";
 import { FreqAskQuest } from "./components/FreqAskQuest";
 import { ContactInfo } from "./components/ContactInfo";
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Image from "@/components/ui/image";
+import { InitialsAvatar } from "@/components/ui/initials-avatar";
 import { ArrowLeft, ArrowRight, Star, Quote } from "lucide-react";
 import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/heading";
@@ -70,15 +70,7 @@ export default function TestimonialsSlider() {
 
             {/* Author Info */}
             <div className="flex items-center gap-4">
-              <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
-                <Image
-                  src={currentTestimonial.avatar}
-                  alt={currentTestimonial.name}
-                  fill
-                  sizes="64px"
-                  className="object-cover"
-                />
-              </div>
+              <InitialsAvatar name={currentTestimonial.name} size="lg" />
               <div>
                 <Paragraph className="text-lg font-semibold text-[#252B37]">
                   {currentTestimonial.name}
