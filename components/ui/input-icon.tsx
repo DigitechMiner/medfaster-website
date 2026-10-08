@@ -13,6 +13,9 @@ interface InputIconProps {
   icon?: LucideIcon;
   iconPosition?: 'left' | 'right';
   iconClassName?: string;
+  id?: string;
+  name?: string;
+  ariaLabel?: string;
 }
 
 export default function InputIcon({
@@ -25,22 +28,28 @@ export default function InputIcon({
   icon: Icon,
   iconPosition = 'left',
   iconClassName,
+  id,
+  name,
+  ariaLabel,
 }: InputIconProps) {
   return (
     <div className="w-full">
       {label && (
-        <label className="block text-sm font-medium text-gray-700 mb-2">
+        <label htmlFor={id} className="block text-sm font-medium text-gray-700 mb-2">
           {label}
         </label>
       )}
       <div className="relative">
         {Icon && iconPosition === 'left' && (
-          <Icon className={cn(
+          <Icon aria-hidden="true" className={cn(
             "absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-600 w-5 h-5",
             iconClassName
           )} />
         )}
         <input
+          id={id}
+          name={name}
+          aria-label={label ? undefined : ariaLabel}
           type={type}
           placeholder={placeholder}
           value={value}
@@ -55,7 +64,7 @@ export default function InputIcon({
           )}
         />
         {Icon && iconPosition === 'right' && (
-          <Icon className={cn(
+          <Icon aria-hidden="true" className={cn(
             "absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-600 w-5 h-5",
             iconClassName
           )} />

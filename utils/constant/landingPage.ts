@@ -80,11 +80,3 @@ export const hiringSteps: HiringStep[] = [
       "Every profile shows verification status, uploaded credentials and AI interview results before you hire.",
   },
 ];
-
-export const orgWorkforceSteps: string[] = [
-  "Post a job, shift or urgent requirement",
-  "Professional accepts and is scheduled",
-  "Check-in and attendance tracked in the app",
-  "Shift completed and verified",
-  "Professional paid through KeRaeva",
-];

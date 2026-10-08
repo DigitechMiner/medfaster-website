@@ -9,12 +9,6 @@ import { CalendarCheck, ClipboardList, Facebook, FileText, Instagram, Linkedin, 
     description: string;
   }
   
-  export interface AppFeature {
-    screen: string;
-    title: string;
-    description: string;
-  }
-  
   export interface Testimonial {
     id: number;
     name: string;
@@ -54,29 +48,6 @@ import { CalendarCheck, ClipboardList, Facebook, FileText, Instagram, Linkedin, 
       icon: ShieldCheck,
       title: "Verified Profiles & Opportunities",
       description: "Identity, documents and credentials are reviewed, and verification status is visible before anyone commits."
-    }
-  ];
-  
-  export const APP_FEATURES: AppFeature[] = [
-    {
-      screen: "/images/features/resume-upload.webp",
-      title: "Profile & Document Upload",
-      description: "Upload your resume, licences and certifications once, then track their verification status in one place."
-    },
-    {
-      screen: "/images/features/map-view.webp",
-      title: "Map View",
-      description: "See opportunities around you on a map and search within the distance you're willing to travel."
-    },
-    {
-      screen: "/images/features/job-marketplace.webp",
-      title: "Job Marketplace",
-      description: "Browse recommended roles, urgent shifts, job invites and hiring organizations. Save the ones you like and track every application."
-    },
-    {
-      screen: "/images/features/wallet-payment.webp",
-      title: "Wallet & Payments",
-      description: "See the earnings and transaction history for every shift, and withdraw to your linked bank account."
     }
   ];
   
@@ -157,37 +128,83 @@ import { CalendarCheck, ClipboardList, Facebook, FileText, Instagram, Linkedin, 
   ];
 
   // Urgent staffing flow (Home)
-  export const URGENT_STAFFING_STEPS: JourneyStep[] = [
-    {
-      title: "Urgent Requirement Posted",
-      description: "An organization needs a Registered Nurse for tonight's shift.",
-    },
-    {
-      title: "KeRaeva Finds Who's Eligible",
-      description: "The requirement is matched against professionals' role, availability and location.",
-    },
-    {
-      title: "Instant Opportunity Alert",
-      description: "Eligible professionals get the shift details (location, timing and pay) on their phone.",
-    },
-    {
-      title: "Accept or Decline in a Tap",
-      description: "Professionals review the shift and respond. Shifts are filled on a first-accept basis.",
-    },
-    {
-      title: "Shift Confirmed",
-      description: "The shift moves to the professional's upcoming work, and the organization knows it's covered.",
-    },
-  ];
+  // Urgent staffing flow, told from each audience's side
+  export const URGENT_STAFFING_STEPS: Record<"everyone" | "organizations" | "professionals", JourneyStep[]> = {
+    everyone: [
+      { title: "Urgent Need", description: "A facility needs cover for a shift that starts soon." },
+      { title: "KeRaeva Matching", description: "The shift is matched to professionals by role, availability and location." },
+      { title: "Available Professional", description: "Matched professionals see the details and respond from their phone." },
+      { title: "Shift Filled", description: "Once a professional accepts, the facility knows the shift is covered." },
+    ],
+    organizations: [
+      {
+        title: "Create an Urgent Requirement",
+        description: "Add the role, date, time, location and pay for the shift you need covered.",
+      },
+      {
+        title: "KeRaeva Finds Eligible Professionals",
+        description: "The requirement is matched against professionals\u2019 role, qualifications, availability and location.",
+      },
+      {
+        title: "Professionals Are Notified",
+        description: "Eligible professionals get the shift details on their phone straight away.",
+      },
+      {
+        title: "Responses Arrive",
+        description: "You see who has accepted as responses come in, from the recruiter platform.",
+      },
+      {
+        title: "Fill the Shift",
+        description: "The shift is confirmed and appears in your workforce view with the assigned professional.",
+      },
+    ],
+    professionals: [
+      {
+        title: "Set Your Availability",
+        description: "Turn on availability for the days and times you\u2019re open to urgent work.",
+      },
+      {
+        title: "Receive a Matching Urgent Opportunity",
+        description: "When a nearby shift fits your role, KeRaeva sends you an alert.",
+      },
+      {
+        title: "Review Shift Details",
+        description: "Check the facility, location, timing and pay before you decide.",
+      },
+      {
+        title: "Accept or Decline",
+        description: "Take the shift in a tap, or pass on it if it doesn\u2019t suit you.",
+      },
+      {
+        title: "Work the Shift",
+        description: "Accepted shifts move to your upcoming work, ready for check-in on the day.",
+      },
+    ],
+  };
 
-  // Shift-to-payment flow (Home)
-  export const WORKFORCE_STEPS: string[] = [
-    "Shift scheduled",
-    "Check in and out from the app",
-    "Attendance verified",
-    "Earnings credited to the wallet",
-    "Withdraw to a linked bank account",
-  ];
+  // Shift-to-payment flow, told from each audience's side
+  export const WORKFORCE_STEPS: Record<"everyone" | "organizations" | "professionals", string[]> = {
+    everyone: [
+      "Opportunity accepted and shift scheduled",
+      "Check in and out from the app",
+      "Shift completed",
+      "Earnings credited to the wallet",
+    ],
+    organizations: [
+      "Shifts assigned to accepted professionals",
+      "Check-ins and check-outs visible as they happen",
+      "Workforce activity followed across every shift",
+      "Completed shifts confirmed",
+      "Payment status visible for each shift",
+    ],
+    professionals: [
+      "Upcoming and active shifts in one place",
+      "Check in when you arrive",
+      "Check out when you finish",
+      "Completed shifts credited to your wallet",
+      "Withdraw to your linked bank account",
+    ],
+  };
 
   // External links
   export const RECRUITER_REGISTRATION_URL = "https://recruiter.keraeva.com/registration";

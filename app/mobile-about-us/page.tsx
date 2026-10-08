@@ -19,6 +19,8 @@ export const metadata: Metadata = {
   title: "About KeRaeva | AI-Powered Healthcare Workforce Platform",
   description:
     "Learn about KeRaeva's mission to make healthcare staffing in Canada faster and more reliable with AI-powered matching and human-centred care.",
+  // In-app / placeholder page: keep it out of search results
+  robots: { index: false, follow: true },
 };
 
 export default function MobileAboutUsPage() {

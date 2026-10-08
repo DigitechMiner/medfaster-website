@@ -235,7 +235,7 @@ export default function Header({ children }: HeaderProps) {
                             className={cn(
                               "block text-sm font-medium",
                               motion,
-                              active ? "text-[#F3651B]" : "text-[#252B37] group-hover:text-[#F3651B]"
+                              active ? "text-[#C44408]" : "text-[#252B37] group-hover:text-[#F3651B]"
                             )}
                           >
                             {sub.label}

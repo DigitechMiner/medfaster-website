@@ -6,12 +6,11 @@ import { FeatureCard } from "@/components/ui/feature-card";
 import { Heading } from "@/components/ui/heading";
 import { Paragraph, ResponsiveParagraph } from "@/components/ui/paragraph";
 import { CustomButton } from "@/components/ui/custom-button";
-import { ArrowRight, Calendar, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Calendar, CheckCircle2, LayoutDashboard, Smartphone } from "lucide-react";
+import { IconChip } from "@/components/ui/icon-chip";
 import { useRouter } from "next/navigation";
 import {
-
   AI_FEATURES,
-  APP_FEATURES,
   APP_STORE_LINKS,
   RECRUITER_REGISTRATION_URL,
 } from "@/utils/constant";
@@ -59,73 +58,131 @@ export function AIHelpsSection() {
   );
 }
 
-// All In One App Section
+// Product Ecosystem Section - the app for professionals and the recruiter platform
+const ECOSYSTEM = [
+  {
+    icon: Smartphone,
+    title: "KeRaeva App",
+    audience: "For healthcare professionals",
+    points: [
+      "Profile, documents and verification status",
+      "AI interview and scorecard",
+      "Jobs, job invites and urgent shifts",
+      "Shifts with in-app check-in and check-out",
+      "Wallet and withdrawals to your bank",
+    ],
+    href: "/medical-professionals",
+    linkLabel: "KeRaeva for Professionals",
+  },
+  {
+    icon: LayoutDashboard,
+    title: "KeRaeva Recruiter Platform",
+    audience: "For healthcare organizations",
+    points: [
+      "Post jobs and urgent requirements",
+      "Review verified profiles and AI interview scorecards",
+      "Invite professionals and manage applications",
+      "Follow assigned shifts and attendance",
+      "See payment status for completed shifts",
+    ],
+    href: "/medical-organizations",
+    linkLabel: "KeRaeva for Organizations",
+  },
+];
+
 export function AllInOneSection() {
-  const features = APP_FEATURES;
+  const router = useRouter();
 
   return (
     <Section>
       <div className="mb-8 md:mb-12">
         <Heading as="h2" size="md" className="text-[#252B37] mb-4">
-          Manage Your{" "}
-          <span className="text-[#F3651B]">Entire Career & Hiring Journey,</span>{" "}
-          Mobile-First
+          One <span className="text-[#F3651B]">Connected Ecosystem</span>, Two Products
         </Heading>
         <Paragraph className="text-[#717680] max-w-3xl text-sm md:text-base">
-          From secure document management to full-suite dashboard functionality,
-          our mobile app puts everything you need at your fingertips.
+          Professionals use the KeRaeva app. Organizations use the recruiter
+          platform. Jobs, interviews, shifts and payments move between them in
+          one connected flow.
         </Paragraph>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
-        {features.map((feature, index) => (
-          <FeatureCard
-            key={index}
-            title={feature.title}
-            description={feature.description}
-            imageFullWidth={true}
-            imageCenter={true}
-            visual={{ type: "image", content: feature.screen, alt: feature.title }}
-          />
-        ))}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 lg:gap-8">
+        {ECOSYSTEM.map((product) => (
+          <div key={product.title} className="bg-[#FAFAFA] rounded-lg p-4 sm:p-6 lg:p-8 flex flex-col">
+            <div className="flex items-center gap-4 mb-6">
+              <IconChip icon={product.icon} />
+              <div>
+                <Heading as="h3" size="xs" className="text-[#252B37]">
+                  {product.title}
+                </Heading>
+                <Paragraph size="sm" className="text-[#717680]">
+                  {product.audience}
+                </Paragraph>
+              </div>
+            </div>
 
-        {/* Download the App Card */}
-        <div className="flex flex-col border-b border-[#E9EAEB] py-4 md:py-0">
-          <Heading as="h3" size="xs" className="mb-4 md:mb-6">
+            <ul className="space-y-3 mb-8">
+              {product.points.map((point) => (
+                <li key={point} className="flex items-start gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-[#F3651B] mt-1 shrink-0" aria-hidden="true" />
+                  <Paragraph size="sm" className="text-[#717680]">
+                    {point}
+                  </Paragraph>
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-auto">
+              <CustomButton
+                variant="secondary"
+                className="w-full sm:w-auto"
+                rightIcon={ArrowRight}
+                onClick={() => router.push(product.href)}
+              >
+                {product.linkLabel}
+              </CustomButton>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Download the App */}
+      <div className="flex flex-col sm:flex-row sm:items-end gap-6 border-b border-[#E9EAEB] pt-8 md:pt-12 pb-6">
+        <div className="sm:flex-1">
+          <Heading as="h3" size="xs" className="mb-4">
             <span className="text-[#F3651B]">Download</span>{" "}
             <span className="text-[#252B37]">the App</span>
           </Heading>
-          
-          <Paragraph className="text-[#717680] text-sm md:text-base mb-4">
+          <Paragraph className="text-[#717680] text-sm md:text-base">
             Scan to get KeRaeva on Android. iOS is coming soon.
           </Paragraph>
+        </div>
 
-          <div className="flex gap-3 md:gap-4 justify-start items-end">
-            <a
-              href={APP_STORE_LINKS.googlePlay}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-28 md:w-32 lg:w-36 flex-shrink-0"
-              aria-label="Get KeRaeva on Google Play"
-            >
-              <Image
-                src="/images/ui/qr-google-play.png"
-                alt="QR code to download KeRaeva on Google Play"
-                width={186}
-                height={223}
-                className="object-contain w-full h-auto"
-              />
-            </a>
-            <div className="w-28 md:w-32 lg:w-36 flex-shrink-0 flex flex-col items-center gap-1">
-              <Image
-                src="/images/ui/badge-app-store.png"
-                alt="App Store"
-                width={169}
-                height={55}
-                className="object-contain w-full h-auto opacity-40"
-              />
-              <span className="text-xs text-[#717680]">Coming soon on iOS</span>
-            </div>
+        <div className="flex gap-3 md:gap-4 justify-start items-end">
+          <a
+            href={APP_STORE_LINKS.googlePlay}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-28 md:w-32 lg:w-36 flex-shrink-0"
+            aria-label="Get KeRaeva on Google Play"
+          >
+            <Image
+              src="/images/ui/qr-google-play.png"
+              alt="QR code to download KeRaeva on Google Play"
+              width={186}
+              height={223}
+              className="object-contain w-full h-auto"
+            />
+          </a>
+          <div className="w-28 md:w-32 lg:w-36 flex-shrink-0 flex flex-col items-center gap-1">
+            <Image
+              src="/images/ui/badge-app-store.png"
+              alt="App Store (coming soon)"
+              width={169}
+              height={55}
+              className="object-contain w-full h-auto opacity-40"
+            />
+            <span className="text-xs text-[#717680]">Coming soon on iOS</span>
           </div>
         </div>
       </div>
@@ -133,23 +190,23 @@ export function AllInOneSection() {
   );
 }
 
-// Verified Section - AI interview + verified scorecard
+// Trust & Verification Section - verified documents + structured AI interview
 export function VerifiedSection() {
   const audiences = [
     {
       title: "For Professionals",
       points: [
-        "Complete a structured AI interview from your phone",
+        "Upload licences and certifications once",
+        "See the verification status of each document",
         "Choose which completed interview recruiters see",
-        "Take job-specific interviews when an organization requests one",
       ],
     },
     {
       title: "For Organizations",
       points: [
-        "Consistent, structured assessments for every candidate",
-        "Category scores, a summary and the full transcript",
-        "Credentials and documents alongside the scorecard",
+        "Verification status on every profile",
+        "AI interview scores, a summary and the full transcript",
+        "Credentials reviewed alongside the scorecard",
       ],
     },
   ];
@@ -162,20 +219,22 @@ export function VerifiedSection() {
     >
       <Section className="flex items-start w-full">
         <div className="space-y-4">
+          <Paragraph size="sm" className="text-[#C44408] font-semibold uppercase tracking-wider">
+            Trust & Verification
+          </Paragraph>
           <Heading as="h2" size="md" className="text-[#252B37]">
-            Interview Once with{" "}
-            <span className="text-[#F3651B]">AI</span>. Earn a{" "}
-            <span className="text-[#F3651B]">Verified</span> Scorecard.
+            Hiring Built on <span className="text-[#F3651B]">Verified</span>{" "}
+            Profiles and <span className="text-[#F3651B]">Structured</span> Interviews
           </Heading>
 
           <ResponsiveParagraph
             size="sm"
             className="text-[#717680] leading-relaxed"
           >
-            After onboarding and verification, professionals complete a
-            structured AI interview. It produces a scorecard that travels with
-            their profile, so recruiters can review candidates faster and more
-            consistently.
+            Professionals upload their credentials and can follow the
+            verification status of each document. They then complete a
+            structured AI interview, and recruiters review the scorecard
+            alongside the profile, so every candidate is assessed the same way.
           </ResponsiveParagraph>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
@@ -187,7 +246,7 @@ export function VerifiedSection() {
                 <ul className="space-y-2">
                   {audience.points.map((point) => (
                     <li key={point} className="flex items-start gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-[#F3651B] mt-1 shrink-0" />
+                      <CheckCircle2 className="w-4 h-4 text-[#F3651B] mt-1 shrink-0" aria-hidden="true" />
                       <Paragraph size="sm" className="text-[#717680]">
                         {point}
                       </Paragraph>
@@ -208,7 +267,7 @@ export function VerifiedSection() {
         <div className="relative mx-auto max-w-xs md:max-w-sm lg:max-w-2xl w-full">
           <Image
             src="/images/ui/verified-card.webp"
-            alt="Verified AI interview scorecard on a KeRaeva professional profile"
+            alt="Sample verified AI interview scorecard on a KeRaeva professional profile"
             width={500}
             height={1000}
             className="object-contain w-full"
@@ -241,12 +300,12 @@ export function NextCareer() {
         <div className="p-6 sm:p-8 md:p-8 lg:p-12 xl:p-16 flex flex-col min-h-[260px] md:min-h-[400px]">
           <div className="space-y-4 md:space-y-6">
             <Heading as="h2" size="md" className="text-white">
-              Your Next Career Move Starts Here.
+              Find Your Next Healthcare Role
             </Heading>
 
             <ResponsiveParagraph size="base" className="text-white/90 leading-relaxed">
-              Create your free profile to connect with verified jobs and smart
-              AI matching today.
+              Create your free profile in the KeRaeva app to see jobs and
+              urgent shifts matched to your role and availability.
             </ResponsiveParagraph>
 
             <div className="pt-2">

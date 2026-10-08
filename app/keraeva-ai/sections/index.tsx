@@ -280,7 +280,7 @@ export function AIJourney() {
             key={step.title}
             className="bg-white rounded-2xl p-6 flex flex-col flex-shrink-0 w-[75%] sm:w-[45%] md:w-auto snap-start"
           >
-            <span className="text-sm font-semibold text-[#F3651B] mb-2">
+            <span className="text-sm font-semibold text-[#C44408] mb-2">
               {String(index + 1).padStart(2, "0")}
             </span>
             <Heading as="h3" size="xs" weight="medium" className="text-[#252B37] mb-3">
@@ -361,7 +361,7 @@ export function ScorecardSection() {
     >
       <Section className="flex flex-col justify-center">
         <div className="space-y-4 md:space-y-6">
-          <Paragraph size="sm" className="text-[#F3651B] font-semibold uppercase tracking-wider">
+          <Paragraph size="sm" className="text-[#C44408] font-semibold uppercase tracking-wider">
             AI Interview Scorecard
           </Paragraph>
           <Heading as="h2" size="md" className="text-[#252B37]">
@@ -454,7 +454,7 @@ export function SmartFeaturesSection() {
             <div className="flex items-center justify-between gap-3">
               <IconChip icon={feature.icon} />
               {feature.status && (
-                <span className="bg-[#FEF0E7] text-[#F3651B] text-xs font-semibold px-3 py-1 rounded-full">
+                <span className="bg-[#FEF0E7] text-[#C44408] text-xs font-semibold px-3 py-1 rounded-full">
                   {feature.status}
                 </span>
               )}

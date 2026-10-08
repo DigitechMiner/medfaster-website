@@ -121,7 +121,7 @@ export function GetStartedModal() {
                 <>
                   <Image
                     src="/images/ui/badge-app-store.png"
-                    alt="App Store"
+                    alt="App Store (coming soon)"
                     width={169}
                     height={55}
                     className="w-36 h-auto opacity-40"

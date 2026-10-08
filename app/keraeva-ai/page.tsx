@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { BASE_OPEN_GRAPH } from "@/lib/seo/site";
 import Header from "@/components/global/header";
 import { Footer } from "@/components/global/footer";
 import { Screen } from "@/components/global/screen";
@@ -19,12 +20,10 @@ export const metadata: Metadata = {
   description:
     "See every AI and smart feature in KeRaeva: AI resume parsing, AI voice interviews and scorecards, AI-matched candidates, urgent shift matching, interview integrity checks and smart phone features.",
   openGraph: {
+    ...BASE_OPEN_GRAPH,
     title: "KeRaeva AI: Intelligence Built Into Every Step",
     description:
       "AI resume parsing, interviews, scorecards, matching, urgent dispatch and smart features for Canadian healthcare hiring.",
-    siteName: "KeRaeva",
-    type: "website",
-    locale: "en_CA",
   },
 };
 

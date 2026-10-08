@@ -46,20 +46,19 @@ export default function ReportAnIssuePage() {
 
       {/* Form */}
       <Section>
-        <div className="space-y-4">
-            {/* Title */}
-            <Heading as="h1" size="lg" className="text-[#252B37]" weight="normal">
-              Fill the Issue Form 
-            </Heading>
-            <Paragraph size="lg" className="text-[#717680]">
-                Request support for KeRaeva mobile app users. We respond within 24 hours. Urgent job issues are prioritized for faster resolutions
-              </Paragraph>
-               </div>
-            <br />
+        <div className="space-y-4 mb-8">
+          <Heading as="h2" size="md" className="text-[#252B37]">
+            Send a Support Request
+          </Heading>
+          <Paragraph size="lg" className="text-[#717680]">
+            Tell us what&apos;s happening and include the job or shift it relates to.
+            Our support team will reply by email.
+          </Paragraph>
+        </div>
         <ReportIssueForm />
       </Section>
 
-      <Section>
+      <Section id="faq" className="scroll-mt-24">
         <FreqAskQuest />
       </Section>
       <Footer />

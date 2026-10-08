@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Heading } from "@/components/ui/heading";
 import { Section } from "@/components/ui/section";
 import { JobListingsSection } from "./components/job-listings";
@@ -8,6 +9,12 @@ import { Paragraph } from "@/components/ui/paragraph";
 import Header from "@/components/global/header";
 import { Footer } from "@/components/global/footer";
 import { Screen } from "@/components/global/screen";
+
+export const metadata: Metadata = {
+  title: "Careers | KeRaeva",
+  description:
+    "Explore careers at KeRaeva and help build the AI-powered healthcare workforce platform for Canada.",
+};
 
 export default function CareersPage() {
   return (

@@ -498,3 +498,9 @@ Net change: **2 new sections, 0 new visual patterns.** The anti-redesign check p
 4. **Audience pages:** Organizations, then Professionals expansions.
 5. **Content:** real blog and careers content, or hide those pages until ready.
 6. **Housekeeping (no visual change):** merge `components/ui` and `components/custom`, single footer, single constants module, brand-colour tokens in `@theme`.
+
+---
+
+## Progress log: post-refresh correction pass (8 Oct 2026)
+
+Forms, About, team, testimonials (P0), audience-specific Urgent Staffing and shift-to-payment, Professionals search hand-off, Home ecosystem/trust sections, Help Center merged into Support, SEO (metadata, canonical, OG image, sitemap, robots, JSON-LD), accessibility and alt-text fixes. The SEO gaps listed above are now resolved. Full details, QA results and remaining blockers: `docs/POST_REFRESH_CORRECTION_REPORT.md`; screenshot replacements: `docs/PRODUCT_SCREENSHOT_SPEC.md`.

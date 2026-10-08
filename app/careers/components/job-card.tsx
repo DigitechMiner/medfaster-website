@@ -11,6 +11,8 @@ export type Job = {
   salary: string;
   experience: string;
   postedAt: string;
+  // Where to apply (job board or mailto). The link is hidden until it is set.
+  applyUrl?: string;
 };
 
 export function JobCard({ job }: { job: Job }) {
@@ -44,16 +46,21 @@ export function JobCard({ job }: { job: Job }) {
 
       {/* Bottom row - Experience and Apply */}
       <div className="flex justify-between items-center">
-        <Paragraph size="sm" weight="semibold" className="text-[#F3651B]">
+        <Paragraph size="sm" weight="semibold" className="text-[#C44408]">
           {job.experience}
         </Paragraph>
-        <a
-          href="#"
-          className="text-[#F3651B] font-semibold hover:opacity-80 transition-colors inline-flex items-center gap-1 group text-sm py-1.5"
-        >
-          Apply now
-          <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-        </a>
+        {job.applyUrl && (
+          <a
+            href={job.applyUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Apply for ${job.title}`}
+            className="text-[#C44408] font-semibold hover:opacity-80 transition-colors inline-flex items-center gap-1 group text-sm py-1.5"
+          >
+            Apply now
+            <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+          </a>
+        )}
       </div>
     </div>
   );

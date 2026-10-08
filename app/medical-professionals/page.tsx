@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { BASE_OPEN_GRAPH } from "@/lib/seo/site"
 import Header from "@/components/global/header"
 import HeroSection from "./sections/hero"
 import GetHiredSection from "./sections/get-hired"
@@ -14,7 +15,7 @@ import {
   MoreInTheApp,
 } from "./sections"
 import { UrgentStaffingSection } from "@/components/section/urgent-staffing"
-import BookADemo from "../(home)/sections/book-demo"
+import { ShiftToPaymentSection } from "@/components/section/shift-to-payment"
 import { Screen } from "@/components/global/screen"
 
 export const metadata: Metadata = {
@@ -22,11 +23,9 @@ export const metadata: Metadata = {
   description:
     "Find healthcare jobs and urgent shifts near you, complete a reusable AI interview, track every application and get paid through the KeRaeva app.",
   openGraph: {
+    ...BASE_OPEN_GRAPH,
     title: "KeRaeva for Healthcare Professionals",
     description: "Jobs, urgent shifts, AI interviews and earnings in one app for Canadian healthcare professionals.",
-    siteName: "KeRaeva",
-    type: "website",
-    locale: "en_CA",
   },
 }
 
@@ -42,7 +41,7 @@ export default function MedicalProfessionalsPage() {
       <VerifiedSection />
       <AllInOneSection />
       <ApplicationStatusSection />
-      <BookADemo />
+      <ShiftToPaymentSection audience="professionals" />
       <MoreInTheApp />
       <TestimonialsSection />
       <NextCareer />

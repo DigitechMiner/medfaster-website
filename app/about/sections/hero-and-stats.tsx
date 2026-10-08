@@ -14,7 +14,7 @@ export function AboutHeroSection() {
         <div className="relative w-full aspect-[16/10] rounded-lg md:rounded-xl lg:rounded-2xl xl:rounded-3xl overflow-hidden shadow-md lg:col-span-2">
           <Image
             src="/images/hero/hero-image-2.webp"
-            alt="KeRaeva Team"
+            alt=""
             fill
             priority
             sizes="(max-width: 1024px) 100vw, 66vw"

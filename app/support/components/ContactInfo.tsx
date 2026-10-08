@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Heading } from "@/components/ui/heading";
 import { ResponsiveParagraph, Paragraph } from "@/components/ui/paragraph";
 import { Mail, MapPin, Phone, type LucideIcon } from "lucide-react";
@@ -51,16 +52,20 @@ export function ContactInfo() {
     <div className="space-y-0">
       <div className="pb-8 mb-2">
         <Heading as="h2" size="md" className="text-[#252B37] mb-4">
-          Get <span className="text-[#F3651B]">instant</span> support for jobs, shifts & <br />
-        payment issues
+          Get <span className="text-[#F3651B]">Help</span> with the App, Shifts &amp; Payments
         </Heading>
         <ResponsiveParagraph
           size="base"
           className="text-[#717680] leading-relaxed"
         >
-          We&apos;re here to make your healthcare journey easier, whether
-          you&apos;re seeking talent or a new role. Reach out and we&apos;ll
-          get back to you with answers and support.
+          Support is for people already using KeRaeva: professionals in the
+          app and organizations on the recruiter platform. Ask about your
+          account and verification, jobs and shifts, check-in, payments or
+          AI interviews. For sales or partnerships, use the{" "}
+          <Link href="/contact-us" className="text-[#C44408] font-medium underline underline-offset-2 hover:text-[#F3651B]">
+            Contact page
+          </Link>
+          .
         </ResponsiveParagraph>
       </div>
 
@@ -83,7 +88,9 @@ export function ContactInfo() {
             label={CONTACT_INFO.phone.label}
             content={
               <Paragraph size="base" weight="medium" className="text-[#252B37]">
-                {CONTACT_INFO.phone.value}
+                <a href={`tel:${CONTACT_INFO.phone.value.replace(/\D/g, "")}`} className="hover:text-[#F3651B] transition-colors">
+                  {CONTACT_INFO.phone.value}
+                </a>
               </Paragraph>
             }
           />
@@ -94,7 +101,9 @@ export function ContactInfo() {
             label={CONTACT_INFO.email.label}
             content={
               <Paragraph size="base" weight="medium" className="text-[#252B37]">
-                {CONTACT_INFO.email.value}
+                <a href={`mailto:${CONTACT_INFO.email.value}`} className="hover:text-[#F3651B] transition-colors">
+                  {CONTACT_INFO.email.value}
+                </a>
               </Paragraph>
             }
           />

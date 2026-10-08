@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Heading } from "@/components/ui/heading";
 import { ResponsiveParagraph, Paragraph } from "@/components/ui/paragraph";
 import { Share2, type LucideIcon } from "lucide-react";
@@ -42,10 +43,16 @@ export function ContactInfoSection() {
           size="base"
           className="text-[#717680] leading-relaxed"
         >
-          We&apos;re here to make your healthcare journey easier, whether
-          you&apos;re seeking talent or a new role. Reach out and we&apos;ll
-          get back to you with answers and support.
+          Talk to us about hiring with KeRaeva, partnerships, media or any
+          general question, and we&apos;ll get back to you by email.
         </ResponsiveParagraph>
+        <Paragraph size="sm" className="text-[#717680] mt-4">
+          Already using the KeRaeva app or recruiter platform?{" "}
+          <Link href="/support" className="text-[#C44408] font-medium underline underline-offset-2 hover:text-[#F3651B]">
+            Get help on the Support page
+          </Link>
+          .
+        </Paragraph>
       </div>
 
       {/* Location Card */}
@@ -68,7 +75,9 @@ export function ContactInfoSection() {
           label={CONTACT_INFO.phone.label}
           content={
             <Paragraph size="base" weight="medium" className="text-[#252B37]">
-              {CONTACT_INFO.phone.value}
+              <a href={`tel:${CONTACT_INFO.phone.value.replace(/\D/g, "")}`} className="hover:text-[#F3651B] transition-colors">
+                {CONTACT_INFO.phone.value}
+              </a>
             </Paragraph>
           }
         />

@@ -12,8 +12,12 @@ import { useModalStore } from "@/stores/modalStore";
 
 export default function HeroSection() {
   const openModal = useModalStore((state) => state.openModal);
-  // Job browsing happens in the KeRaeva app
+  // Job search and browsing happen in the KeRaeva app; the website has no jobs feed
   const handleBrowseJobs = () => openModal("get-app");
+  const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    handleBrowseJobs();
+  };
   return (
     <Section>
       {/* Two Grid Layout - Side by Side */}
@@ -31,32 +35,52 @@ export default function HeroSection() {
             </Heading>
           </div>
 
-          {/* Search Bar */}
-          <div className="bg-gray-100 rounded-lg md:rounded-full p-2 flex flex-col md:flex-row gap-2">
-            {/* Job Title - Full Row on Mobile, 2/3 on Desktop */}
-            <div className="w-full lg:flex-[2]">
-              <InputIcon
-                icon={Search}
-                iconPosition="left"
-                placeholder="Job Title/Skill/Keyword"
-                className="bg-white rounded-lg md:rounded-full"
-              />
-            </div>
-
-            {/* Postal Code and Button Row - Mobile: Same Row, Desktop: Separate */}
-            <div className="flex gap-2 lg:contents">
-              <div className="flex-1 lg:flex-[1]">
+          {/* Search Bar: opens the app, where live opportunities are listed */}
+          <div>
+            <form
+              role="search"
+              aria-label="Find opportunities in the KeRaeva app"
+              onSubmit={handleSearch}
+              className="bg-gray-100 rounded-lg md:rounded-full p-2 flex flex-col md:flex-row gap-2"
+            >
+              {/* Job Title - Full Row on Mobile, 2/3 on Desktop */}
+              <div className="w-full lg:flex-[2]">
                 <InputIcon
-                  icon={MapPin}
+                  id="pro-search-keyword"
+                  name="keyword"
+                  ariaLabel="Job title, skill or keyword"
+                  icon={Search}
                   iconPosition="left"
-                  placeholder="Postal Code"
+                  placeholder="Job Title/Skill/Keyword"
                   className="bg-white rounded-lg md:rounded-full"
                 />
               </div>
-              <Button className="bg-[#F3651B] hover:opacity-90 text-white w-12 h-12 rounded-lg md:rounded-full p-0 flex-shrink-0">
-                <Search className="w-5 h-5 " />
-              </Button>
-            </div>
+  
+              {/* Postal Code and Button Row - Mobile: Same Row, Desktop: Separate */}
+              <div className="flex gap-2 lg:contents">
+                <div className="flex-1 lg:flex-[1]">
+                  <InputIcon
+                    id="pro-search-postal"
+                    name="postalCode"
+                    ariaLabel="Postal code"
+                    icon={MapPin}
+                    iconPosition="left"
+                    placeholder="Postal Code"
+                    className="bg-white rounded-lg md:rounded-full"
+                  />
+                </div>
+                <Button
+                  type="submit"
+                  aria-label="Find opportunities in the KeRaeva app"
+                  className="bg-[#F3651B] hover:opacity-90 text-white w-12 h-12 rounded-lg md:rounded-full p-0 flex-shrink-0"
+                >
+                  <Search className="w-5 h-5" aria-hidden="true" />
+                </Button>
+              </div>
+            </form>
+            <Paragraph size="sm" className="text-[#717680] mt-2 px-2">
+              Search, apply and accept shifts in the KeRaeva app.
+            </Paragraph>
           </div>
 
           {/* Call to Action */}
@@ -114,7 +138,7 @@ export default function HeroSection() {
             <div className="hidden order-1 md:order-2 md:flex-[3] relative bg-[#f5f5f5] rounded-lg md:flex items-center justify-center">
               <Image
                 src="/images/hero/doctor.webp"
-                alt="Professional doctor"
+                alt=""
                 width={280}
                 height={450}
                 className="object-cover object-top w-full rounded-lg max-w-[380px] aspect-[280/450]"

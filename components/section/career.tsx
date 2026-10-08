@@ -49,7 +49,7 @@ export function CareerCTASection() {
           <div className="relative w-full h-96 lg:h-auto lg:col-span-1">
             <Image
               src="/images/team/girl-with-specs.webp"
-              alt="Career opportunity"
+              alt=""
               fill
               sizes="(max-width: 768px) 100vw, 33vw"
               className="object-contain object-center overflow-hidden"

@@ -70,8 +70,8 @@ export function LegalDocument({ document }: { document: LegalDocumentData }) {
         <details className="group border border-[#E9EAEB] rounded-2xl p-5 md:p-6" open>
           <summary className="cursor-pointer list-none flex items-center justify-between font-semibold text-[#252B37]">
             On this page
-            <span className="text-[#F3651B] text-sm font-medium group-open:hidden">Show</span>
-            <span className="text-[#F3651B] text-sm font-medium hidden group-open:inline">Hide</span>
+            <span className="text-[#C44408] text-sm font-medium group-open:hidden">Show</span>
+            <span className="text-[#C44408] text-sm font-medium hidden group-open:inline">Hide</span>
           </summary>
           <nav aria-label="Table of contents" className="mt-4 space-y-4">
             {document.parts.map((part, partIndex) => (

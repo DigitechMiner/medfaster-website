@@ -160,6 +160,16 @@
   .kr-loader-bar {
     animation: none;
   }
+
+  /* Menu slides, hovers and other motion become near-instant */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* Image loading placeholder: grey KeRaeva mark until the image loads (or if it fails) */

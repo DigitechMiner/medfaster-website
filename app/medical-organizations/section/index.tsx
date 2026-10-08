@@ -115,7 +115,7 @@ export function HiredSection() {
             <div className="relative h-[300px] lg:h-[700px]">
               <Image
                 src="/img/hero/doctor-with-ipad.webp"
-                alt="Healthcare professional assisting patient"
+                alt="A healthcare manager reviewing a staffing dashboard on a tablet"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-contain"

@@ -54,7 +54,7 @@ export function PricingCards() {
           }`}
         >
           {plan.highlighted && (
-            <span className="absolute top-6 right-6 bg-[#FEF0E7] text-[#F3651B] text-xs font-semibold px-3 py-1 rounded-full">
+            <span className="absolute top-6 right-6 bg-[#FEF0E7] text-[#C44408] text-xs font-semibold px-3 py-1 rounded-full">
               Contact Sales
             </span>
           )}

@@ -11,13 +11,11 @@ import {
   ChevronRight,
   ArrowLeft,
   ArrowRight,
-  ArrowUpRight,
   Newspaper,
 } from "lucide-react";
 import Header from "@/components/global/header";
 import Footer from "@/components/global/footer";
 import { Screen } from "@/components/global/screen";
-import Image from "@/components/ui/image";
 import { BLOG_POSTS } from "./constants";
 import { IconChip } from "@/components/ui/icon-chip";
 import { BlogCard } from "./components/blog-card";
@@ -174,56 +172,9 @@ export default function BlogPage() {
         </Section>
       ) : (
       <>
-      {/* Hero Section - Featured Post */}
+      {/* All Posts */}
       <Section>
-        {/* Featured Hero Image */}
-        <div className="relative w-full rounded-2xl overflow-hidden mb-2">
-          <Image
-            src="/images/blog/medical-team.webp"
-            alt="Bone Cancer: What You Need to Know"
-            width={1200}
-            height={600}
-            className="w-full h-auto object-cover rounded-2xl"
-          />
-        </div>
-
-        {/* Featured Post Info */}
-        <div className="space-y-4">
-          <Paragraph size="sm" className="text-[#F3651B] font-semibold">
-            Olivia Rhye • 20 Jan 2025
-          </Paragraph>
-
-          <div className="flex justify-between items-start gap-4">
-            <div className="flex-1">
-              <Heading as="h3" size="xs" className="text-[#252B37] mb-3">
-                Bone Cancer: What You Need to Know
-              </Heading>
-
-              <Paragraph size="base" className="text-[#717680]">
-                How do you create compelling presentations that wow your
-                colleagues and impress your managers?
-              </Paragraph>
-            </div>
-
-            {/* Arrow Icon */}
-            <ArrowUpRight className="w-6 h-6 text-[#717680] flex-shrink-0 mt-1" />
-          </div>
-
-          {/* Tags */}
-          <div className="flex flex-wrap gap-2 pt-2">
-            <span className="text-xs px-3 py-1 bg-orange-50 text-[#F3651B] rounded-full">
-              Medical
-            </span>
-            <span className="text-xs px-3 py-1 bg-blue-50 text-blue-600 rounded-full">
-              Research
-            </span>
-            <span className="text-xs px-3 py-1 bg-red-50 text-red-600 rounded-full">
-              Health
-            </span>
-          </div>
-        </div>
-
-        <div className="mt-12">
+        <div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             {displayedPosts.map((post) => (
               <BlogCard key={post.id} post={post} />

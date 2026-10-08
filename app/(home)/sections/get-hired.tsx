@@ -44,7 +44,7 @@ export default function GetHiredSection() {
               key={step.title}
               className="bg-white rounded-2xl p-6 flex flex-col flex-shrink-0 w-[75%] sm:w-[45%] md:w-auto snap-start"
             >
-              <span className="text-sm font-semibold text-[#F3651B] mb-2">
+              <span className="text-sm font-semibold text-[#C44408] mb-2">
                 {String(index + 1).padStart(2, "0")}
               </span>
               <Heading as="h3" size="xs" weight="medium" className="text-[#252B37] mb-3">

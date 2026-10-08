@@ -123,7 +123,7 @@ export function VerifiedSection() {
         <div className="relative mx-auto max-w-2xl">
           <Image 
             src="/images/ui/verified-card.webp" 
-            alt="Verified score card showing Dr. Noah Liam profile"
+            alt="Sample verified AI interview scorecard on a KeRaeva professional profile"
             width={500}
             height={1000}
             className="object-contain"
@@ -197,7 +197,7 @@ export function CareerOnTheGo() {
             <div className="w-[150px] md:w-[180px] self-end flex flex-col items-center gap-1">
               <Image
                 src="/images/ui/badge-app-store.png"
-                alt="App Store"
+                alt="App Store (coming soon)"
                 width={169}
                 height={55}
                 className="object-contain w-full h-auto opacity-40"
@@ -313,7 +313,7 @@ export function ApplicationStatusSection() {
           >
             <div className="flex items-center justify-between">
               <IconChip icon={status.icon} />
-              <span className="text-sm font-semibold text-[#F3651B]">
+              <span className="text-sm font-semibold text-[#C44408]">
                 {String(index + 1).padStart(2, "0")}
               </span>
             </div>
