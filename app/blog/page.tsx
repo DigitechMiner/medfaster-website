@@ -17,7 +17,7 @@ import {
 import Header from "@/components/global/header";
 import Footer from "@/components/global/footer";
 import { Screen } from "@/components/global/screen";
-import Image from "next/image";
+import Image from "@/components/ui/image";
 import { BLOG_POSTS } from "./constants";
 import { IconChip } from "@/components/ui/icon-chip";
 import { BlogCard } from "./components/blog-card";

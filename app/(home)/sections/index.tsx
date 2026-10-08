@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import Image from "@/components/ui/image";
 import { Section } from "@/components/ui/section";
 import { FeatureCard } from "@/components/ui/feature-card";
 import { Heading } from "@/components/ui/heading";

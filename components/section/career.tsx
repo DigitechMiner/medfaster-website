@@ -5,7 +5,7 @@ import { Heading } from "@/components/ui/heading";
 import { Paragraph } from "@/components/ui/paragraph";
 import { ActionButton } from "@/components/ui/action-button";
 import { ArrowRight } from "lucide-react";
-import Image from "next/image";
+import Image from "@/components/ui/image";
 
 export function CareerCTASection() {
   return (

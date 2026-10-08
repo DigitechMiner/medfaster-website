@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import Image from "@/components/ui/image";
 import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/heading";
 import { Paragraph, ResponsiveParagraph } from "@/components/ui/paragraph";

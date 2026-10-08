@@ -161,3 +161,17 @@
     animation: none;
   }
 }
+
+/* Image loading placeholder: grey KeRaeva mark until the image loads (or if it fails) */
+.kr-img-placeholder {
+  background-color: #f5f5f5;
+  background-image: url("/images/ui/logo-mark-gray.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: clamp(28px, 18%, 64px);
+}
+/* Failed image: swap the broken-image glyph for a transparent pixel so only the placeholder shows */
+.kr-img-error {
+  content: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7");
+  color: transparent;
+}

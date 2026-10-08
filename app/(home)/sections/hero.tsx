@@ -2,7 +2,7 @@
 
 import { CustomButton } from "@/components/ui/custom-button";
 import { ArrowRight } from "lucide-react";
-import Image from "next/image";
+import Image from "@/components/ui/image";
 import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/heading";
 import { ResponsiveParagraph } from "@/components/ui/paragraph";

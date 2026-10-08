@@ -4,7 +4,7 @@ import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/heading";
 import { ResponsiveParagraph } from "@/components/ui/paragraph";
 import { ActionButton } from "@/components/ui/action-button";
-import Image from "next/image";
+import Image from "@/components/ui/image";
 import { ArrowRight, Briefcase, ShieldCheck, UserPlus } from "lucide-react";
 
 const STEPS = [

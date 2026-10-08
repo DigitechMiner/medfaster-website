@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "next/image";
+import Image from "@/components/ui/image";
 import { LucideIcon } from "lucide-react";
 import { Heading } from "@/components/ui/heading";
 import { Paragraph } from "@/components/ui/paragraph";

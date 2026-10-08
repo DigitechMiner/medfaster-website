@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
+import Image from "@/components/ui/image";
 import { ArrowLeft, ArrowRight, Star } from "lucide-react";
 import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/heading";

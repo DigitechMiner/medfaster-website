@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Image from 'next/image';
+import Image from '@/components/ui/image';
 import { toast } from 'react-toastify';
 import { useAuthStore } from '@/stores/authStore';
 import type { UserType } from '@/stores/types';

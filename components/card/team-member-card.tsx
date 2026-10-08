@@ -1,5 +1,5 @@
 import { Paragraph } from "@/components/ui/paragraph";
-import Image from "next/image";
+import Image from "@/components/ui/image";
 import { X, Linkedin, ArrowUpRight } from "lucide-react";
 
 interface TeamMemberCardProps {

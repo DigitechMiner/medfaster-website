@@ -5,7 +5,7 @@ import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/heading";
 import { ResponsiveParagraph, Paragraph } from "@/components/ui/paragraph";
 import { ChevronDown, Star } from "lucide-react";
-import Image from "next/image";
+import Image from "@/components/ui/image";
 
 const TESTIMONIALS = [
   {

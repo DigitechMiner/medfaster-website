@@ -5,7 +5,7 @@ import { useState, ReactNode, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { CustomButton } from "@/components/ui/custom-button";
-import Image from "next/image";
+import Image from "@/components/ui/image";
 import LoginModal from "@/components/global/otpModal";
 import { useModalStore } from "@/stores/modalStore";
 import { cn } from "@/lib/utils";

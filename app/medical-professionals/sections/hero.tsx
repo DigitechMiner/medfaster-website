@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { CustomButton } from "@/components/ui/custom-button";
 import InputIcon from "@/components/ui/input-icon";
 import { Search, MapPin, ArrowRight } from "lucide-react";
-import Image from "next/image";
+import Image from "@/components/ui/image";
 import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/heading";
 import { Paragraph, ResponsiveParagraph } from "@/components/ui/paragraph";

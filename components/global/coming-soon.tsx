@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
+import Image from "@/components/ui/image";
 import { submitLead } from "@/utils/leads";
 import { Heading } from "@/components/ui/heading";
 import { ResponsiveParagraph, Paragraph } from "@/components/ui/paragraph";

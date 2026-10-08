@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "@/components/ui/image";
 import { cn } from "@/lib/utils";
 
 // KeRaeva logo with a pulsing mark and an indeterminate brand-orange bar.

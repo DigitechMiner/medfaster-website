@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "@/components/ui/image";
 import { Users } from "lucide-react";
 import { Section } from "@/components/ui/section";
 import { IconChip } from "@/components/ui/icon-chip";

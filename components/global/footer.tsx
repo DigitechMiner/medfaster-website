@@ -11,7 +11,7 @@ import { Section } from "@/components/ui/section";
 import { CustomButton } from "@/components/ui/custom-button";
 import { ResponsiveParagraph } from "@/components/ui/paragraph";
 import { useModalStore, type ModalId } from "@/stores/modalStore";
-import Image from "next/image";
+import Image from "@/components/ui/image";
 
 // A footer link either navigates (href) or opens a site-wide modal (modal)
 export type FooterLink = { label: string; href?: string; modal?: ModalId };

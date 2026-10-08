@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import Image from "@/components/ui/image";
 import { CustomButton } from "@/components/ui/custom-button";
 import { ArrowRight, Wand2, ShieldCheck, Sparkles, Mic, ClipboardList, Send, Users, Repeat, MessageSquare, ClipboardCheck, FileCheck2, Calendar } from "lucide-react";
 import { Section } from "@/components/ui/section";
