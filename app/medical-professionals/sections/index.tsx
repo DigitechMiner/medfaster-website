@@ -127,7 +127,6 @@ export function VerifiedSection() {
             width={500}
             height={1000}
             className="object-contain"
-            priority
           />
         </div>
       </Section>
@@ -220,7 +219,6 @@ export function CareerOnTheGo() {
             width={500}
             height={900}
             className="object-contain"
-            priority
           />
         </div>
       </Section>
@@ -275,7 +273,6 @@ export function NextCareer() {
               alt="Healthcare professional"
               fill
               className="object-contain object-bottom lg:object-right-bottom"
-              priority
               sizes="(max-width: 768px) 33vw, 50vw"
             />
           </div>

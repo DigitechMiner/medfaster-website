@@ -16,6 +16,8 @@ export function AboutHeroSection() {
             src="/images/hero/hero-image-2.webp"
             alt="KeRaeva Team"
             fill
+            priority
+            sizes="(max-width: 1024px) 100vw, 66vw"
             className="object-cover"
           />
         </div>

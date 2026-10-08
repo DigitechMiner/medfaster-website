@@ -75,6 +75,7 @@ export default function TestimonialsSlider() {
                   src={currentTestimonial.avatar}
                   alt={currentTestimonial.name}
                   fill
+                  sizes="64px"
                   className="object-cover"
                 />
               </div>

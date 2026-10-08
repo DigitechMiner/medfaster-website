@@ -191,8 +191,8 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
               src="/images/hero/card-photo.webp"
               alt="Healthcare professional with patient"
               fill
+              sizes="45vw"
               className="object-cover"
-              priority
             />
           </div>
         </div>

@@ -137,7 +137,6 @@ export default function HeroSection() {
                 width={280}
                 height={450}
                 className="object-cover object-top w-full rounded-lg max-w-[380px] aspect-[280/450]"
-                priority
               />
             </div>
 

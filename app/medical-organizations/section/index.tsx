@@ -117,6 +117,7 @@ export function HiredSection() {
                 src="/img/hero/doctor-with-ipad.webp"
                 alt="Healthcare professional assisting patient"
                 fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-contain"
               />
             </div>
@@ -375,7 +376,6 @@ export function StartHiring() {
               alt="Healthcare professional"
               fill
               className="object-contain object-bottom lg:object-right-bottom"
-              priority
               sizes="(max-width: 768px) 33vw, 50vw"
             />
           </div>

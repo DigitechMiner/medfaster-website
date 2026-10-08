@@ -146,6 +146,7 @@ export function Footer() {
                   src="/images/ui/KeRaeva-logo.svg"
                   alt="KeRaeva"
                   fill
+                  sizes="200px"
                   className="object-contain object-left"
                 />
               </div>

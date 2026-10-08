@@ -33,7 +33,6 @@ export default function BookADemo() {
               width={300}
               alt="KeRaeva"
               objectFit="contain"
-              priority
             />
           </div>
 
@@ -120,6 +119,7 @@ export default function BookADemo() {
                     src="/img/hero/doctor.webp"
                     alt="Doctor"
                     fill
+                    sizes="160px"
                     className="object-cover p-2"
                   />
                 </div>
@@ -132,6 +132,7 @@ export default function BookADemo() {
                     src="/img/people/nurse-01.webp"
                     alt="Doctor"
                     fill
+                    sizes="160px"
                     className="object-cover p-2"
                   />
                 </div>
@@ -144,6 +145,7 @@ export default function BookADemo() {
                     src="/img/people/nurse-02.webp"
                     alt="Doctor"
                     fill
+                    sizes="160px"
                     className="object-cover p-2"
                   />
                 </div>

@@ -51,6 +51,7 @@ export function CareerCTASection() {
               src="/images/team/girl-with-specs.webp"
               alt="Career opportunity"
               fill
+              sizes="(max-width: 768px) 100vw, 33vw"
               className="object-contain object-center overflow-hidden"
             />
           </div>
