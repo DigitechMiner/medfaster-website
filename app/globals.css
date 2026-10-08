@@ -175,3 +175,35 @@
   content: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7");
   color: transparent;
 }
+
+/* Scroll reveal (applied at runtime by components/global/scroll-reveal.tsx) */
+.kr-reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.kr-reveal.kr-revealed {
+  opacity: 1;
+  transform: none;
+}
+.kr-reveal .kr-reveal-item {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.kr-reveal.kr-revealed .kr-reveal-item {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce), print {
+  .kr-reveal,
+  .kr-reveal .kr-reveal-item {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

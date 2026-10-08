@@ -7,6 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { Analytics } from "@vercel/analytics/next";
 import { GlobalModals } from "@/components/global/modals";
 import { Preloader } from "@/components/global/preloader";
+import { ScrollReveal } from "@/components/global/scroll-reveal";
 
 export const metadata: Metadata = {
   title: "KeRaeva",
@@ -27,6 +28,7 @@ export default function RootLayout({
           {children}
         </GoogleOAuthProviderWrapper>
         <GlobalModals />
+        <ScrollReveal />
         <ToastContainer
           position="top-right"
           autoClose={3000}
