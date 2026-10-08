@@ -23,8 +23,8 @@ const TEAM_MEMBERS = [
 export function TeamSection() {
   return (
     <Section>
-      {/* Header with "We're hiring" button */}
-      <div className="flex justify-between items-start mb-12">
+      {/* Header */}
+      <div className="mb-12">
         <div>
           <Heading as="h2" size="md" className="text-[#252B37] mb-3">
             Meet our Team
@@ -34,9 +34,6 @@ export function TeamSection() {
             and foster a culture that empowers you to do your best work.
           </Paragraph>
         </div>
-        <button className="bg-[#F3651B] text-white px-6 py-2 rounded-lg text-sm font-semibold hover:bg-[#e56a0f] transition-colors whitespace-nowrap">
-          We&apos;re hiring!
-        </button>
       </div>
 
       {/* Team Grid */}
