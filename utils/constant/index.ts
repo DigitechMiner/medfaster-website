@@ -215,8 +215,6 @@ import { CalendarCheck, ClipboardList, Facebook, FileText, Instagram, Linkedin, 
     appStore: null as string | null,
   };
 
-  export const DEMO_VIDEO_URL = "https://youtu.be/4Rd9ZeAYZgc?si=0zWtfUsrjAJRqWbO";
-
   // Social profiles: an icon is shown only once its URL is set
   export const SOCIAL_LINKS: { label: string; icon: LucideIcon; href: string | null }[] = [
     { label: "LinkedIn", icon: Linkedin, href: null },

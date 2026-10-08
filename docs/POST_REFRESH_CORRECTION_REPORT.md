@@ -67,7 +67,7 @@ Date: 8 October 2026 · Branch: `main` · Scope: fix, clean, verify, polish. The
 | Topic | Home | Organizations | Professionals |
 | --- | --- | --- | --- |
 | Urgent staffing | 4-step teaser: Urgent Need → Matching → Available Professional → Shift Filled. CTA: Explore Urgent Staffing (→ `/medical-organizations#urgent-staffing`) | Recruiter steps (create requirement → fill the shift). Response time depends on who's available; no speed promise | Professional steps (set availability → work the shift). CTA: Get the App |
-| Shift → payment | "From Opportunity to Completed Work", 4 concise steps, Show Demo | Assigned shifts, check-ins/outs, workforce activity, completed shifts, payment status. Show Demo | Upcoming/active, check in, check out, wallet credit, bank withdrawal. Get the App |
+| Shift → payment | "From Opportunity to Completed Work", 4 concise steps, Request a Demo | Assigned shifts, check-ins/outs, workforce activity, completed shifts, payment status. Request a Demo | Upcoming/active, check in, check out, wallet credit, bank withdrawal. Get the App |
 | Product | Ecosystem: app vs recruiter platform | Dashboard, hiring | 4 app screenshots |
 | Verification | Trust & Verification (documents + structured interview, both audiences) | Hire with confidence | "Earn a Verified Score" |
 | Closing CTA | "Find Your Next Healthcare Role" / "Start Hiring Smarter Today" | Start Hiring | "Your Next Career Move Starts Here." |

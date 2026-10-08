@@ -7,7 +7,7 @@ import { Paragraph, ResponsiveParagraph } from "@/components/ui/paragraph";
 import { CustomButton } from "@/components/ui/custom-button";
 import { ArrowRight } from "lucide-react";
 import { useModalStore } from "@/stores/modalStore";
-import { DEMO_VIDEO_URL, WORKFORCE_STEPS } from "@/utils/constant";
+import { WORKFORCE_STEPS } from "@/utils/constant";
 
 type Audience = "everyone" | "organizations" | "professionals";
 
@@ -109,9 +109,9 @@ export function ShiftToPaymentSection({ audience = "everyone" }: ShiftToPaymentS
               variant="inverse"
               size="lg"
               rightIcon={ArrowRight}
-              onClick={() => window.open(DEMO_VIDEO_URL, "_blank")}
+              onClick={() => openModal("request-demo")}
             >
-              Show Demo
+              Request a Demo
             </CustomButton>
           )}
         </div>
