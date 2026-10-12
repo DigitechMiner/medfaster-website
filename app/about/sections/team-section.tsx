@@ -2,7 +2,6 @@ import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/heading";
 import { Paragraph } from "@/components/ui/paragraph";
 import { TeamMemberCard } from "@/components/card/team-member-card";
-import Link from "next/link";
 const TEAM_MEMBERS = [
   {
     id: 1,
@@ -50,7 +49,7 @@ export function TeamSection() {
         ))}
       </div>
 
-      {/* View All Team Button */}
+      {/* View All Team Button — hidden while the Our Team page is unpublished
       <div className="flex justify-center">
         <Link
           href="/our-team"
@@ -59,6 +58,7 @@ export function TeamSection() {
           View All Team
         </Link>
       </div>
+      */}
     </Section>
   );
 }

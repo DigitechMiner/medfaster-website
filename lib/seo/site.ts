@@ -11,7 +11,7 @@ export const PUBLIC_ROUTES = [
   "/medical-professionals",
   "/keraeva-ai",
   "/about",
-  "/our-team",
+  // "/our-team",
   "/careers",
   "/blog",
   "/subscriptions",

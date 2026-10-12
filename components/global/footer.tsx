@@ -32,7 +32,7 @@ export const footerColumns: FooterColumn[] = [
     title: "Company",
     links: [
       { label: "About KeRaeva", href: "/about" },
-      { label: "Our Team", href: "/our-team" },
+      // { label: "Our Team", href: "/our-team" },
       { label: "Careers", href: "/careers" },
       { label: "Blog", href: "/blog" },
       { label: "Contact Us", href: "/contact-us" },
