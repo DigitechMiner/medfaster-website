@@ -5,6 +5,9 @@ import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/heading";
 import { Paragraph, ResponsiveParagraph } from "@/components/ui/paragraph";
 import { CustomButton } from "@/components/ui/custom-button";
+import { CtaButton } from "@/components/ui/cta-button";
+import { AccentText } from "@/components/ui/accent-text";
+import type { HOME_DEFAULTS } from "@/content/pages/home";
 import { ArrowRight } from "lucide-react";
 import { useModalStore } from "@/stores/modalStore";
 import { WORKFORCE_STEPS } from "@/utils/constant";
@@ -14,6 +17,8 @@ type Audience = "everyone" | "organizations" | "professionals";
 interface ShiftToPaymentSectionProps {
   // Adjusts the copy and CTA; the layout is the same everywhere
   audience?: Audience;
+  // Text and button edited in the admin panel (home page)
+  content?: (typeof HOME_DEFAULTS)["shiftToPayment"];
 }
 
 const COPY: Record<Audience, { heading: React.ReactNode; body: string }> = {
@@ -43,10 +48,13 @@ const PEOPLE = [
   { src: "/images/team/girl-with-specs.webp", position: "-left-6 sm:-left-10 md:-left-14 lg:-left-16 -bottom-6 sm:-bottom-10 md:-bottom-14 lg:-bottom-16" },
 ];
 
-export function ShiftToPaymentSection({ audience = "everyone" }: ShiftToPaymentSectionProps) {
+export function ShiftToPaymentSection({ audience = "everyone", content }: ShiftToPaymentSectionProps) {
   const openModal = useModalStore((state) => state.openModal);
-  const copy = COPY[audience];
-  const steps = WORKFORCE_STEPS[audience];
+  const copy = content ? { heading: <AccentText text={content.heading} accentClassName="text-white underline decoration-white/60" />, body: content.body } : COPY[audience];
+  const steps: readonly string[] = content ? content.steps : WORKFORCE_STEPS[audience];
+  const sample = content
+    ? { amount: content.sampleAmount, shift: content.sampleShift, status: content.sampleStatus }
+    : { amount: "$480", shift: "RN Night Shift", status: "Paid" };
 
   return (
     <Section
@@ -88,7 +96,7 @@ export function ShiftToPaymentSection({ audience = "everyone" }: ShiftToPaymentS
           <ol className="space-y-3 max-w-md">
             {steps.map((step, index) => (
               <li
-                key={step}
+                key={`${index}-${step}`}
                 className="flex items-center gap-3 border-b border-white/20 pb-3 last:border-b-0 text-white"
               >
                 <span className="flex-shrink-0 w-7 h-7 rounded-full bg-white text-[#C44408] text-sm font-semibold flex items-center justify-center">
@@ -100,7 +108,9 @@ export function ShiftToPaymentSection({ audience = "everyone" }: ShiftToPaymentS
           </ol>
 
           {/* CTA Button */}
-          {audience === "professionals" ? (
+          {content ? (
+            <CtaButton cta={content.cta} variant="inverse" size="lg" rightIcon={ArrowRight} />
+          ) : audience === "professionals" ? (
             <CustomButton variant="inverse" size="lg" rightIcon={ArrowRight} onClick={() => openModal("get-app")}>
               Get the App
             </CustomButton>
@@ -128,17 +138,17 @@ export function ShiftToPaymentSection({ audience = "everyone" }: ShiftToPaymentS
 
               {/* Amount */}
               <ResponsiveParagraph size="lg" weight="bold" className="text-[#F3651B] mb-2">
-                $480
+                {sample.amount}
               </ResponsiveParagraph>
 
               {/* Shift */}
               <Paragraph size="sm" className="md:text-base text-[#252B37] mb-1 text-center">
-                RN Night Shift
+                {sample.shift}
               </Paragraph>
 
               {/* Status */}
               <Paragraph size="xs" className="md:text-sm text-[#717680]">
-                Paid
+                {sample.status}
               </Paragraph>
 
               {PEOPLE.map((person) => (

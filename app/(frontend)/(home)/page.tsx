@@ -16,6 +16,8 @@ import { Screen } from "@/components/global/screen";
 import { JsonLd } from "@/components/global/json-ld";
 import { BASE_OPEN_GRAPH, SITE_NAME, SITE_URL } from "@/lib/seo/site";
 import { APP_STORE_LINKS } from "@/utils/constant";
+import { getPageContent, getTestimonials } from "@/lib/cms/content";
+import { stripAccents } from "@/components/ui/accent-text";
 
 // Facts only: no ratings, prices or statistics
 const STRUCTURED_DATA = {
@@ -53,33 +55,37 @@ const STRUCTURED_DATA = {
   ],
 };
 
-export const metadata: Metadata = {
-  title: "KeRaeva | AI-Powered Healthcare Workforce Platform in Canada",
-  description:
-    "Hire, verify and match healthcare professionals, fill urgent shifts and manage shifts and payments with KeRaeva, the AI-powered healthcare workforce platform for Canada.",
-  openGraph: {
-    ...BASE_OPEN_GRAPH,
-    title: "KeRaeva | Healthcare Workforce, Powered by Intelligence",
-    description:
-      "AI interviews, smart matching, urgent staffing, shifts and payments for healthcare organizations and professionals across Canada.",
-  },
-};
+// Text, images and buttons come from the admin panel (Pages → Home)
+export async function generateMetadata(): Promise<Metadata> {
+  const { seo } = await getPageContent("home");
+  return {
+    title: stripAccents(seo.title),
+    description: seo.description,
+    openGraph: {
+      ...BASE_OPEN_GRAPH,
+      title: stripAccents(seo.shareTitle || seo.title),
+      description: seo.shareDescription || seo.description,
+    },
+  };
+}
 
-export default function Home() {
+export default async function Home() {
+  const [content, testimonials] = await Promise.all([getPageContent("home"), getTestimonials("home")]);
+
   return (
     <Screen>
       <JsonLd data={STRUCTURED_DATA} />
       <Header>
-        <HeroSection />
+        <HeroSection content={content.hero} />
       </Header>
-      <GetHiredSection />
-      <UrgentStaffingSection />
-      <AIHelpsSection />
-      <VerifiedSection />
-      <AllInOneSection />
-      <ShiftToPaymentSection />
-      <TestimonialsSection />
-      <NextCareer />
+      {content.journey.show && <GetHiredSection content={content.journey} />}
+      {content.urgentStaffing.show && <UrgentStaffingSection content={content.urgentStaffing} />}
+      {content.ai.show && <AIHelpsSection content={content.ai} />}
+      {content.trust.show && <VerifiedSection content={content.trust} />}
+      {content.ecosystem.show && <AllInOneSection content={content.ecosystem} />}
+      {content.shiftToPayment.show && <ShiftToPaymentSection content={content.shiftToPayment} />}
+      {content.testimonials.show && <TestimonialsSection items={testimonials} content={content.testimonials} />}
+      {content.closingCtas.show && <NextCareer content={content.closingCtas} />}
       <Footer />
     </Screen>
   );

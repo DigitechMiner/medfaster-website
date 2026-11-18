@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getTestimonials } from "@/lib/cms/content";
 import { BASE_OPEN_GRAPH } from "@/lib/seo/site";
 import {
   HeroSection,
@@ -28,7 +29,8 @@ export const metadata: Metadata = {
   },
 };
 
-export default function MedicalOrganizationsPage() {
+export default async function MedicalOrganizationsPage() {
+  const testimonials = await getTestimonials("organizations");
   return (
     <Screen>
       <Header>
@@ -41,7 +43,7 @@ export default function MedicalOrganizationsPage() {
       <HireWithConfidence />
       <ShiftToPaymentSection audience="organizations" />
       <DataDrivenHiring />
-      <TestimonialsSlider />
+      <TestimonialsSlider items={testimonials} />
       <StartHiring />
       <Footer />
     </Screen>

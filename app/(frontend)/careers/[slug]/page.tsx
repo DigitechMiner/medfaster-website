@@ -12,12 +12,14 @@ import { Footer } from "@/components/global/footer";
 import { Screen } from "@/components/global/screen";
 import { CareerCTASection } from "@/components/section/career";
 import { APP_STORE_LINKS } from "@/utils/constant";
-import { JOBS, getJobBySlug } from "../components/constants";
+import { getJob, getJobs } from "@/lib/cms/content";
 
-export const dynamicParams = false;
+// Openings come from the admin panel (Content → Job Openings). New ones render on
+// first visit and refresh whenever a job is saved.
+export const dynamicParams = true;
 
-export function generateStaticParams() {
-  return JOBS.filter((job) => job.details).map((job) => ({ slug: job.slug }));
+export async function generateStaticParams() {
+  return (await getJobs()).filter((job) => job.details).map((job) => ({ slug: job.slug }));
 }
 
 export async function generateMetadata({
@@ -26,7 +28,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const job = getJobBySlug(slug);
+  const job = await getJob(slug);
   if (!job) return {};
   return {
     title: `${job.title} | Careers | KeRaeva`,
@@ -53,7 +55,7 @@ export default async function JobPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const job = getJobBySlug(slug);
+  const job = await getJob(slug);
   if (!job || !job.details) notFound();
   const details = job.details;
 
@@ -91,7 +93,7 @@ export default async function JobPage({
               </Link>
               <ChevronRight className="w-4 h-4 text-[#717680]" />
               <Paragraph size="lg" className="text-[#717680]">
-                CDSW, Calgary
+                {job.title}
               </Paragraph>
             </div>
           </div>

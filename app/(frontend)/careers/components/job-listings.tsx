@@ -6,11 +6,11 @@ import { Paragraph } from "@/components/ui/paragraph";
 import { ArrowRight, Briefcase } from "lucide-react";
 import { Heading } from "@/components/ui/heading";
 import { IconChip } from "@/components/ui/icon-chip";
-import { JobCard } from "./job-card";
-import { JOBS, ITEMS_PER_PAGE } from "./constants";
+import { JobCard, type Job } from "./job-card";
+import { ITEMS_PER_PAGE } from "./constants";
 import { CustomButton } from "@/components/ui/custom-button";
 
-export function JobListingsSection() {
+export function JobListingsSection({ jobs: JOBS }: { jobs: Job[] }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [sortBy, setSortBy] = useState("popular");
 

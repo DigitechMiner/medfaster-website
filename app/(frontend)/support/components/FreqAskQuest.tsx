@@ -5,9 +5,9 @@ import { Plus, Minus } from "lucide-react";
 import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/heading";
 import { Paragraph } from "@/components/ui/paragraph";
-import { SUPPORT_FAQS as faqs } from "@/utils/constant/faqs";
+import type { FaqItem } from "@/lib/cms/content";
 
-export function FreqAskQuest() {
+export function FreqAskQuest({ faqs }: { faqs: FaqItem[] }) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const toggle = (i: number) => setOpenIndex(openIndex === i ? null : i);

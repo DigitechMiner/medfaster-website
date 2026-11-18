@@ -9,6 +9,7 @@ import { Paragraph } from "@/components/ui/paragraph";
 import Header from "@/components/global/header";
 import { Footer } from "@/components/global/footer";
 import { Screen } from "@/components/global/screen";
+import { getJobs } from "@/lib/cms/content";
 
 export const metadata: Metadata = {
   title: "Careers | KeRaeva",
@@ -16,7 +17,8 @@ export const metadata: Metadata = {
     "Explore careers at KeRaeva and help build the AI-powered healthcare workforce platform for Canada.",
 };
 
-export default function CareersPage() {
+export default async function CareersPage() {
+  const jobs = await getJobs();
   return (
     <Screen>
       <Header>
@@ -44,7 +46,7 @@ export default function CareersPage() {
         </Section>
       </Header>
 
-      <JobListingsSection />
+      <JobListingsSection jobs={jobs} />
 
       {/* Career CTA */}
       <CareerCTASection />

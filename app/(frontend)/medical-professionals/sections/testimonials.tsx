@@ -6,9 +6,9 @@ import { ArrowLeft, ArrowRight, Star } from "lucide-react";
 import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/heading";
 import { ResponsiveParagraph, Paragraph } from "@/components/ui/paragraph";
-import { TESTIMONIALS } from "@/lib/constants";
+import type { TestimonialItem } from "@/lib/cms/content";
 
-export default function TestimonialsSection() {
+export default function TestimonialsSection({ items: TESTIMONIALS }: { items: TestimonialItem[] }) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const testimonials = TESTIMONIALS;
@@ -22,6 +22,9 @@ export default function TestimonialsSection() {
       prev - 2 < 0 ? testimonials.length - 2 : prev - 2
     );
   };
+
+  // Every testimonial for this page is hidden in the admin panel
+  if (testimonials.length === 0) return null;
 
   return (
     <Section>

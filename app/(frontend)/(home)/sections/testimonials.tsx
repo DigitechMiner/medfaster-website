@@ -6,9 +6,17 @@ import { ArrowLeft, ArrowRight, Star } from "lucide-react";
 import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/heading";
 import { ResponsiveParagraph, Paragraph } from "@/components/ui/paragraph";
-import { TESTIMONIALS } from "@/utils/constant";
+import type { TestimonialItem } from "@/lib/cms/content";
+import type { HOME_DEFAULTS } from "@/content/pages/home";
+import { AccentText } from "@/components/ui/accent-text";
 
-export default function TestimonialsSection() {
+export default function TestimonialsSection({
+  items: TESTIMONIALS,
+  content,
+}: {
+  items: TestimonialItem[];
+  content: (typeof HOME_DEFAULTS)["testimonials"];
+}) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const testimonials = TESTIMONIALS;
@@ -23,17 +31,19 @@ export default function TestimonialsSection() {
     );
   };
 
+  // Every testimonial for this page is hidden in the admin panel
+  if (testimonials.length === 0) return null;
+
   return (
     <Section>
       <div className="max-w-7xl mx-auto gap-2 md:gap-4 lg:gap-6 xl:gap-8">
         {/* Header */}
         <div>
           <Heading as="h2" size="md" className="text-[#252B37] mb-4">
-            <span className="text-[#F3651B]">Real Results,</span>{" "}
-            Real Partnerships
+            <AccentText text={content.heading} />
           </Heading>
           <ResponsiveParagraph size="sm" className="text-[#717680] max-w-3xl">
-            Hear from both the professionals finding their dream roles and the hospitals building their dream teams.
+            {content.body}
           </ResponsiveParagraph>
         </div>
 

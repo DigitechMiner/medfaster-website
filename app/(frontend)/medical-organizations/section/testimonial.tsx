@@ -6,12 +6,10 @@ import { ArrowLeft, ArrowRight, Star, Quote } from "lucide-react";
 import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/heading";
 import { Paragraph, ResponsiveParagraph } from "@/components/ui/paragraph";
-import { testimonials as landingTestimonials } from "@/utils/constant/landingPage";
+import type { TestimonialItem } from "@/lib/cms/content";
 
-export default function TestimonialsSlider() {
+export default function TestimonialsSlider({ items: testimonials }: { items: TestimonialItem[] }) {
   const [currentSlide, setCurrentSlide] = useState(0);
-
-  const testimonials = landingTestimonials;
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % testimonials.length);
@@ -23,7 +21,9 @@ export default function TestimonialsSlider() {
     );
   };
 
-  const currentTestimonial = testimonials[currentSlide];
+  const currentTestimonial = testimonials[currentSlide % testimonials.length];
+  // Every testimonial for this page is hidden in the admin panel
+  if (!currentTestimonial) return null;
 
   return (
     <Section>
@@ -65,7 +65,7 @@ export default function TestimonialsSlider() {
 
             {/* Quote Text */}
             <ResponsiveParagraph size="lg" className=" text-[#252B37] leading-relaxed mb-8">
-              {currentTestimonial.quote}
+              {currentTestimonial.review}
             </ResponsiveParagraph>
 
             {/* Author Info */}

@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { getTestimonials } from "@/lib/cms/content";
 import { BASE_OPEN_GRAPH } from "@/lib/seo/site"
 import Header from "@/components/global/header"
 import HeroSection from "./sections/hero"
@@ -29,7 +30,8 @@ export const metadata: Metadata = {
   },
 }
 
-export default function MedicalProfessionalsPage() {
+export default async function MedicalProfessionalsPage() {
+  const testimonials = await getTestimonials("professionals");
   return (
     <Screen>
       <Header>
@@ -43,7 +45,7 @@ export default function MedicalProfessionalsPage() {
       <ApplicationStatusSection />
       <ShiftToPaymentSection audience="professionals" />
       <MoreInTheApp />
-      <TestimonialsSection />
+      <TestimonialsSection items={testimonials} />
       <NextCareer />
       <CareerOnTheGo />
       <Footer />

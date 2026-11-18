@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Screen } from "@/components/global/screen";
 import { LegalPageHeader } from "@/components/global/legal-page-header";
 import { LegalDocument } from "@/components/global/legal-document";
-import { PRIVACY_POLICY } from "@/lib/legal/privacy-policy";
+import { getLegalDocument } from "@/lib/cms/content";
 
 export const metadata: Metadata = {
   title: "Privacy Policy | KeRaeva",
@@ -10,7 +10,8 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-export default function MobilePrivacyPolicyPage() {
+export default async function MobilePrivacyPolicyPage() {
+  const PRIVACY_POLICY = await getLegalDocument("privacy-policy");
   return (
     <Screen>
       <LegalPageHeader title={PRIVACY_POLICY.title} showBreadcrumb={false} />

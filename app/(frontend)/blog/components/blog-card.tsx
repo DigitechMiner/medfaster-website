@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "@/components/ui/image";
 import { Heading } from "@/components/ui/heading";
 import { Paragraph } from "@/components/ui/paragraph";
@@ -66,7 +67,7 @@ const getTagColors = (tag: string) => {
 
 export function BlogCard({ post }: { post: BlogPost }) {
   return (
-    <div className="group cursor-pointer">
+    <Link href={`/blog/${post.slug}`} className="group block">
       <div className="relative h-40 mb-4 rounded-lg overflow-hidden">
         <Image
           src={post.image}
@@ -108,6 +109,6 @@ export function BlogCard({ post }: { post: BlogPost }) {
           })}
         </div>
       </div>
-    </div>
+    </Link>
   );
 }

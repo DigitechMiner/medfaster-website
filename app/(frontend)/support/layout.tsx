@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/global/json-ld";
-import { SUPPORT_FAQS } from "@/utils/constant/faqs";
+import { getFaqs } from "@/lib/cms/content";
 
 // Metadata lives here because the page itself is a client component
 export const metadata: Metadata = {
@@ -9,14 +9,15 @@ export const metadata: Metadata = {
     "Get help with the KeRaeva app or recruiter platform: accounts, verification, jobs, shifts, check-in, payments and AI interviews.",
 };
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default async function Layout({ children }: { children: React.ReactNode }) {
+  const faqs = await getFaqs();
   return (
     <>
       <JsonLd
         data={{
           "@context": "https://schema.org",
           "@type": "FAQPage",
-          mainEntity: SUPPORT_FAQS.map((faq) => ({
+          mainEntity: faqs.map((faq) => ({
             "@type": "Question",
             name: faq.question,
             acceptedAnswer: { "@type": "Answer", text: faq.answer },

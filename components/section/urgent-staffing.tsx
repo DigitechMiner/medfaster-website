@@ -19,6 +19,10 @@ import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/heading";
 import { Paragraph, ResponsiveParagraph } from "@/components/ui/paragraph";
 import { CustomButton } from "@/components/ui/custom-button";
+import { CtaButton } from "@/components/ui/cta-button";
+import { AccentText } from "@/components/ui/accent-text";
+import { iconFor } from "@/lib/cms/icons";
+import type { HOME_DEFAULTS } from "@/content/pages/home";
 import { IconChip } from "@/components/ui/icon-chip";
 import { useModalStore } from "@/stores/modalStore";
 import { RECRUITER_REGISTRATION_URL, URGENT_STAFFING_STEPS } from "@/utils/constant";
@@ -34,6 +38,8 @@ type Audience = "everyone" | "organizations" | "professionals";
 interface UrgentStaffingSectionProps {
   // Adjusts the copy and CTAs; the palette is the same everywhere
   audience?: Audience;
+  // Text and buttons edited in the admin panel (home page)
+  content?: (typeof HOME_DEFAULTS)["urgentStaffing"];
 }
 
 const COPY = {
@@ -60,12 +66,13 @@ const COPY = {
   },
 };
 
-export function UrgentStaffingSection({ audience = "everyone" }: UrgentStaffingSectionProps) {
+export function UrgentStaffingSection({ audience = "everyone", content }: UrgentStaffingSectionProps) {
   const router = useRouter();
   const openModal = useModalStore((state) => state.openModal);
   const copy = COPY[audience];
-  const steps = URGENT_STAFFING_STEPS[audience];
-  const icons = STEP_ICONS[audience];
+  const steps = content ? content.steps : URGENT_STAFFING_STEPS[audience];
+  const icons = content ? content.steps.map((step) => iconFor(step.icon)) : STEP_ICONS[audience];
+  const body = content ? content.body : copy.body;
 
   return (
     <Section
@@ -78,21 +85,33 @@ export function UrgentStaffingSection({ audience = "everyone" }: UrgentStaffingS
       <Section className="flex flex-col justify-center">
         <div className="space-y-4 md:space-y-6">
           <Paragraph size="sm" className="text-[#C44408] font-semibold uppercase tracking-wider">
-            {audience === "professionals" ? "Urgent Shifts" : "Urgent Staffing"}
+            {content ? content.eyebrow : audience === "professionals" ? "Urgent Shifts" : "Urgent Staffing"}
           </Paragraph>
           <Heading as="h2" size="md" className="text-[#252B37]">
-            {copy.heading.before}{" "}
-            <span className="text-[#F3651B]">{copy.heading.accent}</span>
-            {copy.heading.after && ` ${copy.heading.after}`}
+            {content ? (
+              <AccentText text={content.heading} />
+            ) : (
+              <>
+                {copy.heading.before}{" "}
+                <span className="text-[#F3651B]">{copy.heading.accent}</span>
+                {copy.heading.after && ` ${copy.heading.after}`}
+              </>
+            )}
           </Heading>
-          {copy.body.map((paragraph) => (
+          {body.map((paragraph) => (
             <ResponsiveParagraph key={paragraph} size="sm" className="text-[#717680] leading-relaxed">
               {paragraph}
             </ResponsiveParagraph>
           ))}
 
           <div className="flex flex-col sm:flex-row gap-3 pt-2">
-            {audience === "professionals" && (
+            {content && (
+              <>
+                <CtaButton cta={content.primaryCta} className="w-full sm:w-auto justify-between" rightIcon={ArrowRight} />
+                <CtaButton cta={content.secondaryCta} variant="secondary" className="w-full sm:w-auto justify-center" />
+              </>
+            )}
+            {!content && audience === "professionals" && (
               <CustomButton
                 className="w-full sm:w-auto justify-between"
                 rightIcon={ArrowRight}
@@ -101,7 +120,7 @@ export function UrgentStaffingSection({ audience = "everyone" }: UrgentStaffingS
                 Get the App
               </CustomButton>
             )}
-            {audience === "organizations" && (
+            {!content && audience === "organizations" && (
               <>
                 <CustomButton
                   className="w-full sm:w-auto justify-between"
@@ -119,7 +138,7 @@ export function UrgentStaffingSection({ audience = "everyone" }: UrgentStaffingS
                 </CustomButton>
               </>
             )}
-            {audience === "everyone" && (
+            {!content && audience === "everyone" && (
               <>
                 <CustomButton
                   className="w-full sm:w-auto justify-between"
@@ -157,7 +176,7 @@ export function UrgentStaffingSection({ audience = "everyone" }: UrgentStaffingS
             const Icon = icons[index] ?? CalendarCheck;
             return (
               <li
-                key={step.title}
+                key={`${index}-${step.title}`}
                 className="flex items-start gap-4 border-b border-white/20 pb-6 last:border-b-0 last:pb-0"
               >
                 <IconChip icon={Icon} variant="white" />

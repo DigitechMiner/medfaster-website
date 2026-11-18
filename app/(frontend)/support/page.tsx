@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { Section } from "@/components/ui/section";
@@ -12,8 +10,10 @@ import { ReportIssueForm } from "./components/form";
 
 import { FreqAskQuest } from "./components/FreqAskQuest";
 import { ContactInfo } from "./components/ContactInfo";
+import { getFaqs } from "@/lib/cms/content";
 
-export default function ReportAnIssuePage() {
+export default async function ReportAnIssuePage() {
+  const faqs = await getFaqs();
   return (
     <Screen>
       <Header>
@@ -59,7 +59,7 @@ export default function ReportAnIssuePage() {
       </Section>
 
       <Section id="faq" className="scroll-mt-24">
-        <FreqAskQuest />
+        <FreqAskQuest faqs={faqs} />
       </Section>
       <Footer />
     </Screen>
