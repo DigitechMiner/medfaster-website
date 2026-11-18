@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "@/components/ui/image";
 import { ArrowLeft, Briefcase, ChevronRight, Stethoscope } from "lucide-react";
 import { Heading } from "@/components/ui/heading";
@@ -17,9 +17,12 @@ export function GetStartedModal() {
   const isOpen = activeModal === "get-started" || activeModal === "get-app";
   const [view, setView] = useState<View>("choose");
 
-  useEffect(() => {
+  // Pick the starting view whenever the modal opens (or switches) to this one
+  const [lastActiveModal, setLastActiveModal] = useState(activeModal);
+  if (activeModal !== lastActiveModal) {
+    setLastActiveModal(activeModal);
     if (isOpen) setView(activeModal === "get-app" ? "app" : "choose");
-  }, [isOpen, activeModal]);
+  }
 
   const cardClass =
     "w-full text-left bg-white rounded-2xl p-5 border-2 border-gray-200 hover:border-[#F3651B] focus-visible:border-[#F3651B] focus-visible:outline-none transition-colors flex items-start gap-4";

@@ -67,10 +67,13 @@ export default function Header({ children }: HeaderProps) {
     setMobileOpen(false);
   }, []);
 
-  // Close menus on navigation
-  useEffect(() => {
-    closeAll();
-  }, [pathname, closeAll]);
+  // Close menus on navigation (adjusting state during render, not in an effect)
+  const [lastPathname, setLastPathname] = useState(pathname);
+  if (pathname !== lastPathname) {
+    setLastPathname(pathname);
+    setOpenSubmenu(null);
+    setMobileOpen(false);
+  }
 
   // Escape and outside click close the menus
   useEffect(() => {

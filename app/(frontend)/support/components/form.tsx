@@ -34,6 +34,14 @@ const inputClass =
   "w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm text-[#252B37] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#F3651B]/40";
 const errorBorder = "border-red-500";
 
+function FieldError({ field, message }: { field: Field; message?: string }) {
+  return message ? (
+    <p id={`support-${field}-error`} className="text-xs text-red-600">
+      {message}
+    </p>
+  ) : null;
+}
+
 export function ReportIssueForm() {
   const [form, setForm] = useState(INITIAL_FORM);
   const [errors, setErrors] = useState<Partial<Record<Field, string>>>({});
@@ -79,12 +87,6 @@ export function ReportIssueForm() {
   };
 
   const describedBy = (field: Field) => (errors[field] ? `support-${field}-error` : undefined);
-  const FieldError = ({ field }: { field: Field }) =>
-    errors[field] ? (
-      <p id={`support-${field}-error`} className="text-xs text-red-600">
-        {errors[field]}
-      </p>
-    ) : null;
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6" noValidate>
@@ -115,7 +117,7 @@ export function ReportIssueForm() {
             </select>
             <ChevronRight className="absolute right-3 top-1/2 -translate-y-1/2 rotate-90 w-4 h-4 text-[#717680] pointer-events-none" aria-hidden="true" />
           </div>
-          <FieldError field="issueType" />
+          <FieldError field="issueType" message={errors.issueType} />
         </div>
 
         <div className="space-y-1.5">
@@ -132,7 +134,7 @@ export function ReportIssueForm() {
             aria-describedby={describedBy("subject")}
             className={`${inputClass} ${errors.subject ? errorBorder : ""}`}
           />
-          <FieldError field="subject" />
+          <FieldError field="subject" message={errors.subject} />
         </div>
       </div>
 
@@ -154,7 +156,7 @@ export function ReportIssueForm() {
             aria-describedby={describedBy("email")}
             className={`${inputClass} ${errors.email ? errorBorder : ""}`}
           />
-          <FieldError field="email" />
+          <FieldError field="email" message={errors.email} />
         </div>
 
         <div className="space-y-1.5">
@@ -173,7 +175,7 @@ export function ReportIssueForm() {
             aria-describedby={describedBy("phone")}
             className={`${inputClass} ${errors.phone ? errorBorder : ""}`}
           />
-          <FieldError field="phone" />
+          <FieldError field="phone" message={errors.phone} />
         </div>
       </div>
 
@@ -195,7 +197,7 @@ export function ReportIssueForm() {
           className={`${inputClass} resize-none ${errors.description ? errorBorder : ""}`}
         />
         <div className="flex items-start justify-between gap-3">
-          <FieldError field="description" />
+          <FieldError field="description" message={errors.description} />
           <p className="text-xs text-[#717680] ml-auto" aria-live="polite">
             {form.description.length}/{DESCRIPTION_MAX_LENGTH}
           </p>

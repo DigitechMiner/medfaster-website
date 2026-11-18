@@ -13,7 +13,7 @@ import {
   JourneySection,
   TeamSection,
   CTASection,
-} from "@/app/about/sections";
+} from "@/app/(frontend)/about/sections";
 
 export const metadata: Metadata = {
   title: "About KeRaeva | AI-Powered Healthcare Workforce Platform",
