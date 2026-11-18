@@ -900,6 +900,34 @@ body {
 }
 
 // Dashboard
+// Dashboard: one-time import of the website's built-in content
+.kr-import {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  border-color: var(--kr-brand-soft);
+  .kr-btn { flex-shrink: 0; }
+  .kr-btn:disabled { opacity: 0.6; cursor: progress; }
+  @media (max-width: 760px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+.kr-import__text {
+  flex: 1;
+  min-width: 0;
+  p {
+    margin: 4px 0 0;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--kr-text-2);
+  }
+}
+.kr-import__error {
+  color: var(--kr-danger) !important;
+  font-weight: 500;
+}
 .kr-stats {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
