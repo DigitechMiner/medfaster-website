@@ -6,7 +6,7 @@ import { Avatar, Badge, ButtonLink, IconChip, PageHeader } from "./ui";
 import { daysAgoISO, fileSize, greeting, initials, relativeTime, SUBMISSION_TYPES } from "./format";
 import { adminUrl } from "./paths";
 import { ImportBanner } from "./import-banner";
-import { needsImport } from "@/lib/cms/import-content";
+import { missingContent } from "@/lib/cms/import-content";
 import { hasRole } from "@/cms/access";
 
 type Submission = { id: string | number; name?: string | null; email?: string | null; summary?: string | null; type: string; status: string; createdAt: string };
@@ -33,7 +33,9 @@ export async function Dashboard({ payload, user }: AdminViewServerProps) {
     })
   );
   const isAdmin = hasRole(user as { roles?: string[] | null } | null, "admin");
-  const showImport = isAdmin && (await safe(false, () => needsImport(payload)));
+  const missing = isAdmin ? await safe([] as string[], () => missingContent(payload)) : [];
+  // First run: nothing imported yet. Later: only some pages or lists are missing.
+  const importMode = missing.length === 0 ? null : missing.includes("jobs") && missing.includes("faqs") ? "first" : "partial";
   const lastPageEdit = pages.map((p) => p.updatedAt).filter(Boolean).sort().pop();
   const mediaBytes = media.docs.reduce((sum, doc) => sum + (doc.filesize || 0), 0);
   const firstName = ((user as { name?: string } | null)?.name || "").split(" ")[0];
@@ -65,7 +67,7 @@ export async function Dashboard({ payload, user }: AdminViewServerProps) {
         }
       />
 
-      {showImport && <ImportBanner />}
+      {importMode && <ImportBanner mode={importMode} />}
 
       <section className="kr-stats" aria-label="Overview">
         {stats.map((stat) => (

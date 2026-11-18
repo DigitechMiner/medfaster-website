@@ -81,6 +81,8 @@ export default buildConfig({
     vercelBlobStorage({
       // Uploads go to Vercel Blob in production; local development stores them in ./media
       enabled: Boolean(process.env.BLOB_READ_WRITE_TOKEN),
+      // Same database columns with or without Blob, so migrations made locally match production
+      alwaysInsertFields: true,
       collections: { media: true },
       token: process.env.BLOB_READ_WRITE_TOKEN,
       clientUploads: true,

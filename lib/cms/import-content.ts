@@ -43,11 +43,24 @@ const MIME: Record<string, string> = { ".webp": "image/webp", ".png": "image/png
 // Built-in content collections: they count as "imported" once they hold anything
 export const IMPORTABLE_COLLECTIONS: CollectionSlug[] = ["jobs", "faqs", "testimonials", "team-members", "legal-documents"];
 
+// What the import would still add: empty content collections and pages never saved.
+// Empty means nothing is shown to admins.
+export async function missingContent(payload: Payload): Promise<string[]> {
+  const missing: string[] = [];
+  for (const collection of IMPORTABLE_COLLECTIONS) {
+    const { totalDocs } = await payload.count({ collection, overrideAccess: true });
+    if (totalDocs === 0) missing.push(collection);
+  }
+  const globals = ["site-settings", "header-footer", ...Object.values(PAGE_REGISTRY).map((page) => page.slug)];
+  for (const slug of globals) {
+    const doc = await payload.findGlobal({ slug: slug as GlobalSlug, depth: 0, overrideAccess: true });
+    if (!(doc as { updatedAt?: string } | null)?.updatedAt) missing.push(slug);
+  }
+  return missing;
+}
+
 export async function needsImport(payload: Payload): Promise<boolean> {
-  const counts = await Promise.all(
-    IMPORTABLE_COLLECTIONS.map((collection) => payload.count({ collection, overrideAccess: true }).then((r) => r.totalDocs))
-  );
-  return counts.every((count) => count === 0);
+  return (await missingContent(payload)).length > 0;
 }
 
 export async function importWebsiteContent(payload: Payload, { force = false, origin }: ImportOptions = {}): Promise<ImportResult> {
