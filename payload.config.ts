@@ -15,7 +15,8 @@ import { TeamMembers } from "./cms/collections/TeamMembers";
 import { Faqs } from "./cms/collections/Faqs";
 import { LegalDocuments } from "./cms/collections/LegalDocuments";
 import { FormSubmissions } from "./cms/collections/FormSubmissions";
-import { PageGlobals, SiteSettings } from "./cms/globals";
+import { Pages } from "./cms/collections/Pages";
+import { HeaderFooterGlobal, PageGlobals, SiteSettings } from "./cms/globals";
 import { migrations } from "./cms/migrations";
 
 const filename = fileURLToPath(import.meta.url);
@@ -61,8 +62,8 @@ export default buildConfig({
       },
     },
   },
-  collections: [Users, Media, Jobs, Posts, Testimonials, TeamMembers, Faqs, LegalDocuments, FormSubmissions],
-  globals: [SiteSettings, ...PageGlobals],
+  collections: [Users, Media, Pages, Jobs, Posts, Testimonials, TeamMembers, Faqs, LegalDocuments, FormSubmissions],
+  globals: [SiteSettings, HeaderFooterGlobal, ...PageGlobals],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || "",
   typescript: { outputFile: path.resolve(dirname, "payload-types.ts") },

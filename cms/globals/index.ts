@@ -1,5 +1,6 @@
 import type { GlobalConfig } from "payload";
 import { SITE_DEFAULTS } from "../../content/site";
+import { HEADER_FOOTER_DEFAULTS } from "../../content/header-footer";
 import { PAGE_REGISTRY } from "../../content/pages";
 import { buildGlobal } from "./build-global";
 
@@ -9,6 +10,14 @@ export const SiteSettings = buildGlobal({
   group: "Settings",
   description: "Contact details, app and recruiter links, social profiles and page switches used across the whole site.",
   defaults: SITE_DEFAULTS as unknown as Record<string, Record<string, unknown>>,
+});
+
+export const HeaderFooterGlobal = buildGlobal({
+  slug: "header-footer",
+  label: "Header & Footer",
+  group: "Pages",
+  description: "Menus, buttons and footer content shown on every page of the website.",
+  defaults: HEADER_FOOTER_DEFAULTS as unknown as Record<string, Record<string, unknown>>,
 });
 
 export const PageGlobals: GlobalConfig[] = Object.values(PAGE_REGISTRY).map((page) =>

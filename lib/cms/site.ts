@@ -11,8 +11,4 @@ export const getSiteSettings = cache(
     })
 );
 
-// Digits for tel: links, assuming North American numbers
-export function telHref(phone: string) {
-  const digits = phone.replace(/\D/g, "");
-  return `tel:+${digits.length === 10 ? "1" + digits : digits}`;
-}
+export { telHref } from "@/lib/links";

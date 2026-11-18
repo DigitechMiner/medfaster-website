@@ -69,6 +69,7 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
+    pages: Page;
     jobs: Job;
     posts: Post;
     testimonials: Testimonial;
@@ -85,6 +86,7 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
+    pages: PagesSelect<false> | PagesSelect<true>;
     jobs: JobsSelect<false> | JobsSelect<true>;
     posts: PostsSelect<false> | PostsSelect<true>;
     testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
@@ -103,10 +105,12 @@ export interface Config {
   fallbackLocale: null;
   globals: {
     'site-settings': SiteSetting;
+    'header-footer': HeaderFooter;
     'page-home': PageHome;
   };
   globalsSelect: {
     'site-settings': SiteSettingsSelect<false> | SiteSettingsSelect<true>;
+    'header-footer': HeaderFooterSelect<false> | HeaderFooterSelect<true>;
     'page-home': PageHomeSelect<false> | PageHomeSelect<true>;
   };
   locale: null;
@@ -186,6 +190,438 @@ export interface Media {
   height?: number | null;
   focalX?: number | null;
   focalY?: number | null;
+}
+/**
+ * Pages built from sections. Only published pages appear on the website.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages".
+ */
+export interface Page {
+  id: number;
+  /**
+   * Shown in the admin panel and used for the address when it is left empty.
+   */
+  title: string;
+  /**
+   * The page address: keraeva.com/<address>. Lowercase words separated by hyphens. Filled from the title if left empty.
+   */
+  slug: string;
+  /**
+   * Adds this page to a “More” column in the footer.
+   */
+  showInFooter?: boolean | null;
+  /**
+   * Add sections and drag them into order. Each one is drawn with the website's own design.
+   */
+  sections?:
+    | (
+        | {
+            /**
+             * Wrap words in **double asterisks** to show them in orange. Start a new line with Enter.
+             */
+            heading: string;
+            body?: string | null;
+            /**
+             * Optional. Shown beside the text.
+             */
+            image?: (number | null) | Media;
+            /**
+             * Leave the label empty to hide this button.
+             */
+            primaryButton?: {
+              label?: string | null;
+              /**
+               * A page (/about), a page section (/medical-organizations#urgent-staffing), a full URL, or #get-app, #get-started, #request-demo or #start-hiring to open the matching popup or the recruiter sign-up.
+               */
+              link?: string | null;
+            };
+            /**
+             * Leave the label empty to hide this button.
+             */
+            secondaryButton?: {
+              label?: string | null;
+              /**
+               * A page (/about), a page section (/medical-organizations#urgent-staffing), a full URL, or #get-app, #get-started, #request-demo or #start-hiring to open the matching popup or the recruiter sign-up.
+               */
+              link?: string | null;
+            };
+            /**
+             * Section background.
+             */
+            background?: ('white' | 'grey' | 'orange') | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'hero';
+          }
+        | {
+            /**
+             * Wrap words in **double asterisks** to show them in orange. Start a new line with Enter.
+             */
+            heading?: string | null;
+            content: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            };
+            /**
+             * Section background.
+             */
+            background?: ('white' | 'grey' | 'orange') | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'text';
+          }
+        | {
+            /**
+             * Wrap words in **double asterisks** to show them in orange. Start a new line with Enter.
+             */
+            heading: string;
+            body?: string | null;
+            bullets?:
+              | {
+                  text: string;
+                  id?: string | null;
+                }[]
+              | null;
+            image: number | Media;
+            imagePosition?: ('right' | 'left') | null;
+            /**
+             * Leave the label empty to hide this button.
+             */
+            button?: {
+              label?: string | null;
+              /**
+               * A page (/about), a page section (/medical-organizations#urgent-staffing), a full URL, or #get-app, #get-started, #request-demo or #start-hiring to open the matching popup or the recruiter sign-up.
+               */
+              link?: string | null;
+            };
+            /**
+             * Section background.
+             */
+            background?: ('white' | 'grey' | 'orange') | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'imageText';
+          }
+        | {
+            /**
+             * Wrap words in **double asterisks** to show them in orange. Start a new line with Enter.
+             */
+            heading: string;
+            intro?: string | null;
+            columns?: ('2' | '3' | '4') | null;
+            cards?:
+              | {
+                  /**
+                   * Icon from the site's icon set.
+                   */
+                  icon?:
+                    | (
+                        | 'Activity'
+                        | 'ArrowRight'
+                        | 'ArrowUpRight'
+                        | 'Award'
+                        | 'BadgeCheck'
+                        | 'Bell'
+                        | 'BellRing'
+                        | 'Bot'
+                        | 'Brain'
+                        | 'BrainCircuit'
+                        | 'Briefcase'
+                        | 'Building2'
+                        | 'Calendar'
+                        | 'CalendarCheck'
+                        | 'CalendarClock'
+                        | 'ChartBar'
+                        | 'CheckCircle2'
+                        | 'CircleCheck'
+                        | 'ClipboardCheck'
+                        | 'ClipboardList'
+                        | 'Clock'
+                        | 'CreditCard'
+                        | 'FileCheck2'
+                        | 'FileText'
+                        | 'Gift'
+                        | 'Globe'
+                        | 'GraduationCap'
+                        | 'Handshake'
+                        | 'Heart'
+                        | 'HeartHandshake'
+                        | 'HeartPulse'
+                        | 'Hospital'
+                        | 'Inbox'
+                        | 'Layers'
+                        | 'LayoutDashboard'
+                        | 'Lightbulb'
+                        | 'ListChecks'
+                        | 'Lock'
+                        | 'Mail'
+                        | 'Map'
+                        | 'MapPin'
+                        | 'MessageSquare'
+                        | 'MessageSquareText'
+                        | 'Mic'
+                        | 'Phone'
+                        | 'Repeat'
+                        | 'Rocket'
+                        | 'Route'
+                        | 'Scan'
+                        | 'Search'
+                        | 'Send'
+                        | 'Shield'
+                        | 'ShieldCheck'
+                        | 'Siren'
+                        | 'Smartphone'
+                        | 'Sparkle'
+                        | 'Sparkles'
+                        | 'Star'
+                        | 'Stethoscope'
+                        | 'Target'
+                        | 'Timer'
+                        | 'TrendingUp'
+                        | 'User'
+                        | 'UserCheck'
+                        | 'UserPlus'
+                        | 'UserRound'
+                        | 'Users'
+                        | 'Video'
+                        | 'Wallet'
+                        | 'Wand2'
+                        | 'Zap'
+                      )
+                    | null;
+                  title: string;
+                  description?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            /**
+             * Section background.
+             */
+            background?: ('white' | 'grey' | 'orange') | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'featureCards';
+          }
+        | {
+            /**
+             * Wrap words in **double asterisks** to show them in orange. Start a new line with Enter.
+             */
+            heading: string;
+            intro?: string | null;
+            steps?:
+              | {
+                  /**
+                   * Icon from the site's icon set.
+                   */
+                  icon?:
+                    | (
+                        | 'Activity'
+                        | 'ArrowRight'
+                        | 'ArrowUpRight'
+                        | 'Award'
+                        | 'BadgeCheck'
+                        | 'Bell'
+                        | 'BellRing'
+                        | 'Bot'
+                        | 'Brain'
+                        | 'BrainCircuit'
+                        | 'Briefcase'
+                        | 'Building2'
+                        | 'Calendar'
+                        | 'CalendarCheck'
+                        | 'CalendarClock'
+                        | 'ChartBar'
+                        | 'CheckCircle2'
+                        | 'CircleCheck'
+                        | 'ClipboardCheck'
+                        | 'ClipboardList'
+                        | 'Clock'
+                        | 'CreditCard'
+                        | 'FileCheck2'
+                        | 'FileText'
+                        | 'Gift'
+                        | 'Globe'
+                        | 'GraduationCap'
+                        | 'Handshake'
+                        | 'Heart'
+                        | 'HeartHandshake'
+                        | 'HeartPulse'
+                        | 'Hospital'
+                        | 'Inbox'
+                        | 'Layers'
+                        | 'LayoutDashboard'
+                        | 'Lightbulb'
+                        | 'ListChecks'
+                        | 'Lock'
+                        | 'Mail'
+                        | 'Map'
+                        | 'MapPin'
+                        | 'MessageSquare'
+                        | 'MessageSquareText'
+                        | 'Mic'
+                        | 'Phone'
+                        | 'Repeat'
+                        | 'Rocket'
+                        | 'Route'
+                        | 'Scan'
+                        | 'Search'
+                        | 'Send'
+                        | 'Shield'
+                        | 'ShieldCheck'
+                        | 'Siren'
+                        | 'Smartphone'
+                        | 'Sparkle'
+                        | 'Sparkles'
+                        | 'Star'
+                        | 'Stethoscope'
+                        | 'Target'
+                        | 'Timer'
+                        | 'TrendingUp'
+                        | 'User'
+                        | 'UserCheck'
+                        | 'UserPlus'
+                        | 'UserRound'
+                        | 'Users'
+                        | 'Video'
+                        | 'Wallet'
+                        | 'Wand2'
+                        | 'Zap'
+                      )
+                    | null;
+                  title: string;
+                  description?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            /**
+             * Leave the label empty to hide this button.
+             */
+            button?: {
+              label?: string | null;
+              /**
+               * A page (/about), a page section (/medical-organizations#urgent-staffing), a full URL, or #get-app, #get-started, #request-demo or #start-hiring to open the matching popup or the recruiter sign-up.
+               */
+              link?: string | null;
+            };
+            /**
+             * Section background.
+             */
+            background?: ('white' | 'grey' | 'orange') | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'steps';
+          }
+        | {
+            /**
+             * Wrap words in **double asterisks** to show them in orange. Start a new line with Enter.
+             */
+            heading?: string | null;
+            intro?: string | null;
+            items?:
+              | {
+                  question: string;
+                  answer: string;
+                  id?: string | null;
+                }[]
+              | null;
+            /**
+             * Section background.
+             */
+            background?: ('white' | 'grey' | 'orange') | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'faq';
+          }
+        | {
+            /**
+             * Wrap words in **double asterisks** to show them in orange. Start a new line with Enter.
+             */
+            heading?: string | null;
+            intro?: string | null;
+            /**
+             * Visible testimonials from Content → Testimonials, in their set order.
+             */
+            limit?: number | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'testimonials';
+          }
+        | {
+            /**
+             * Wrap words in **double asterisks** to show them in orange. Start a new line with Enter.
+             */
+            heading?: string | null;
+            intro?: string | null;
+            /**
+             * Published jobs from Content → Job Openings, in their set order.
+             */
+            limit?: number | null;
+            /**
+             * Leave the label empty to hide this button.
+             */
+            button?: {
+              label?: string | null;
+              /**
+               * A page (/about), a page section (/medical-organizations#urgent-staffing), a full URL, or #get-app, #get-started, #request-demo or #start-hiring to open the matching popup or the recruiter sign-up.
+               */
+              link?: string | null;
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'jobOpenings';
+          }
+        | {
+            /**
+             * Wrap words in **double asterisks** to show them in orange. Start a new line with Enter.
+             */
+            heading: string;
+            body?: string | null;
+            /**
+             * Leave the label empty to hide this button.
+             */
+            button?: {
+              label?: string | null;
+              /**
+               * A page (/about), a page section (/medical-organizations#urgent-staffing), a full URL, or #get-app, #get-started, #request-demo or #start-hiring to open the matching popup or the recruiter sign-up.
+               */
+              link?: string | null;
+            };
+            /**
+             * Section background.
+             */
+            background?: ('white' | 'grey' | 'orange') | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'cta';
+          }
+      )[]
+    | null;
+  seo?: {
+    /**
+     * Browser tab and search result title. Uses the page title when empty.
+     */
+    title?: string | null;
+    /**
+     * One or two sentences for search results and link previews.
+     */
+    description?: string | null;
+    noindex?: boolean | null;
+  };
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * Roles listed on the Careers page. Only published jobs appear on the website.
@@ -477,6 +913,10 @@ export interface PayloadLockedDocument {
         value: number | Media;
       } | null)
     | ({
+        relationTo: 'pages';
+        value: number | Page;
+      } | null)
+    | ({
         relationTo: 'jobs';
         value: number | Job;
       } | null)
@@ -588,6 +1028,179 @@ export interface MediaSelect<T extends boolean = true> {
   height?: T;
   focalX?: T;
   focalY?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages_select".
+ */
+export interface PagesSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  showInFooter?: T;
+  sections?:
+    | T
+    | {
+        hero?:
+          | T
+          | {
+              heading?: T;
+              body?: T;
+              image?: T;
+              primaryButton?:
+                | T
+                | {
+                    label?: T;
+                    link?: T;
+                  };
+              secondaryButton?:
+                | T
+                | {
+                    label?: T;
+                    link?: T;
+                  };
+              background?: T;
+              id?: T;
+              blockName?: T;
+            };
+        text?:
+          | T
+          | {
+              heading?: T;
+              content?: T;
+              background?: T;
+              id?: T;
+              blockName?: T;
+            };
+        imageText?:
+          | T
+          | {
+              heading?: T;
+              body?: T;
+              bullets?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
+              image?: T;
+              imagePosition?: T;
+              button?:
+                | T
+                | {
+                    label?: T;
+                    link?: T;
+                  };
+              background?: T;
+              id?: T;
+              blockName?: T;
+            };
+        featureCards?:
+          | T
+          | {
+              heading?: T;
+              intro?: T;
+              columns?: T;
+              cards?:
+                | T
+                | {
+                    icon?: T;
+                    title?: T;
+                    description?: T;
+                    id?: T;
+                  };
+              background?: T;
+              id?: T;
+              blockName?: T;
+            };
+        steps?:
+          | T
+          | {
+              heading?: T;
+              intro?: T;
+              steps?:
+                | T
+                | {
+                    icon?: T;
+                    title?: T;
+                    description?: T;
+                    id?: T;
+                  };
+              button?:
+                | T
+                | {
+                    label?: T;
+                    link?: T;
+                  };
+              background?: T;
+              id?: T;
+              blockName?: T;
+            };
+        faq?:
+          | T
+          | {
+              heading?: T;
+              intro?: T;
+              items?:
+                | T
+                | {
+                    question?: T;
+                    answer?: T;
+                    id?: T;
+                  };
+              background?: T;
+              id?: T;
+              blockName?: T;
+            };
+        testimonials?:
+          | T
+          | {
+              heading?: T;
+              intro?: T;
+              limit?: T;
+              id?: T;
+              blockName?: T;
+            };
+        jobOpenings?:
+          | T
+          | {
+              heading?: T;
+              intro?: T;
+              limit?: T;
+              button?:
+                | T
+                | {
+                    label?: T;
+                    link?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        cta?:
+          | T
+          | {
+              heading?: T;
+              body?: T;
+              button?:
+                | T
+                | {
+                    label?: T;
+                    link?: T;
+                  };
+              background?: T;
+              id?: T;
+              blockName?: T;
+            };
+      };
+  seo?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        noindex?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -850,6 +1463,95 @@ export interface SiteSetting {
   };
   company?: {
     legalName?: string | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * Menus, buttons and footer content shown on every page of the website.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "header-footer".
+ */
+export interface HeaderFooter {
+  id: number;
+  header?: {
+    menu?:
+      | {
+          label?: string | null;
+          /**
+           * A page (/about), a page section (/medical-organizations#urgent-staffing), a full URL, or #get-app, #get-started, #request-demo or #start-hiring to open the matching popup or the recruiter sign-up.
+           */
+          link?: string | null;
+          dropdownLinks?:
+            | {
+                label?: string | null;
+                /**
+                 * A page (/about), a page section (/medical-organizations#urgent-staffing), a full URL, or #get-app, #get-started, #request-demo or #start-hiring to open the matching popup or the recruiter sign-up.
+                 */
+                link?: string | null;
+                description?: string | null;
+                id?: string | null;
+              }[]
+            | null;
+          id?: string | null;
+        }[]
+      | null;
+    secondaryButton?: {
+      label?: string | null;
+      /**
+       * A page (/about), a page section (/medical-organizations#urgent-staffing), a full URL, or #get-app, #get-started, #request-demo or #start-hiring to open the matching popup or the recruiter sign-up.
+       */
+      link?: string | null;
+    };
+    primaryButton?: {
+      label?: string | null;
+      /**
+       * A page (/about), a page section (/medical-organizations#urgent-staffing), a full URL, or #get-app, #get-started, #request-demo or #start-hiring to open the matching popup or the recruiter sign-up.
+       */
+      link?: string | null;
+    };
+  };
+  footer?: {
+    newsletter?: {
+      show?: boolean | null;
+      /**
+       * Wrap words in **double asterisks** to show them in orange. Start a new line with Enter.
+       */
+      heading?: string | null;
+      body?: string | null;
+    };
+    tagline?: string | null;
+    appButton?: {
+      label?: string | null;
+      /**
+       * A page (/about), a page section (/medical-organizations#urgent-staffing), a full URL, or #get-app, #get-started, #request-demo or #start-hiring to open the matching popup or the recruiter sign-up.
+       */
+      link?: string | null;
+    };
+    columns?:
+      | {
+          title?: string | null;
+          links?:
+            | {
+                label?: string | null;
+                /**
+                 * A page (/about), a page section (/medical-organizations#urgent-staffing), a full URL, or #get-app, #get-started, #request-demo or #start-hiring to open the matching popup or the recruiter sign-up.
+                 */
+                link?: string | null;
+                id?: string | null;
+              }[]
+            | null;
+          id?: string | null;
+        }[]
+      | null;
+    copyright?: string | null;
+    creditPrefix?: string | null;
+    creditLabel?: string | null;
+    /**
+     * Full URL including https://. Leave empty to hide.
+     */
+    creditUrl?: string | null;
   };
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -1371,6 +2073,81 @@ export interface SiteSettingsSelect<T extends boolean = true> {
     | T
     | {
         legalName?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "header-footer_select".
+ */
+export interface HeaderFooterSelect<T extends boolean = true> {
+  header?:
+    | T
+    | {
+        menu?:
+          | T
+          | {
+              label?: T;
+              link?: T;
+              dropdownLinks?:
+                | T
+                | {
+                    label?: T;
+                    link?: T;
+                    description?: T;
+                    id?: T;
+                  };
+              id?: T;
+            };
+        secondaryButton?:
+          | T
+          | {
+              label?: T;
+              link?: T;
+            };
+        primaryButton?:
+          | T
+          | {
+              label?: T;
+              link?: T;
+            };
+      };
+  footer?:
+    | T
+    | {
+        newsletter?:
+          | T
+          | {
+              show?: T;
+              heading?: T;
+              body?: T;
+            };
+        tagline?: T;
+        appButton?:
+          | T
+          | {
+              label?: T;
+              link?: T;
+            };
+        columns?:
+          | T
+          | {
+              title?: T;
+              links?:
+                | T
+                | {
+                    label?: T;
+                    link?: T;
+                    id?: T;
+                  };
+              id?: T;
+            };
+        copyright?: T;
+        creditPrefix?: T;
+        creditLabel?: T;
+        creditUrl?: T;
       };
   updatedAt?: T;
   createdAt?: T;

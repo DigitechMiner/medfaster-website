@@ -106,7 +106,9 @@ function mergeItemShapes(items: Record<string, unknown>[]) {
   const shape: Record<string, unknown> = {};
   for (const item of items) {
     for (const [k, v] of Object.entries(item)) {
-      if (!(k in shape) || shape[k] === undefined || shape[k] === "") shape[k] = v;
+      const current = shape[k];
+      const empty = current === undefined || current === "" || (Array.isArray(current) && current.length === 0);
+      if (!(k in shape) || empty) shape[k] = v;
     }
   }
   return shape;

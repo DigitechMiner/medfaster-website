@@ -1,51 +1,72 @@
 "use client";
 
 import { ChevronDown, Menu, X } from "lucide-react";
-import { useState, ReactNode, useEffect, useRef, useCallback } from "react";
+import { useState, ReactNode, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { CustomButton } from "@/components/ui/custom-button";
 import Image from "@/components/ui/image";
 import { useModalStore } from "@/stores/modalStore";
 import { cn } from "@/lib/utils";
+import { resolveLink } from "@/lib/links";
+import { useHeaderFooter } from "@/components/providers/header-footer";
+import { useSiteSettings } from "@/components/providers/site-settings";
+import type { HeaderFooter } from "@/content/header-footer";
 
-type NavItem = { label: string; href: string; description?: string };
+type NavItem = { label: string; href: string; link: string; description?: string };
 type NavLink = NavItem & { submenu?: NavItem[] };
 
-const navLinks: NavLink[] = [
-  { label: "Home", href: "/" },
-  {
-    label: "Our Platforms",
-    href: "/",
-    submenu: [
-      {
-        label: "Healthcare Organizations",
-        href: "/medical-organizations",
-        description: "Hire, fill urgent shifts and manage your workforce",
-      },
-      {
-        label: "Healthcare Professionals",
-        href: "/medical-professionals",
-        description: "Find jobs and shifts, get verified and get paid",
-      },
-      {
-        label: "KeRaeva AI",
-        href: "/keraeva-ai",
-        description: "Every AI and smart feature across the platform",
-      },
-    ],
-  },
-  { label: "Why KeRaeva?", href: "/about" },
-  { label: "Contact Us", href: "/contact-us" },
-];
+const hrefFor = (link: string) => {
+  const resolved = resolveLink(link);
+  return resolved.kind === "internal" || resolved.kind === "external" ? resolved.href : "/";
+};
 
-const RECRUITER_LOGIN_URL = "https://recruiter.keraeva.com";
+// Menu items come from Header & Footer (content/header-footer.ts or the admin panel)
+function toNavLinks(menu: HeaderFooter["header"]["menu"]): NavLink[] {
+  return menu
+    .filter((item) => item.label)
+    .map((item) => {
+      const submenu = (item.dropdownLinks ?? []).filter((sub) => sub.label);
+      return {
+        label: item.label,
+        link: item.link,
+        href: hrefFor(item.link),
+        submenu: submenu.length
+          ? submenu.map((sub) => ({ label: sub.label, link: sub.link, href: hrefFor(sub.link), description: sub.description || undefined }))
+          : undefined,
+      };
+    });
+}
 
 // Shared motion: smooth, and disabled for people who prefer reduced motion
 const motion = "transition-all duration-200 ease-out motion-reduce:transition-none";
 
 function isActive(pathname: string, href: string) {
   return href === "/" ? pathname === "/" : pathname.startsWith(href);
+}
+
+// A menu link: internal pages use Next.js links, other targets get the right element
+function MenuAnchor({ item, className, children, tabIndex, ariaCurrent, onAction }: { item: NavItem; className: string; children: ReactNode; tabIndex?: number; ariaCurrent?: "page"; onAction: (link: string) => void }) {
+  const resolved = resolveLink(item.link);
+  if (resolved.kind === "external") {
+    return (
+      <a href={resolved.href} target="_blank" rel="noopener noreferrer" className={className} tabIndex={tabIndex}>
+        {children}
+      </a>
+    );
+  }
+  if (resolved.kind === "modal" || resolved.kind === "recruiter") {
+    return (
+      <button type="button" className={cn("text-left", className)} tabIndex={tabIndex} onClick={() => onAction(item.link)}>
+        {children}
+      </button>
+    );
+  }
+  return (
+    <Link href={item.href} className={className} aria-current={ariaCurrent} tabIndex={tabIndex}>
+      {children}
+    </Link>
+  );
 }
 
 interface HeaderProps {
@@ -55,17 +76,22 @@ interface HeaderProps {
 export default function Header({ children }: HeaderProps) {
   const pathname = usePathname();
   const openModal = useModalStore((state) => state.openModal);
+  const { header } = useHeaderFooter();
+  const { contact, apps } = useSiteSettings();
+  const navLinks = toNavLinks(header.menu);
+  // Header buttons and menu links: popups open in place, other links open in this tab
+  const runLink = (link: string) => {
+    const resolved = resolveLink(link);
+    if (resolved.kind === "modal") openModal(resolved.modal);
+    else if (resolved.kind === "recruiter") window.location.href = apps.recruiterRegistrationUrl;
+    else if (resolved.kind === "external" || resolved.kind === "internal") window.location.href = resolved.href;
+  };
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
   const [mobileSubmenu, setMobileSubmenu] = useState<string | null>(null);
   const navRef = useRef<HTMLElement>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
-
-  const closeAll = useCallback(() => {
-    setOpenSubmenu(null);
-    setMobileOpen(false);
-  }, []);
 
   // Close menus on navigation (adjusting state during render, not in an effect)
   const [lastPathname, setLastPathname] = useState(pathname);
@@ -79,7 +105,10 @@ export default function Header({ children }: HeaderProps) {
   useEffect(() => {
     if (!openSubmenu && !mobileOpen) return;
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") closeAll();
+      if (e.key === "Escape") {
+        setOpenSubmenu(null);
+        setMobileOpen(false);
+      }
     };
     const handleClick = (e: MouseEvent) => {
       if (navRef.current && !navRef.current.contains(e.target as Node)) setOpenSubmenu(null);
@@ -90,7 +119,7 @@ export default function Header({ children }: HeaderProps) {
       document.removeEventListener("keydown", handleKeyDown);
       document.removeEventListener("click", handleClick);
     };
-  }, [openSubmenu, mobileOpen, closeAll]);
+  }, [openSubmenu, mobileOpen]);
 
   // Lock page scroll behind the open mobile menu and move focus into it
   useEffect(() => {
@@ -171,14 +200,15 @@ export default function Header({ children }: HeaderProps) {
               const submenu = link.submenu;
               if (!submenu) {
                 return (
-                  <Link
+                  <MenuAnchor
                     key={link.label}
-                    href={link.href}
+                    item={link}
                     className={pillClass(isActive(pathname, link.href))}
-                    aria-current={isActive(pathname, link.href) ? "page" : undefined}
+                    ariaCurrent={isActive(pathname, link.href) ? "page" : undefined}
+                    onAction={runLink}
                   >
                     {link.label}
-                  </Link>
+                  </MenuAnchor>
                 );
               }
 
@@ -223,10 +253,11 @@ export default function Header({ children }: HeaderProps) {
                     {submenu.map((sub) => {
                       const active = isActive(pathname, sub.href);
                       return (
-                        <Link
+                        <MenuAnchor
                           key={sub.label}
-                          href={sub.href}
-                          aria-current={active ? "page" : undefined}
+                          item={sub}
+                          ariaCurrent={active ? "page" : undefined}
+                          onAction={runLink}
                           className={cn(
                             "group block rounded-xl px-4 py-3",
                             motion,
@@ -246,7 +277,7 @@ export default function Header({ children }: HeaderProps) {
                           {sub.description && (
                             <span className="block text-xs text-[#717680] mt-0.5">{sub.description}</span>
                           )}
-                        </Link>
+                        </MenuAnchor>
                       );
                     })}
                   </div>
@@ -257,19 +288,23 @@ export default function Header({ children }: HeaderProps) {
 
           {/* Right - CTAs */}
           <div className="flex items-center gap-2">
-            <CustomButton
-              variant="secondary"
-              className="hidden lg:flex my-0"
-              onClick={() => openModal("get-app")}
-            >
-              Get the App
-            </CustomButton>
-            <CustomButton
-              className="hidden md:flex my-0"
-              onClick={() => (window.location.href = RECRUITER_LOGIN_URL)}
-            >
-              Login as Recruiter
-            </CustomButton>
+            {header.secondaryButton.label && (
+              <CustomButton
+                variant="secondary"
+                className="hidden lg:flex my-0"
+                onClick={() => runLink(header.secondaryButton.link)}
+              >
+                {header.secondaryButton.label}
+              </CustomButton>
+            )}
+            {header.primaryButton.label && (
+              <CustomButton
+                className="hidden md:flex my-0"
+                onClick={() => runLink(header.primaryButton.link)}
+              >
+                {header.primaryButton.label}
+              </CustomButton>
+            )}
           </div>
 
         </header>
@@ -325,18 +360,19 @@ export default function Header({ children }: HeaderProps) {
                 const active = isActive(pathname, link.href);
                 return (
                   <li key={link.label} className={rowClass} style={rowStyle}>
-                    <Link
-                      href={link.href}
-                      aria-current={active ? "page" : undefined}
+                    <MenuAnchor
+                      item={link}
+                      ariaCurrent={active ? "page" : undefined}
+                      onAction={(target) => { setMobileOpen(false); runLink(target); }}
                       className={cn(
-                        "flex items-center justify-between py-4 text-xl font-medium",
+                        "flex w-full items-center justify-between py-4 text-xl font-medium",
                         motion,
                         active ? "text-[#F3651B]" : "text-[#252B37] hover:text-[#F3651B]"
                       )}
                     >
                       {link.label}
                       {active && <span className="w-2 h-2 rounded-full bg-[#F3651B]" aria-hidden="true" />}
-                    </Link>
+                    </MenuAnchor>
                   </li>
                 );
               }
@@ -372,12 +408,13 @@ export default function Header({ children }: HeaderProps) {
                         const active = isActive(pathname, sub.href);
                         return (
                           <li key={sub.label} className="pb-2">
-                            <Link
-                              href={sub.href}
+                            <MenuAnchor
+                              item={sub}
                               tabIndex={isOpen ? undefined : -1}
-                              aria-current={active ? "page" : undefined}
+                              ariaCurrent={active ? "page" : undefined}
+                              onAction={(target) => { setMobileOpen(false); runLink(target); }}
                               className={cn(
-                                "block rounded-xl px-4 py-3",
+                                "block w-full rounded-xl px-4 py-3",
                                 motion,
                                 active ? "bg-[#FEF0E7]" : "bg-gray-50 hover:bg-[#FEF0E7]"
                               )}
@@ -388,7 +425,7 @@ export default function Header({ children }: HeaderProps) {
                               {sub.description && (
                                 <span className="block text-sm text-[#717680] mt-0.5">{sub.description}</span>
                               )}
-                            </Link>
+                            </MenuAnchor>
                           </li>
                         );
                       })}
@@ -409,27 +446,31 @@ export default function Header({ children }: HeaderProps) {
           )}
           style={{ transitionDelay: mobileOpen ? "300ms" : "0ms" }}
         >
-          <CustomButton
-            variant="secondary"
-            className="w-full justify-center my-0"
-            onClick={() => {
-              setMobileOpen(false);
-              openModal("get-app");
-            }}
-          >
-            Get the App
-          </CustomButton>
-          <CustomButton
-            className="w-full justify-center my-0"
-            onClick={() => (window.location.href = RECRUITER_LOGIN_URL)}
-          >
-            Login as Recruiter
-          </CustomButton>
+          {header.secondaryButton.label && (
+            <CustomButton
+              variant="secondary"
+              className="w-full justify-center my-0"
+              onClick={() => {
+                setMobileOpen(false);
+                runLink(header.secondaryButton.link);
+              }}
+            >
+              {header.secondaryButton.label}
+            </CustomButton>
+          )}
+          {header.primaryButton.label && (
+            <CustomButton
+              className="w-full justify-center my-0"
+              onClick={() => runLink(header.primaryButton.link)}
+            >
+              {header.primaryButton.label}
+            </CustomButton>
+          )}
           <a
-            href="mailto:support@keraeva.com"
+            href={`mailto:${contact.email}`}
             className="text-center text-sm text-[#717680] hover:text-[#F3651B] py-1.5"
           >
-            support@keraeva.com
+            {contact.email}
           </a>
         </div>
       </div>

@@ -5,6 +5,7 @@ import path from "path";
 import { getPayload } from "payload";
 import config from "@payload-config";
 import { SITE_DEFAULTS } from "../../content/site";
+import { HEADER_FOOTER_DEFAULTS } from "../../content/header-footer";
 import { PAGE_REGISTRY } from "../../content/pages";
 import { JOBS } from "../../app/(frontend)/careers/components/constants";
 import { SUPPORT_FAQS } from "../../utils/constant/faqs";
@@ -32,8 +33,8 @@ async function uploadImage(publicPath: string, alt: string) {
   return doc.id;
 }
 
-// Site settings and page content
-for (const [slug, defaults] of [["site-settings", SITE_DEFAULTS], ...Object.values(PAGE_REGISTRY).map((p) => [p.slug, p.defaults])] as const) {
+// Site settings, header & footer and page content
+for (const [slug, defaults] of [["site-settings", SITE_DEFAULTS], ["header-footer", HEADER_FOOTER_DEFAULTS], ...Object.values(PAGE_REGISTRY).map((p) => [p.slug, p.defaults])] as const) {
   const current = await payload.findGlobal({ slug: slug as "site-settings", depth: 0 });
   if (current?.updatedAt && !force) {
     console.log(`- ${slug}: already saved, skipped`);

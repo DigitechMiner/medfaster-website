@@ -48,7 +48,8 @@ export async function AdminNav({ payload, user, visibleEntities }: NavProps) {
     {
       label: "Website",
       items: [
-        ...([...globals].some((slug) => slug.startsWith("page-")) ? [{ label: "Pages", href: adminUrl("/pages"), icon: "pages" as const, matches: [adminUrl("/globals/page-")] }] : []),
+        ...([...globals].some((slug) => slug.startsWith("page-")) || collection("pages") ? [{ label: "Pages", href: adminUrl("/pages"), icon: "pages" as const, matches: [adminUrl("/globals/page-"), adminUrl("/collections/pages")] }] : []),
+        ...(globals.has("header-footer") ? [{ label: "Header & Footer", href: adminUrl("/globals/header-footer"), icon: "layout" as const }] : []),
         ...(collection("jobs") ? [{ label: "Job Openings", href: adminUrl("/collections/jobs"), icon: "jobs" as const }] : []),
         ...(collection("posts") ? [{ label: "Blog Posts", href: adminUrl("/collections/posts"), icon: "posts" as const }] : []),
         ...(collection("testimonials") ? [{ label: "Testimonials", href: adminUrl("/collections/testimonials"), icon: "testimonials" as const }] : []),

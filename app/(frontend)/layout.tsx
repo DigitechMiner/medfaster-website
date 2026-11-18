@@ -8,6 +8,10 @@ import { GlobalModals } from "@/components/global/modals";
 import { Preloader } from "@/components/global/preloader";
 import { ScrollReveal } from "@/components/global/scroll-reveal";
 import { SITE_NAME, SITE_URL } from "@/lib/seo/site";
+import { getSiteSettings } from "@/lib/cms/site";
+import { getHeaderFooter } from "@/lib/cms/header-footer";
+import { SiteSettingsProvider } from "@/components/providers/site-settings";
+import { HeaderFooterProvider } from "@/components/providers/header-footer";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -25,14 +29,18 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image" },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Shared by the header, footer, popups and buttons on every page
+  const [siteSettings, headerFooter] = await Promise.all([getSiteSettings(), getHeaderFooter()]);
   return (
     <html lang="en" className={fonts}>
       <body className="font-sans">
+        <SiteSettingsProvider value={siteSettings}>
+        <HeaderFooterProvider value={headerFooter}>
         <Preloader />
         {children}
         <GlobalModals />
@@ -50,6 +58,8 @@ export default function RootLayout({
           theme="light"
         />
         <Analytics />
+        </HeaderFooterProvider>
+        </SiteSettingsProvider>
       </body>
     </html>
   );

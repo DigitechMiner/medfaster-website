@@ -1,6 +1,4 @@
 import { MediaView as MediaView_45b19099d2831aa7974d06dbb4d62c2a } from '../../../components/admin/media-view'
-import { RowLabel as RowLabel_bf77544266d401359bb913e1e4b02cd4 } from '../../../components/admin/row-label'
-import { StatusTabs as StatusTabs_87ac15abbebc49d5e4ede6825ad68f7c } from '../../../components/admin/status-tabs'
 import { RscEntryLexicalCell as RscEntryLexicalCell_44fe37237e0ebf4470c9990d8cb7b07e } from '@payloadcms/richtext-lexical/rsc'
 import { RscEntryLexicalField as RscEntryLexicalField_44fe37237e0ebf4470c9990d8cb7b07e } from '@payloadcms/richtext-lexical/rsc'
 import { LexicalDiffComponent as LexicalDiffComponent_44fe37237e0ebf4470c9990d8cb7b07e } from '@payloadcms/richtext-lexical/rsc'
@@ -24,6 +22,9 @@ import { StrikethroughFeatureClient as StrikethroughFeatureClient_e70f5e05f09f93
 import { UnderlineFeatureClient as UnderlineFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from '@payloadcms/richtext-lexical/client'
 import { BoldFeatureClient as BoldFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from '@payloadcms/richtext-lexical/client'
 import { ItalicFeatureClient as ItalicFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from '@payloadcms/richtext-lexical/client'
+import { RowLabel as RowLabel_bf77544266d401359bb913e1e4b02cd4 } from '../../../components/admin/row-label'
+import { RedirectToPages as RedirectToPages_1208d42ab95975fe253667d79d423c49 } from '../../../components/admin/redirect-to-pages'
+import { StatusTabs as StatusTabs_87ac15abbebc49d5e4ede6825ad68f7c } from '../../../components/admin/status-tabs'
 import { InboxView as InboxView_f019da0a41a6dd77524109fa2a1a5a17 } from '../../../components/admin/inbox-view'
 import { AdminNav as AdminNav_17372ecfb774b723c45e7850896fd315 } from '../../../components/admin/nav'
 import { AdminIcon as AdminIcon_626e24b987f1ce07afe3d44061a1a2bf } from '../../../components/admin/graphics'
@@ -39,8 +40,6 @@ import { VercelBlobClientUploadHandler as VercelBlobClientUploadHandler_16c82c5e
 /** @type import('payload').ImportMap */
 export const importMap = {
   "/components/admin/media-view#MediaView": MediaView_45b19099d2831aa7974d06dbb4d62c2a,
-  "/components/admin/row-label#RowLabel": RowLabel_bf77544266d401359bb913e1e4b02cd4,
-  "/components/admin/status-tabs#StatusTabs": StatusTabs_87ac15abbebc49d5e4ede6825ad68f7c,
   "@payloadcms/richtext-lexical/rsc#RscEntryLexicalCell": RscEntryLexicalCell_44fe37237e0ebf4470c9990d8cb7b07e,
   "@payloadcms/richtext-lexical/rsc#RscEntryLexicalField": RscEntryLexicalField_44fe37237e0ebf4470c9990d8cb7b07e,
   "@payloadcms/richtext-lexical/rsc#LexicalDiffComponent": LexicalDiffComponent_44fe37237e0ebf4470c9990d8cb7b07e,
@@ -64,6 +63,9 @@ export const importMap = {
   "@payloadcms/richtext-lexical/client#UnderlineFeatureClient": UnderlineFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
   "@payloadcms/richtext-lexical/client#BoldFeatureClient": BoldFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
   "@payloadcms/richtext-lexical/client#ItalicFeatureClient": ItalicFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
+  "/components/admin/row-label#RowLabel": RowLabel_bf77544266d401359bb913e1e4b02cd4,
+  "/components/admin/redirect-to-pages#RedirectToPages": RedirectToPages_1208d42ab95975fe253667d79d423c49,
+  "/components/admin/status-tabs#StatusTabs": StatusTabs_87ac15abbebc49d5e4ede6825ad68f7c,
   "/components/admin/inbox-view#InboxView": InboxView_f019da0a41a6dd77524109fa2a1a5a17,
   "/components/admin/nav#AdminNav": AdminNav_17372ecfb774b723c45e7850896fd315,
   "/components/admin/graphics#AdminIcon": AdminIcon_626e24b987f1ce07afe3d44061a1a2bf,
