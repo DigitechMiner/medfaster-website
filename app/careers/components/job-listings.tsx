@@ -15,8 +15,8 @@ export function JobListingsSection() {
   const [sortBy, setSortBy] = useState("popular");
 
   // Helper function to extract salary value (in thousands)
-  const getSalaryValue = (salary: string): number => {
-    const match = salary.match(/\$(\d+)K/);
+  const getSalaryValue = (salary?: string): number => {
+    const match = salary?.match(/\$(\d+)K/);
     return match ? parseInt(match[1], 10) : 0;
   };
 
@@ -111,6 +111,7 @@ export function JobListingsSection() {
         ))}
       </div>
 
+    {totalPages > 1 && (
     <div className="flex justify-center items-center gap-4 pb-8">
   {/* Prev Button */}
   <CustomButton
@@ -154,6 +155,7 @@ export function JobListingsSection() {
     Next
   </CustomButton>
 </div>
+    )}
 
     </Section>
   );
