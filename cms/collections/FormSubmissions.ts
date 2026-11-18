@@ -11,6 +11,7 @@ export const FormSubmissions: CollectionConfig = {
     defaultColumns: ["summary", "type", "email", "status", "createdAt"],
     description: "Contact, Support, Request a Demo and newsletter submissions from the website.",
     listSearchableFields: ["email", "name", "summary"],
+    components: { views: { list: { Component: "/components/admin/inbox-view#InboxView" } } },
   },
   access: { read: isLoggedIn, create: () => false, update: isLoggedIn, delete: isAdmin },
   defaultSort: "-createdAt",

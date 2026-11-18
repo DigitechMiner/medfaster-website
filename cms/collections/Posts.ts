@@ -11,6 +11,7 @@ export const Posts: CollectionConfig = {
     useAsTitle: "title",
     defaultColumns: ["title", "author", "_status", "publishedDate"],
     description: "Articles on the Blog page. Only published posts appear on the website.",
+    components: { beforeListTable: ["/components/admin/status-tabs#StatusTabs"] },
     preview: (doc) => `/blog/${doc.slug}`,
   },
   versions: { drafts: true, maxPerDoc: 25 },

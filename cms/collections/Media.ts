@@ -5,7 +5,11 @@ import { revalidateHooks } from "../hooks/revalidate";
 export const Media: CollectionConfig = {
   slug: "media",
   labels: { singular: "Image", plural: "Media Library" },
-  admin: { group: "Content", defaultColumns: ["filename", "alt", "updatedAt"] },
+  admin: {
+    group: "Content",
+    defaultColumns: ["filename", "alt", "updatedAt"],
+    components: { views: { list: { Component: "/components/admin/media-view#MediaView" } } },
+  },
   access: { read: anyone, create: isLoggedIn, update: isLoggedIn, delete: isLoggedIn },
   hooks: revalidateHooks,
   fields: [

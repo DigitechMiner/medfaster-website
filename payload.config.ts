@@ -28,15 +28,38 @@ const trustedOrigins = [
   siteUrl,
   process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "",
   process.env.VERCEL_BRANCH_URL ? `https://${process.env.VERCEL_BRANCH_URL}` : "",
+  // Optional admin subdomain (see proxy.ts)
+  process.env.ADMIN_HOST ? `https://${process.env.ADMIN_HOST.replace(/^https?:\/\//, "").replace(/\/.*$/, "")}` : "",
   "http://localhost:3000",
 ].filter(Boolean);
 
 export default buildConfig({
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL || undefined,
+  // The admin panel is served at /website (not the default /admin)
+  routes: { admin: "/website" },
   admin: {
     user: Users.slug,
     importMap: { baseDir: path.resolve(dirname) },
-    meta: { titleSuffix: " | KeRaeva Admin" },
+    meta: {
+      titleSuffix: " | KeRaeva Admin",
+      icons: [{ rel: "icon", url: "/favicon.ico" }],
+      // Never index the admin panel
+      robots: "noindex, nofollow",
+    },
+    // KeRaeva admin design (see the "KeRaeva Admin – UI Design" Figma file)
+    components: {
+      Nav: "/components/admin/nav#AdminNav",
+      actions: ["/components/admin/header-actions#HeaderActions"],
+      graphics: {
+        Logo: "/components/admin/graphics#AdminLogo",
+        Icon: "/components/admin/graphics#AdminIcon",
+      },
+      beforeLogin: ["/components/admin/login-panel#LoginPanel", "/components/admin/login-panel#LoginIntro"],
+      views: {
+        dashboard: { Component: "/components/admin/dashboard#Dashboard" },
+        pages: { Component: "/components/admin/pages-view#PagesView", path: "/pages" },
+      },
+    },
   },
   collections: [Users, Media, Jobs, Posts, Testimonials, TeamMembers, Faqs, LegalDocuments, FormSubmissions],
   globals: [SiteSettings, ...PageGlobals],

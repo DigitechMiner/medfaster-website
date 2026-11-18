@@ -15,6 +15,15 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: path.resolve(dirname),
   },
+  // Keep the admin panel and the CMS API out of search engines
+  async headers() {
+    const noindex = [{ key: "X-Robots-Tag", value: "noindex, nofollow" }];
+    return [
+      { source: "/website", headers: noindex },
+      { source: "/website/:path*", headers: noindex },
+      { source: "/api/:path*", headers: noindex },
+    ];
+  },
   async redirects() {
     return [
       // Help Center was merged into Support; keep old links working

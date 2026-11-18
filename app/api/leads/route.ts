@@ -1,8 +1,10 @@
 import { NextResponse } from "next/server";
+import { getCms } from "@/lib/cms/payload";
 
 // Receives demo requests, newsletter sign-ups, contact enquiries and support
-// requests and forwards them to
-// LEADS_WEBHOOK_URL (e.g. a CRM, Zapier/Make, Slack or Google Apps Script hook).
+// requests. Each one is saved to the admin Inbox (Form Submissions) when the
+// CMS is configured, and forwarded to LEADS_WEBHOOK_URL (e.g. a CRM,
+// Zapier/Make, Slack or Google Apps Script hook) when that is set.
 
 type LeadType = "demo" | "newsletter" | "contact" | "support";
 
@@ -57,28 +59,63 @@ export async function POST(request: Request) {
     return NextResponse.json({ message: "Please enter a valid email address." }, { status: 400 });
   }
 
+  const source = request.headers.get("referer") ?? "";
   const webhookUrl = process.env.LEADS_WEBHOOK_URL;
-  if (!webhookUrl) {
+  const payload = await getCms();
+
+  if (!webhookUrl && !payload) {
     return NextResponse.json(
       { message: "This form isn't connected yet. Please email support@keraeva.com." },
       { status: 503 }
     );
   }
 
-  try {
-    const response = await fetch(webhookUrl, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        type,
-        ...fields,
-        source: request.headers.get("referer") ?? "",
-        submittedAt: new Date().toISOString(),
-      }),
-    });
-    if (!response.ok) throw new Error(`Webhook responded with ${response.status}`);
-  } catch (error) {
-    console.error("Lead webhook failed:", error);
+  // 1. Admin Inbox
+  let savedId: string | number | undefined;
+  if (payload) {
+    try {
+      const doc = await payload.create({
+        collection: "form-submissions",
+        overrideAccess: true,
+        data: {
+          type,
+          status: "new",
+          name: fields.name || undefined,
+          email: fields.email,
+          summary: summarize(type, fields),
+          fields,
+          source,
+          forwarded: false,
+        },
+      });
+      savedId = doc.id;
+    } catch (error) {
+      console.error("Saving the submission to the Inbox failed:", error);
+    }
+  }
+
+  // 2. Webhook
+  let forwarded = false;
+  if (webhookUrl) {
+    try {
+      const response = await fetch(webhookUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ type, ...fields, source, submittedAt: new Date().toISOString() }),
+      });
+      if (!response.ok) throw new Error(`Webhook responded with ${response.status}`);
+      forwarded = true;
+    } catch (error) {
+      console.error("Lead webhook failed:", error);
+    }
+  }
+
+  if (savedId !== undefined && forwarded && payload) {
+    await payload.update({ collection: "form-submissions", id: savedId, data: { forwarded: true }, overrideAccess: true }).catch(() => undefined);
+  }
+
+  // Only report success when the submission actually reached the team
+  if (savedId === undefined && !forwarded) {
     return NextResponse.json(
       { message: "Something went wrong. Please try again or email support@keraeva.com." },
       { status: 502 }
@@ -86,4 +123,19 @@ export async function POST(request: Request) {
   }
 
   return NextResponse.json({ message: "Thank you." }, { status: 200 });
+}
+
+// One-line preview shown in the Inbox list
+function summarize(type: LeadType, fields: Record<string, string>) {
+  const clip = (text = "", max = 140) => (text.length > max ? `${text.slice(0, max - 1).trimEnd()}…` : text);
+  switch (type) {
+    case "support":
+      return clip(`${fields.issueType ? `${fields.issueType}: ` : ""}${fields.subject}`);
+    case "demo":
+      return clip([fields.organization, fields.message].filter(Boolean).join(" · ") || "Demo request");
+    case "newsletter":
+      return fields.audience ? `Subscribed from ${fields.audience}` : "Subscribed to updates";
+    default:
+      return clip(fields.message);
+  }
 }

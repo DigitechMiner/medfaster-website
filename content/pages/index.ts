@@ -3,6 +3,8 @@
 export type PageEntry = {
   slug: string;
   label: string;
+  // Where the page lives on the website
+  path: string;
   description: string;
   defaults: object;
 };
@@ -13,6 +15,7 @@ export const PAGE_REGISTRY = {
   home: {
     slug: "page-home",
     label: "Home",
+    path: "/",
     description: "Text, images, buttons and section visibility on the home page.",
     defaults: HOME_DEFAULTS,
   },

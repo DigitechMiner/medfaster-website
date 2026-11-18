@@ -11,6 +11,7 @@ export const Jobs: CollectionConfig = {
     useAsTitle: "title",
     defaultColumns: ["title", "location", "type", "_status", "postedAt"],
     description: "Roles listed on the Careers page. Only published jobs appear on the website.",
+    components: { beforeListTable: ["/components/admin/status-tabs#StatusTabs"] },
     preview: (doc) => `/careers/${doc.slug}`,
   },
   versions: { drafts: true, maxPerDoc: 25 },
