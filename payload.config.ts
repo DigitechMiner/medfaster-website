@@ -67,7 +67,7 @@ export default buildConfig({
   secret: process.env.PAYLOAD_SECRET || "",
   typescript: { outputFile: path.resolve(dirname, "payload-types.ts") },
   db: postgresAdapter({
-    pool: { connectionString: process.env.DATABASE_URI || "" },
+    pool: { connectionString: process.env.DATABASE_URI || process.env.DATABASE_URL || process.env.POSTGRES_URL || "" },
     migrationDir: path.resolve(dirname, "cms/migrations"),
     // Production applies committed migrations on start-up; local development syncs the schema automatically
     prodMigrations: migrations,

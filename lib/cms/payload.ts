@@ -2,7 +2,7 @@ import type { Payload } from "payload";
 
 // The website works without the CMS: when it is not configured (or the
 // database is unreachable) every loader falls back to the code defaults.
-export const cmsConfigured = Boolean(process.env.DATABASE_URI && process.env.PAYLOAD_SECRET);
+export const cmsConfigured = Boolean((process.env.DATABASE_URI || process.env.DATABASE_URL || process.env.POSTGRES_URL) && process.env.PAYLOAD_SECRET);
 
 let warned = false;
 
