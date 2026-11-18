@@ -936,7 +936,20 @@ body {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   @media (max-width: 560px) {
-    grid-template-columns: 1fr;
+    gap: 10px;
+    .kr-stat {
+      padding: 14px;
+      gap: 8px;
+    }
+    .kr-stat__top {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .kr-stat__value {
+      font-size: 24px;
+      line-height: 28px;
+    }
   }
 }
 .kr-stat {
@@ -973,7 +986,7 @@ body {
   gap: 16px;
   align-items: start;
   @media (max-width: 1100px) {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 .kr-side {
@@ -1550,5 +1563,104 @@ body {
 .login__brand {
   @media (min-width: 1024px) {
     display: none;
+  }
+}
+
+// ---------------------------------------------------------------- phones
+
+// Labels that collapse to their icon on narrow screens
+@media (max-width: 600px) {
+  .kr-hide-phone {
+    display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  // Top bar: the screen title sits right below, so keep only the logo from the
+  // breadcrumb trail and leave room for View site, the theme switch and the account menu
+  .app-header__step-nav-wrapper {
+    flex: 0 0 auto;
+    width: auto;
+    overflow: hidden;
+  }
+  .step-nav > :not(.step-nav__home) {
+    display: none;
+  }
+  .app-header__controls-wrapper {
+    justify-content: flex-end;
+    min-width: 0;
+  }
+  .app-header__actions-wrapper {
+    flex-shrink: 0;
+    margin-left: auto;
+  }
+  .app-header__gradient-placeholder {
+    display: none;
+  }
+  .kr-header-actions {
+    gap: 8px;
+  }
+  .kr-header-actions .kr-btn--sm {
+    padding-inline: 8px;
+  }
+
+  // Document status and dates wrap instead of running off the edge
+  .doc-controls__meta {
+    flex-wrap: wrap;
+    row-gap: 4px;
+    width: 100%;
+    max-width: 100%;
+  }
+  .doc-controls__list-item,
+  .doc-controls__value-wrap {
+    white-space: normal;
+  }
+}
+
+// Phones: the menu slides over the page as a drawer instead of squeezing it
+@media (max-width: 768px) {
+  // Until the menu script loads, Payload's grid gives the hidden menu column the
+  // spare width and squeezes the page into a strip; keep the page full width
+  .template-default:not(.template-default--nav-open) {
+    grid-template-columns: 0 minmax(0, 1fr);
+  }
+  .template-default--nav-hydrated.template-default--nav-open {
+    grid-template-columns: 0 auto;
+  }
+  .template-default--nav-open .nav {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: min(86vw, 320px);
+    z-index: 60;
+    overflow-y: auto;
+    box-shadow: var(--kr-shadow-raised);
+  }
+  .template-default--nav-open .template-default__nav-toggler-wrapper {
+    z-index: 61;
+  }
+  .template-default--nav-open .template-default__nav-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 55;
+    display: block;
+    opacity: 1;
+    background: rgba(15, 18, 26, 0.45);
+  }
+}
+
+@media (max-width: 560px) {
+  // Inbox: sender details above the status picker
+  .kr-detail__head {
+    flex-wrap: wrap;
+    .kr-field--inline {
+      flex-basis: 100%;
+    }
+  }
+  // Media Library: two images per row
+  .kr-media-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
   }
 }

@@ -58,7 +58,7 @@ export default buildConfig({
       beforeLogin: ["/components/admin/login-panel#LoginPanel", "/components/admin/login-panel#LoginIntro"],
       views: {
         dashboard: { Component: "/components/admin/dashboard#Dashboard" },
-        pages: { Component: "/components/admin/pages-view#PagesView", path: "/pages" },
+        pages: { Component: "/components/admin/pages-view#PagesView", path: "/pages", meta: { title: "Pages" } },
       },
     },
   },

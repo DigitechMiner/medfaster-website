@@ -61,6 +61,8 @@ export async function PagesView({ initPageResult, params, searchParams }: AdminV
       permissions={permissions}
       searchParams={searchParams}
       user={user}
+      // Same top-bar actions (View site, theme switch) as Payload's own screens
+      viewActions={payload.config.admin?.components?.actions}
       visibleEntities={visibleEntities}
     >
       <div className="kr-view">

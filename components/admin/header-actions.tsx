@@ -10,9 +10,9 @@ export function HeaderActions() {
   const { theme, setTheme } = useTheme();
   return (
     <div className="kr-header-actions">
-      <a className="kr-btn kr-btn--secondary kr-btn--sm" href={SITE_URL} target="_blank" rel="noopener noreferrer">
+      <a className="kr-btn kr-btn--secondary kr-btn--sm" href={SITE_URL} aria-label="View site" target="_blank" rel="noopener noreferrer">
         <ExternalLink aria-hidden="true" strokeWidth={1.75} />
-        View site
+        <span className="kr-hide-phone">View site</span>
       </a>
       <div className="kr-theme-toggle" role="group" aria-label="Colour theme">
         <button type="button" className={theme === "light" ? "is-active" : ""} aria-pressed={theme === "light"} aria-label="Light theme" onClick={() => setTheme("light")}>
