@@ -1,18 +1,25 @@
 "use client";
 
 import Image from "@/components/ui/image";
-import { CustomButton } from "@/components/ui/custom-button";
+import { CtaButton } from "@/components/ui/cta-button";
+import { AccentText, stripAccents } from "@/components/ui/accent-text";
 import { ArrowRight } from "lucide-react";
 import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/heading";
 import { ResponsiveParagraph } from "@/components/ui/paragraph";
-import { GET_HIRED_STEPS } from "@/lib/constants";
-import { useModalStore } from "@/stores/modalStore";
+import { iconFor } from "@/lib/cms/icons";
 
-export default function GetHiredSection() {
-  const openModal = useModalStore((state) => state.openModal);
-  const steps = GET_HIRED_STEPS;
+// Orange "steps" band with a photo, used on the Professionals and Organizations pages
+export type StepsBandContent = {
+  heading: string;
+  body: string;
+  image: string;
+  imageAlt: string;
+  steps: { icon: string; title: string; description: string }[];
+  cta: { label: string; link: string };
+};
 
+export default function GetHiredSection({ content, imageHeight = "h-[400px] lg:h-[500px]" }: { content: StepsBandContent; imageHeight?: string }) {
   return (
     <Section
       backgroundColor="bg-[#F3651B]"
@@ -29,19 +36,21 @@ export default function GetHiredSection() {
       <div className="relative">
         {/* Top Text Section */}
         <div className=" mb-8">
-          <Heading className="text-white mb-4">Get Hired in 3 Simple Steps</Heading>
+          <Heading className="text-white mb-4">
+            <AccentText text={content.heading} accentClassName="text-white underline decoration-white/60" />
+          </Heading>
           <ResponsiveParagraph size="base" className="text-white max-w-2xl">
-            Our AI-powered process makes finding your next role faster and more direct than ever before.
+            {content.body}
           </ResponsiveParagraph>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-left">
           {/* Left Side - Image */}
           <div className="order-2 lg:order-1">
-            <div className="relative h-[400px] lg:h-[500px]">
+            <div className={`relative ${imageHeight}`}>
               <Image
-                src="/images/hero/get-hired.webp"
-                alt="Healthcare professional assisting patient"
+                src={content.image}
+                alt={stripAccents(content.imageAlt)}
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-contain"
@@ -52,36 +61,28 @@ export default function GetHiredSection() {
           {/* Right Side - Steps */}
           <div className="order-1 lg:order-2 text-white">
             <div className="space-y-6 mb-8">
-              {steps.map((step, index) => (
-                <div
-                  key={index}
-                  className="flex items-start gap-4 border-b border-white/20 pb-6"
-                >
-                  <div className="flex-shrink-0 w-12 h-12 bg-opacity-20 rounded-full flex items-center justify-center">
-                    <step.icon className="w-10 h-10 text-white" strokeWidth={1.5} aria-hidden="true" />
-                  </div>
+              {content.steps.map((step, index) => {
+                const Icon = iconFor(step.icon);
+                return (
+                  <div key={index} className="flex items-start gap-4 border-b border-white/20 pb-6">
+                    <div className="flex-shrink-0 w-12 h-12 bg-opacity-20 rounded-full flex items-center justify-center">
+                      <Icon className="w-10 h-10 text-white" strokeWidth={1.5} aria-hidden="true" />
+                    </div>
 
-                  <div>
-                    <Heading as="h3" size="xs" weight="medium" className="text-white mb-2">
-                      {step.title}
-                    </Heading>
-                    <ResponsiveParagraph
-                      size="sm"
-                      className="text-white text-opacity-90 leading-relaxed"
-                    >
-                      {step.description}
-                    </ResponsiveParagraph>
+                    <div>
+                      <Heading as="h3" size="xs" weight="medium" className="text-white mb-2">
+                        {step.title}
+                      </Heading>
+                      <ResponsiveParagraph size="sm" className="text-white text-opacity-90 leading-relaxed">
+                        {step.description}
+                      </ResponsiveParagraph>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
 
-            <CustomButton
-            variant="inverse"
-              rightIcon={ArrowRight}
-             onClick={() => openModal("get-app")}>
-              Get Started
-            </CustomButton>
+            <CtaButton cta={content.cta} variant="inverse" rightIcon={ArrowRight} />
           </div>
         </div>
       </div>

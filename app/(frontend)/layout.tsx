@@ -5,6 +5,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Analytics } from "@vercel/analytics/next";
 import { GlobalModals } from "@/components/global/modals";
+import { getPageContent } from "@/lib/cms/content";
 import { Preloader } from "@/components/global/preloader";
 import { ScrollReveal } from "@/components/global/scroll-reveal";
 import { SITE_NAME, SITE_URL } from "@/lib/seo/site";
@@ -35,7 +36,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   // Shared by the header, footer, popups and buttons on every page
-  const [siteSettings, headerFooter] = await Promise.all([getSiteSettings(), getHeaderFooter()]);
+  const [siteSettings, headerFooter, popups] = await Promise.all([getSiteSettings(), getHeaderFooter(), getPageContent("popups")]);
   return (
     <html lang="en" className={fonts}>
       <body className="font-sans">
@@ -43,7 +44,7 @@ export default async function RootLayout({
         <HeaderFooterProvider value={headerFooter}>
         <Preloader />
         {children}
-        <GlobalModals />
+        <GlobalModals content={popups} />
         <ScrollReveal />
         <ToastContainer
           position="top-right"

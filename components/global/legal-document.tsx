@@ -5,6 +5,7 @@ import { Heading } from "@/components/ui/heading";
 import { Paragraph } from "@/components/ui/paragraph";
 import { IconChip } from "@/components/ui/icon-chip";
 import type { LegalDocumentData } from "@/lib/legal/types";
+import { getSiteSettings } from "@/lib/cms/site";
 
 const LIST_MARKER = /^[•–]\s+/;
 
@@ -45,7 +46,9 @@ function LegalContent({ content }: { content: string }) {
   );
 }
 
-export function LegalDocument({ document }: { document: LegalDocumentData }) {
+export async function LegalDocument({ document }: { document: LegalDocumentData }) {
+  // Contact email from Site Settings
+  const { contact } = await getSiteSettings();
   const hasParts = document.parts.some((part) => part.title);
 
   return (
@@ -129,8 +132,8 @@ export function LegalDocument({ document }: { document: LegalDocumentData }) {
             </Paragraph>
             <Paragraph size="sm" className="text-[#717680]">
               Contact our team at{" "}
-              <a href="mailto:support@keraeva.com" className="text-[#F3651B] font-medium hover:underline">
-                support@keraeva.com
+              <a href={`mailto:${contact.email}`} className="text-[#F3651B] font-medium hover:underline">
+                {contact.email}
               </a>
               .
             </Paragraph>

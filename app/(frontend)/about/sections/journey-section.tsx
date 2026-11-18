@@ -1,51 +1,8 @@
 import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/heading";
 import { TimelineCard } from "@/components/card/timeline-card";
-
-const TIMELINE = [
-  {
-    year: "2021",
-    title: "The Question",
-    description:
-      "KeRaeva began with a simple question: 'Why should healthcare still struggle with time?' Founded by healthcare providers, we saw how traditional staffing delayed care.",
-  },
-  {
-    year: "2022",
-    title: "The Concept",
-    description:
-      "What started as a concept to fill last-minute healthcare facility shifts and test our AI models.",
-  },
-  {
-    year: "2024",
-    title: "The Ecosystem",
-    description:
-      "Evolved into a full-scale digital ecosystem that brings together AI recruitment, real-time workforce matching, shifts and payments.",
-  },
-  {
-    year: "Today",
-    title: "The Principle",
-    description:
-      "From prototype to a growing platform, our work is built on one principle: speed matters in healthcare.",
-  },
-  {
-    year: "2026",
-    title: "The Question",
-    description:
-      "KeRaeva began with a simple question: 'Why should healthcare still struggle with time?' Founded by doctors and technologists, we saw how traditional staffing delayed care.",
-  },
-  {
-    year: "2027",
-    title: "The Concept",
-    description:
-      "What started as a concept to fill last-minute hospital shifts and test our AI models.",
-  },
-  {
-    year: "2028",
-    title: "The Ecosystem",
-    description:
-      "Evolved into a full-scale digital ecosystem that brings together AI recruitment, real-time workforce matching, shifts and payments.",
-  },
-];
+import { AccentText } from "@/components/ui/accent-text";
+import type { AboutContent } from "@/content/pages/about";
 
 // Reusable Heartbeat Line Component
 const HeartbeatLine = () => (
@@ -60,7 +17,8 @@ const HeartbeatLine = () => (
   />
 );
 
-export function JourneySection() {
+export function JourneySection({ content }: { content: AboutContent["journey"] }) {
+  const TIMELINE = content.milestones;
   return (
     <Section
       padding={false}
@@ -70,7 +28,7 @@ export function JourneySection() {
       }}
     >
       <Heading as="h2" size="md" className="text-[#252B37] p-4 md:p-8 lg:p-16">
-        Our <span className="text-[#F3651B]">Journey</span>
+        <AccentText text={content.heading} />
       </Heading>
       <div className="relative p-4 md:py-8 lg:py-16 md:px-4 lg:px-8 overflow-hidden">
         {/* Desktop Layout: two rows joined by a lifeline */}
@@ -104,7 +62,7 @@ export function JourneySection() {
 
           {/* Bottom Row: 3 Cards Starting from Right */}
           <div className="flex items-center justify-end mt-32 mr-0 scale-110 relative">
-            {TIMELINE.slice(4, 7)
+            {TIMELINE.slice(4)
               .reverse()
               .map((item, index) => (
                 <div key={index} className="contents">
@@ -113,9 +71,9 @@ export function JourneySection() {
                     year={item.year}
                     description={item.description}
                     variant="desktop"
-                    className={index === 2 ? "relative" : undefined}
+                    className={index === TIMELINE.slice(4).length - 1 ? "relative" : undefined}
                   />
-                  {index < 2 && <HeartbeatLine />}
+                  {index < TIMELINE.slice(4).length - 1 && <HeartbeatLine />}
                 </div>
               ))}
           </div>

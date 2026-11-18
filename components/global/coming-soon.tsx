@@ -8,8 +8,10 @@ import { ResponsiveParagraph, Paragraph } from "@/components/ui/paragraph";
 import { CustomButton } from "@/components/ui/custom-button";
 import { ArrowRight } from "lucide-react";
 import { Section } from "@/components/ui/section";
+import { AccentText, stripAccents } from "@/components/ui/accent-text";
+import type { ComingSoonContent } from "@/content/pages/coming-soon";
 
-export function ComingSoon() {
+export function ComingSoon({ content }: { content: ComingSoonContent["content"] }) {
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState<{ ok: boolean; text: string } | null>(null);
@@ -19,7 +21,7 @@ export function ComingSoon() {
     setIsSubmitting(true);
     const result = await submitLead({ type: "newsletter", email, audience: "coming-soon" });
     setIsSubmitting(false);
-    setMessage({ ok: result.ok, text: result.ok ? "Thanks! We'll let you know when it's ready." : result.message });
+    setMessage({ ok: result.ok, text: result.ok ? content.successMessage : result.message });
     if (result.ok) setEmail("");
   };
 
@@ -29,8 +31,8 @@ export function ComingSoon() {
         <div className="max-w-2xl mx-auto text-center space-y-8">
           <div className="flex justify-center mb-8">
             <Image
-              src="/images/features/coming-soon.svg"
-              alt="Coming Soon"
+              src={content.image}
+              alt={stripAccents(content.imageAlt)}
               width={300}
               height={250}
               className="w-64 h-56 object-contain"
@@ -39,16 +41,14 @@ export function ComingSoon() {
           </div>
 
           <Heading as="h1" size="lg" className="text-[#252B37]" weight="normal">
-            Stay Tuned
+            <AccentText text={content.heading} />
           </Heading>
 
           <ResponsiveParagraph
             size="base"
             className="text-[#717680] leading-relaxed"
           >
-            Get the latest updates on the KeRaeva platform, exclusive
-            invites, and early access for healthcare professionals and
-            recruiters in Canada.
+            {content.body}
           </ResponsiveParagraph>
 
           <form
@@ -72,7 +72,7 @@ export function ComingSoon() {
               disabled={isSubmitting}
               className="w-full sm:w-auto justify-center my-0"
             >
-              {isSubmitting ? "Sending..." : "Notify Me"}
+              {isSubmitting ? "Sending..." : content.buttonLabel}
             </CustomButton>
           </form>
           {message && (
@@ -81,9 +81,11 @@ export function ComingSoon() {
             </Paragraph>
           )}
 
-          <Paragraph size="sm" className="text-[#717680]">
-            Sign up and we&apos;ll email you when it launches.
-          </Paragraph>
+          {content.note && (
+            <Paragraph size="sm" className="text-[#717680]">
+              {content.note}
+            </Paragraph>
+          )}
         </div>
       </Section>
     </div>

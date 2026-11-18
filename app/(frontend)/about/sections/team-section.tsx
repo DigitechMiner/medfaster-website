@@ -1,64 +1,39 @@
 import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/heading";
 import { Paragraph } from "@/components/ui/paragraph";
+import { AccentText } from "@/components/ui/accent-text";
 import { TeamMemberCard } from "@/components/card/team-member-card";
-const TEAM_MEMBERS = [
-  {
-    id: 1,
-    name: "Kewal Mangukia",
-    role: "CEO & Founder",
-    //bio: "",
-    image: "/images/team/kewal.webp",
-  },
-  {
-    id: 2,
-    name: "Rutvij Patel",
-    role: "CTO & Director",
-    //bio: "",
-    image: "/images/team/rutvij.webp",
-  },
-];
+import type { TeamMember } from "@/lib/cms/team";
+import type { AboutContent } from "@/content/pages/about";
 
-export function TeamSection() {
+// Team preview: members marked "Show on About page" in Content → Team
+export function TeamSection({ content, members }: { content: AboutContent["team"]; members: TeamMember[] }) {
+  if (members.length === 0) return null;
   return (
     <Section>
-      {/* Header */}
       <div className="mb-12">
         <div>
           <Heading as="h2" size="md" className="text-[#252B37] mb-3">
-            Meet our Team
+            <AccentText text={content.heading} />
           </Heading>
           <Paragraph size="sm" className="text-[#717680] max-w-2xl">
-            Our philosophy is simple—hire a team of diverse, passionate people
-            and foster a culture that empowers you to do your best work.
+            {content.body}
           </Paragraph>
         </div>
       </div>
 
-      {/* Team Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-        {TEAM_MEMBERS.map((member) => (
+        {members.map((member) => (
           <TeamMemberCard
             key={member.id}
-            id={member.id}
+            id={Number(member.id)}
             name={member.name}
             role={member.role}
-            //bio={member.bio}
             image={member.image}
+            social={{ linkedin: member.linkedin, twitter: member.twitter }}
           />
         ))}
       </div>
-
-      {/* View All Team Button — hidden while the Our Team page is unpublished
-      <div className="flex justify-center">
-        <Link
-          href="/our-team"
-          className="px-8 py-3 border-2 border-gray-300 rounded-lg text-[#252B37] font-semibold hover:border-[#F3651B] hover:text-[#F3651B] transition-colors"
-        >
-          View All Team
-        </Link>
-      </div>
-      */}
     </Section>
   );
 }

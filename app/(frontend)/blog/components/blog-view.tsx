@@ -6,9 +6,7 @@ import { Heading } from "@/components/ui/heading";
 import { Paragraph } from "@/components/ui/paragraph";
 import { CustomButton } from "@/components/ui/custom-button";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import {
-  ChevronRight,
   ArrowLeft,
   ArrowRight,
   Newspaper,
@@ -19,8 +17,11 @@ import { Screen } from "@/components/global/screen";
 import type { BlogPost } from "../constants";
 import { IconChip } from "@/components/ui/icon-chip";
 import { BlogCard } from "./blog-card";
+import { PageTitle } from "@/components/global/page-title";
+import { AccentText } from "@/components/ui/accent-text";
+import type { BLOG_DEFAULTS } from "@/content/pages/blog";
 
-export function BlogView({ posts: BLOG_POSTS }: { posts: BlogPost[] }) {
+export function BlogView({ posts: BLOG_POSTS, content }: { posts: BlogPost[]; content: typeof BLOG_DEFAULTS }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [latestWritingsIndex, setLatestWritingsIndex] = useState(0);
   const latestWritingsContainerRef = useRef<HTMLDivElement>(null);
@@ -133,40 +134,17 @@ export function BlogView({ posts: BLOG_POSTS }: { posts: BlogPost[] }) {
   return (
     <Screen>
       <Header>
-        <Section className="pt-2 md:pt-4 lg:pt-6 xl:pt-8">
-          <div className="space-y-4">
-            {/* Title */}
-            <Heading as="h1" size="lg" className="text-[#252B37]" weight="normal">
-              Our Blog
-            </Heading>
-
-            {/* Breadcrumb */}
-            <div className="flex items-center gap-2">
-              <Link
-                href="/"
-                className="inline-block py-1 text-[#252B37] hover:text-[#F3651B] transition-colors text-lg"
-              >
-                Home
-              </Link>
-              <ChevronRight className="w-4 h-4 text-[#717680]" />
-              <Paragraph size="lg" className="text-[#717680]">
-                Our Blog
-              </Paragraph>
-            </div>
-          </div>
-        </Section>
+        <PageTitle title={content.pageHeader.title} crumbs={[{ label: "Home", href: "/" }, { label: content.pageHeader.breadcrumb }]} />
       </Header>
       {BLOG_POSTS.length === 0 ? (
         <Section className="text-center">
           <div className="max-w-xl mx-auto space-y-4 py-6">
             <IconChip icon={Newspaper} size="lg" className="mx-auto" />
             <Heading as="h2" size="sm" className="text-[#252B37]">
-              Articles Are <span className="text-[#F3651B]">On the Way</span>
+              <AccentText text={content.noArticles.heading} />
             </Heading>
             <Paragraph className="text-[#717680]">
-              We&apos;re preparing practical guides on healthcare hiring, urgent
-              staffing and building a career in Canadian healthcare. Subscribe
-              below to hear when the first articles are published.
+              {content.noArticles.body}
             </Paragraph>
           </div>
         </Section>
@@ -237,20 +215,21 @@ export function BlogView({ posts: BLOG_POSTS }: { posts: BlogPost[] }) {
       </Section>
 
       {/* Latest Writings Section */}
+      {content.latest.show && (
       <Section>
         <div className="flex justify-between items-start mb-8">
           <div>
             <Heading as="h2" size="sm" className="text-[#252B37] mb-3">
-              Latest writings
+              <AccentText text={content.latest.heading} />
             </Heading>
             <Paragraph size="base" className="text-[#717680]">
-              The latest news, technologies, and resources from our team.
+              {content.latest.body}
             </Paragraph>
           </div>
           <CustomButton
             onClick={() => document.getElementById("all-posts")?.scrollIntoView({ behavior: "smooth" })}
           >
-            View all posts
+            {content.latest.buttonLabel}
           </CustomButton>
         </div>
 
@@ -294,6 +273,7 @@ export function BlogView({ posts: BLOG_POSTS }: { posts: BlogPost[] }) {
           </div>
         </div>
       </Section>
+      )}
 
       {/* Footer */}
       </>

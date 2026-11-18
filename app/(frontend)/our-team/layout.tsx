@@ -1,19 +1,9 @@
 import { notFound } from "next/navigation";
+import { getSiteSettings } from "@/lib/cms/site";
 
-// Our Team screen is temporarily hidden.
-// import type { Metadata } from "next";
-//
-// Metadata lives here because the page itself is a client component
-// export const metadata: Metadata = {
-//   title: "Our Team | KeRaeva",
-//   description:
-//     "Meet the team building KeRaeva, the AI-powered healthcare workforce platform for Canada.",
-// };
-//
-// export default function Layout({ children }: { children: React.ReactNode }) {
-//   return children;
-// }
-
-export default function Layout() {
-  notFound();
+// The Our Team page is published only when Site Settings → Pages → "Show Our Team page" is on
+export default async function Layout({ children }: { children: React.ReactNode }) {
+  const { pages } = await getSiteSettings();
+  if (!pages.showOurTeamPage) notFound();
+  return children;
 }

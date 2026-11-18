@@ -7,8 +7,15 @@ import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/heading";
 import { ResponsiveParagraph, Paragraph } from "@/components/ui/paragraph";
 import type { TestimonialItem } from "@/lib/cms/content";
+import { AccentText } from "@/components/ui/accent-text";
 
-export default function TestimonialsSection({ items: TESTIMONIALS }: { items: TestimonialItem[] }) {
+export default function TestimonialsSection({
+  items: TESTIMONIALS,
+  content,
+}: {
+  items: TestimonialItem[];
+  content: { heading: string; body: string };
+}) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const testimonials = TESTIMONIALS;
@@ -32,12 +39,10 @@ export default function TestimonialsSection({ items: TESTIMONIALS }: { items: Te
         {/* Header */}
         <div>
           <Heading as="h2" size="md" className="text-[#252B37] mb-4">
-            What Our Professionals Are Saying About{" "} <br />
-            <span className="text-[#F3651B]">KeRaeva</span>
+            <AccentText text={content.heading} />
           </Heading>
           <ResponsiveParagraph size="sm" className="text-[#717680] max-w-3xl">
-            Real experiences from nurses, specialists and therapists using
-            KeRaeva to find roles and shifts that fit their lives.
+            {content.body}
           </ResponsiveParagraph>
         </div>
 

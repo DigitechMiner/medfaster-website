@@ -1,20 +1,22 @@
 import Image from "@/components/ui/image";
-import { Users } from "lucide-react";
 import { Section } from "@/components/ui/section";
 import { IconChip } from "@/components/ui/icon-chip";
 import { Heading } from "@/components/ui/heading";
 import { ResponsiveParagraph, Paragraph } from "@/components/ui/paragraph";
+import { AccentText, stripAccents } from "@/components/ui/accent-text";
+import { iconFor } from "@/lib/cms/icons";
+import type { AboutContent } from "@/content/pages/about";
 
 // Hero Section
-export function AboutHeroSection() {
+export function AboutHeroSection({ content }: { content: AboutContent["hero"] }) {
   return (
     <Section padding={false} backgroundColor="!bg-neutral-100">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-2 md:gap-4 lg:gap-6 xl:gap-8 items-stretch">
         {/* Left Column - Image (2 grid columns) */}
         <div className="relative w-full aspect-[16/10] rounded-lg md:rounded-xl lg:rounded-2xl xl:rounded-3xl overflow-hidden shadow-md lg:col-span-2">
           <Image
-            src="/images/hero/hero-image-2.webp"
-            alt=""
+            src={content.image}
+            alt={stripAccents(content.imageAlt)}
             fill
             priority
             sizes="(max-width: 1024px) 100vw, 66vw"
@@ -35,18 +37,10 @@ export function AboutHeroSection() {
           }}
         >
           <div className="relative z-10 space-y-4" style={{ opacity: 1 }}>
-            {/* Heading */}
             <Heading as="h2" size="xs">
-              The Future of Healthcare Staffing is Here.
+              <AccentText text={content.cardHeading} accentClassName="text-white" />
             </Heading>
-
-            {/* Description */}
-            <p className="text-sm leading-relaxed opacity-95">
-              Welcome to KeRaeva, an AI-powered platform built in Canada to
-              connect hospitals, healthcare facilities and clinics with verified, hire-ready
-              healthcare professionals. We&apos;re rebuilding the foundation of
-              healthcare staffing—making it faster, smarter, and more reliable.
-            </p>
+            <p className="text-sm leading-relaxed opacity-95">{content.cardBody}</p>
           </div>
         </div>
       </div>
@@ -55,43 +49,17 @@ export function AboutHeroSection() {
 }
 
 // Stats Section
-export function StatsSection() {
-  const STATS = [
-    {
-      number: "1 Platform",
-      label: "For Hiring & Staffing",
-      description:
-        "Hiring, AI interviews, urgent staffing, shifts and payments for organizations and professionals.",
-      icon: Users,
-    },
-    {
-      number: "AI",
-      label: "Interviews & Scorecards",
-      description: "",
-    },
-    {
-      number: "Canada",
-      label: "Built for Canadian Healthcare",
-      description: "",
-    },
-  ];
-
+export function StatsSection({ content }: { content: AboutContent["story"] }) {
+  const main = content.mainStat;
   return (
     <Section>
       {/* Header Section */}
       <div className="mb-16 lg:mb-24">
         <Heading as="h2" size="md" className="text-[#252B37] mb-6">
-          Where <span className="text-[#F3651B]">AI-Powered</span> Hiring Meets
-          Human-Centric Care.
+          <AccentText text={content.heading} />
         </Heading>
-        <ResponsiveParagraph
-          size="lg"
-          className="text-[#717680] max-w-full leading-relaxed"
-        >
-          KeRaeva was founded by healthcare and tech veterans to fix staffing
-          friction. Our platform bridges the gap between healthcare organizations needing staff
-          and professionals seeking good-fit jobs by automating verification,
-          matching, and scheduling.
+        <ResponsiveParagraph size="lg" className="text-[#717680] max-w-full leading-relaxed">
+          {content.body}
         </ResponsiveParagraph>
       </div>
 
@@ -99,61 +67,40 @@ export function StatsSection() {
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-2 md:gap-4 lg:gap-6 xl:gap-8 items-stretch">
         {/* Left Box */}
         <div className="border border-gray-200 rounded-lg p-8 lg:p-10 flex flex-col justify-between">
-          {STATS[0].icon && (
+          {main.icon && (
             <div className="mb-6">
-              <IconChip icon={STATS[0].icon} size="lg" />
+              <IconChip icon={iconFor(main.icon)} size="lg" />
             </div>
           )}
           <div>
             <Heading as="h3" size="md" className="text-[#252B37] mb-4">
-              {STATS[0].number}
+              {main.value}
             </Heading>
             <div className="grid grid-cols-2">
-            <Paragraph
-              size="lg"
-              className="text-[#252B37] mb-6"
-            >
-              {STATS[0].label}
-            </Paragraph>
-            {STATS[0].description && (
-              <ResponsiveParagraph
-                size="base"
-                className="text-[#717680] leading-relaxed"
-              >
-                {STATS[0].description}
-              </ResponsiveParagraph>
-            )}
+              <Paragraph size="lg" className="text-[#252B37] mb-6">
+                {main.label}
+              </Paragraph>
+              {main.description && (
+                <ResponsiveParagraph size="base" className="text-[#717680] leading-relaxed">
+                  {main.description}
+                </ResponsiveParagraph>
+              )}
             </div>
           </div>
         </div>
 
-        {/* Right Column - Two Stacked Boxes */}
+        {/* Right Column - Stacked Boxes */}
         <div className="flex flex-col space-y-2 md:space-y-4 lg:space-y-6 xl:space-y-8 w-full h-full">
-          {/* 90% Box */}
-          <div className="border border-gray-200 rounded-lg p-6 lg:p-8 flex flex-col flex-1">
-            <Heading as="h3" size="md" className="text-[#252B37] mb-2">
-              {STATS[1].number}
-            </Heading>
-            <ResponsiveParagraph
-              size="base"
-              className="text-[#252B37]"
-            >
-              {STATS[1].label}
-            </ResponsiveParagraph>
-          </div>
-
-          {/* 100% Box */}
-          <div className="border border-gray-200 rounded-lg p-6 lg:p-8 flex flex-col flex-1">
-            <Heading as="h3" size="md" className="text-[#252B37] mb-2">
-              {STATS[2].number}
-            </Heading>
-            <ResponsiveParagraph
-              size="base"
-              className="text-[#252B37]"
-            >
-              {STATS[2].label}
-            </ResponsiveParagraph>
-          </div>
+          {content.sideStats.map((stat, index) => (
+            <div key={index} className="border border-gray-200 rounded-lg p-6 lg:p-8 flex flex-col flex-1">
+              <Heading as="h3" size="md" className="text-[#252B37] mb-2">
+                {stat.value}
+              </Heading>
+              <ResponsiveParagraph size="base" className="text-[#252B37]">
+                {stat.label}
+              </ResponsiveParagraph>
+            </div>
+          ))}
         </div>
       </div>
     </Section>

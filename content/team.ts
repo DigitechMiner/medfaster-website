@@ -6,7 +6,7 @@ export const TEAM: {
   image: string | null;
   showOnAbout: boolean;
 }[] = [
-  { name: "Kewal Mangukia", role: "Founder & CEO", category: "board", image: "/images/team/kewal.webp", showOnAbout: true },
+  { name: "Kewal Mangukia", role: "CEO & Founder", category: "board", image: "/images/team/kewal.webp", showOnAbout: true },
   { name: "Rutvij Patel", role: "CTO & Director", category: "board", image: "/images/team/rutvij.webp", showOnAbout: true },
   { name: "Yash Prajapati", role: "BDE", category: "marketing", image: null, showOnAbout: false },
   { name: "Kevin Parmar", role: "Lead Fullstack Developer", category: "dev", image: "/images/team/kevin.webp", showOnAbout: false },

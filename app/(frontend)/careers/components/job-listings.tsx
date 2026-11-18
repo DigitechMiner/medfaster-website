@@ -9,8 +9,16 @@ import { IconChip } from "@/components/ui/icon-chip";
 import { JobCard, type Job } from "./job-card";
 import { ITEMS_PER_PAGE } from "./constants";
 import { CustomButton } from "@/components/ui/custom-button";
+import { AccentText } from "@/components/ui/accent-text";
+import type { CAREERS_DEFAULTS } from "@/content/pages/careers";
 
-export function JobListingsSection({ jobs: JOBS }: { jobs: Job[] }) {
+export function JobListingsSection({
+  jobs: JOBS,
+  noOpenings,
+}: {
+  jobs: Job[];
+  noOpenings: (typeof CAREERS_DEFAULTS)["noOpenings"];
+}) {
   const [currentPage, setCurrentPage] = useState(1);
   const [sortBy, setSortBy] = useState("popular");
 
@@ -62,20 +70,20 @@ export function JobListingsSection({ jobs: JOBS }: { jobs: Job[] }) {
         <div className="max-w-xl mx-auto space-y-4 py-6">
           <IconChip icon={Briefcase} size="lg" className="mx-auto" />
           <Heading as="h2" size="sm" className="text-[#252B37]">
-            No Open Roles <span className="text-[#F3651B]">Right Now</span>
+            <AccentText text={noOpenings.heading} />
           </Heading>
           <Paragraph className="text-[#717680]">
-            We don&apos;t have any openings at the moment, but we&apos;re always
-            happy to hear from people who want to improve healthcare staffing.
-            Send us your CV and we&apos;ll be in touch when a role fits.
+            {noOpenings.body}
           </Paragraph>
-          <a
-            href="mailto:support@keraeva.com?subject=Careers%20at%20KeRaeva"
-            className="inline-flex items-center gap-2 font-semibold text-[#F3651B] hover:opacity-80 transition-opacity py-1.5"
-          >
-            Email support@keraeva.com
-            <ArrowRight className="w-4 h-4" aria-hidden="true" />
-          </a>
+          {noOpenings.linkLabel && noOpenings.linkUrl && (
+            <a
+              href={noOpenings.linkUrl}
+              className="inline-flex items-center gap-2 font-semibold text-[#F3651B] hover:opacity-80 transition-opacity py-1.5"
+            >
+              {noOpenings.linkLabel}
+              <ArrowRight className="w-4 h-4" aria-hidden="true" />
+            </a>
+          )}
         </div>
       </Section>
     );

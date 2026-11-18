@@ -11,8 +11,8 @@ import Header from "@/components/global/header";
 import { Footer } from "@/components/global/footer";
 import { Screen } from "@/components/global/screen";
 import { CareerCTASection } from "@/components/section/career";
-import { APP_STORE_LINKS } from "@/utils/constant";
-import { getJob, getJobs } from "@/lib/cms/content";
+import { getSiteSettings } from "@/lib/cms/site";
+import { getJob, getJobs, getPageContent } from "@/lib/cms/content";
 
 // Openings come from the admin panel (Content → Job Openings). New ones render on
 // first visit and refresh whenever a job is saved.
@@ -55,9 +55,10 @@ export default async function JobPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const job = await getJob(slug);
+  const [job, content, { apps }] = await Promise.all([getJob(slug), getPageContent("careers"), getSiteSettings()]);
   if (!job || !job.details) notFound();
   const details = job.details;
+  const labels = content.jobPage;
 
   const facts = [
     { icon: MapPin, label: job.location },
@@ -82,14 +83,14 @@ export default async function JobPage({
                 href="/about"
                 className="inline-block py-1 text-[#252B37] hover:text-[#F3651B] transition-colors text-lg"
               >
-                About KeRaeva
+                {content.pageHeader.parentLabel}
               </Link>
               <ChevronRight className="w-4 h-4 text-[#717680]" />
               <Link
                 href="/careers"
                 className="inline-block py-1 text-[#252B37] hover:text-[#F3651B] transition-colors text-lg"
               >
-                Careers
+                {content.pageHeader.breadcrumb}
               </Link>
               <ChevronRight className="w-4 h-4 text-[#717680]" />
               <Paragraph size="lg" className="text-[#717680]">
@@ -125,14 +126,14 @@ export default async function JobPage({
 
           <div className="space-y-4">
             <Heading as="h2" size="xs" weight="semibold" className="text-[#252B37]">
-              Why join
+              {labels.whyJoinHeading}
             </Heading>
             <BulletList items={details.whyJoin} />
           </div>
 
           <div className="space-y-4">
             <Heading as="h2" size="xs" weight="semibold" className="text-[#252B37]">
-              Why KeRaeva
+              {labels.whyKeRaevaHeading}
             </Heading>
             <Paragraph className="text-[#717680] leading-relaxed">{details.whyKeRaevaIntro}</Paragraph>
             <BulletList items={details.whyKeRaeva} />
@@ -140,17 +141,17 @@ export default async function JobPage({
 
           <div className="space-y-4">
             <Heading as="h2" size="xs" weight="semibold" className="text-[#252B37]">
-              What you&apos;ll need
+              {labels.documentsHeading}
             </Heading>
             <Paragraph className="text-[#717680] leading-relaxed">
-              Documents to upload in the KeRaeva app:
+              {labels.documentsIntro}
             </Paragraph>
             <BulletList items={details.documents} />
           </div>
 
           <div className="space-y-4">
             <Heading as="h2" size="xs" weight="semibold" className="text-[#252B37]">
-              Skills
+              {labels.skillsHeading}
             </Heading>
             <ul className="flex flex-wrap gap-2">
               {details.skills.map((skill) => (
@@ -168,10 +169,10 @@ export default async function JobPage({
           <div className="border border-[#E9EAEB] rounded-2xl p-6 md:p-8 space-y-6">
             <div className="space-y-2">
               <Heading as="h2" size="xs" weight="semibold" className="text-[#252B37]">
-                How to apply
+                {labels.howToApplyHeading}
               </Heading>
               <Paragraph className="text-[#717680] leading-relaxed">
-                Register on the KeRaeva app and complete your pre-verification to get hired faster.
+                {labels.howToApplyIntro}
               </Paragraph>
             </div>
 
@@ -189,7 +190,7 @@ export default async function JobPage({
             <div className="flex items-start gap-4 md:gap-6 pt-2">
               {/* Google Play - scannable QR linking to the live listing */}
               <a
-                href={APP_STORE_LINKS.googlePlay}
+                href={apps.googlePlayUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-[130px] md:w-[150px] flex items-center"
@@ -205,9 +206,9 @@ export default async function JobPage({
               </a>
 
               {/* App Store - link once the iOS app is published */}
-              {APP_STORE_LINKS.appStore ? (
+              {apps.appStoreUrl ? (
                 <a
-                  href={APP_STORE_LINKS.appStore}
+                  href={apps.appStoreUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-[130px] md:w-[150px] self-end"
@@ -230,7 +231,7 @@ export default async function JobPage({
                     height={55}
                     className="object-contain w-full h-auto opacity-40"
                   />
-                  <span className="text-xs text-[#717680]">Coming soon on iOS</span>
+                  <span className="text-xs text-[#717680]">{apps.iosComingSoonLabel}</span>
                 </div>
               )}
             </div>
@@ -238,7 +239,7 @@ export default async function JobPage({
         </div>
       </Section>
 
-      <CareerCTASection />
+      {content.careerCta.show && <CareerCTASection content={content.careerCta} />}
 
       <Footer />
     </Screen>

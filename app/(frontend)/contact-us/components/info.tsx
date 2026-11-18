@@ -1,10 +1,14 @@
+"use client";
+
 import Link from "next/link";
 import { Heading } from "@/components/ui/heading";
 import { ResponsiveParagraph, Paragraph } from "@/components/ui/paragraph";
-import { Share2, type LucideIcon } from "lucide-react";
+import { Facebook, Instagram, Linkedin, MapPin, Phone, Share2, type LucideIcon } from "lucide-react";
 import { IconChip } from "@/components/ui/icon-chip";
-import { ACTIVE_SOCIAL_LINKS } from "@/utils/constant";
-import { CONTACT_INFO } from "./constants";
+import { AccentText } from "@/components/ui/accent-text";
+import { useSiteSettings } from "@/components/providers/site-settings";
+import { telHref } from "@/lib/links";
+import type { CONTACT_DEFAULTS } from "@/content/pages/contact";
 import React from "react";
 
 interface ContactInfoCardProps {
@@ -13,11 +17,7 @@ interface ContactInfoCardProps {
   content: React.ReactNode;
 }
 
-function ContactInfoCard({
-  icon: Icon,
-  label,
-  content,
-}: ContactInfoCardProps) {
+function ContactInfoCard({ icon: Icon, label, content }: ContactInfoCardProps) {
   return (
     <div className="flex items-start gap-4">
       <IconChip icon={Icon} variant="solid" />
@@ -31,78 +31,87 @@ function ContactInfoCard({
   );
 }
 
-export function ContactInfoSection() {
+export function ContactInfoSection({ content }: { content: (typeof CONTACT_DEFAULTS)["intro"] }) {
+  const { contact, social } = useSiteSettings();
+  // A social icon is shown only once its URL is set in Site Settings
+  const socials = [
+    { label: "LinkedIn", icon: Linkedin, href: social.linkedinUrl },
+    { label: "Facebook", icon: Facebook, href: social.facebookUrl },
+    { label: "Instagram", icon: Instagram, href: social.instagramUrl },
+  ].filter((link) => Boolean(link.href));
+
   return (
     <div className="space-y-0">
       <div className="pb-8 mb-2">
         <Heading as="h2" size="md" className="text-[#252B37] mb-4">
-          Got a Question?<br />
-          Let&apos;s <span className="text-[#F3651B]">Talk</span>
+          <AccentText text={content.heading} />
         </Heading>
-        <ResponsiveParagraph
-          size="base"
-          className="text-[#717680] leading-relaxed"
-        >
-          Talk to us about hiring with KeRaeva, partnerships, media or any
-          general question, and we&apos;ll get back to you by email.
+        <ResponsiveParagraph size="base" className="text-[#717680] leading-relaxed">
+          {content.body}
         </ResponsiveParagraph>
-        <Paragraph size="sm" className="text-[#717680] mt-4">
-          Already using the KeRaeva app or recruiter platform?{" "}
-          <Link href="/support" className="text-[#C44408] font-medium underline underline-offset-2 hover:text-[#F3651B]">
-            Get help on the Support page
-          </Link>
-          .
-        </Paragraph>
+        {content.supportLinkLabel && (
+          <Paragraph size="sm" className="text-[#717680] mt-4">
+            {content.supportNote}{" "}
+            <Link href="/support" className="text-[#C44408] font-medium underline underline-offset-2 hover:text-[#F3651B]">
+              {content.supportLinkLabel}
+            </Link>
+            .
+          </Paragraph>
+        )}
       </div>
 
       {/* Location Card */}
-      <div className="pb-8 border-b border-[#E9EAEB]">
-        <ContactInfoCard
-          icon={CONTACT_INFO.location.icon}
-          label={CONTACT_INFO.location.label}
-          content={
-            <Paragraph size="base" weight="medium" className="text-[#252B37]">
-              {CONTACT_INFO.location.value}
-            </Paragraph>
-          }
-        />
-      </div>
+      {contact.location && (
+        <div className="pb-8 border-b border-[#E9EAEB]">
+          <ContactInfoCard
+            icon={MapPin}
+            label={content.locationLabel}
+            content={
+              <Paragraph size="base" weight="medium" className="text-[#252B37]">
+                {contact.location}
+              </Paragraph>
+            }
+          />
+        </div>
+      )}
 
       {/* Phone Card */}
-      <div className="py-8 border-b border-[#E9EAEB]">
-        <ContactInfoCard
-          icon={CONTACT_INFO.phone.icon}
-          label={CONTACT_INFO.phone.label}
-          content={
-            <Paragraph size="base" weight="medium" className="text-[#252B37]">
-              <a href={`tel:${CONTACT_INFO.phone.value.replace(/\D/g, "")}`} className="hover:text-[#F3651B] transition-colors">
-                {CONTACT_INFO.phone.value}
-              </a>
-            </Paragraph>
-          }
-        />
-      </div>
+      {contact.phone && (
+        <div className="py-8 border-b border-[#E9EAEB]">
+          <ContactInfoCard
+            icon={Phone}
+            label={content.phoneLabel}
+            content={
+              <Paragraph size="base" weight="medium" className="text-[#252B37]">
+                <a href={telHref(contact.phone)} className="hover:text-[#F3651B] transition-colors">
+                  {contact.phone}
+                </a>
+              </Paragraph>
+            }
+          />
+        </div>
+      )}
 
       {/* Social Links Card - shown once social profile URLs are set */}
-      {ACTIVE_SOCIAL_LINKS.length > 0 && (
+      {socials.length > 0 && (
         <div className="pt-8">
           <div className="flex items-start gap-4">
             <IconChip icon={Share2} variant="solid" />
             <div className="flex-1">
               <Paragraph size="sm" weight="medium" className="text-[#717680] mb-4">
-                Follow Us
+                {content.followLabel}
               </Paragraph>
               <div className="flex gap-4">
-                {ACTIVE_SOCIAL_LINKS.map((social) => {
-                  const Icon = social.icon;
+                {socials.map((link) => {
+                  const Icon = link.icon;
                   return (
                     <a
-                      key={social.label}
-                      href={social.href}
+                      key={link.label}
+                      href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-[#717680] hover:text-[#F3651B] transition-colors"
-                      aria-label={social.label}
+                      aria-label={link.label}
                     >
                       <Icon className="w-6 h-6" strokeWidth={1.5} />
                     </a>

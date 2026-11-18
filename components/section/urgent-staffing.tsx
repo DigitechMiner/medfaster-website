@@ -22,10 +22,11 @@ import { CustomButton } from "@/components/ui/custom-button";
 import { CtaButton } from "@/components/ui/cta-button";
 import { AccentText } from "@/components/ui/accent-text";
 import { iconFor } from "@/lib/cms/icons";
-import type { HOME_DEFAULTS } from "@/content/pages/home";
+import type { Cta } from "@/components/ui/cta-button";
 import { IconChip } from "@/components/ui/icon-chip";
 import { useModalStore } from "@/stores/modalStore";
-import { RECRUITER_REGISTRATION_URL, URGENT_STAFFING_STEPS } from "@/utils/constant";
+import { URGENT_STAFFING_STEPS } from "@/utils/constant";
+import { useSiteSettings } from "@/components/providers/site-settings";
 
 const STEP_ICONS: Record<Audience, LucideIcon[]> = {
   everyone: [Siren, BrainCircuit, UserCheck, CalendarCheck],
@@ -35,11 +36,20 @@ const STEP_ICONS: Record<Audience, LucideIcon[]> = {
 
 type Audience = "everyone" | "organizations" | "professionals";
 
+export type UrgentStaffingContent = {
+  eyebrow: string;
+  heading: string;
+  body: string[];
+  steps: { icon: string; title: string; description: string }[];
+  primaryCta: Cta;
+  secondaryCta: Cta;
+};
+
 interface UrgentStaffingSectionProps {
   // Adjusts the copy and CTAs; the palette is the same everywhere
   audience?: Audience;
   // Text and buttons edited in the admin panel (home page)
-  content?: (typeof HOME_DEFAULTS)["urgentStaffing"];
+  content?: UrgentStaffingContent;
 }
 
 const COPY = {
@@ -69,6 +79,7 @@ const COPY = {
 export function UrgentStaffingSection({ audience = "everyone", content }: UrgentStaffingSectionProps) {
   const router = useRouter();
   const openModal = useModalStore((state) => state.openModal);
+  const { apps } = useSiteSettings();
   const copy = COPY[audience];
   const steps = content ? content.steps : URGENT_STAFFING_STEPS[audience];
   const icons = content ? content.steps.map((step) => iconFor(step.icon)) : STEP_ICONS[audience];
@@ -125,7 +136,7 @@ export function UrgentStaffingSection({ audience = "everyone", content }: Urgent
                 <CustomButton
                   className="w-full sm:w-auto justify-between"
                   rightIcon={ArrowRight}
-                  onClick={() => window.open(RECRUITER_REGISTRATION_URL, "_blank")}
+                  onClick={() => window.open(apps.recruiterRegistrationUrl, "_blank")}
                 >
                   Start Hiring
                 </CustomButton>

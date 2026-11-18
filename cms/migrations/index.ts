@@ -1,5 +1,6 @@
 import * as migration_20261118_075042_initial from './20261118_075042_initial';
 import * as migration_20261118_181339_page_builder_header_footer from './20261118_181339_page_builder_header_footer';
+import * as migration_20261118_191558_editable_pages from './20261118_191558_editable_pages';
 
 export const migrations = [
   {
@@ -10,6 +11,11 @@ export const migrations = [
   {
     up: migration_20261118_181339_page_builder_header_footer.up,
     down: migration_20261118_181339_page_builder_header_footer.down,
-    name: '20261118_181339_page_builder_header_footer'
+    name: '20261118_181339_page_builder_header_footer',
+  },
+  {
+    up: migration_20261118_191558_editable_pages.up,
+    down: migration_20261118_191558_editable_pages.down,
+    name: '20261118_191558_editable_pages'
   },
 ];

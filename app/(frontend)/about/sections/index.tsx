@@ -1,8 +1,7 @@
-export { AboutUsPageHeader } from "./page-header";
 export { AboutHeroSection, StatsSection } from "./hero-and-stats";
 export { PurposeSection } from "./mission-and-purpose";
-export { ThreeStepsSection } from "./three-steps-section";
-export { CoreGoalsSection, WhyKeRaevaSection } from "./goals-and-features";
+export { WhyKeRaevaSection } from "./goals-and-features";
 export { JourneySection } from "./journey-section";
 export { TeamSection } from "./team-section";
 export { CTASection } from "./cta-section";
+export { AboutSections } from "./about-sections";

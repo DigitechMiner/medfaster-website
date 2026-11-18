@@ -1,55 +1,34 @@
 import type { Metadata } from "next";
-import { Heading } from "@/components/ui/heading";
-import { Section } from "@/components/ui/section";
 import { JobListingsSection } from "./components/job-listings";
 import { CareerCTASection } from "@/components/section/career";
-import Link from "next/link";
-import { ChevronRight } from "lucide-react";
-import { Paragraph } from "@/components/ui/paragraph";
 import Header from "@/components/global/header";
 import { Footer } from "@/components/global/footer";
 import { Screen } from "@/components/global/screen";
-import { getJobs } from "@/lib/cms/content";
+import { PageTitle } from "@/components/global/page-title";
+import { stripAccents } from "@/components/ui/accent-text";
+import { getJobs, getPageContent } from "@/lib/cms/content";
 
-export const metadata: Metadata = {
-  title: "Careers | KeRaeva",
-  description:
-    "Explore careers at KeRaeva and help build the AI-powered healthcare workforce platform for Canada.",
-};
+// Text comes from the admin panel (Pages → Careers); openings from Content → Job Openings
+export async function generateMetadata(): Promise<Metadata> {
+  const { seo } = await getPageContent("careers");
+  return { title: stripAccents(seo.title), description: seo.description };
+}
 
 export default async function CareersPage() {
-  const jobs = await getJobs();
+  const [content, jobs] = await Promise.all([getPageContent("careers"), getJobs()]);
   return (
     <Screen>
       <Header>
-        <Section className="pt-2 md:pt-4 lg:pt-6 xl:pt-8">
-          <div className="space-y-4">
-            {/* Title */}
-            <Heading as="h1" size="lg" className="text-[#252B37]" weight="normal">
-              Careers
-            </Heading>
-
-            {/* Breadcrumb */}
-            <div className="flex items-center gap-2 ">
-              <Link
-                href="/about"
-                className="inline-block py-1 text-[#252B37] hover:text-[#F3651B] transition-colors text-lg"
-              >
-                About KeRaeva
-              </Link>
-              <ChevronRight className="w-4 h-4 text-[#717680]" />
-              <Paragraph size="lg" className="text-[#717680]">
-                Careers
-              </Paragraph>
-            </div>
-          </div>
-        </Section>
+        <PageTitle
+          title={content.pageHeader.title}
+          crumbs={[{ label: content.pageHeader.parentLabel, href: "/about" }, { label: content.pageHeader.breadcrumb }]}
+        />
       </Header>
 
-      <JobListingsSection jobs={jobs} />
+      <JobListingsSection jobs={jobs} noOpenings={content.noOpenings} />
 
       {/* Career CTA */}
-      <CareerCTASection />
+      {content.careerCta.show && <CareerCTASection content={content.careerCta} />}
 
       <Footer />
     </Screen>

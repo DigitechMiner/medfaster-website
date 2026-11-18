@@ -1,8 +1,14 @@
+"use client";
+
 import Link from "next/link";
 import { Heading } from "@/components/ui/heading";
 import { ResponsiveParagraph, Paragraph } from "@/components/ui/paragraph";
 import { Mail, MapPin, Phone, type LucideIcon } from "lucide-react";
 import { IconChip } from "@/components/ui/icon-chip";
+import { AccentText } from "@/components/ui/accent-text";
+import { useSiteSettings } from "@/components/providers/site-settings";
+import { telHref } from "@/lib/links";
+import type { SUPPORT_DEFAULTS } from "@/content/pages/support";
 
 import React from "react";
 
@@ -11,24 +17,6 @@ interface ContactInfoCardProps {
   label: string;
   content: React.ReactNode;
 }
-const CONTACT_INFO = {
-  location: {
-    label: "Location",
-    value: "KeRaeva Canada Head Office",
-    icon: MapPin,
-  },
-  phone: {
-    label: "Phone Number",
-    value: "(403) 919-6824",
-    icon: Phone,
-  },
-  email : {
-    label: "Email us",
-    value: "support@keraeva.com",
-    icon: Mail,
-  },
-};
-
 function ContactInfoC({
   icon: Icon,
   label,
@@ -47,36 +35,39 @@ function ContactInfoC({
   );
 }
 
-export function ContactInfo() {
- return (
+export function ContactInfo({ content }: { content: (typeof SUPPORT_DEFAULTS)["intro"] }) {
+  const { contact } = useSiteSettings();
+  return (
     <div className="space-y-0">
       <div className="pb-8 mb-2">
         <Heading as="h2" size="md" className="text-[#252B37] mb-4">
-          Get <span className="text-[#F3651B]">Help</span> with the App, Shifts &amp; Payments
+          <AccentText text={content.heading} />
         </Heading>
         <ResponsiveParagraph
           size="base"
           className="text-[#717680] leading-relaxed"
         >
-          Support is for people already using KeRaeva: professionals in the
-          app and organizations on the recruiter platform. Ask about your
-          account and verification, jobs and shifts, check-in, payments or
-          AI interviews. For sales or partnerships, use the{" "}
-          <Link href="/contact-us" className="text-[#C44408] font-medium underline underline-offset-2 hover:text-[#F3651B]">
-            Contact page
-          </Link>
-          .
+          {content.body}
+          {content.contactLinkLabel && (
+            <>
+              {" "}
+              <Link href="/contact-us" className="text-[#C44408] font-medium underline underline-offset-2 hover:text-[#F3651B]">
+                {content.contactLinkLabel}
+              </Link>
+              .
+            </>
+          )}
         </ResponsiveParagraph>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="pb-8 md:pb-0 md:border-b-0 border-b border-[#E9EAEB]">
           <ContactInfoC
-            icon={CONTACT_INFO.location.icon}
-            label={CONTACT_INFO.location.label}
+            icon={MapPin}
+            label={content.locationLabel}
             content={
               <Paragraph size="base" weight="medium" className="text-[#252B37]">
-                {CONTACT_INFO.location.value}
+                {contact.location}
               </Paragraph>
             }
           />
@@ -84,12 +75,12 @@ export function ContactInfo() {
 
         <div className="pb-8 md:pb-0 md:border-b-0 border-b border-[#E9EAEB]">
           <ContactInfoC
-            icon={CONTACT_INFO.phone.icon}
-            label={CONTACT_INFO.phone.label}
+            icon={Phone}
+            label={content.phoneLabel}
             content={
               <Paragraph size="base" weight="medium" className="text-[#252B37]">
-                <a href={`tel:${CONTACT_INFO.phone.value.replace(/\D/g, "")}`} className="hover:text-[#F3651B] transition-colors">
-                  {CONTACT_INFO.phone.value}
+                <a href={telHref(contact.phone)} className="hover:text-[#F3651B] transition-colors">
+                  {contact.phone}
                 </a>
               </Paragraph>
             }
@@ -97,12 +88,12 @@ export function ContactInfo() {
         </div>
          <div className="pb-8 md:pb-0 md:border-b-0 border-b border-[#E9EAEB]">
           <ContactInfoC
-            icon={CONTACT_INFO.email.icon}
-            label={CONTACT_INFO.email.label}
+            icon={Mail}
+            label={content.emailLabel}
             content={
               <Paragraph size="base" weight="medium" className="text-[#252B37]">
-                <a href={`mailto:${CONTACT_INFO.email.value}`} className="hover:text-[#F3651B] transition-colors">
-                  {CONTACT_INFO.email.value}
+                <a href={`mailto:${contact.email}`} className="hover:text-[#F3651B] transition-colors">
+                  {contact.email}
                 </a>
               </Paragraph>
             }

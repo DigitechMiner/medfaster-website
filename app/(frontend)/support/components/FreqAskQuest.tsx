@@ -6,8 +6,9 @@ import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/heading";
 import { Paragraph } from "@/components/ui/paragraph";
 import type { FaqItem } from "@/lib/cms/content";
+import { AccentText } from "@/components/ui/accent-text";
 
-export function FreqAskQuest({ faqs }: { faqs: FaqItem[] }) {
+export function FreqAskQuest({ faqs, content }: { faqs: FaqItem[]; content: { heading: string; body: string } }) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const toggle = (i: number) => setOpenIndex(openIndex === i ? null : i);
@@ -17,12 +18,11 @@ export function FreqAskQuest({ faqs }: { faqs: FaqItem[] }) {
       <div className="space-y-4">
         {/* Header */}
         <Heading as="h2" size="md" className="text-[#252B37]">
-          Frequently Asked <span className="text-[#F3651B]">Questions</span>
+          <AccentText text={content.heading} />
         </Heading>
 
         <Paragraph size="xs" className="text-[#717680]">
-          Before you reach out, see if we&apos;ve already answered your
-          question. Our FAQ is fast, clear, and easy to follow.
+          {content.body}
         </Paragraph>
 
         {/* Accordion */}

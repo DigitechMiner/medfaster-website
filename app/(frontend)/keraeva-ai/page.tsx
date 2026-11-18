@@ -3,6 +3,8 @@ import { BASE_OPEN_GRAPH } from "@/lib/seo/site";
 import Header from "@/components/global/header";
 import { Footer } from "@/components/global/footer";
 import { Screen } from "@/components/global/screen";
+import { stripAccents } from "@/components/ui/accent-text";
+import { getPageContent } from "@/lib/cms/content";
 import { NextCareer } from "../(home)/sections";
 import {
   AIHero,
@@ -15,32 +17,36 @@ import {
   PrinciplesSection,
 } from "./sections";
 
-export const metadata: Metadata = {
-  title: "KeRaeva AI | AI Interviews, Matching & Smart Features for Healthcare Hiring",
-  description:
-    "See every AI and smart feature in KeRaeva: AI resume parsing, AI voice interviews and scorecards, AI-matched candidates, urgent shift matching, interview integrity checks and smart phone features.",
-  openGraph: {
-    ...BASE_OPEN_GRAPH,
-    title: "KeRaeva AI: Intelligence Built Into Every Step",
-    description:
-      "AI resume parsing, interviews, scorecards, matching, urgent dispatch and smart features for Canadian healthcare hiring.",
-  },
-};
+// Text, images and buttons come from the admin panel (Pages → KeRaeva AI)
+export async function generateMetadata(): Promise<Metadata> {
+  const { seo } = await getPageContent("keraevaAi");
+  return {
+    title: stripAccents(seo.title),
+    description: seo.description,
+    openGraph: {
+      ...BASE_OPEN_GRAPH,
+      title: stripAccents(seo.shareTitle || seo.title),
+      description: seo.shareDescription || seo.description,
+    },
+  };
+}
 
-export default function KeRaevaAIPage() {
+export default async function KeRaevaAIPage() {
+  const content = await getPageContent("keraevaAi");
+
   return (
     <Screen>
       <Header>
-        <AIHero />
+        <AIHero content={content.hero} />
       </Header>
-      <AIJourney />
-      <ProfessionalAI />
-      <OrganizationAI />
-      <ScorecardSection />
-      <IntegritySection />
-      <SmartFeaturesSection />
-      <PrinciplesSection />
-      <NextCareer />
+      {content.journey.show && <AIJourney content={content.journey} />}
+      {content.forProfessionals.show && <ProfessionalAI content={content.forProfessionals} />}
+      {content.forOrganizations.show && <OrganizationAI content={content.forOrganizations} />}
+      {content.scorecard.show && <ScorecardSection content={content.scorecard} />}
+      {content.integrity.show && <IntegritySection content={content.integrity} />}
+      {content.smartFeatures.show && <SmartFeaturesSection content={content.smartFeatures} />}
+      {content.principles.show && <PrinciplesSection content={content.principles} />}
+      {content.closingCtas.show && <NextCareer content={content.closingCtas} />}
       <Footer />
     </Screen>
   );

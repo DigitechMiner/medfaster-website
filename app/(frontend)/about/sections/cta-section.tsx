@@ -1,12 +1,14 @@
 "use client";
 
+import { ArrowRight } from "lucide-react";
 import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/heading";
 import { ResponsiveParagraph } from "@/components/ui/paragraph";
-import { ActionButton } from "@/components/ui/action-button";
-import { ArrowRight } from "lucide-react";
+import { CtaButton } from "@/components/ui/cta-button";
+import { AccentText } from "@/components/ui/accent-text";
+import type { AboutContent } from "@/content/pages/about";
 
-export function CTASection() {
+export function CTASection({ content }: { content: AboutContent["closingCta"] }) {
   return (
     <Section
       backgroundColor="bg-[#F3651B]"
@@ -19,22 +21,14 @@ export function CTASection() {
       }}
     >
       <Heading as="h2" size="md" className="text-white mb-4">
-        Find Your Next Hire. Or Your Next Job.
+        <AccentText text={content.heading} accentClassName="text-white" />
       </Heading>
 
       <ResponsiveParagraph size="base" className="text-white/90 mb-8">
-        Join KeRaeva, the AI-powered healthcare workforce platform built for Canada.
-        Get started in minutes.
+        {content.body}
       </ResponsiveParagraph>
 
-      {/* CTA Button */}
-      <ActionButton
-            variant="inverse"
-        rightIcon={ArrowRight}
-        size="lg"
-       modal="get-started">
-        Get Started Now
-      </ActionButton>
+      <CtaButton cta={content.cta} variant="inverse" rightIcon={ArrowRight} size="lg" />
     </Section>
   );
 }

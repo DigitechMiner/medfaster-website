@@ -5,54 +5,34 @@ import { Section } from "@/components/ui/section";
 import { FeatureCard } from "@/components/ui/feature-card";
 import { Heading } from "@/components/ui/heading";
 import { Paragraph, ResponsiveParagraph } from "@/components/ui/paragraph";
-import { CustomButton } from "@/components/ui/custom-button";
-import {
-  Bell,
-  Bookmark,
-  Building2,
-  CalendarCheck,
-  CircleCheck,
-  CircleSlash,
-  Download,
-  Gift,
-  Mail,
-  MessageSquare,
-  Mic,
-  Send,
-  Users,
-} from "lucide-react";
+import { CtaButton } from "@/components/ui/cta-button";
+import { AccentText, stripAccents } from "@/components/ui/accent-text";
+import { Download } from "lucide-react";
 import { IconChip } from "@/components/ui/icon-chip";
-import { AI_FEATURES, APP_FEATURES } from "@/lib/constants";
-import { APP_STORE_LINKS } from "@/utils/constant";
-import { useModalStore } from "@/stores/modalStore";
+import { iconFor } from "@/lib/cms/icons";
+import { useSiteSettings } from "@/components/providers/site-settings";
+import type { PROFESSIONALS_DEFAULTS } from "@/content/pages/professionals";
+
+type Content = typeof PROFESSIONALS_DEFAULTS;
 
 // AI Helps Section
-export function AIHelpsSection() {
-  const features = AI_FEATURES;
-
+export function AIHelpsSection({ content }: { content: Content["ai"] }) {
   return (
     <Section>
       <div className=" mb-12">
         <Heading as="h2" size="md" className="text-[#252B37] mb-4">
-          How{" "}
-          <span className="text-[#F3651B]">AI Helps You</span>{" "}
-          Get the Right Job Faster
+          <AccentText text={content.heading} />
         </Heading>
-        <Paragraph className="text-[#717680] max-w-3xl">
-          Our intelligent platform works behind the scenes to help you get the right job, faster. Here&apos;s how:
-        </Paragraph>
+        <Paragraph className="text-[#717680] max-w-3xl">{content.body}</Paragraph>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-        {features.map((feature, index) => (
+        {content.features.map((feature, index) => (
           <FeatureCard
             key={index}
             title={feature.title}
             description={feature.description}
-            visual={{
-              type: "icon",
-              content: feature.icon
-            }}
+            visual={{ type: "icon", content: iconFor(feature.icon) }}
           />
         ))}
       </div>
@@ -61,35 +41,25 @@ export function AIHelpsSection() {
 }
 
 // All In One App Section
-export function AllInOneSection() {
-  const features = APP_FEATURES;
-
+export function AllInOneSection({ content }: { content: Content["appFeatures"] }) {
   return (
     <Section>
       <div className=" mb-12">
         <Heading as="h2" size="md" className="text-[#252B37] mb-4">
-          Your{" "}
-          <span className="text-[#F3651B]">All-in-One</span>{" "}
-          Healthcare career App
+          <AccentText text={content.heading} />
         </Heading>
-        <Paragraph className="text-[#717680] max-w-3xl">
-          From building a verified profile to managing your payments, everything you need is right here
-        </Paragraph>
+        <Paragraph className="text-[#717680] max-w-3xl">{content.body}</Paragraph>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-        {features.map((feature, index) => (
+        {content.features.map((feature, index) => (
           <FeatureCard
             key={index}
             title={feature.title}
             description={feature.description}
             imageFullWidth={true}
             imageCenter={true}
-            visual={{
-              type: "image",
-              content: feature.screen,
-              alt: feature.title
-            }}
+            visual={{ type: "image", content: feature.screenshot, alt: feature.title }}
           />
         ))}
       </div>
@@ -98,36 +68,24 @@ export function AllInOneSection() {
 }
 
 // Verified Section
-export function VerifiedSection() {
+export function VerifiedSection({ content }: { content: Content["verified"] }) {
   return (
     <Section padding={false} backgroundColor="bg-neutral-100" className="grid grid-cols-1 lg:grid-cols-2 gap-2 md:gap-4 lg:gap-6 xl:gap-8">
       <Section className="flex items-start w-full">
         <div className="space-y-4">
           <Heading as="h2" size="md" className="text-[#252B37]">
-            Earn a{" "}
-            <span className="text-[#F3651B]">Verified</span>{" "}
-            Score.
-            <br />
-            Get Hired Faster.
+            <AccentText text={content.heading} />
           </Heading>
-          
+
           <ResponsiveParagraph size="sm" className="text-[#717680] leading-relaxed">
-            Once you complete onboarding and pre-screening, you&apos;ll receive an 
-            AI-generated scorecard. A verified profile with a completed AI
-            interview helps you stand out to recruiters.
+            {content.body}
           </ResponsiveParagraph>
         </div>
       </Section>
-      
+
       <Section padding={false} className="flex overflow-hidden items-center justify-end">
         <div className="relative mx-auto max-w-2xl">
-          <Image 
-            src="/images/ui/verified-card.webp" 
-            alt="Sample verified AI interview scorecard on a KeRaeva professional profile"
-            width={500}
-            height={1000}
-            className="object-contain"
-          />
+          <Image src={content.image} alt={stripAccents(content.imageAlt)} width={500} height={1000} className="object-contain" />
         </div>
       </Section>
     </Section>
@@ -135,7 +93,8 @@ export function VerifiedSection() {
 }
 
 // Career On The Go Section
-export function CareerOnTheGo() {
+export function CareerOnTheGo({ content }: { content: Content["appDownload"] }) {
+  const { apps } = useSiteSettings();
   return (
     <Section
       backgroundColor="bg-neutral-100"
@@ -145,23 +104,18 @@ export function CareerOnTheGo() {
       <Section>
         <div className="space-y-4">
           <Heading as="h2" size="md" className="text-[#252B37]">
-            Your Career, Your Control{" "}
-            <span className="text-[#F3651B]">On the Go.</span>{" "}
+            <AccentText text={content.heading} />
           </Heading>
 
-          <ResponsiveParagraph
-            size="base"
-            className="text-[#717680] leading-relaxed"
-          >
-            Get instant job alerts, apply with a single tap, and manage your
-            entire job search — anytime, anywhere.
+          <ResponsiveParagraph size="base" className="text-[#717680] leading-relaxed">
+            {content.body}
           </ResponsiveParagraph>
         </div>
 
         <div className="relative w-full max-w-2xl mx-auto flex justify-center items-start gap-4 md:gap-6 lg:gap-8 mt-10 overflow-hidden">
           {/* Google Play - scannable QR linking to the live listing */}
           <a
-            href={APP_STORE_LINKS.googlePlay}
+            href={apps.googlePlayUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="w-[150px] md:w-[180px] flex items-center"
@@ -177,9 +131,9 @@ export function CareerOnTheGo() {
           </a>
 
           {/* App Store - link once the iOS app is published */}
-          {APP_STORE_LINKS.appStore ? (
+          {apps.appStoreUrl ? (
             <a
-              href={APP_STORE_LINKS.appStore}
+              href={apps.appStoreUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="w-[150px] md:w-[180px] self-end"
@@ -202,24 +156,15 @@ export function CareerOnTheGo() {
                 height={55}
                 className="object-contain w-full h-auto opacity-40"
               />
-              <span className="text-xs text-[#717680]">Coming soon on iOS</span>
+              <span className="text-xs text-[#717680]">{apps.iosComingSoonLabel}</span>
             </div>
           )}
         </div>
       </Section>
 
-      <Section
-        padding={false}
-        className="flex overflow-hidden items-end justify-end"
-      >
+      <Section padding={false} className="flex overflow-hidden items-end justify-end">
         <div className="relative mt-10 max-w-2xl mx-auto">
-          <Image
-            src="/images/ui/mobile-screen.webp"
-            alt="Mobile app showing job search interface"
-            width={500}
-            height={900}
-            className="object-contain"
-          />
+          <Image src={content.screenshot} alt={stripAccents(content.screenshotAlt)} width={500} height={900} className="object-contain" />
         </div>
       </Section>
     </Section>
@@ -227,41 +172,32 @@ export function CareerOnTheGo() {
 }
 
 // Next Career Section
-export function NextCareer() {
-  const openModal = useModalStore((state) => state.openModal);
-
+export function NextCareer({ content }: { content: Content["nextCareer"] }) {
   return (
-    <Section 
+    <Section
       backgroundColor="bg-[#F3651B]"
       padding={false}
       style={{
         backgroundImage: "url(/images/patterns/orange-pattern-2.webp)",
         backgroundSize: "cover",
         backgroundPosition: "center",
-        backgroundBlendMode: 'overlay',
-        backgroundRepeat: 'no-repeat'
+        backgroundBlendMode: "overlay",
+        backgroundRepeat: "no-repeat",
       }}
     >
       <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr]">
         <div className="p-4 md:p-8 lg:p-16 flex flex-col justify-center">
           <div className="space-y-2 md:space-y-4 lg:space-y-6 xl:space-y-8">
             <Heading as="h2" size="md" className="text-white">
-              Your Next Career Move Starts Here.
+              <AccentText text={content.heading} accentClassName="text-white underline decoration-white/60" />
             </Heading>
 
             <ResponsiveParagraph size="base" className="text-white/90 max-w-xl leading-relaxed">
-              Join now to get access to verified listings, instant matches, and
-              a network that&apos;s invested in your success
+              {content.body}
             </ResponsiveParagraph>
 
             <div className="flex flex-col sm:flex-row sm:gap-4">
-              <CustomButton
-            variant="inverse"
-                rightIcon={Download}
-                onClick={() => openModal("get-app")}
-              >
-                Download app
-              </CustomButton>
+              <CtaButton cta={content.cta} variant="inverse" rightIcon={Download} />
             </div>
           </div>
         </div>
@@ -269,8 +205,8 @@ export function NextCareer() {
         <div className="relative flex items-end justify-center lg:justify-end overflow-hidden md:block">
           <div className="relative w-full h-[300px] md:h-[400px] lg:h-[500px] xl:h-full">
             <Image
-              src="/images/hero/nurse.webp"
-              alt="Healthcare professional"
+              src={content.image}
+              alt={stripAccents(content.imageAlt)}
               fill
               className="object-contain object-bottom lg:object-right-bottom"
               sizes="(max-width: 768px) 33vw, 50vw"
@@ -282,40 +218,26 @@ export function NextCareer() {
   );
 }
 
-
 // Application Status Section - real statuses from the KeRaeva app
-export function ApplicationStatusSection() {
-  const statuses = [
-    { icon: Send, title: "Applied", description: "Your application is with the organization." },
-    { icon: Mail, title: "Invited", description: "An organization invited you to apply for a role." },
-    { icon: Mic, title: "Interview", description: "You're in the interview stage, including any AI interview the organization requests." },
-    { icon: CircleCheck, title: "Accepted", description: "You've been accepted, and your shifts appear in your upcoming work." },
-    { icon: CircleSlash, title: "Not Selected / Withdrawn", description: "The role went another way or you withdrew. Either way, you'll know." },
-  ];
-
+export function ApplicationStatusSection({ content }: { content: Content["applicationStatus"] }) {
   return (
     <Section>
       <div className="mb-8 md:mb-12">
         <Heading as="h2" size="md" className="text-[#252B37] mb-4">
-          Know Where You <span className="text-[#F3651B]">Stand</span>
+          <AccentText text={content.heading} />
         </Heading>
-        <Paragraph className="text-[#717680] max-w-3xl">
-          No more wondering. Every application shows its current status in the
-          app, and you get notified as it moves forward.
-        </Paragraph>
+        <Paragraph className="text-[#717680] max-w-3xl">{content.body}</Paragraph>
       </div>
 
       <ol className="flex md:grid md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory -mx-4 px-4 md:mx-0 md:px-0">
-        {statuses.map((status, index) => (
+        {content.statuses.map((status, index) => (
           <li
-            key={status.title}
+            key={`${index}-${status.title}`}
             className="bg-[#FAFAFA] border border-[#E9EAEB] rounded-2xl p-6 flex flex-col gap-3 flex-shrink-0 w-[75%] sm:w-[45%] md:w-auto snap-start"
           >
             <div className="flex items-center justify-between">
-              <IconChip icon={status.icon} />
-              <span className="text-sm font-semibold text-[#C44408]">
-                {String(index + 1).padStart(2, "0")}
-              </span>
+              <IconChip icon={iconFor(status.icon)} />
+              <span className="text-sm font-semibold text-[#C44408]">{String(index + 1).padStart(2, "0")}</span>
             </div>
             <Heading as="h3" size="xs" weight="medium" className="text-[#252B37]">
               {status.title}
@@ -331,37 +253,23 @@ export function ApplicationStatusSection() {
 }
 
 // More In The App Section - verified Candidate App features
-export function MoreInTheApp() {
-  const features = [
-    { icon: Bookmark, title: "Saved Jobs", description: "Save roles you like and come back to them when you're ready to apply." },
-    { icon: Send, title: "Job Invites", description: "Organizations can invite you directly to apply for their open roles." },
-    { icon: Building2, title: "Hiring Organizations", description: "Browse the organizations hiring on KeRaeva and see their open roles." },
-    { icon: Users, title: "In-House Requests", description: "Accept an organization's request to join its in-house staff pool." },
-    { icon: MessageSquare, title: "Chat with Hiring Teams", description: "Message recruiters directly in the app about roles and shifts." },
-    { icon: Gift, title: "Referral Rewards", description: "Invite other professionals with your code and earn rewards in your wallet." },
-    { icon: CalendarCheck, title: "Shift Check-In", description: "Check in and out of shifts from the app so your attendance is recorded." },
-    { icon: Bell, title: "Instant Notifications", description: "Get alerts for urgent shifts, interview requests and application updates." },
-  ];
-
+export function MoreInTheApp({ content }: { content: Content["moreInTheApp"] }) {
   return (
     <Section>
       <div className="mb-8 md:mb-12">
         <Heading as="h2" size="md" className="text-[#252B37] mb-4">
-          More Ways KeRaeva <span className="text-[#F3651B]">Works for You</span>
+          <AccentText text={content.heading} />
         </Heading>
-        <Paragraph className="text-[#717680] max-w-3xl">
-          Everything you need to manage your healthcare career, from the first
-          application to your next shift.
-        </Paragraph>
+        <Paragraph className="text-[#717680] max-w-3xl">{content.body}</Paragraph>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-        {features.map((feature) => (
+        {content.features.map((feature, index) => (
           <FeatureCard
-            key={feature.title}
+            key={`${index}-${feature.title}`}
             title={feature.title}
             description={feature.description}
-            visual={{ type: "icon", content: feature.icon }}
+            visual={{ type: "icon", content: iconFor(feature.icon) }}
           />
         ))}
       </div>

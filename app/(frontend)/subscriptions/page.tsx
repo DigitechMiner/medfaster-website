@@ -5,15 +5,18 @@ import { Footer } from "@/components/global/footer";
 import { Screen } from "@/components/global/screen";
 import { Heading } from "@/components/ui/heading";
 import { Paragraph } from "@/components/ui/paragraph";
+import { AccentText, stripAccents } from "@/components/ui/accent-text";
+import { getPageContent } from "@/lib/cms/content";
 import { PricingCards } from "./components/pricing-cards";
 
-export const metadata: Metadata = {
-  title: "Pricing | KeRaeva",
-  description:
-    "KeRaeva is free for healthcare professionals. Healthcare organizations get pricing tailored to their hiring and staffing needs. Talk to our team.",
-};
+// Text and plans come from the admin panel (Pages → Pricing)
+export async function generateMetadata(): Promise<Metadata> {
+  const { seo } = await getPageContent("pricing");
+  return { title: stripAccents(seo.title), description: seo.description };
+}
 
-export default function SubscriptionsPage() {
+export default async function SubscriptionsPage() {
+  const content = await getPageContent("pricing");
   return (
     <Screen>
       <Header>
@@ -21,13 +24,10 @@ export default function SubscriptionsPage() {
         <Section className="pt-2 md:pt-4 lg:pt-6 xl:pt-8 text-center">
           <div className="space-y-4 max-w-2xl mx-auto">
             <Heading as="h1" size="lg" className="text-[#252B37]" weight="normal">
-              Simple, Transparent{" "}
-              <span className="text-[#F3651B] font-medium">Pricing</span>
+              <AccentText text={content.hero.heading} accentClassName="font-medium" />
             </Heading>
             <Paragraph size="sm" className="text-[#717680]">
-              Free for healthcare professionals. Healthcare organizations get
-              pricing tailored to how they hire and staff. Talk to our team to
-              find the right fit.
+              {content.hero.body}
             </Paragraph>
           </div>
         </Section>
@@ -35,7 +35,7 @@ export default function SubscriptionsPage() {
 
       {/* Pricing Cards */}
       <Section className="bg-[#FDF3EC]">
-        <PricingCards />
+        <PricingCards plans={content.plans.items} />
       </Section>
 
       <Footer />

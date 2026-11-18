@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/global/json-ld";
-import { getFaqs } from "@/lib/cms/content";
+import { getFaqs, getPageContent } from "@/lib/cms/content";
+import { stripAccents } from "@/components/ui/accent-text";
 
-// Metadata lives here because the page itself is a client component
-export const metadata: Metadata = {
-  title: "Support | KeRaeva",
-  description:
-    "Get help with the KeRaeva app or recruiter platform: accounts, verification, jobs, shifts, check-in, payments and AI interviews.",
-};
+// Title and description come from the admin panel (Pages → Support)
+export async function generateMetadata(): Promise<Metadata> {
+  const { seo } = await getPageContent("support");
+  return { title: stripAccents(seo.title), description: seo.description };
+}
 
 export default async function Layout({ children }: { children: React.ReactNode }) {
   const faqs = await getFaqs();

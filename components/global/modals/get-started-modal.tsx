@@ -8,12 +8,16 @@ import { Paragraph } from "@/components/ui/paragraph";
 import { ModalShell } from "./modal-shell";
 import { IconChip } from "@/components/ui/icon-chip";
 import { useModalStore } from "@/stores/modalStore";
-import { APP_STORE_LINKS, RECRUITER_REGISTRATION_URL } from "@/utils/constant";
+import { AccentText } from "@/components/ui/accent-text";
+import { useSiteSettings } from "@/components/providers/site-settings";
+import type { PopupsContent } from "@/content/pages/popups";
 
 type View = "choose" | "app";
 
-export function GetStartedModal() {
+export function GetStartedModal({ content }: { content: PopupsContent }) {
   const { activeModal, openModal, closeModal } = useModalStore();
+  const { apps } = useSiteSettings();
+  const { getStarted, getApp } = content;
   const isOpen = activeModal === "get-started" || activeModal === "get-app";
   const [view, setView] = useState<View>("choose");
 
@@ -33,10 +37,10 @@ export function GetStartedModal() {
         <div className="space-y-6">
           <div className="text-center space-y-2">
             <Heading id="get-started-title" as="h2" size="xs" className="text-[#252B37]">
-              How will you use <span className="text-[#F3651B]">KeRaeva</span>?
+              <AccentText text={getStarted.heading} />
             </Heading>
             <Paragraph size="sm" className="text-[#717680]">
-              Choose your path to get started.
+              {getStarted.body}
             </Paragraph>
           </div>
 
@@ -44,34 +48,30 @@ export function GetStartedModal() {
             <button type="button" className={cardClass} onClick={() => setView("app")}>
               <IconChip icon={Stethoscope} />
               <span className="flex-1">
-                <span className="block font-medium text-[#252B37]">I&apos;m a Healthcare Professional</span>
-                <span className="block text-sm text-[#717680] mt-1">
-                  Build a verified profile, find jobs and urgent shifts, and get paid through the KeRaeva app.
-                </span>
+                <span className="block font-medium text-[#252B37]">{getStarted.professionalTitle}</span>
+                <span className="block text-sm text-[#717680] mt-1">{getStarted.professionalDescription}</span>
               </span>
               <ChevronRight className="w-5 h-5 text-[#717680] self-center" />
             </button>
 
-            <a href={RECRUITER_REGISTRATION_URL} target="_blank" rel="noopener noreferrer" className={cardClass} onClick={closeModal}>
+            <a href={apps.recruiterRegistrationUrl} target="_blank" rel="noopener noreferrer" className={cardClass} onClick={closeModal}>
               <IconChip icon={Briefcase} />
               <span className="flex-1">
-                <span className="block font-medium text-[#252B37]">I&apos;m Hiring</span>
-                <span className="block text-sm text-[#717680] mt-1">
-                  Post jobs, fill urgent shifts and review AI-assessed, verified professionals.
-                </span>
+                <span className="block font-medium text-[#252B37]">{getStarted.hiringTitle}</span>
+                <span className="block text-sm text-[#717680] mt-1">{getStarted.hiringDescription}</span>
               </span>
               <ChevronRight className="w-5 h-5 text-[#717680] self-center" />
             </a>
           </div>
 
           <Paragraph size="sm" className="text-center text-[#717680]">
-            Want a walkthrough first?{" "}
+            {getStarted.demoPrompt}{" "}
             <button
               type="button"
               className="text-[#F3651B] font-medium hover:underline"
               onClick={() => openModal("request-demo")}
             >
-              Request a demo
+              {getStarted.demoLinkLabel}
             </button>
           </Paragraph>
         </div>
@@ -83,23 +83,23 @@ export function GetStartedModal() {
               onClick={() => setView("choose")}
               className="inline-flex items-center gap-1 text-sm text-[#717680] hover:text-[#F3651B] transition-colors"
             >
-              <ArrowLeft className="w-4 h-4" /> Back
+              <ArrowLeft className="w-4 h-4" /> {getApp.backLabel}
             </button>
           )}
 
           <div className="text-center space-y-2">
             <Heading id="get-started-title" as="h2" size="xs" className="text-[#252B37]">
-              <span className="text-[#F3651B]">Download</span> the App
+              <AccentText text={getApp.heading} />
             </Heading>
             <Paragraph size="sm" className="text-[#717680]">
-              Create your free profile, complete your AI interview and start finding opportunities near you.
+              {getApp.body}
             </Paragraph>
           </div>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
             {/* Google Play: QR on larger screens, badge link everywhere */}
             <a
-              href={APP_STORE_LINKS.googlePlay}
+              href={apps.googlePlayUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="flex flex-col items-center gap-2"
@@ -116,8 +116,8 @@ export function GetStartedModal() {
 
             {/* App Store: shown as coming soon until the iOS app is published */}
             <div className="flex flex-col items-center gap-2">
-              {APP_STORE_LINKS.appStore ? (
-                <a href={APP_STORE_LINKS.appStore} target="_blank" rel="noopener noreferrer" aria-label="Download KeRaeva on the App Store">
+              {apps.appStoreUrl ? (
+                <a href={apps.appStoreUrl} target="_blank" rel="noopener noreferrer" aria-label="Download KeRaeva on the App Store">
                   <Image src="/images/ui/badge-app-store.png" alt="Download on the App Store" width={169} height={55} className="w-36 h-auto" />
                 </a>
               ) : (
@@ -130,7 +130,7 @@ export function GetStartedModal() {
                     className="w-36 h-auto opacity-40"
                   />
                   <Paragraph size="xs" className="text-[#717680]">
-                    Coming soon on iOS
+                    {apps.iosComingSoonLabel}
                   </Paragraph>
                 </>
               )}

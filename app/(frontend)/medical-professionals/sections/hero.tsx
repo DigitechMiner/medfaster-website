@@ -1,7 +1,8 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { CustomButton } from "@/components/ui/custom-button";
+import { CtaButton } from "@/components/ui/cta-button";
+import { AccentText, stripAccents } from "@/components/ui/accent-text";
 import InputIcon from "@/components/ui/input-icon";
 import { Search, MapPin, ArrowRight } from "lucide-react";
 import Image from "@/components/ui/image";
@@ -9,14 +10,14 @@ import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/heading";
 import { Paragraph, ResponsiveParagraph } from "@/components/ui/paragraph";
 import { useModalStore } from "@/stores/modalStore";
+import type { PROFESSIONALS_DEFAULTS } from "@/content/pages/professionals";
 
-export default function HeroSection() {
+export default function HeroSection({ content }: { content: (typeof PROFESSIONALS_DEFAULTS)["hero"] }) {
   const openModal = useModalStore((state) => state.openModal);
   // Job search and browsing happen in the KeRaeva app; the website has no jobs feed
-  const handleBrowseJobs = () => openModal("get-app");
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    handleBrowseJobs();
+    openModal("get-app");
   };
   return (
     <Section>
@@ -27,11 +28,7 @@ export default function HeroSection() {
           {/* Main Heading */}
           <div className="text-left">
             <Heading as="h1" size="lg" className="text-[#252B37] mb-6" weight="normal">
-              Find Healthcare Jobs Near You
-              <span className="text-[#F3651B] font-medium">
-                {" "}
-                Instantly
-              </span>
+              <AccentText text={content.heading} accentClassName="font-medium" />
             </Heading>
           </div>
 
@@ -55,7 +52,7 @@ export default function HeroSection() {
                   className="bg-white rounded-lg md:rounded-full"
                 />
               </div>
-  
+
               {/* Postal Code and Button Row - Mobile: Same Row, Desktop: Separate */}
               <div className="flex gap-2 lg:contents">
                 <div className="flex-1 lg:flex-[1]">
@@ -78,27 +75,20 @@ export default function HeroSection() {
                 </Button>
               </div>
             </form>
-            <Paragraph size="sm" className="text-[#717680] mt-2 px-2">
-              Search, apply and accept shifts in the KeRaeva app.
-            </Paragraph>
+            {content.searchHint && (
+              <Paragraph size="sm" className="text-[#717680] mt-2 px-2">
+                {content.searchHint}
+              </Paragraph>
+            )}
           </div>
 
           {/* Call to Action */}
           <div>
             <ResponsiveParagraph size="base" className="text-[#252B37] mb-6">
-              The AI-powered platform connecting you directly with verified
-              healthcare service providers, such as hospitals, nursing home
-              facilities, medical clinics, dental clinics, physiotherapy clinics
-              and more across Canada. Discover full-time, part-time, and on-demand
-              roles all on your terms.
+              {content.body}
             </ResponsiveParagraph>
             <div className="flex items-center gap-4">
-              <CustomButton 
-              rightIcon={ArrowRight}
-              onClick={handleBrowseJobs}
-              >
-                Browse Nearby Jobs
-              </CustomButton>
+              <CtaButton cta={content.cta} rightIcon={ArrowRight} />
             </div>
           </div>
         </div>
@@ -110,8 +100,8 @@ export default function HeroSection() {
             {/* Address Image */}
             <div className="md:flex-[3] relative bg-[#f5f5f5] rounded-lg flex items-center justify-center">
               <Image
-                src="/images/hero/mobile-address.webp"
-                alt="KeRaeva app interface"
+                src={content.appImage}
+                alt={stripAccents(content.appImageAlt)}
                 width={280}
                 height={450}
                 className="object-contain w-full rounded-lg max-w-[240px] sm:max-w-[380px] aspect-[280/450]"
@@ -122,13 +112,9 @@ export default function HeroSection() {
             {/* Total Flexibility & Control Box */}
             <div className="md:flex-[1] bg-[#F3651B] rounded-lg p-4 text-white flex flex-col justify-center">
               <Heading as="h3" size="xs" className="text-white mb-2">
-                Total Flexibility & Control
+                {content.flexibilityHeading}
               </Heading>
-              <Paragraph className="text-white leading-relaxed">
-                Take charge of your career. Choose full-time, part-time or
-                on-demand shifts that fit your schedule, and get instant alerts
-                for jobs you actually want.
-              </Paragraph>
+              <Paragraph className="text-white leading-relaxed">{content.flexibilityBody}</Paragraph>
             </div>
           </div>
 
@@ -137,7 +123,7 @@ export default function HeroSection() {
             {/* Doctor Image - First on mobile, Second on desktop */}
             <div className="hidden order-1 md:order-2 md:flex-[3] relative bg-[#f5f5f5] rounded-lg md:flex items-center justify-center">
               <Image
-                src="/images/hero/doctor.webp"
+                src={content.sideImage}
                 alt=""
                 width={280}
                 height={450}
@@ -148,13 +134,9 @@ export default function HeroSection() {
             {/* Direct & Verified Opportunities Box - Second on mobile, First on desktop */}
             <div className="order-2 md:order-1 md:flex-[1] bg-[#F3651B] rounded-lg p-4 text-white flex flex-col justify-center">
               <Heading as="h3" size="xs" className="text-white mb-2">
-                Direct & Verified Opportunities
+                {content.opportunitiesHeading}
               </Heading>
-              <Paragraph className="text-white leading-relaxed">
-                Connect directly with hospitals, care facilities and clinics.
-                Apply in a tap, chat with hiring teams and track every
-                application in the app.
-              </Paragraph>
+              <Paragraph className="text-white leading-relaxed">{content.opportunitiesBody}</Paragraph>
             </div>
           </div>
         </div>

@@ -7,18 +7,28 @@ import { Paragraph, ResponsiveParagraph } from "@/components/ui/paragraph";
 import { CustomButton } from "@/components/ui/custom-button";
 import { CtaButton } from "@/components/ui/cta-button";
 import { AccentText } from "@/components/ui/accent-text";
-import type { HOME_DEFAULTS } from "@/content/pages/home";
+import type { Cta } from "@/components/ui/cta-button";
 import { ArrowRight } from "lucide-react";
 import { useModalStore } from "@/stores/modalStore";
 import { WORKFORCE_STEPS } from "@/utils/constant";
 
 type Audience = "everyone" | "organizations" | "professionals";
 
+export type ShiftToPaymentContent = {
+  heading: string;
+  body: string;
+  steps: string[];
+  cta: Cta;
+  sampleAmount: string;
+  sampleShift: string;
+  sampleStatus: string;
+};
+
 interface ShiftToPaymentSectionProps {
   // Adjusts the copy and CTA; the layout is the same everywhere
   audience?: Audience;
   // Text and button edited in the admin panel (home page)
-  content?: (typeof HOME_DEFAULTS)["shiftToPayment"];
+  content?: ShiftToPaymentContent;
 }
 
 const COPY: Record<Audience, { heading: React.ReactNode; body: string }> = {

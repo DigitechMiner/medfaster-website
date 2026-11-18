@@ -1,46 +1,30 @@
-"use client";
-
-import Link from "next/link";
-import { ChevronRight } from "lucide-react";
+import type { Metadata } from "next";
 import { Section } from "@/components/ui/section";
 import Header from "@/components/global/header";
 import { Footer } from "@/components/global/footer";
 import { Screen } from "@/components/global/screen";
-import { Heading } from "@/components/ui/heading";
-import { Paragraph } from "@/components/ui/paragraph";
+import { PageTitle } from "@/components/global/page-title";
+import { stripAccents } from "@/components/ui/accent-text";
+import { getPageContent } from "@/lib/cms/content";
 import { ContactInfoSection } from "./components/info";
 import { ContactForm } from "./components/form";
 
-export default function ContactUsPage() {
+// Text comes from the admin panel (Pages → Contact Us)
+export async function generateMetadata(): Promise<Metadata> {
+  const { seo } = await getPageContent("contact");
+  return { title: stripAccents(seo.title), description: seo.description };
+}
+
+export default async function ContactUsPage() {
+  const content = await getPageContent("contact");
   return (
     <Screen>
       <Header>
-        <Section className="pt-2 md:pt-4 lg:pt-6 xl:pt-8">
-          <div className="space-y-4">
-            {/* Title */}
-            <Heading as="h1" size="lg" className="text-[#252B37]" weight="normal">
-              Contact Us
-            </Heading>
-
-            {/* Breadcrumb */}
-            <div className="flex items-center gap-2 ">
-              <Link
-                href="/"
-                className="inline-block py-1 text-[#252B37] hover:text-[#F3651B] transition-colors text-lg"
-              >
-                Home
-              </Link>
-              <ChevronRight className="w-4 h-4 text-[#717680]" />
-              <Paragraph size="lg" className="text-[#717680]">
-                Contact Us
-              </Paragraph>
-            </div>
-          </div>
-        </Section>
+        <PageTitle title={content.pageHeader.title} crumbs={[{ label: "Home", href: "/" }, { label: content.pageHeader.breadcrumb }]} />
       </Header>
 
       <Section className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
-        <ContactInfoSection />
+        <ContactInfoSection content={content.intro} />
         <ContactForm />
       </Section>
 

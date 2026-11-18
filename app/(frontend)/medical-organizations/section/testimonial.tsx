@@ -7,8 +7,15 @@ import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/heading";
 import { Paragraph, ResponsiveParagraph } from "@/components/ui/paragraph";
 import type { TestimonialItem } from "@/lib/cms/content";
+import { AccentText } from "@/components/ui/accent-text";
 
-export default function TestimonialsSlider({ items: testimonials }: { items: TestimonialItem[] }) {
+export default function TestimonialsSlider({
+  items: testimonials,
+  content,
+}: {
+  items: TestimonialItem[];
+  content: { heading: string; body: string };
+}) {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const nextSlide = () => {
@@ -30,12 +37,10 @@ export default function TestimonialsSlider({ items: testimonials }: { items: Tes
       {/* Header */}
       <div className="mb-8 md:mb-12 lg:mb-16">
         <Heading className="text-[#252B37] mb-4">
-          What Healthcare Teams Say About{" "}
-          <span className="text-[#F3651B]">KeRaeva</span>
+          <AccentText text={content.heading} />
         </Heading>
         <Paragraph className="text-[#717680] max-w-3xl">
-          Feedback from healthcare teams using KeRaeva to hire verified
-          professionals, simplify compliance checks and fill shifts faster.
+          {content.body}
         </Paragraph>
       </div>
 
