@@ -13,6 +13,7 @@ export const PUBLIC_ROUTES = [
   "/about",
   // "/our-team",
   "/careers",
+  "/careers/community-disability-support-worker-calgary",
   "/blog",
   "/subscriptions",
   "/contact-us",
