@@ -48,7 +48,7 @@ export default function HeroSection({ content }: { content: (typeof PROFESSIONAL
                   ariaLabel="Job title, skill or keyword"
                   icon={Search}
                   iconPosition="left"
-                  placeholder="Job Title/Skill/Keyword"
+                  placeholder={content.keywordPlaceholder}
                   className="bg-white rounded-lg md:rounded-full"
                 />
               </div>
@@ -62,7 +62,7 @@ export default function HeroSection({ content }: { content: (typeof PROFESSIONAL
                     ariaLabel="Postal code"
                     icon={MapPin}
                     iconPosition="left"
-                    placeholder="Postal Code"
+                    placeholder={content.postalCodePlaceholder}
                     className="bg-white rounded-lg md:rounded-full"
                   />
                 </div>

@@ -114,28 +114,28 @@ export function RequestDemoModal({ content }: { content: PopupsContent["requestD
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label htmlFor="demo-name" className={labelClass}>Full Name *</label>
-              <Input id="demo-name" name="name" value={form.name} onChange={handleChange} placeholder="Emily Wilson" autoComplete="name" className="rounded-lg" required />
+              <Input id="demo-name" name="name" value={form.name} onChange={handleChange} placeholder={content.namePlaceholder} autoComplete="name" className="rounded-lg" required />
             </div>
             <div>
               <label htmlFor="demo-email" className={labelClass}>Work Email *</label>
-              <Input id="demo-email" type="email" name="email" value={form.email} onChange={handleChange} placeholder="emily@hospital.ca" autoComplete="email" className="rounded-lg" required />
+              <Input id="demo-email" type="email" name="email" value={form.email} onChange={handleChange} placeholder={content.emailPlaceholder} autoComplete="email" className="rounded-lg" required />
             </div>
             <div>
               <label htmlFor="demo-organization" className={labelClass}>Organization *</label>
-              <Input id="demo-organization" name="organization" value={form.organization} onChange={handleChange} placeholder="Organization name" autoComplete="organization" className="rounded-lg" required />
+              <Input id="demo-organization" name="organization" value={form.organization} onChange={handleChange} placeholder={content.organizationPlaceholder} autoComplete="organization" className="rounded-lg" required />
             </div>
             <div>
               <label htmlFor="demo-role" className={labelClass}>Your Role</label>
-              <Input id="demo-role" name="role" value={form.role} onChange={handleChange} placeholder="HR Director" autoComplete="organization-title" className="rounded-lg" />
+              <Input id="demo-role" name="role" value={form.role} onChange={handleChange} placeholder={content.rolePlaceholder} autoComplete="organization-title" className="rounded-lg" />
             </div>
             <div>
               <label htmlFor="demo-phone" className={labelClass}>Phone</label>
-              <Input id="demo-phone" type="tel" name="phone" value={form.phone} onChange={handleChange} placeholder="(403) 555-0123" autoComplete="tel" className="rounded-lg" />
+              <Input id="demo-phone" type="tel" name="phone" value={form.phone} onChange={handleChange} placeholder={content.phonePlaceholder} autoComplete="tel" className="rounded-lg" />
             </div>
             <div>
               <label htmlFor="demo-organization-type" className={labelClass}>Organization Type</label>
               <select id="demo-organization-type" name="organizationType" value={form.organizationType} onChange={handleChange} className={selectClass}>
-                <option value="">Select type</option>
+                <option value="">{content.organizationTypePlaceholder}</option>
                 {content.organizationTypes.filter(Boolean).map((type) => (
                   <option key={type} value={type}>{type}</option>
                 ))}
@@ -144,7 +144,7 @@ export function RequestDemoModal({ content }: { content: PopupsContent["requestD
             <div className="sm:col-span-2">
               <label htmlFor="demo-province" className={labelClass}>Province / Territory</label>
               <select id="demo-province" name="province" value={form.province} onChange={handleChange} className={selectClass}>
-                <option value="">Select province or territory</option>
+                <option value="">{content.provincePlaceholder}</option>
                 {PROVINCES.map((province) => (
                   <option key={province} value={province}>{province}</option>
                 ))}

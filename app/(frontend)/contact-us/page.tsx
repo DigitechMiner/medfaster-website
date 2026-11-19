@@ -25,7 +25,7 @@ export default async function ContactUsPage() {
 
       <Section className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
         <ContactInfoSection content={content.intro} />
-        <ContactForm />
+        <ContactForm content={content.form} />
       </Section>
 
       {/* Footer */}

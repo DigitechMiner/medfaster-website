@@ -19,4 +19,14 @@ export const CONTACT_DEFAULTS = {
     phoneLabel: "Phone Number",
     followLabel: "Follow Us",
   },
+  // Hint text shown inside the empty form fields
+  form: {
+    namePlaceholder: "Your full name",
+    emailPlaceholder: "you@example.com",
+    phonePlaceholder: "(403) 555-0123",
+    topicPlaceholder: "Select a topic",
+    messagePlaceholder: "Tell us how we can help, e.g. hiring for your organization, a partnership or a general question.",
+  },
 };
+
+export type ContactContent = typeof CONTACT_DEFAULTS;

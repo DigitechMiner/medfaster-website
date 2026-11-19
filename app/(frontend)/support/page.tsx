@@ -34,7 +34,7 @@ export default async function ReportAnIssuePage() {
             {content.form.body}
           </Paragraph>
         </div>
-        <ReportIssueForm />
+        <ReportIssueForm content={content.form} />
       </Section>
 
       {content.faqs.show && faqs.length > 0 && (

@@ -3,6 +3,7 @@ import * as migration_20261118_181339_page_builder_header_footer from './2026111
 import * as migration_20261118_191558_editable_pages from './20261118_191558_editable_pages';
 import * as migration_20261118_194355_blob_storage_fields from './20261118_194355_blob_storage_fields';
 import * as migration_20261119_153932_branding_images from './20261119_153932_branding_images';
+import * as migration_20261119_171640_form_placeholders from './20261119_171640_form_placeholders';
 
 export const migrations = [
   {
@@ -28,6 +29,11 @@ export const migrations = [
   {
     up: migration_20261119_153932_branding_images.up,
     down: migration_20261119_153932_branding_images.down,
-    name: '20261119_153932_branding_images'
+    name: '20261119_153932_branding_images',
+  },
+  {
+    up: migration_20261119_171640_form_placeholders.up,
+    down: migration_20261119_171640_form_placeholders.down,
+    name: '20261119_171640_form_placeholders'
   },
 ];

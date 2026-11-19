@@ -87,7 +87,7 @@ export function Footer() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email address"
+                placeholder={footer.newsletter.emailPlaceholder}
                 aria-label="Email address"
                 className="rounded-full h-12 lg:w-[420px] px-5 text-sm sm:text-base sm:flex-1"
                 disabled={isSubmitting}

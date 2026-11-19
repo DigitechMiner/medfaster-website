@@ -15,6 +15,8 @@ export const PROFESSIONALS_DEFAULTS = {
   },
   hero: {
     heading: "Find Healthcare Jobs Near You **Instantly**",
+    keywordPlaceholder: "Job Title/Skill/Keyword",
+    postalCodePlaceholder: "Postal Code",
     searchHint: "Search, apply and accept shifts in the KeRaeva app.",
     body: "The AI-powered platform connecting you directly with verified healthcare service providers, such as hospitals, nursing home facilities, medical clinics, dental clinics, physiotherapy clinics and more across Canada. Discover full-time, part-time, and on-demand roles all on your terms.",
     cta: { label: "Browse Nearby Jobs", link: "#get-app" },

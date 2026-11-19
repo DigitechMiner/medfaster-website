@@ -22,6 +22,11 @@ export const SUPPORT_DEFAULTS = {
   form: {
     heading: "Send a Support Request",
     body: "Tell us what's happening and include the job or shift it relates to. Our support team will reply by email.",
+    issueTypePlaceholder: "Select an issue type",
+    subjectPlaceholder: "e.g. I can't check in to my shift",
+    emailPlaceholder: "you@example.com",
+    phonePlaceholder: "(403) 555-0123",
+    descriptionPlaceholder: "Please describe the issue in detail, including the job or shift it relates to if relevant.",
   },
   faqs: {
     show: true,

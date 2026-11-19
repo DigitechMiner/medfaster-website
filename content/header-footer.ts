@@ -26,6 +26,7 @@ export const HEADER_FOOTER_DEFAULTS = {
       show: true,
       heading: "Healthcare Hiring Insights & **Job Alerts**",
       body: "Product updates, hiring insights and new opportunities. No spam.",
+      emailPlaceholder: "Enter your email address",
     },
     tagline: "The AI-powered healthcare workforce platform connecting organizations and professionals across Canada.",
     appButton: { label: "Get the App", link: "#get-app" },

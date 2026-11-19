@@ -6,6 +6,7 @@ import { Paragraph } from "@/components/ui/paragraph";
 import { Input } from "@/components/ui/input";
 import { CustomButton } from "@/components/ui/custom-button";
 import { submitLead } from "@/utils/leads";
+import type { ContactContent } from "@/content/pages/contact";
 
 const MESSAGE_MAX_LENGTH = 1000;
 
@@ -41,10 +42,11 @@ const labelClass = "block text-sm font-medium text-[#717680] mb-2";
 const fieldErrorClass = "border-red-500 focus:ring-red-500";
 
 interface ContactFormProps {
+  content: ContactContent["form"];
   onSubmitSuccess?: () => void;
 }
 
-export function ContactForm({ onSubmitSuccess }: ContactFormProps) {
+export function ContactForm({ content, onSubmitSuccess }: ContactFormProps) {
   const [formData, setFormData] = useState<FormData>(INITIAL_FORM);
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -117,7 +119,7 @@ export function ContactForm({ onSubmitSuccess }: ContactFormProps) {
             autoComplete="name"
             value={formData.name}
             onChange={handleInputChange}
-            placeholder="Your full name"
+            placeholder={content.namePlaceholder}
             aria-invalid={Boolean(errors.name)}
             aria-describedby={errorId("name")}
             className={`rounded-lg ${errors.name ? fieldErrorClass : ""}`}
@@ -142,7 +144,7 @@ export function ContactForm({ onSubmitSuccess }: ContactFormProps) {
             autoComplete="email"
             value={formData.email}
             onChange={handleInputChange}
-            placeholder="you@example.com"
+            placeholder={content.emailPlaceholder}
             aria-invalid={Boolean(errors.email)}
             aria-describedby={errorId("email")}
             className={`rounded-lg ${errors.email ? fieldErrorClass : ""}`}
@@ -167,7 +169,7 @@ export function ContactForm({ onSubmitSuccess }: ContactFormProps) {
             autoComplete="tel"
             value={formData.phone}
             onChange={handleInputChange}
-            placeholder="(403) 555-0123"
+            placeholder={content.phonePlaceholder}
             aria-invalid={Boolean(errors.phone)}
             aria-describedby={errorId("phone")}
             className={`rounded-lg ${errors.phone ? fieldErrorClass : ""}`}
@@ -191,7 +193,7 @@ export function ContactForm({ onSubmitSuccess }: ContactFormProps) {
             onChange={handleInputChange}
             className="w-full h-9 rounded-lg border border-input bg-transparent px-3 text-base md:text-sm text-[#252B37] outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]"
           >
-            <option value="">Select a topic</option>
+            <option value="">{content.topicPlaceholder}</option>
             {ENQUIRY_TYPES.map((type) => (
               <option key={type} value={type}>{type}</option>
             ))}
@@ -213,7 +215,7 @@ export function ContactForm({ onSubmitSuccess }: ContactFormProps) {
             name="message"
             value={formData.message}
             onChange={handleInputChange}
-            placeholder="Tell us how we can help, e.g. hiring for your organization, a partnership or a general question."
+            placeholder={content.messagePlaceholder}
             maxLength={MESSAGE_MAX_LENGTH}
             rows={5}
             aria-invalid={Boolean(errors.message)}

@@ -61,7 +61,7 @@ export function ComingSoon({ content }: { content: ComingSoonContent["content"] 
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               aria-label="Email address"
-              placeholder="Enter your email address"
+              placeholder={content.emailPlaceholder}
               disabled={isSubmitting}
               className="w-full sm:flex-1 max-w-md px-4 py-3 border border-gray-300 text-[#252B37] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#F3651B] bg-white !rounded-full"
             />

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { ChevronRight, Lock, ArrowRight } from "lucide-react";
 import { CustomButton } from "@/components/ui/custom-button";
 import { submitLead } from "@/utils/leads";
+import type { SUPPORT_DEFAULTS } from "@/content/pages/support";
 
 const DESCRIPTION_MAX_LENGTH = 1000;
 
@@ -42,7 +43,7 @@ function FieldError({ field, message }: { field: Field; message?: string }) {
   ) : null;
 }
 
-export function ReportIssueForm() {
+export function ReportIssueForm({ content }: { content: (typeof SUPPORT_DEFAULTS)["form"] }) {
   const [form, setForm] = useState(INITIAL_FORM);
   const [errors, setErrors] = useState<Partial<Record<Field, string>>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -107,7 +108,7 @@ export function ReportIssueForm() {
               className={`w-full appearance-none border border-gray-200 rounded-lg px-4 py-2.5 text-sm text-[#252B37] bg-white focus:outline-none focus:ring-2 focus:ring-[#F3651B]/40 pr-10 ${errors.issueType ? errorBorder : ""}`}
             >
               <option value="" disabled>
-                Select an issue type
+                {content.issueTypePlaceholder}
               </option>
               {issueTypes.map((type) => (
                 <option key={type} value={type}>
@@ -129,7 +130,7 @@ export function ReportIssueForm() {
             name="subject"
             value={form.subject}
             onChange={handleChange}
-            placeholder="e.g. I can't check in to my shift"
+            placeholder={content.subjectPlaceholder}
             aria-invalid={Boolean(errors.subject)}
             aria-describedby={describedBy("subject")}
             className={`${inputClass} ${errors.subject ? errorBorder : ""}`}
@@ -151,7 +152,7 @@ export function ReportIssueForm() {
             autoComplete="email"
             value={form.email}
             onChange={handleChange}
-            placeholder="you@example.com"
+            placeholder={content.emailPlaceholder}
             aria-invalid={Boolean(errors.email)}
             aria-describedby={describedBy("email")}
             className={`${inputClass} ${errors.email ? errorBorder : ""}`}
@@ -170,7 +171,7 @@ export function ReportIssueForm() {
             autoComplete="tel"
             value={form.phone}
             onChange={handleChange}
-            placeholder="(403) 555-0123"
+            placeholder={content.phonePlaceholder}
             aria-invalid={Boolean(errors.phone)}
             aria-describedby={describedBy("phone")}
             className={`${inputClass} ${errors.phone ? errorBorder : ""}`}
@@ -191,7 +192,7 @@ export function ReportIssueForm() {
           onChange={handleChange}
           rows={5}
           maxLength={DESCRIPTION_MAX_LENGTH}
-          placeholder="Please describe the issue in detail, including the job or shift it relates to if relevant."
+          placeholder={content.descriptionPlaceholder}
           aria-invalid={Boolean(errors.description)}
           aria-describedby={describedBy("description")}
           className={`${inputClass} resize-none ${errors.description ? errorBorder : ""}`}
