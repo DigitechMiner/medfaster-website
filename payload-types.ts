@@ -1594,6 +1594,10 @@ export interface HeaderFooter {
        */
       heading?: string | null;
       body?: string | null;
+      /**
+       * Grey hint text shown inside the field until someone types.
+       */
+      emailPlaceholder?: string | null;
     };
     tagline?: string | null;
     appButton?: {
@@ -2160,6 +2164,14 @@ export interface PageProfessional {
      * Wrap words in **double asterisks** to show them in orange. Start a new line with Enter.
      */
     heading?: string | null;
+    /**
+     * Grey hint text shown inside the field until someone types.
+     */
+    keywordPlaceholder?: string | null;
+    /**
+     * Grey hint text shown inside the field until someone types.
+     */
+    postalCodePlaceholder?: string | null;
     searchHint?: string | null;
     body?: string | null;
     cta?: {
@@ -3354,6 +3366,28 @@ export interface PageContact {
     phoneLabel?: string | null;
     followLabel?: string | null;
   };
+  form?: {
+    /**
+     * Grey hint text shown inside the field until someone types.
+     */
+    namePlaceholder?: string | null;
+    /**
+     * Grey hint text shown inside the field until someone types.
+     */
+    emailPlaceholder?: string | null;
+    /**
+     * Grey hint text shown inside the field until someone types.
+     */
+    phonePlaceholder?: string | null;
+    /**
+     * Grey hint text shown inside the field until someone types.
+     */
+    topicPlaceholder?: string | null;
+    /**
+     * Grey hint text shown inside the field until someone types.
+     */
+    messagePlaceholder?: string | null;
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -3390,6 +3424,26 @@ export interface PageSupport {
      */
     heading?: string | null;
     body?: string | null;
+    /**
+     * Grey hint text shown inside the field until someone types.
+     */
+    issueTypePlaceholder?: string | null;
+    /**
+     * Grey hint text shown inside the field until someone types.
+     */
+    subjectPlaceholder?: string | null;
+    /**
+     * Grey hint text shown inside the field until someone types.
+     */
+    emailPlaceholder?: string | null;
+    /**
+     * Grey hint text shown inside the field until someone types.
+     */
+    phonePlaceholder?: string | null;
+    /**
+     * Grey hint text shown inside the field until someone types.
+     */
+    descriptionPlaceholder?: string | null;
   };
   faqs?: {
     show?: boolean | null;
@@ -4553,6 +4607,10 @@ export interface PageComingSoon {
      */
     heading?: string | null;
     body?: string | null;
+    /**
+     * Grey hint text shown inside the field until someone types.
+     */
+    emailPlaceholder?: string | null;
     buttonLabel?: string | null;
     successMessage?: string | null;
     note?: string | null;
@@ -4596,7 +4654,38 @@ export interface PagePopup {
     heading?: string | null;
     body?: string | null;
     submitLabel?: string | null;
+    /**
+     * Grey hint text shown inside the field until someone types.
+     */
+    namePlaceholder?: string | null;
+    /**
+     * Grey hint text shown inside the field until someone types.
+     */
+    emailPlaceholder?: string | null;
+    /**
+     * Grey hint text shown inside the field until someone types.
+     */
+    organizationPlaceholder?: string | null;
+    /**
+     * Grey hint text shown inside the field until someone types.
+     */
+    rolePlaceholder?: string | null;
+    /**
+     * Grey hint text shown inside the field until someone types.
+     */
+    phonePlaceholder?: string | null;
+    /**
+     * Grey hint text shown inside the field until someone types.
+     */
+    organizationTypePlaceholder?: string | null;
+    /**
+     * Grey hint text shown inside the field until someone types.
+     */
+    provincePlaceholder?: string | null;
     messageLabel?: string | null;
+    /**
+     * Grey hint text shown inside the field until someone types.
+     */
     messagePlaceholder?: string | null;
     organizationTypes?:
       | {
@@ -4709,6 +4798,7 @@ export interface HeaderFooterSelect<T extends boolean = true> {
               show?: T;
               heading?: T;
               body?: T;
+              emailPlaceholder?: T;
             };
         tagline?: T;
         appButton?:
@@ -4974,6 +5064,8 @@ export interface PageProfessionalsSelect<T extends boolean = true> {
     | T
     | {
         heading?: T;
+        keywordPlaceholder?: T;
+        postalCodePlaceholder?: T;
         searchHint?: T;
         body?: T;
         cta?:
@@ -5395,6 +5487,15 @@ export interface PageContactSelect<T extends boolean = true> {
         phoneLabel?: T;
         followLabel?: T;
       };
+  form?:
+    | T
+    | {
+        namePlaceholder?: T;
+        emailPlaceholder?: T;
+        phonePlaceholder?: T;
+        topicPlaceholder?: T;
+        messagePlaceholder?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
@@ -5431,6 +5532,11 @@ export interface PageSupportSelect<T extends boolean = true> {
     | {
         heading?: T;
         body?: T;
+        issueTypePlaceholder?: T;
+        subjectPlaceholder?: T;
+        emailPlaceholder?: T;
+        phonePlaceholder?: T;
+        descriptionPlaceholder?: T;
       };
   faqs?:
     | T
@@ -5931,6 +6037,7 @@ export interface PageComingSoonSelect<T extends boolean = true> {
         imageAlt?: T;
         heading?: T;
         body?: T;
+        emailPlaceholder?: T;
         buttonLabel?: T;
         successMessage?: T;
         note?: T;
@@ -5969,6 +6076,13 @@ export interface PagePopupsSelect<T extends boolean = true> {
         heading?: T;
         body?: T;
         submitLabel?: T;
+        namePlaceholder?: T;
+        emailPlaceholder?: T;
+        organizationPlaceholder?: T;
+        rolePlaceholder?: T;
+        phonePlaceholder?: T;
+        organizationTypePlaceholder?: T;
+        provincePlaceholder?: T;
         messageLabel?: T;
         messagePlaceholder?: T;
         organizationTypes?:
