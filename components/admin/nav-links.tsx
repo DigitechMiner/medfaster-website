@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
+  BarChart3,
   Briefcase,
   CircleHelp,
   FileText,
@@ -33,6 +34,7 @@ export type NavGroup = { label: string; items: NavItem[] };
 
 const ICONS = {
   dashboard: LayoutDashboard,
+  analytics: BarChart3,
   inbox: Inbox,
   pages: FileText,
   layout: PanelsTopLeft,

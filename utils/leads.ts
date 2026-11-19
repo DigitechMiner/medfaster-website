@@ -1,3 +1,5 @@
+import { trackConversion } from "@/lib/tracking";
+
 export type LeadPayload =
   | {
       type: "demo";
@@ -47,6 +49,9 @@ export async function submitLead(payload: LeadPayload, messages: LeadMessages = 
       body: JSON.stringify(payload),
     });
     const data = await response.json().catch(() => ({}));
+    if (response.ok && !payload.website) {
+      trackConversion(payload.type, payload.type === "newsletter" ? payload.audience : undefined);
+    }
     return {
       ok: response.ok,
       message: data.message ?? (response.ok ? "Thank you." : "Something went wrong. Please try again."),

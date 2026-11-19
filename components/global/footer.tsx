@@ -15,13 +15,16 @@ import { AccentText } from "@/components/ui/accent-text";
 import { resolveLink, telHref } from "@/lib/links";
 import { useHeaderFooter } from "@/components/providers/header-footer";
 import { useSiteSettings } from "@/components/providers/site-settings";
+import { cleanMeasurementId, cleanPixelId, openCookiePreferences } from "@/lib/tracking";
 
 const linkClass = "text-sm text-[#717680] hover:text-[#F3651B] transition-colors text-left";
 
 export function Footer() {
   const openModal = useModalStore((state) => state.openModal);
   const { footer } = useHeaderFooter();
-  const { contact, apps, social, branding, forms } = useSiteSettings();
+  const { contact, apps, social, branding, forms, tracking, cookieBanner } = useSiteSettings();
+  // Visitors can change their cookie choice once a tracker is turned on
+  const hasTracking = Boolean(cleanMeasurementId(tracking.googleAnalyticsId) || cleanPixelId(tracking.metaPixelId));
   const socialLinks = [
     { label: "LinkedIn", icon: Linkedin, href: social.linkedinUrl },
     { label: "Facebook", icon: Facebook, href: social.facebookUrl },
@@ -234,6 +237,15 @@ export function Footer() {
                   <span className="font-medium text-[#252B37]">{footer.creditLabel}</span>
                 )}
               </ResponsiveParagraph>
+            )}
+            {hasTracking && cookieBanner.preferencesLabel && (
+              <button
+                type="button"
+                onClick={openCookiePreferences}
+                className="self-start text-xs text-muted-foreground underline underline-offset-2 hover:text-[#F3651B] transition-colors"
+              >
+                {cookieBanner.preferencesLabel}
+              </button>
             )}
           </div>
 

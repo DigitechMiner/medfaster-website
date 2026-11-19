@@ -1512,6 +1512,28 @@ export interface SiteSetting {
   company?: {
     legalName?: string | null;
   };
+  tracking?: {
+    /**
+     * From Google Analytics → Admin → Data streams → your web stream (starts with G-). Adds Google Analytics to the website. Leave empty to turn it off.
+     */
+    googleAnalyticsId?: string | null;
+    /**
+     * From Google Analytics → Admin → Property details (a number such as 412345678). Used to show Google numbers on the admin Analytics page.
+     */
+    googleAnalyticsPropertyId?: string | null;
+    /**
+     * From Meta Events Manager → Data sources → your Pixel (the 15–16 digit number). Records page views and form sign-ups. Leave empty to turn the Pixel off.
+     */
+    metaPixelId?: string | null;
+  };
+  cookieBanner?: {
+    message?: string | null;
+    acceptLabel?: string | null;
+    declineLabel?: string | null;
+    policyLinkLabel?: string | null;
+    policyLink?: string | null;
+    preferencesLabel?: string | null;
+  };
   forms?: {
     invalidEmailMessage?: string | null;
     /**
@@ -4803,6 +4825,23 @@ export interface SiteSettingsSelect<T extends boolean = true> {
     | T
     | {
         legalName?: T;
+      };
+  tracking?:
+    | T
+    | {
+        googleAnalyticsId?: T;
+        googleAnalyticsPropertyId?: T;
+        metaPixelId?: T;
+      };
+  cookieBanner?:
+    | T
+    | {
+        message?: T;
+        acceptLabel?: T;
+        declineLabel?: T;
+        policyLinkLabel?: T;
+        policyLink?: T;
+        preferencesLabel?: T;
       };
   forms?:
     | T

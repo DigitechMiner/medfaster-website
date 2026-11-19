@@ -51,6 +51,28 @@ const IMAGE_TIPS: Record<string, string> = {
   placeholderImage: "Faint mark shown while photos load or when one fails. A simple grey SVG works best.",
 };
 
+// Tracking IDs in Site Settings → Tracking. Only the ID itself is accepted.
+const TRACKING_IDS: Record<string, { label: string; pattern: RegExp; error: string; help: string }> = {
+  googleAnalyticsId: {
+    label: "Google Analytics Measurement ID",
+    pattern: /^G-[A-Z0-9]{4,20}$/i,
+    error: "Enter only the Measurement ID, which starts with G- (for example G-AB12CD34EF), not the whole code snippet.",
+    help: "From Google Analytics → Admin → Data streams → your web stream (starts with G-). Adds Google Analytics to the website. Leave empty to turn it off.",
+  },
+  googleAnalyticsPropertyId: {
+    label: "Google Analytics Property ID",
+    pattern: /^\d{5,15}$/,
+    error: "Enter only the Property ID number.",
+    help: "From Google Analytics → Admin → Property details (a number such as 412345678). Used to show Google numbers on the admin Analytics page.",
+  },
+  metaPixelId: {
+    label: "Meta Pixel ID",
+    pattern: /^\d{10,20}$/,
+    error: "Enter only the Pixel ID number (digits), not the whole code snippet.",
+    help: "From Meta Events Manager → Data sources → your Pixel (the 15–16 digit number). Records page views and form sign-ups. Leave empty to turn the Pixel off.",
+  },
+};
+
 export function isImageKey(key: string) {
   return IMAGE_KEY.test(key);
 }
@@ -78,6 +100,18 @@ function stringField(key: string, value: string, path: string): Field {
           : `Leave empty to keep the current image (${value}).`,
       },
     };
+  }
+  if (key in TRACKING_IDS) {
+    const rule = TRACKING_IDS[key];
+    return {
+      name: key,
+      label: rule.label,
+      type: "text",
+      defaultValue: value,
+      // Only a bare ID is accepted, so no other code can be added to the site here
+      validate: (input: unknown) => !input || rule.pattern.test(String(input).trim()) || rule.error,
+      admin: { description: rule.help },
+    } as Field;
   }
   if (key === "link" || /(Url|Href)$/.test(key)) {
     return {

@@ -59,6 +59,7 @@ export default buildConfig({
       views: {
         dashboard: { Component: "/components/admin/dashboard#Dashboard" },
         pages: { Component: "/components/admin/pages-view#PagesView", path: "/pages", meta: { title: "Pages" } },
+        analytics: { Component: "/components/admin/analytics-view#AnalyticsView", path: "/analytics", meta: { title: "Analytics" } },
       },
     },
   },

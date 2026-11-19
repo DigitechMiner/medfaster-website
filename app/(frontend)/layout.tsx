@@ -4,6 +4,7 @@ import { fonts } from "@/lib/font";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Analytics } from "@vercel/analytics/next";
+import { Tracking } from "@/components/global/tracking";
 import { GlobalModals } from "@/components/global/modals";
 import { getPageContent } from "@/lib/cms/content";
 import { Preloader } from "@/components/global/preloader";
@@ -68,6 +69,8 @@ export default async function RootLayout({
           theme="light"
         />
         <Analytics />
+        {/* Google Analytics and Meta Pixel (Site Settings → Tracking), after cookie consent */}
+        <Tracking />
         </HeaderFooterProvider>
         </SiteSettingsProvider>
       </body>

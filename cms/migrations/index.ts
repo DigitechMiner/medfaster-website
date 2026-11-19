@@ -5,6 +5,7 @@ import * as migration_20261118_194355_blob_storage_fields from './20261118_19435
 import * as migration_20261119_153932_branding_images from './20261119_153932_branding_images';
 import * as migration_20261119_171640_form_placeholders from './20261119_171640_form_placeholders';
 import * as migration_20261119_214417_form_labels_messages from './20261119_214417_form_labels_messages';
+import * as migration_20261119_215418_analytics_tracking from './20261119_215418_analytics_tracking';
 
 export const migrations = [
   {
@@ -40,6 +41,11 @@ export const migrations = [
   {
     up: migration_20261119_214417_form_labels_messages.up,
     down: migration_20261119_214417_form_labels_messages.down,
-    name: '20261119_214417_form_labels_messages'
+    name: '20261119_214417_form_labels_messages',
+  },
+  {
+    up: migration_20261119_215418_analytics_tracking.up,
+    down: migration_20261119_215418_analytics_tracking.down,
+    name: '20261119_215418_analytics_tracking'
   },
 ];

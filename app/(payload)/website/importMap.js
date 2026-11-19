@@ -34,6 +34,7 @@ import { LoginPanel as LoginPanel_9c2c6aa4c80f74f35c72289d10b9d6c7 } from '../..
 import { LoginIntro as LoginIntro_9c2c6aa4c80f74f35c72289d10b9d6c7 } from '../../../components/admin/login-panel'
 import { Dashboard as Dashboard_17cbb53d1dcdedc66c123d519d2cff79 } from '../../../components/admin/dashboard'
 import { PagesView as PagesView_01fabdda2de8e79a477fbc788fec77ee } from '../../../components/admin/pages-view'
+import { AnalyticsView as AnalyticsView_e90e55e15670048fc5c26ec3cfcb9be3 } from '../../../components/admin/analytics-view'
 import { CollectionCards as CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1 } from '@payloadcms/next/rsc'
 import { VercelBlobClientUploadHandler as VercelBlobClientUploadHandler_16c82c5e25f430251a3e3ba57219ff4e } from '@payloadcms/storage-vercel-blob/client'
 
@@ -75,6 +76,7 @@ export const importMap = {
   "/components/admin/login-panel#LoginIntro": LoginIntro_9c2c6aa4c80f74f35c72289d10b9d6c7,
   "/components/admin/dashboard#Dashboard": Dashboard_17cbb53d1dcdedc66c123d519d2cff79,
   "/components/admin/pages-view#PagesView": PagesView_01fabdda2de8e79a477fbc788fec77ee,
+  "/components/admin/analytics-view#AnalyticsView": AnalyticsView_e90e55e15670048fc5c26ec3cfcb9be3,
   "@payloadcms/next/rsc#CollectionCards": CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1,
   "@payloadcms/storage-vercel-blob/client#VercelBlobClientUploadHandler": VercelBlobClientUploadHandler_16c82c5e25f430251a3e3ba57219ff4e
 }

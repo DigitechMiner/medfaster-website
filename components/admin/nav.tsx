@@ -42,6 +42,7 @@ export async function AdminNav({ payload, user, visibleEntities }: NavProps) {
       label: "Overview",
       items: [
         { label: "Dashboard", href: adminUrl(), icon: "dashboard" as const, exact: true },
+        { label: "Analytics", href: adminUrl("/analytics"), icon: "analytics" as const },
         ...(collection("form-submissions") ? [{ label: "Inbox", href: adminUrl("/collections/form-submissions"), icon: "inbox" as const, count: newSubmissions }] : []),
       ],
     },
