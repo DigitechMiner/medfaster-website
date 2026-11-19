@@ -11,6 +11,7 @@ import { useModalStore } from "@/stores/modalStore";
 import { submitLead } from "@/utils/leads";
 import { AccentText } from "@/components/ui/accent-text";
 import type { PopupsContent } from "@/content/pages/popups";
+import { useSiteSettings } from "@/components/providers/site-settings";
 
 const PROVINCES = [
   "Alberta",
@@ -46,6 +47,7 @@ const selectClass =
 
 export function RequestDemoModal({ content }: { content: PopupsContent["requestDemo"] }) {
   const { activeModal, closeModal } = useModalStore();
+  const { forms } = useSiteSettings();
   const isOpen = activeModal === "request-demo";
   const [form, setForm] = useState(INITIAL_FORM);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -74,7 +76,7 @@ export function RequestDemoModal({ content }: { content: PopupsContent["requestD
     setIsSubmitting(true);
     setError(null);
 
-    const result = await submitLead({ type: "demo", ...form });
+    const result = await submitLead({ type: "demo", ...form }, forms);
 
     setIsSubmitting(false);
     if (result.ok) {
@@ -97,7 +99,7 @@ export function RequestDemoModal({ content }: { content: PopupsContent["requestD
             {content.successBody}
           </Paragraph>
           <CustomButton className="mx-auto" onClick={closeModal}>
-            Close
+            {content.closeLabel}
           </CustomButton>
         </div>
       ) : (
@@ -113,27 +115,27 @@ export function RequestDemoModal({ content }: { content: PopupsContent["requestD
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label htmlFor="demo-name" className={labelClass}>Full Name *</label>
+              <label htmlFor="demo-name" className={labelClass}>{content.nameLabel}</label>
               <Input id="demo-name" name="name" value={form.name} onChange={handleChange} placeholder={content.namePlaceholder} autoComplete="name" className="rounded-lg" required />
             </div>
             <div>
-              <label htmlFor="demo-email" className={labelClass}>Work Email *</label>
+              <label htmlFor="demo-email" className={labelClass}>{content.emailLabel}</label>
               <Input id="demo-email" type="email" name="email" value={form.email} onChange={handleChange} placeholder={content.emailPlaceholder} autoComplete="email" className="rounded-lg" required />
             </div>
             <div>
-              <label htmlFor="demo-organization" className={labelClass}>Organization *</label>
+              <label htmlFor="demo-organization" className={labelClass}>{content.organizationLabel}</label>
               <Input id="demo-organization" name="organization" value={form.organization} onChange={handleChange} placeholder={content.organizationPlaceholder} autoComplete="organization" className="rounded-lg" required />
             </div>
             <div>
-              <label htmlFor="demo-role" className={labelClass}>Your Role</label>
+              <label htmlFor="demo-role" className={labelClass}>{content.roleLabel}</label>
               <Input id="demo-role" name="role" value={form.role} onChange={handleChange} placeholder={content.rolePlaceholder} autoComplete="organization-title" className="rounded-lg" />
             </div>
             <div>
-              <label htmlFor="demo-phone" className={labelClass}>Phone</label>
+              <label htmlFor="demo-phone" className={labelClass}>{content.phoneLabel}</label>
               <Input id="demo-phone" type="tel" name="phone" value={form.phone} onChange={handleChange} placeholder={content.phonePlaceholder} autoComplete="tel" className="rounded-lg" />
             </div>
             <div>
-              <label htmlFor="demo-organization-type" className={labelClass}>Organization Type</label>
+              <label htmlFor="demo-organization-type" className={labelClass}>{content.organizationTypeLabel}</label>
               <select id="demo-organization-type" name="organizationType" value={form.organizationType} onChange={handleChange} className={selectClass}>
                 <option value="">{content.organizationTypePlaceholder}</option>
                 {content.organizationTypes.filter(Boolean).map((type) => (
@@ -142,7 +144,7 @@ export function RequestDemoModal({ content }: { content: PopupsContent["requestD
               </select>
             </div>
             <div className="sm:col-span-2">
-              <label htmlFor="demo-province" className={labelClass}>Province / Territory</label>
+              <label htmlFor="demo-province" className={labelClass}>{content.provinceLabel}</label>
               <select id="demo-province" name="province" value={form.province} onChange={handleChange} className={selectClass}>
                 <option value="">{content.provincePlaceholder}</option>
                 {PROVINCES.map((province) => (
@@ -189,7 +191,7 @@ export function RequestDemoModal({ content }: { content: PopupsContent["requestD
             rightIcon={ArrowRight}
             className="w-full justify-center my-0"
           >
-            {isSubmitting ? "Sending..." : content.submitLabel}
+            {isSubmitting ? content.sendingLabel : content.submitLabel}
           </CustomButton>
         </form>
       )}

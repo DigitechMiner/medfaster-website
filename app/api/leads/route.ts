@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getCms } from "@/lib/cms/payload";
+import { getSiteSettings } from "@/lib/cms/site";
 
 // Receives demo requests, newsletter sign-ups, contact enquiries and support
 // requests. Each one is saved to the admin Inbox (Form Submissions) when the
@@ -24,6 +25,11 @@ const ALLOWED_FIELDS: Record<LeadType, string[]> = {
   contact: ["name", "email", "phone", "enquiryType", "message"],
   support: ["issueType", "subject", "email", "phone", "description"],
 };
+
+// Error messages people see are edited in Site Settings → Forms
+async function formMessages() {
+  return (await getSiteSettings()).forms;
+}
 
 export async function POST(request: Request) {
   let body: Record<string, unknown>;
@@ -53,10 +59,11 @@ export async function POST(request: Request) {
 
   const missing = REQUIRED_FIELDS[type].filter((key) => !fields[key]);
   if (missing.length > 0) {
-    return NextResponse.json({ message: `Missing required fields: ${missing.join(", ")}` }, { status: 400 });
+    const { missingFieldsMessage } = await formMessages();
+    return NextResponse.json({ message: missingFieldsMessage.replace("{fields}", missing.join(", ")) }, { status: 400 });
   }
   if (!EMAIL_REGEX.test(fields.email)) {
-    return NextResponse.json({ message: "Please enter a valid email address." }, { status: 400 });
+    return NextResponse.json({ message: (await formMessages()).invalidEmailMessage }, { status: 400 });
   }
 
   const source = request.headers.get("referer") ?? "";
@@ -64,10 +71,7 @@ export async function POST(request: Request) {
   const payload = await getCms();
 
   if (!webhookUrl && !payload) {
-    return NextResponse.json(
-      { message: "This form isn't connected yet. Please email support@keraeva.com." },
-      { status: 503 }
-    );
+    return NextResponse.json({ message: (await formMessages()).notConnectedMessage }, { status: 503 });
   }
 
   // 1. Admin Inbox
@@ -116,10 +120,7 @@ export async function POST(request: Request) {
 
   // Only report success when the submission actually reached the team
   if (savedId === undefined && !forwarded) {
-    return NextResponse.json(
-      { message: "Something went wrong. Please try again or email support@keraeva.com." },
-      { status: 502 }
-    );
+    return NextResponse.json({ message: (await formMessages()).sendFailedMessage }, { status: 502 });
   }
 
   return NextResponse.json({ message: "Thank you." }, { status: 200 });

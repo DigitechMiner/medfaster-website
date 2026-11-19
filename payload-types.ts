@@ -1512,6 +1512,16 @@ export interface SiteSetting {
   company?: {
     legalName?: string | null;
   };
+  forms?: {
+    invalidEmailMessage?: string | null;
+    /**
+     * Words in {curly brackets} are filled in automatically. Keep them exactly as they are.
+     */
+    missingFieldsMessage?: string | null;
+    sendFailedMessage?: string | null;
+    notConnectedMessage?: string | null;
+    networkErrorMessage?: string | null;
+  };
   branding?: {
     /**
      * Shown in the header, footer, pop-ups and loading screen. SVG works best; otherwise a wide transparent PNG. Leave empty to keep the current image.
@@ -1598,6 +1608,13 @@ export interface HeaderFooter {
        * Grey hint text shown inside the field until someone types.
        */
       emailPlaceholder?: string | null;
+      buttonLabel?: string | null;
+      sendingLabel?: string | null;
+      /**
+       * Words in {curly brackets} are filled in automatically. Keep them exactly as they are.
+       */
+      successMessage?: string | null;
+      invalidEmailMessage?: string | null;
     };
     tagline?: string | null;
     appButton?: {
@@ -1623,6 +1640,9 @@ export interface HeaderFooter {
           id?: string | null;
         }[]
       | null;
+    /**
+     * Words in {curly brackets} are filled in automatically. Keep them exactly as they are.
+     */
     copyright?: string | null;
     creditPrefix?: string | null;
     creditLabel?: string | null;
@@ -3367,26 +3387,43 @@ export interface PageContact {
     followLabel?: string | null;
   };
   form?: {
+    nameLabel?: string | null;
     /**
      * Grey hint text shown inside the field until someone types.
      */
     namePlaceholder?: string | null;
+    emailLabel?: string | null;
     /**
      * Grey hint text shown inside the field until someone types.
      */
     emailPlaceholder?: string | null;
+    phoneLabel?: string | null;
     /**
      * Grey hint text shown inside the field until someone types.
      */
     phonePlaceholder?: string | null;
+    optionalLabel?: string | null;
+    topicLabel?: string | null;
     /**
      * Grey hint text shown inside the field until someone types.
      */
     topicPlaceholder?: string | null;
+    messageLabel?: string | null;
     /**
      * Grey hint text shown inside the field until someone types.
      */
     messagePlaceholder?: string | null;
+    submitLabel?: string | null;
+    sendingLabel?: string | null;
+    successMessage?: string | null;
+    errorMessages?: {
+      nameRequired?: string | null;
+      emailRequired?: string | null;
+      emailInvalid?: string | null;
+      phoneInvalid?: string | null;
+      messageRequired?: string | null;
+      messageTooShort?: string | null;
+    };
   };
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -3424,26 +3461,44 @@ export interface PageSupport {
      */
     heading?: string | null;
     body?: string | null;
+    issueTypeLabel?: string | null;
     /**
      * Grey hint text shown inside the field until someone types.
      */
     issueTypePlaceholder?: string | null;
+    subjectLabel?: string | null;
     /**
      * Grey hint text shown inside the field until someone types.
      */
     subjectPlaceholder?: string | null;
+    emailLabel?: string | null;
     /**
      * Grey hint text shown inside the field until someone types.
      */
     emailPlaceholder?: string | null;
+    phoneLabel?: string | null;
     /**
      * Grey hint text shown inside the field until someone types.
      */
     phonePlaceholder?: string | null;
+    optionalLabel?: string | null;
+    descriptionLabel?: string | null;
     /**
      * Grey hint text shown inside the field until someone types.
      */
     descriptionPlaceholder?: string | null;
+    submitLabel?: string | null;
+    sendingLabel?: string | null;
+    securityNote?: string | null;
+    successMessage?: string | null;
+    errorMessages?: {
+      issueTypeRequired?: string | null;
+      subjectRequired?: string | null;
+      emailRequired?: string | null;
+      emailInvalid?: string | null;
+      phoneInvalid?: string | null;
+      descriptionTooShort?: string | null;
+    };
   };
   faqs?: {
     show?: boolean | null;
@@ -4612,6 +4667,7 @@ export interface PageComingSoon {
      */
     emailPlaceholder?: string | null;
     buttonLabel?: string | null;
+    sendingLabel?: string | null;
     successMessage?: string | null;
     note?: string | null;
   };
@@ -4653,31 +4709,43 @@ export interface PagePopup {
      */
     heading?: string | null;
     body?: string | null;
-    submitLabel?: string | null;
+    nameLabel?: string | null;
     /**
      * Grey hint text shown inside the field until someone types.
      */
     namePlaceholder?: string | null;
+    emailLabel?: string | null;
     /**
      * Grey hint text shown inside the field until someone types.
      */
     emailPlaceholder?: string | null;
+    organizationLabel?: string | null;
     /**
      * Grey hint text shown inside the field until someone types.
      */
     organizationPlaceholder?: string | null;
+    roleLabel?: string | null;
     /**
      * Grey hint text shown inside the field until someone types.
      */
     rolePlaceholder?: string | null;
+    phoneLabel?: string | null;
     /**
      * Grey hint text shown inside the field until someone types.
      */
     phonePlaceholder?: string | null;
+    organizationTypeLabel?: string | null;
     /**
      * Grey hint text shown inside the field until someone types.
      */
     organizationTypePlaceholder?: string | null;
+    organizationTypes?:
+      | {
+          text: string;
+          id?: string | null;
+        }[]
+      | null;
+    provinceLabel?: string | null;
     /**
      * Grey hint text shown inside the field until someone types.
      */
@@ -4687,17 +4755,14 @@ export interface PagePopup {
      * Grey hint text shown inside the field until someone types.
      */
     messagePlaceholder?: string | null;
-    organizationTypes?:
-      | {
-          text: string;
-          id?: string | null;
-        }[]
-      | null;
+    submitLabel?: string | null;
+    sendingLabel?: string | null;
     /**
      * Wrap words in **double asterisks** to show them in orange. Start a new line with Enter.
      */
     successHeading?: string | null;
     successBody?: string | null;
+    closeLabel?: string | null;
   };
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -4738,6 +4803,15 @@ export interface SiteSettingsSelect<T extends boolean = true> {
     | T
     | {
         legalName?: T;
+      };
+  forms?:
+    | T
+    | {
+        invalidEmailMessage?: T;
+        missingFieldsMessage?: T;
+        sendFailedMessage?: T;
+        notConnectedMessage?: T;
+        networkErrorMessage?: T;
       };
   branding?:
     | T
@@ -4799,6 +4873,10 @@ export interface HeaderFooterSelect<T extends boolean = true> {
               heading?: T;
               body?: T;
               emailPlaceholder?: T;
+              buttonLabel?: T;
+              sendingLabel?: T;
+              successMessage?: T;
+              invalidEmailMessage?: T;
             };
         tagline?: T;
         appButton?:
@@ -5490,11 +5568,30 @@ export interface PageContactSelect<T extends boolean = true> {
   form?:
     | T
     | {
+        nameLabel?: T;
         namePlaceholder?: T;
+        emailLabel?: T;
         emailPlaceholder?: T;
+        phoneLabel?: T;
         phonePlaceholder?: T;
+        optionalLabel?: T;
+        topicLabel?: T;
         topicPlaceholder?: T;
+        messageLabel?: T;
         messagePlaceholder?: T;
+        submitLabel?: T;
+        sendingLabel?: T;
+        successMessage?: T;
+        errorMessages?:
+          | T
+          | {
+              nameRequired?: T;
+              emailRequired?: T;
+              emailInvalid?: T;
+              phoneInvalid?: T;
+              messageRequired?: T;
+              messageTooShort?: T;
+            };
       };
   updatedAt?: T;
   createdAt?: T;
@@ -5532,11 +5629,31 @@ export interface PageSupportSelect<T extends boolean = true> {
     | {
         heading?: T;
         body?: T;
+        issueTypeLabel?: T;
         issueTypePlaceholder?: T;
+        subjectLabel?: T;
         subjectPlaceholder?: T;
+        emailLabel?: T;
         emailPlaceholder?: T;
+        phoneLabel?: T;
         phonePlaceholder?: T;
+        optionalLabel?: T;
+        descriptionLabel?: T;
         descriptionPlaceholder?: T;
+        submitLabel?: T;
+        sendingLabel?: T;
+        securityNote?: T;
+        successMessage?: T;
+        errorMessages?:
+          | T
+          | {
+              issueTypeRequired?: T;
+              subjectRequired?: T;
+              emailRequired?: T;
+              emailInvalid?: T;
+              phoneInvalid?: T;
+              descriptionTooShort?: T;
+            };
       };
   faqs?:
     | T
@@ -6039,6 +6156,7 @@ export interface PageComingSoonSelect<T extends boolean = true> {
         body?: T;
         emailPlaceholder?: T;
         buttonLabel?: T;
+        sendingLabel?: T;
         successMessage?: T;
         note?: T;
       };
@@ -6075,24 +6193,33 @@ export interface PagePopupsSelect<T extends boolean = true> {
     | {
         heading?: T;
         body?: T;
-        submitLabel?: T;
+        nameLabel?: T;
         namePlaceholder?: T;
+        emailLabel?: T;
         emailPlaceholder?: T;
+        organizationLabel?: T;
         organizationPlaceholder?: T;
+        roleLabel?: T;
         rolePlaceholder?: T;
+        phoneLabel?: T;
         phonePlaceholder?: T;
+        organizationTypeLabel?: T;
         organizationTypePlaceholder?: T;
-        provincePlaceholder?: T;
-        messageLabel?: T;
-        messagePlaceholder?: T;
         organizationTypes?:
           | T
           | {
               text?: T;
               id?: T;
             };
+        provinceLabel?: T;
+        provincePlaceholder?: T;
+        messageLabel?: T;
+        messagePlaceholder?: T;
+        submitLabel?: T;
+        sendingLabel?: T;
         successHeading?: T;
         successBody?: T;
+        closeLabel?: T;
       };
   updatedAt?: T;
   createdAt?: T;

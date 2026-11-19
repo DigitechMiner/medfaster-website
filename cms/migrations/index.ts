@@ -4,6 +4,7 @@ import * as migration_20261118_191558_editable_pages from './20261118_191558_edi
 import * as migration_20261118_194355_blob_storage_fields from './20261118_194355_blob_storage_fields';
 import * as migration_20261119_153932_branding_images from './20261119_153932_branding_images';
 import * as migration_20261119_171640_form_placeholders from './20261119_171640_form_placeholders';
+import * as migration_20261119_214417_form_labels_messages from './20261119_214417_form_labels_messages';
 
 export const migrations = [
   {
@@ -34,6 +35,11 @@ export const migrations = [
   {
     up: migration_20261119_171640_form_placeholders.up,
     down: migration_20261119_171640_form_placeholders.down,
-    name: '20261119_171640_form_placeholders'
+    name: '20261119_171640_form_placeholders',
+  },
+  {
+    up: migration_20261119_214417_form_labels_messages.up,
+    down: migration_20261119_214417_form_labels_messages.down,
+    name: '20261119_214417_form_labels_messages'
   },
 ];

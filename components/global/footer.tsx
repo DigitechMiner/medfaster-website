@@ -21,7 +21,7 @@ const linkClass = "text-sm text-[#717680] hover:text-[#F3651B] transition-colors
 export function Footer() {
   const openModal = useModalStore((state) => state.openModal);
   const { footer } = useHeaderFooter();
-  const { contact, apps, social, branding } = useSiteSettings();
+  const { contact, apps, social, branding, forms } = useSiteSettings();
   const socialLinks = [
     { label: "LinkedIn", icon: Linkedin, href: social.linkedinUrl },
     { label: "Facebook", icon: Facebook, href: social.facebookUrl },
@@ -43,17 +43,17 @@ export function Footer() {
     e.preventDefault();
 
     if (!email || !email.includes("@")) {
-      setMessage("Please enter a valid email address");
+      setMessage(footer.newsletter.invalidEmailMessage);
       return;
     }
 
     setIsSubmitting(true);
     setMessage("");
 
-    const result = await submitLead({ type: "newsletter", email });
+    const result = await submitLead({ type: "newsletter", email }, forms);
 
     if (result.ok) {
-      setMessage(`✓ Subscribed with ${email}. Thank you!`);
+      setMessage(`✓ ${footer.newsletter.successMessage.replace("{email}", email)}`);
       setEmail("");
     } else {
       setMessage(`✗ ${result.message}`);
@@ -100,7 +100,7 @@ export function Footer() {
                 size="md"
                 className="w-full sm:w-auto my-0 justify-center"
               >
-                {isSubmitting ? "Subscribing..." : "Subscribe"}
+                {isSubmitting ? footer.newsletter.sendingLabel : footer.newsletter.buttonLabel}
               </CustomButton>
             </form>
             {message && (

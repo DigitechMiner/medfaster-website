@@ -11,6 +11,7 @@ export const COMING_SOON_DEFAULTS = {
     body: "Get the latest updates on the KeRaeva platform, exclusive invites, and early access for healthcare professionals and recruiters in Canada.",
     emailPlaceholder: "Enter your email address",
     buttonLabel: "Notify Me",
+    sendingLabel: "Sending...",
     successMessage: "Thanks! We'll let you know when it's ready.",
     note: "Sign up and we'll email you when it launches.",
   },

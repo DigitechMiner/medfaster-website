@@ -5,6 +5,7 @@ import { ChevronRight, Lock, ArrowRight } from "lucide-react";
 import { CustomButton } from "@/components/ui/custom-button";
 import { submitLead } from "@/utils/leads";
 import type { SUPPORT_DEFAULTS } from "@/content/pages/support";
+import { useSiteSettings } from "@/components/providers/site-settings";
 
 const DESCRIPTION_MAX_LENGTH = 1000;
 
@@ -44,6 +45,8 @@ function FieldError({ field, message }: { field: Field; message?: string }) {
 }
 
 export function ReportIssueForm({ content }: { content: (typeof SUPPORT_DEFAULTS)["form"] }) {
+  const { forms } = useSiteSettings();
+  const errorText = content.errorMessages;
   const [form, setForm] = useState(INITIAL_FORM);
   const [errors, setErrors] = useState<Partial<Record<Field, string>>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -60,12 +63,12 @@ export function ReportIssueForm({ content }: { content: (typeof SUPPORT_DEFAULTS
 
   const validate = () => {
     const next: Partial<Record<Field, string>> = {};
-    if (!form.issueType) next.issueType = "Please choose an issue type";
-    if (!form.subject.trim()) next.subject = "Please add a short subject";
-    if (!form.email.trim()) next.email = "Please enter your email";
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) next.email = "Please enter a valid email";
-    if (form.phone.trim() && form.phone.replace(/\D/g, "").length < 10) next.phone = "Please enter a valid phone number";
-    if (form.description.trim().length < 10) next.description = "Please describe the issue (at least 10 characters)";
+    if (!form.issueType) next.issueType = errorText.issueTypeRequired;
+    if (!form.subject.trim()) next.subject = errorText.subjectRequired;
+    if (!form.email.trim()) next.email = errorText.emailRequired;
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) next.email = errorText.emailInvalid;
+    if (form.phone.trim() && form.phone.replace(/\D/g, "").length < 10) next.phone = errorText.phoneInvalid;
+    if (form.description.trim().length < 10) next.description = errorText.descriptionTooShort;
     setErrors(next);
     return Object.keys(next).length === 0;
   };
@@ -76,11 +79,11 @@ export function ReportIssueForm({ content }: { content: (typeof SUPPORT_DEFAULTS
 
     setIsSubmitting(true);
     setResult(null);
-    const response = await submitLead({ type: "support", ...form });
+    const response = await submitLead({ type: "support", ...form }, forms);
     setIsSubmitting(false);
 
     if (response.ok) {
-      setResult({ ok: true, message: "Thank you. Your request has been sent to our support team, and we'll reply by email." });
+      setResult({ ok: true, message: content.successMessage });
       setForm(INITIAL_FORM);
     } else {
       setResult({ ok: false, message: response.message });
@@ -95,7 +98,7 @@ export function ReportIssueForm({ content }: { content: (typeof SUPPORT_DEFAULTS
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="space-y-1.5">
           <label htmlFor="support-issue-type" className={labelClass}>
-            Select Issue Type
+            {content.issueTypeLabel}
           </label>
           <div className="relative">
             <select
@@ -123,7 +126,7 @@ export function ReportIssueForm({ content }: { content: (typeof SUPPORT_DEFAULTS
 
         <div className="space-y-1.5">
           <label htmlFor="support-subject" className={labelClass}>
-            Subject
+            {content.subjectLabel}
           </label>
           <input
             id="support-subject"
@@ -143,7 +146,7 @@ export function ReportIssueForm({ content }: { content: (typeof SUPPORT_DEFAULTS
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="space-y-1.5">
           <label htmlFor="support-email" className={labelClass}>
-            Email Address
+            {content.emailLabel}
           </label>
           <input
             id="support-email"
@@ -162,7 +165,7 @@ export function ReportIssueForm({ content }: { content: (typeof SUPPORT_DEFAULTS
 
         <div className="space-y-1.5">
           <label htmlFor="support-phone" className={labelClass}>
-            Phone Number <span className="font-normal">(optional)</span>
+            {content.phoneLabel} <span className="font-normal">{content.optionalLabel}</span>
           </label>
           <input
             id="support-phone"
@@ -183,7 +186,7 @@ export function ReportIssueForm({ content }: { content: (typeof SUPPORT_DEFAULTS
       {/* Row 3 — Description */}
       <div className="space-y-1.5">
         <label htmlFor="support-description" className={labelClass}>
-          Description
+          {content.descriptionLabel}
         </label>
         <textarea
           id="support-description"
@@ -237,12 +240,12 @@ export function ReportIssueForm({ content }: { content: (typeof SUPPORT_DEFAULTS
           size="md"
           className="w-full sm:w-auto my-0 justify-center"
         >
-          {isSubmitting ? "Sending..." : "Submit Request"}
+          {isSubmitting ? content.sendingLabel : content.submitLabel}
         </CustomButton>
 
         <p className="flex items-center gap-1.5 text-xs text-[#717680] sm:text-right">
           <Lock className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
-          Your data is securely handled and protected.
+          {content.securityNote}
         </p>
       </div>
     </form>

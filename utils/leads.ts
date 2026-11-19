@@ -36,7 +36,10 @@ export interface LeadResult {
   message: string;
 }
 
-export async function submitLead(payload: LeadPayload): Promise<LeadResult> {
+// Messages from Site Settings → Forms
+type LeadMessages = { networkErrorMessage?: string };
+
+export async function submitLead(payload: LeadPayload, messages: LeadMessages = {}): Promise<LeadResult> {
   try {
     const response = await fetch("/api/leads", {
       method: "POST",
@@ -49,6 +52,6 @@ export async function submitLead(payload: LeadPayload): Promise<LeadResult> {
       message: data.message ?? (response.ok ? "Thank you." : "Something went wrong. Please try again."),
     };
   } catch {
-    return { ok: false, message: "Network error. Please check your connection and try again." };
+    return { ok: false, message: messages.networkErrorMessage || "Network error. Please check your connection and try again." };
   }
 }

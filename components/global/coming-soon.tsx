@@ -10,8 +10,10 @@ import { ArrowRight } from "lucide-react";
 import { Section } from "@/components/ui/section";
 import { AccentText, stripAccents } from "@/components/ui/accent-text";
 import type { ComingSoonContent } from "@/content/pages/coming-soon";
+import { useSiteSettings } from "@/components/providers/site-settings";
 
 export function ComingSoon({ content }: { content: ComingSoonContent["content"] }) {
+  const { forms } = useSiteSettings();
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState<{ ok: boolean; text: string } | null>(null);
@@ -19,7 +21,7 @@ export function ComingSoon({ content }: { content: ComingSoonContent["content"] 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    const result = await submitLead({ type: "newsletter", email, audience: "coming-soon" });
+    const result = await submitLead({ type: "newsletter", email, audience: "coming-soon" }, forms);
     setIsSubmitting(false);
     setMessage({ ok: result.ok, text: result.ok ? content.successMessage : result.message });
     if (result.ok) setEmail("");
@@ -72,7 +74,7 @@ export function ComingSoon({ content }: { content: ComingSoonContent["content"] 
               disabled={isSubmitting}
               className="w-full sm:w-auto justify-center my-0"
             >
-              {isSubmitting ? "Sending..." : content.buttonLabel}
+              {isSubmitting ? content.sendingLabel : content.buttonLabel}
             </CustomButton>
           </form>
           {message && (

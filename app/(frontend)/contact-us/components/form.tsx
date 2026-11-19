@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { CustomButton } from "@/components/ui/custom-button";
 import { submitLead } from "@/utils/leads";
 import type { ContactContent } from "@/content/pages/contact";
+import { useSiteSettings } from "@/components/providers/site-settings";
 
 const MESSAGE_MAX_LENGTH = 1000;
 
@@ -47,6 +48,8 @@ interface ContactFormProps {
 }
 
 export function ContactForm({ content, onSubmitSuccess }: ContactFormProps) {
+  const { forms } = useSiteSettings();
+  const errorText = content.errorMessages;
   const [formData, setFormData] = useState<FormData>(INITIAL_FORM);
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -55,18 +58,18 @@ export function ContactForm({ content, onSubmitSuccess }: ContactFormProps) {
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
 
-    if (!formData.name.trim()) newErrors.name = "Please enter your name";
+    if (!formData.name.trim()) newErrors.name = errorText.nameRequired;
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!formData.email.trim()) newErrors.email = "Please enter your email";
-    else if (!emailRegex.test(formData.email)) newErrors.email = "Please enter a valid email";
+    if (!formData.email.trim()) newErrors.email = errorText.emailRequired;
+    else if (!emailRegex.test(formData.email)) newErrors.email = errorText.emailInvalid;
 
     if (formData.phone.trim() && formData.phone.replace(/\D/g, "").length < 10) {
-      newErrors.phone = "Please enter a valid phone number";
+      newErrors.phone = errorText.phoneInvalid;
     }
 
-    if (!formData.message.trim()) newErrors.message = "Please enter a message";
-    else if (formData.message.trim().length < 10) newErrors.message = "Message must be at least 10 characters";
+    if (!formData.message.trim()) newErrors.message = errorText.messageRequired;
+    else if (formData.message.trim().length < 10) newErrors.message = errorText.messageTooShort;
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -90,11 +93,11 @@ export function ContactForm({ content, onSubmitSuccess }: ContactFormProps) {
     setIsSubmitting(true);
     setResult(null);
 
-    const response = await submitLead({ type: "contact", ...formData });
+    const response = await submitLead({ type: "contact", ...formData }, forms);
 
     setIsSubmitting(false);
     if (response.ok) {
-      setResult({ ok: true, message: "Thank you. Your message has been sent and our team will get back to you." });
+      setResult({ ok: true, message: content.successMessage });
       setFormData(INITIAL_FORM);
       onSubmitSuccess?.();
     } else {
@@ -110,7 +113,7 @@ export function ContactForm({ content, onSubmitSuccess }: ContactFormProps) {
         {/* Name Field */}
         <div>
           <label htmlFor="contact-name" className={labelClass}>
-            Name
+            {content.nameLabel}
           </label>
           <Input
             id="contact-name"
@@ -135,7 +138,7 @@ export function ContactForm({ content, onSubmitSuccess }: ContactFormProps) {
         {/* Email Field */}
         <div>
           <label htmlFor="contact-email" className={labelClass}>
-            Email Address
+            {content.emailLabel}
           </label>
           <Input
             id="contact-email"
@@ -160,7 +163,7 @@ export function ContactForm({ content, onSubmitSuccess }: ContactFormProps) {
         {/* Phone Field (optional) */}
         <div>
           <label htmlFor="contact-phone" className={labelClass}>
-            Phone Number <span className="font-normal">(optional)</span>
+            {content.phoneLabel} <span className="font-normal">{content.optionalLabel}</span>
           </label>
           <Input
             id="contact-phone"
@@ -184,7 +187,7 @@ export function ContactForm({ content, onSubmitSuccess }: ContactFormProps) {
         {/* Enquiry Type */}
         <div>
           <label htmlFor="contact-enquiry-type" className={labelClass}>
-            What is your enquiry about?
+            {content.topicLabel}
           </label>
           <select
             id="contact-enquiry-type"
@@ -204,7 +207,7 @@ export function ContactForm({ content, onSubmitSuccess }: ContactFormProps) {
         <div>
           <div className="flex items-center justify-between mb-2">
             <label htmlFor="contact-message" className="block text-sm font-medium text-[#717680]">
-              Message
+              {content.messageLabel}
             </label>
             <Paragraph size="xs" className="text-[#717680]">
               <span aria-live="polite">{formData.message.length}/{MESSAGE_MAX_LENGTH}</span>
@@ -266,7 +269,7 @@ export function ContactForm({ content, onSubmitSuccess }: ContactFormProps) {
           size="lg"
           className="w-full sm:w-auto my-0 justify-center"
         >
-          {isSubmitting ? "Sending..." : "Send Your Message"}
+          {isSubmitting ? content.sendingLabel : content.submitLabel}
         </CustomButton>
       </form>
     </div>

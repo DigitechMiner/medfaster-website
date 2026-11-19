@@ -23,6 +23,14 @@ export const SITE_DEFAULTS = {
   company: {
     legalName: "MedFaster Health Tech Inc.",
   },
+  // Messages shared by every form on the website (shown when a form can't be sent)
+  forms: {
+    invalidEmailMessage: "Please enter a valid email address.",
+    missingFieldsMessage: "Missing required fields: {fields}",
+    sendFailedMessage: "Something went wrong. Please try again or email support@keraeva.com.",
+    notConnectedMessage: "This form isn't connected yet. Please email support@keraeva.com.",
+    networkErrorMessage: "Network error. Please check your connection and try again.",
+  },
   // Logos and brand images used across the site. Each keeps the built-in file
   // until a new image is uploaded here. SVG and ICO files are stored as they are.
   branding: {

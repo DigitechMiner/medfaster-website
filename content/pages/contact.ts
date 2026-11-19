@@ -19,13 +19,30 @@ export const CONTACT_DEFAULTS = {
     phoneLabel: "Phone Number",
     followLabel: "Follow Us",
   },
-  // Hint text shown inside the empty form fields
+  // Labels, hint text, buttons and messages in the contact form
   form: {
+    nameLabel: "Name",
     namePlaceholder: "Your full name",
+    emailLabel: "Email Address",
     emailPlaceholder: "you@example.com",
+    phoneLabel: "Phone Number",
     phonePlaceholder: "(403) 555-0123",
+    optionalLabel: "(optional)",
+    topicLabel: "What is your enquiry about?",
     topicPlaceholder: "Select a topic",
+    messageLabel: "Message",
     messagePlaceholder: "Tell us how we can help, e.g. hiring for your organization, a partnership or a general question.",
+    submitLabel: "Send Your Message",
+    sendingLabel: "Sending...",
+    successMessage: "Thank you. Your message has been sent and our team will get back to you.",
+    errorMessages: {
+      nameRequired: "Please enter your name",
+      emailRequired: "Please enter your email",
+      emailInvalid: "Please enter a valid email",
+      phoneInvalid: "Please enter a valid phone number",
+      messageRequired: "Please enter a message",
+      messageTooShort: "Message must be at least 10 characters",
+    },
   },
 };
 

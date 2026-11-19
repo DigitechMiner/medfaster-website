@@ -20,6 +20,7 @@ export const ROW_LABEL = "/components/admin/row-label#RowLabel";
 
 const ACCENT_HELP = "Wrap words in **double asterisks** to show them in orange. Start a new line with Enter.";
 const PLACEHOLDER_HELP = "Grey hint text shown inside the field until someone types.";
+const TOKEN_HELP = "Words in {curly brackets} are filled in automatically. Keep them exactly as they are.";
 
 export function humanize(key: string) {
   return key
@@ -90,7 +91,9 @@ function stringField(key: string, value: string, path: string): Field {
   const long = value.length > 90 || value.includes("\n");
   const description = /Placeholder$/.test(key)
     ? PLACEHOLDER_HELP
-    : HEADING_KEY.test(key) || value.includes("**")
+    : /\{[a-z]+\}/.test(value)
+      ? TOKEN_HELP
+      : HEADING_KEY.test(key) || value.includes("**")
       ? ACCENT_HELP
       : undefined;
   return {
