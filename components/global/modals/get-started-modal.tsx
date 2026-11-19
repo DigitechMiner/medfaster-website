@@ -16,7 +16,7 @@ type View = "choose" | "app";
 
 export function GetStartedModal({ content }: { content: PopupsContent }) {
   const { activeModal, openModal, closeModal } = useModalStore();
-  const { apps } = useSiteSettings();
+  const { apps, branding } = useSiteSettings();
   const { getStarted, getApp } = content;
   const isOpen = activeModal === "get-started" || activeModal === "get-app";
   const [view, setView] = useState<View>("choose");
@@ -106,7 +106,7 @@ export function GetStartedModal({ content }: { content: PopupsContent }) {
               aria-label="Get KeRaeva on Google Play"
             >
               <Image
-                src="/images/ui/qr-google-play.png"
+                src={branding.appQrCodeImage}
                 alt="QR code to download KeRaeva on Google Play"
                 width={186}
                 height={223}

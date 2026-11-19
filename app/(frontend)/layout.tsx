@@ -14,21 +14,26 @@ import { getHeaderFooter } from "@/lib/cms/header-footer";
 import { SiteSettingsProvider } from "@/components/providers/site-settings";
 import { HeaderFooterProvider } from "@/components/providers/header-footer";
 
-export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
-  title: "KeRaeva | AI-Powered Healthcare Workforce Platform in Canada",
-  description:
-    "KeRaeva is an AI-powered healthcare workforce platform connecting healthcare organizations and professionals across Canada for hiring, urgent staffing, shifts and payments.",
-  // "./" resolves to each page's own URL
-  alternates: { canonical: "./" },
-  openGraph: {
-    siteName: SITE_NAME,
-    type: "website",
-    locale: "en_CA",
-    url: "./",
-  },
-  twitter: { card: "summary_large_image" },
-};
+// Favicon comes from Settings → Site Settings → Branding
+export async function generateMetadata(): Promise<Metadata> {
+  const { branding } = await getSiteSettings();
+  return {
+    metadataBase: new URL(SITE_URL),
+    title: "KeRaeva | AI-Powered Healthcare Workforce Platform in Canada",
+    description:
+      "KeRaeva is an AI-powered healthcare workforce platform connecting healthcare organizations and professionals across Canada for hiring, urgent staffing, shifts and payments.",
+    // "./" resolves to each page's own URL
+    alternates: { canonical: "./" },
+    openGraph: {
+      siteName: SITE_NAME,
+      type: "website",
+      locale: "en_CA",
+      url: "./",
+    },
+    twitter: { card: "summary_large_image" },
+    icons: { icon: branding.faviconImage, shortcut: branding.faviconImage, apple: branding.faviconImage },
+  };
+}
 
 export default async function RootLayout({
   children,
@@ -39,7 +44,11 @@ export default async function RootLayout({
   const [siteSettings, headerFooter, popups] = await Promise.all([getSiteSettings(), getHeaderFooter(), getPageContent("popups")]);
   return (
     <html lang="en" className={fonts}>
-      <body className="font-sans">
+      <body
+        className="font-sans"
+        // Loading placeholder for photos (Site Settings → Branding)
+        style={{ "--kr-placeholder-image": `url("${siteSettings.branding.placeholderImage}")` } as React.CSSProperties}
+      >
         <SiteSettingsProvider value={siteSettings}>
         <HeaderFooterProvider value={headerFooter}>
         <Preloader />

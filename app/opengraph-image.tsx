@@ -1,13 +1,34 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { ImageResponse } from "next/og";
+import { getSiteSettings } from "@/lib/cms/site";
+import { SITE_DEFAULTS, absoluteUrl } from "@/content/site";
+import { SITE_URL } from "@/lib/seo/site";
 
 // Default social share image for every page
 export const alt = "KeRaeva, the AI-powered healthcare workforce platform for Canada";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
+// An image uploaded in Site Settings → Branding replaces the generated card
+async function uploadedShareImage(): Promise<Response | null> {
+  const { branding } = await getSiteSettings();
+  if (!branding.shareImage || branding.shareImage === SITE_DEFAULTS.branding.shareImage) return null;
+  try {
+    const response = await fetch(absoluteUrl(branding.shareImage, SITE_URL));
+    if (!response.ok) return null;
+    return new Response(await response.arrayBuffer(), {
+      headers: { "Content-Type": response.headers.get("content-type") || "image/png", "Cache-Control": "public, max-age=3600" },
+    });
+  } catch {
+    return null;
+  }
+}
+
 export default async function OpengraphImage() {
+  const uploaded = await uploadedShareImage();
+  if (uploaded) return uploaded;
+
   const logo = await readFile(join(process.cwd(), "public/images/company/white-logo.svg"));
   const logoSrc = `data:image/svg+xml;base64,${logo.toString("base64")}`;
 

@@ -6,7 +6,8 @@ import { fromCms } from "./payload";
 export const getSiteSettings = cache(
   async (): Promise<SiteSettings> =>
     fromCms(SITE_DEFAULTS, async (payload) => {
-      const doc = await payload.findGlobal({ slug: "site-settings", depth: 0 });
+      // depth 1 so uploaded brand images come back with their URLs
+      const doc = await payload.findGlobal({ slug: "site-settings", depth: 1 });
       return mergeContent(SITE_DEFAULTS, doc, Boolean(doc?.updatedAt));
     })
 );

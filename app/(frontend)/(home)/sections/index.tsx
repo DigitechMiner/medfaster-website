@@ -48,7 +48,7 @@ export function AIHelpsSection({ content }: { content: Home["ai"] }) {
 
 // Product Ecosystem Section - the app for professionals and the recruiter platform
 export function AllInOneSection({ content }: { content: Home["ecosystem"] }) {
-  const { apps } = useSiteSettings();
+  const { apps, branding } = useSiteSettings();
 
   return (
     <Section>
@@ -116,7 +116,7 @@ export function AllInOneSection({ content }: { content: Home["ecosystem"] }) {
             aria-label="Get KeRaeva on Google Play"
           >
             <Image
-              src="/images/ui/qr-google-play.png"
+              src={branding.appQrCodeImage}
               alt="QR code to download KeRaeva on Google Play"
               width={186}
               height={223}

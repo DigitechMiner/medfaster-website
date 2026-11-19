@@ -1,13 +1,17 @@
+"use client";
+
 import Image from "@/components/ui/image";
 import { cn } from "@/lib/utils";
+import { useSiteSettings } from "@/components/providers/site-settings";
 
 // KeRaeva logo with a pulsing mark and an indeterminate brand-orange bar.
 // Shared by the page preloader and route loading states.
 export function LogoLoader({ className }: { className?: string }) {
+  const { branding } = useSiteSettings();
   return (
     <div className={cn("flex flex-col items-center gap-5", className)}>
       <Image
-        src="/images/ui/KeRaeva-logo.svg"
+        src={branding.logo}
         alt="KeRaeva"
         width={192}
         height={32}

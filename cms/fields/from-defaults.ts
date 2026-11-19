@@ -39,6 +39,16 @@ function shortName(path: string) {
   return hash.toString(36);
 }
 
+// Upload tips for the brand images in Site Settings → Branding
+const IMAGE_TIPS: Record<string, string> = {
+  logo: "Shown in the header, footer, pop-ups and loading screen. SVG works best; otherwise a wide transparent PNG.",
+  whiteLogo: "White version for orange backgrounds and the share image. SVG or transparent PNG.",
+  faviconImage: "Browser tab icon. Square SVG, PNG (at least 512×512) or ICO.",
+  shareImage: "Shown when a page is shared on social media or in messages. 1200×630 pixels. When empty, an orange card with the white logo is generated.",
+  appQrCodeImage: "QR code that opens the app listing, shown next to the app download buttons.",
+  placeholderImage: "Faint mark shown while photos load or when one fails. A simple grey SVG works best.",
+};
+
 export function isImageKey(key: string) {
   return IMAGE_KEY.test(key);
 }
@@ -60,7 +70,11 @@ function stringField(key: string, value: string, path: string): Field {
       label: humanize(key),
       type: "upload",
       relationTo: "media",
-      admin: { description: `Leave empty to keep the current image (${value}).` },
+      admin: {
+        description: IMAGE_TIPS[key]
+          ? `${IMAGE_TIPS[key]} Leave empty to keep the current image.`
+          : `Leave empty to keep the current image (${value}).`,
+      },
     };
   }
   if (key === "link" || /(Url|Href)$/.test(key)) {

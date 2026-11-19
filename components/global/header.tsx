@@ -77,7 +77,7 @@ export default function Header({ children }: HeaderProps) {
   const pathname = usePathname();
   const openModal = useModalStore((state) => state.openModal);
   const { header } = useHeaderFooter();
-  const { contact, apps } = useSiteSettings();
+  const { contact, apps, branding } = useSiteSettings();
   const navLinks = toNavLinks(header.menu);
   // Header buttons and menu links: popups open in place, other links open in this tab
   const runLink = (link: string) => {
@@ -180,7 +180,7 @@ export default function Header({ children }: HeaderProps) {
             <Link href="/" aria-label="KeRaeva home">
               <div className="flex-shrink-0 w-40 md:w-48 lg:w-[200px] flex items-center cursor-pointer">
                 <Image
-                  src="/images/ui/KeRaeva-logo.svg"
+                  src={branding.logo}
                   height={50}
                   width={200}
                   alt="KeRaeva"
@@ -326,7 +326,7 @@ export default function Header({ children }: HeaderProps) {
         {/* Panel top bar - mirrors the header */}
         <div className="flex items-center justify-between px-4 md:px-8 py-4 border-b border-gray-100">
           <Link href="/" aria-label="KeRaeva home" className="w-40 md:w-48">
-            <Image src="/images/ui/KeRaeva-logo.svg" height={50} width={200} alt="KeRaeva" />
+            <Image src={branding.logo} height={50} width={200} alt="KeRaeva" />
           </Link>
           <button
             ref={closeButtonRef}

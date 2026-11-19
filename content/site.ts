@@ -23,6 +23,21 @@ export const SITE_DEFAULTS = {
   company: {
     legalName: "MedFaster Health Tech Inc.",
   },
+  // Logos and brand images used across the site. Each keeps the built-in file
+  // until a new image is uploaded here. SVG and ICO files are stored as they are.
+  branding: {
+    logo: "/images/ui/KeRaeva-logo.svg",
+    whiteLogo: "/images/company/white-logo.svg",
+    faviconImage: "/favicon.ico",
+    shareImage: "/opengraph-image",
+    appQrCodeImage: "/images/ui/qr-google-play.png",
+    placeholderImage: "/images/ui/logo-mark-gray.svg",
+  },
 };
+
+// Absolute URL for brand images used outside the page (structured data, share cards)
+export function absoluteUrl(path: string, siteUrl: string) {
+  return /^https?:\/\//.test(path) ? path : `${siteUrl}${path.startsWith("/") ? "" : "/"}${path}`;
+}
 
 export type SiteSettings = typeof SITE_DEFAULTS;

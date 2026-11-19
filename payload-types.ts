@@ -1512,6 +1512,32 @@ export interface SiteSetting {
   company?: {
     legalName?: string | null;
   };
+  branding?: {
+    /**
+     * Shown in the header, footer, pop-ups and loading screen. SVG works best; otherwise a wide transparent PNG. Leave empty to keep the current image.
+     */
+    logo?: (number | null) | Media;
+    /**
+     * White version for orange backgrounds and the share image. SVG or transparent PNG. Leave empty to keep the current image.
+     */
+    whiteLogo?: (number | null) | Media;
+    /**
+     * Browser tab icon. Square SVG, PNG (at least 512×512) or ICO. Leave empty to keep the current image.
+     */
+    faviconImage?: (number | null) | Media;
+    /**
+     * Shown when a page is shared on social media or in messages. 1200×630 pixels. When empty, an orange card with the white logo is generated. Leave empty to keep the current image.
+     */
+    shareImage?: (number | null) | Media;
+    /**
+     * QR code that opens the app listing, shown next to the app download buttons. Leave empty to keep the current image.
+     */
+    appQrCodeImage?: (number | null) | Media;
+    /**
+     * Faint mark shown while photos load or when one fails. A simple grey SVG works best. Leave empty to keep the current image.
+     */
+    placeholderImage?: (number | null) | Media;
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -4623,6 +4649,16 @@ export interface SiteSettingsSelect<T extends boolean = true> {
     | T
     | {
         legalName?: T;
+      };
+  branding?:
+    | T
+    | {
+        logo?: T;
+        whiteLogo?: T;
+        faviconImage?: T;
+        shareImage?: T;
+        appQrCodeImage?: T;
+        placeholderImage?: T;
       };
   updatedAt?: T;
   createdAt?: T;

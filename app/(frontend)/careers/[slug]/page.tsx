@@ -55,7 +55,7 @@ export default async function JobPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const [job, content, { apps }] = await Promise.all([getJob(slug), getPageContent("careers"), getSiteSettings()]);
+  const [job, content, { apps, branding }] = await Promise.all([getJob(slug), getPageContent("careers"), getSiteSettings()]);
   if (!job || !job.details) notFound();
   const details = job.details;
   const labels = content.jobPage;
@@ -197,7 +197,7 @@ export default async function JobPage({
                 aria-label="Get KeRaeva on Google Play"
               >
                 <Image
-                  src="/images/ui/qr-google-play.png"
+                  src={branding.appQrCodeImage}
                   alt="QR code to download KeRaeva on Google Play"
                   width={186}
                   height={223}

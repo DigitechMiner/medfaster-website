@@ -26,8 +26,9 @@ export const Media: CollectionConfig = {
   upload: {
     mimeTypes: ["image/*"],
     focalPoint: true,
-    // A web-sized WebP copy keeps pages fast
-    formatOptions: { format: "webp", options: { quality: 82 } },
+    // Files keep their own format (a PNG favicon or share image must stay PNG);
+    // the website serves optimised copies of photos when it displays them.
+    // Very large photos are scaled down to 2400px wide.
     resizeOptions: { width: 2400, withoutEnlargement: true },
   },
 };

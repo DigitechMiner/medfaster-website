@@ -16,7 +16,7 @@ import { Screen } from "@/components/global/screen";
 import { JsonLd } from "@/components/global/json-ld";
 import { BASE_OPEN_GRAPH, SITE_NAME, SITE_URL } from "@/lib/seo/site";
 import { getSiteSettings, telHref } from "@/lib/cms/site";
-import type { SiteSettings } from "@/content/site";
+import { absoluteUrl, type SiteSettings } from "@/content/site";
 import { getPageContent, getTestimonials } from "@/lib/cms/content";
 import { stripAccents } from "@/components/ui/accent-text";
 
@@ -31,7 +31,7 @@ function structuredData(site: SiteSettings) {
         name: SITE_NAME,
         legalName: site.company.legalName,
         url: SITE_URL,
-        logo: `${SITE_URL}/images/ui/KeRaeva-logo.svg`,
+        logo: absoluteUrl(site.branding.logo, SITE_URL),
         email: site.contact.email,
         telephone: telHref(site.contact.phone).replace(/^tel:/, ""),
         areaServed: { "@type": "Country", name: "Canada" },

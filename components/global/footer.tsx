@@ -21,7 +21,7 @@ const linkClass = "text-sm text-[#717680] hover:text-[#F3651B] transition-colors
 export function Footer() {
   const openModal = useModalStore((state) => state.openModal);
   const { footer } = useHeaderFooter();
-  const { contact, apps, social } = useSiteSettings();
+  const { contact, apps, social, branding } = useSiteSettings();
   const socialLinks = [
     { label: "LinkedIn", icon: Linkedin, href: social.linkedinUrl },
     { label: "Facebook", icon: Facebook, href: social.facebookUrl },
@@ -125,7 +125,7 @@ export function Footer() {
             <Link href="/" aria-label="KeRaeva home" className="inline-block">
               <div className="relative w-40 md:w-48 lg:w-[200px] h-8 sm:h-10">
                 <Image
-                  src="/images/ui/KeRaeva-logo.svg"
+                  src={branding.logo}
                   alt="KeRaeva"
                   fill
                   sizes="200px"

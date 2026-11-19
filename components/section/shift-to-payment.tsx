@@ -10,6 +10,7 @@ import { AccentText } from "@/components/ui/accent-text";
 import type { Cta } from "@/components/ui/cta-button";
 import { ArrowRight } from "lucide-react";
 import { useModalStore } from "@/stores/modalStore";
+import { useSiteSettings } from "@/components/providers/site-settings";
 import { WORKFORCE_STEPS } from "@/utils/constant";
 
 type Audience = "everyone" | "organizations" | "professionals";
@@ -60,6 +61,7 @@ const PEOPLE = [
 
 export function ShiftToPaymentSection({ audience = "everyone", content }: ShiftToPaymentSectionProps) {
   const openModal = useModalStore((state) => state.openModal);
+  const { branding } = useSiteSettings();
   const copy = content ? { heading: <AccentText text={content.heading} accentClassName="text-white underline decoration-white/60" />, body: content.body } : COPY[audience];
   const steps: readonly string[] = content ? content.steps : WORKFORCE_STEPS[audience];
   const sample = content
@@ -84,7 +86,7 @@ export function ShiftToPaymentSection({ audience = "everyone", content }: ShiftT
           {/* Logo */}
           <div className="flex-shrink-0 w-56 md:w-64 lg:w-80 flex items-center">
             <Image
-              src="/images/company/white-logo.svg"
+              src={branding.whiteLogo}
               height={50}
               width={300}
               alt="KeRaeva"

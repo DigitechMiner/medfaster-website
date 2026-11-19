@@ -94,7 +94,7 @@ export function VerifiedSection({ content }: { content: Content["verified"] }) {
 
 // Career On The Go Section
 export function CareerOnTheGo({ content }: { content: Content["appDownload"] }) {
-  const { apps } = useSiteSettings();
+  const { apps, branding } = useSiteSettings();
   return (
     <Section
       backgroundColor="bg-neutral-100"
@@ -122,7 +122,7 @@ export function CareerOnTheGo({ content }: { content: Content["appDownload"] }) 
             aria-label="Get KeRaeva on Google Play"
           >
             <Image
-              src="/images/ui/qr-google-play.png"
+              src={branding.appQrCodeImage}
               alt="QR code to download KeRaeva on Google Play"
               width={186}
               height={223}
