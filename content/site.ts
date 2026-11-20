@@ -23,23 +23,6 @@ export const SITE_DEFAULTS = {
   company: {
     legalName: "MedFaster Health Tech Inc.",
   },
-  // Analytics and marketing tracking. Each tracker only loads on the public website
-  // when its ID is filled in, and only after the visitor accepts the cookie banner.
-  tracking: {
-    googleAnalyticsId: "",
-    googleAnalyticsPropertyId: "",
-    metaPixelId: "",
-  },
-  // Cookie banner shown when Google Analytics or the Meta Pixel is turned on
-  cookieBanner: {
-    message:
-      "We use cookies to understand how people use our website and to measure our advertising. You can accept or decline analytics and marketing cookies.",
-    acceptLabel: "Accept",
-    declineLabel: "Decline",
-    policyLinkLabel: "Privacy Policy",
-    policyLink: "/privacy-policy",
-    preferencesLabel: "Cookie preferences",
-  },
   // Messages shared by every form on the website (shown when a form can't be sent)
   forms: {
     invalidEmailMessage: "Please enter a valid email address.",

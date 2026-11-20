@@ -14,6 +14,8 @@ import { getSiteSettings } from "@/lib/cms/site";
 import { getHeaderFooter } from "@/lib/cms/header-footer";
 import { SiteSettingsProvider } from "@/components/providers/site-settings";
 import { HeaderFooterProvider } from "@/components/providers/header-footer";
+import { TrackingProvider } from "@/components/providers/tracking";
+import { getTracking } from "@/lib/cms/tracking";
 
 // Favicon comes from Settings → Site Settings → Branding
 export async function generateMetadata(): Promise<Metadata> {
@@ -42,7 +44,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   // Shared by the header, footer, popups and buttons on every page
-  const [siteSettings, headerFooter, popups] = await Promise.all([getSiteSettings(), getHeaderFooter(), getPageContent("popups")]);
+  const [siteSettings, headerFooter, popups, tracking] = await Promise.all([getSiteSettings(), getHeaderFooter(), getPageContent("popups"), getTracking()]);
   return (
     <html lang="en" className={fonts}>
       <body
@@ -52,6 +54,7 @@ export default async function RootLayout({
       >
         <SiteSettingsProvider value={siteSettings}>
         <HeaderFooterProvider value={headerFooter}>
+        <TrackingProvider value={tracking}>
         <Preloader />
         {children}
         <GlobalModals content={popups} />
@@ -69,8 +72,9 @@ export default async function RootLayout({
           theme="light"
         />
         <Analytics />
-        {/* Google Analytics and Meta Pixel (Site Settings → Tracking), after cookie consent */}
+        {/* Tag Manager, Google Analytics and Meta Pixel (Settings → Tracking & Analytics), after cookie consent */}
         <Tracking />
+        </TrackingProvider>
         </HeaderFooterProvider>
         </SiteSettingsProvider>
       </body>

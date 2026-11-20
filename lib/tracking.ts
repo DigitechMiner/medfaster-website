@@ -1,6 +1,7 @@
-// Analytics and marketing tracking for the public website (Google Analytics and
-// the Meta Pixel). IDs come from Site Settings → Tracking; trackers only load
-// after the visitor accepts the cookie banner (components/global/tracking.tsx).
+// Analytics and marketing tracking for the public website (Google Tag Manager,
+// Google Analytics and the Meta Pixel). IDs come from Settings → Tracking &
+// Analytics; trackers only load after the visitor accepts the cookie banner
+// (components/global/tracking.tsx).
 
 type Fn = (...args: unknown[]) => void;
 
@@ -8,7 +9,19 @@ declare global {
   interface Window {
     fbq?: Fn;
     gtag?: Fn;
+    dataLayer?: unknown[];
   }
+}
+
+/** Only a bare Tag Manager Container ID (GTM-…) is ever used. */
+export function cleanContainerId(id: string | null | undefined) {
+  const value = (id ?? "").trim().toUpperCase();
+  return /^GTM-[A-Z0-9]{4,12}$/.test(value) ? value : "";
+}
+
+/** True when any tracking code is filled in (the cookie banner is shown then). */
+export function hasTrackingCodes(codes: { googleTagManagerId: string; googleAnalyticsId: string; metaPixelId: string }) {
+  return Boolean(cleanContainerId(codes.googleTagManagerId) || cleanMeasurementId(codes.googleAnalyticsId) || cleanPixelId(codes.metaPixelId));
 }
 
 /** Only a bare Pixel ID (digits) is ever used. */
@@ -79,5 +92,10 @@ export function trackConversion(formType: string, detail?: string) {
   if (!conversion) return;
   const name = detail || conversion.label;
   window.fbq?.("track", conversion.meta, { content_name: name });
-  window.gtag?.("event", "generate_lead", { form_name: name });
+  if (window.gtag) {
+    window.gtag("event", "generate_lead", { form_name: name });
+  } else if (window.dataLayer) {
+    // Tag Manager without the direct Google Analytics code: a trigger can use this event
+    window.dataLayer.push({ event: "generate_lead", form_name: name });
+  }
 }

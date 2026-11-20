@@ -3,7 +3,7 @@ import { errorMessage, fillDays, type RangeDays, type Row, type SourceResult, ty
 
 // Google Analytics 4 Data API, read with a service account (JSON key in
 // GOOGLE_ANALYTICS_CREDENTIALS, raw or base64) that has Viewer access to the
-// property set in Site Settings → Tracking → Google Analytics Property ID.
+// property set in Settings → Tracking & Analytics → Google Analytics Property ID.
 
 type Credentials = { client_email: string; private_key: string };
 type ReportRow = { dimensionValues?: { value: string }[]; metricValues?: { value: string }[] };
@@ -52,7 +52,7 @@ function toRows(report: Report, rename: (label: string) => string = (l) => l): R
 
 export async function googleReport(days: RangeDays, propertyId: string): Promise<SourceResult<WebReport>> {
   const missing = [
-    ...(propertyId ? [] : ["Google Analytics Property ID (Site Settings → Tracking)"]),
+    ...(propertyId ? [] : ["Google Analytics Property ID (Settings → Tracking & Analytics)"]),
     ...(process.env.GOOGLE_ANALYTICS_CREDENTIALS ? [] : ["GOOGLE_ANALYTICS_CREDENTIALS"]),
   ];
   if (missing.length) return { status: "not-connected", missing };

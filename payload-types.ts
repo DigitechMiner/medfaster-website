@@ -105,6 +105,7 @@ export interface Config {
   fallbackLocale: null;
   globals: {
     'site-settings': SiteSetting;
+    tracking: Tracking;
     'header-footer': HeaderFooter;
     'page-home': PageHome;
     'page-professionals': PageProfessional;
@@ -122,6 +123,7 @@ export interface Config {
   };
   globalsSelect: {
     'site-settings': SiteSettingsSelect<false> | SiteSettingsSelect<true>;
+    tracking: TrackingSelect<false> | TrackingSelect<true>;
     'header-footer': HeaderFooterSelect<false> | HeaderFooterSelect<true>;
     'page-home': PageHomeSelect<false> | PageHomeSelect<true>;
     'page-professionals': PageProfessionalsSelect<false> | PageProfessionalsSelect<true>;
@@ -1512,28 +1514,6 @@ export interface SiteSetting {
   company?: {
     legalName?: string | null;
   };
-  tracking?: {
-    /**
-     * From Google Analytics → Admin → Data streams → your web stream (starts with G-). Adds Google Analytics to the website. Leave empty to turn it off.
-     */
-    googleAnalyticsId?: string | null;
-    /**
-     * From Google Analytics → Admin → Property details (a number such as 412345678). Used to show Google numbers on the admin Analytics page.
-     */
-    googleAnalyticsPropertyId?: string | null;
-    /**
-     * From Meta Events Manager → Data sources → your Pixel (the 15–16 digit number). Records page views and form sign-ups. Leave empty to turn the Pixel off.
-     */
-    metaPixelId?: string | null;
-  };
-  cookieBanner?: {
-    message?: string | null;
-    acceptLabel?: string | null;
-    declineLabel?: string | null;
-    policyLinkLabel?: string | null;
-    policyLink?: string | null;
-    preferencesLabel?: string | null;
-  };
   forms?: {
     invalidEmailMessage?: string | null;
     /**
@@ -1569,6 +1549,43 @@ export interface SiteSetting {
      * Faint mark shown while photos load or when one fails. A simple grey SVG works best. Leave empty to keep the current image.
      */
     placeholderImage?: (number | null) | Media;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * Google Tag Manager, Google Analytics and Meta Pixel codes, and the cookie banner. Numbers are on the Analytics page.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tracking".
+ */
+export interface Tracking {
+  id: number;
+  trackingCodes?: {
+    /**
+     * From Google Tag Manager → your container (starts with GTM-). Loads every tag you publish in Tag Manager. Leave empty to turn it off.
+     */
+    googleTagManagerId?: string | null;
+    /**
+     * From Google Analytics → Admin → Data streams → your web stream (starts with G-). Adds Google Analytics to the website. If Google Analytics is already a tag inside Tag Manager, leave this empty so visits aren't counted twice.
+     */
+    googleAnalyticsId?: string | null;
+    /**
+     * From Google Analytics → Admin → Property details (a number such as 412345678). Used to show Google numbers on the admin Analytics page.
+     */
+    googleAnalyticsPropertyId?: string | null;
+    /**
+     * From Meta Events Manager → Data sources → your Pixel (the 15–16 digit number). Records page views and form sign-ups. Leave empty to turn the Pixel off.
+     */
+    metaPixelId?: string | null;
+  };
+  cookieBanner?: {
+    message?: string | null;
+    acceptLabel?: string | null;
+    declineLabel?: string | null;
+    policyLinkLabel?: string | null;
+    policyLink?: string | null;
+    preferencesLabel?: string | null;
   };
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -4826,23 +4843,6 @@ export interface SiteSettingsSelect<T extends boolean = true> {
     | {
         legalName?: T;
       };
-  tracking?:
-    | T
-    | {
-        googleAnalyticsId?: T;
-        googleAnalyticsPropertyId?: T;
-        metaPixelId?: T;
-      };
-  cookieBanner?:
-    | T
-    | {
-        message?: T;
-        acceptLabel?: T;
-        declineLabel?: T;
-        policyLinkLabel?: T;
-        policyLink?: T;
-        preferencesLabel?: T;
-      };
   forms?:
     | T
     | {
@@ -4861,6 +4861,33 @@ export interface SiteSettingsSelect<T extends boolean = true> {
         shareImage?: T;
         appQrCodeImage?: T;
         placeholderImage?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tracking_select".
+ */
+export interface TrackingSelect<T extends boolean = true> {
+  trackingCodes?:
+    | T
+    | {
+        googleTagManagerId?: T;
+        googleAnalyticsId?: T;
+        googleAnalyticsPropertyId?: T;
+        metaPixelId?: T;
+      };
+  cookieBanner?:
+    | T
+    | {
+        message?: T;
+        acceptLabel?: T;
+        declineLabel?: T;
+        policyLinkLabel?: T;
+        policyLink?: T;
+        preferencesLabel?: T;
       };
   updatedAt?: T;
   createdAt?: T;

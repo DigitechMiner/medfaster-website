@@ -6,6 +6,7 @@ import * as migration_20261119_153932_branding_images from './20261119_153932_br
 import * as migration_20261119_171640_form_placeholders from './20261119_171640_form_placeholders';
 import * as migration_20261119_214417_form_labels_messages from './20261119_214417_form_labels_messages';
 import * as migration_20261119_215418_analytics_tracking from './20261119_215418_analytics_tracking';
+import * as migration_20261120_024912_tracking_settings from './20261120_024912_tracking_settings';
 
 export const migrations = [
   {
@@ -46,6 +47,11 @@ export const migrations = [
   {
     up: migration_20261119_215418_analytics_tracking.up,
     down: migration_20261119_215418_analytics_tracking.down,
-    name: '20261119_215418_analytics_tracking'
+    name: '20261119_215418_analytics_tracking',
+  },
+  {
+    up: migration_20261120_024912_tracking_settings.up,
+    down: migration_20261120_024912_tracking_settings.down,
+    name: '20261120_024912_tracking_settings'
   },
 ];

@@ -53,11 +53,17 @@ const IMAGE_TIPS: Record<string, string> = {
 
 // Tracking IDs in Site Settings → Tracking. Only the ID itself is accepted.
 const TRACKING_IDS: Record<string, { label: string; pattern: RegExp; error: string; help: string }> = {
+  googleTagManagerId: {
+    label: "Google Tag Manager Container ID",
+    pattern: /^GTM-[A-Z0-9]{4,12}$/i,
+    error: "Enter only the Container ID, which starts with GTM- (for example GTM-AB12CD3), not the whole code snippet.",
+    help: "From Google Tag Manager → your container (starts with GTM-). Loads every tag you publish in Tag Manager. Leave empty to turn it off.",
+  },
   googleAnalyticsId: {
     label: "Google Analytics Measurement ID",
     pattern: /^G-[A-Z0-9]{4,20}$/i,
     error: "Enter only the Measurement ID, which starts with G- (for example G-AB12CD34EF), not the whole code snippet.",
-    help: "From Google Analytics → Admin → Data streams → your web stream (starts with G-). Adds Google Analytics to the website. Leave empty to turn it off.",
+    help: "From Google Analytics → Admin → Data streams → your web stream (starts with G-). Adds Google Analytics to the website. If Google Analytics is already a tag inside Tag Manager, leave this empty so visits aren't counted twice.",
   },
   googleAnalyticsPropertyId: {
     label: "Google Analytics Property ID",

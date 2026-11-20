@@ -64,6 +64,7 @@ export async function AdminNav({ payload, user, visibleEntities }: NavProps) {
       label: "Settings",
       items: [
         ...(globals.has("site-settings") ? [{ label: "Site Settings", href: adminUrl("/globals/site-settings"), icon: "settings" as const }] : []),
+        ...(globals.has("tracking") ? [{ label: "Tracking & Analytics", href: adminUrl("/globals/tracking"), icon: "tracking" as const }] : []),
         ...(collection("users") && roles.includes("admin") ? [{ label: "Users", href: adminUrl("/collections/users"), icon: "users" as const }] : []),
       ],
     },

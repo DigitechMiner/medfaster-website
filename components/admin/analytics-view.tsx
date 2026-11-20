@@ -3,8 +3,8 @@ import { redirect } from "next/navigation";
 import { AlertTriangle, BarChart3, Eye, Inbox, Megaphone, PlugZap, Settings, Users } from "lucide-react";
 import type { AdminViewServerProps } from "payload";
 import { DefaultTemplate } from "@payloadcms/next/templates";
-import { getSiteSettings } from "@/lib/cms/site";
-import { cleanMeasurementId, cleanPixelId } from "@/lib/tracking";
+import { getTracking } from "@/lib/cms/tracking";
+import { cleanContainerId, cleanMeasurementId, cleanPixelId } from "@/lib/tracking";
 import { RANGES, type RangeDays, type SourceResult, type WebReport } from "@/lib/analytics/types";
 import { vercelReport } from "@/lib/analytics/vercel";
 import { googleReport } from "@/lib/analytics/google";
@@ -14,7 +14,7 @@ import { Badge, ButtonLink, IconChip, PageHeader } from "./ui";
 import { DailyColumns, formatNumber, RankList } from "./charts";
 import { adminUrl } from "./paths";
 
-const SETTINGS_URL = adminUrl("/globals/site-settings");
+const SETTINGS_URL = adminUrl("/globals/tracking");
 const VERCEL_ENV_URL = "https://vercel.com/digitech-miners-projects/general-keraeva-website/settings/environment-variables";
 
 // /website/analytics: visitors and conversions from Vercel Analytics, Google
@@ -27,10 +27,12 @@ export async function AnalyticsView({ initPageResult, params, searchParams }: Ad
   const requested = Number((searchParams as Record<string, unknown> | undefined)?.range);
   const days: RangeDays = (RANGES as readonly number[]).includes(requested) ? (requested as RangeDays) : 30;
 
-  const { tracking } = await getSiteSettings();
-  const gaId = cleanMeasurementId(tracking.googleAnalyticsId);
-  const propertyId = /^\d{5,15}$/.test(tracking.googleAnalyticsPropertyId.trim()) ? tracking.googleAnalyticsPropertyId.trim() : "";
-  const pixelId = cleanPixelId(tracking.metaPixelId);
+  const { trackingCodes } = await getTracking();
+  const gtmId = cleanContainerId(trackingCodes.googleTagManagerId);
+  const gaId = cleanMeasurementId(trackingCodes.googleAnalyticsId);
+  const propertyId = /^\d{5,15}$/.test(trackingCodes.googleAnalyticsPropertyId.trim()) ? trackingCodes.googleAnalyticsPropertyId.trim() : "";
+  const pixelId = cleanPixelId(trackingCodes.metaPixelId);
+  const googleSource = [gtmId ? `Tag Manager on · ${gtmId}` : "", gaId ? `Analytics code on · ${gaId}` : ""].filter(Boolean).join(" · ") || "Tracking code off";
 
   const [vercel, google, meta, inbox] = await Promise.all([
     vercelReport(days),
@@ -65,7 +67,7 @@ export async function AnalyticsView({ initPageResult, params, searchParams }: Ad
         <PageHeader
           title="Analytics"
           subtitle={`Visitors and sign-ups on keraeva.com over the last ${days} days. Numbers refresh every 10 minutes.`}
-          actions={<ButtonLink href={SETTINGS_URL} icon={Settings} variant="secondary">Tracking settings</ButtonLink>}
+          actions={<ButtonLink href={SETTINGS_URL} icon={Settings} variant="secondary">Tracking &amp; Analytics settings</ButtonLink>}
         />
         <div className="kr-segmented kr-status-tabs" role="group" aria-label="Time period">
           {RANGES.map((range) => (
@@ -105,13 +107,13 @@ export async function AnalyticsView({ initPageResult, params, searchParams }: Ad
         <WebSection
           id="google"
           title="Google Analytics"
-          source={gaId ? `Tracking code on · ${gaId}` : "Tracking code off"}
+          source={googleSource}
           note="Only counts visitors who accept the cookie banner."
           result={google}
           setup={
             <ol>
               <li>In Google Analytics, create a GA4 property and a web data stream for keraeva.com.</li>
-              <li>Paste the <strong>Measurement ID</strong> (G-…) and the <strong>Property ID</strong> into <Link href={SETTINGS_URL} prefetch={false}>Site Settings → Tracking</Link>. The Measurement ID turns on tracking.</li>
+              <li>Paste the <strong>Measurement ID</strong> (G-…) and the <strong>Property ID</strong> into <Link href={SETTINGS_URL} prefetch={false}>Tracking &amp; Analytics</Link>. The Measurement ID turns on tracking.</li>
               <li>In Google Cloud, enable the <em>Google Analytics Data API</em>, create a service account and download a JSON key.</li>
               <li>In Google Analytics → Admin → Property access management, add the service account&apos;s email as a <strong>Viewer</strong>.</li>
               <li>Add the JSON key as <code>GOOGLE_ANALYTICS_CREDENTIALS</code> in the project&apos;s <a href={VERCEL_ENV_URL} target="_blank" rel="noopener noreferrer">environment variables</a>, then redeploy.</li>
@@ -138,7 +140,7 @@ export async function AnalyticsView({ initPageResult, params, searchParams }: Ad
               setup={
                 <ol>
                   <li>In Meta Events Manager, create a Pixel (Data sources → Connect data → Web).</li>
-                  <li>Paste the <strong>Pixel ID</strong> into <Link href={SETTINGS_URL} prefetch={false}>Site Settings → Tracking</Link>. This turns on the Pixel.</li>
+                  <li>Paste the <strong>Pixel ID</strong> into <Link href={SETTINGS_URL} prefetch={false}>Tracking &amp; Analytics</Link>. This turns on the Pixel.</li>
                   <li>In Meta Business Settings → System users, create a system user, give it access to the Pixel and generate a token with the <code>ads_read</code> permission.</li>
                   <li>Add the token as <code>META_ACCESS_TOKEN</code> in the project&apos;s <a href={VERCEL_ENV_URL} target="_blank" rel="noopener noreferrer">environment variables</a>, then redeploy.</li>
                 </ol>

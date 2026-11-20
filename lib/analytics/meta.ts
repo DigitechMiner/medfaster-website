@@ -10,7 +10,7 @@ type Page = { data?: Bucket[]; paging?: { next?: string }; error?: { message: st
 
 export async function metaReport(days: RangeDays, pixelId: string): Promise<SourceResult<MetaReport>> {
   const token = process.env.META_ACCESS_TOKEN;
-  const missing = [...(pixelId ? [] : ["Meta Pixel ID (Site Settings → Tracking)"]), ...(token ? [] : ["META_ACCESS_TOKEN"])];
+  const missing = [...(pixelId ? [] : ["Meta Pixel ID (Settings → Tracking & Analytics)"]), ...(token ? [] : ["META_ACCESS_TOKEN"])];
   if (missing.length) return { status: "not-connected", missing };
   try {
     const params = new URLSearchParams({

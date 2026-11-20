@@ -4,16 +4,18 @@ import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import Script from "next/script";
 import { usePathname } from "next/navigation";
-import { useSiteSettings } from "@/components/providers/site-settings";
-import { CONSENT_EVENT, cleanMeasurementId, cleanPixelId, saveConsent, subscribeConsent, readConsent, type Consent } from "@/lib/tracking";
+import { useTracking } from "@/components/providers/tracking";
+import { CONSENT_EVENT, cleanContainerId, cleanMeasurementId, cleanPixelId, saveConsent, subscribeConsent, readConsent, type Consent } from "@/lib/tracking";
 
-// Google Analytics and the Meta Pixel, behind a cookie banner. Nothing loads and
-// no banner shows until an ID is filled in under Site Settings → Tracking.
+// Google Tag Manager, Google Analytics and the Meta Pixel, behind a cookie banner.
+// Nothing loads and no banner shows until an ID is filled in under
+// Settings → Tracking & Analytics.
 export function Tracking() {
-  const { tracking, cookieBanner } = useSiteSettings();
-  const gaId = cleanMeasurementId(tracking.googleAnalyticsId);
-  const pixelId = cleanPixelId(tracking.metaPixelId);
-  const enabled = Boolean(gaId || pixelId);
+  const { trackingCodes, cookieBanner } = useTracking();
+  const gtmId = cleanContainerId(trackingCodes.googleTagManagerId);
+  const gaId = cleanMeasurementId(trackingCodes.googleAnalyticsId);
+  const pixelId = cleanPixelId(trackingCodes.metaPixelId);
+  const enabled = Boolean(gtmId || gaId || pixelId);
 
   // The saved choice lives in the browser; "pending" while the page is server-rendered
   const consent = useSyncExternalStore(subscribeConsent, () => readConsent() ?? "unset", () => "pending" as const);
@@ -49,6 +51,7 @@ export function Tracking() {
 
   return (
     <>
+      {consent === "granted" && gtmId && <GoogleTagManager id={gtmId} />}
       {consent === "granted" && gaId && <GoogleAnalytics id={gaId} />}
       {consent === "granted" && pixelId && <MetaPixel id={pixelId} />}
       {bannerOpen && (
@@ -87,6 +90,15 @@ export function Tracking() {
         </div>
       )}
     </>
+  );
+}
+
+// Google Tag Manager container (the official loader). Tags inside the container are managed in Tag Manager.
+function GoogleTagManager({ id }: { id: string }) {
+  return (
+    <Script id="google-tag-manager" strategy="afterInteractive">
+      {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${id}');`}
+    </Script>
   );
 }
 

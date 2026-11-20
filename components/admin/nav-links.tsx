@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import {
   BarChart3,
   Briefcase,
+  Code2,
   CircleHelp,
   FileText,
   Image as ImageIcon,
@@ -46,6 +47,7 @@ const ICONS = {
   legal: Scale,
   media: ImageIcon,
   settings: Settings,
+  tracking: Code2,
   users: UserCog,
 } satisfies Record<string, LucideIcon>;
 

@@ -15,16 +15,18 @@ import { AccentText } from "@/components/ui/accent-text";
 import { resolveLink, telHref } from "@/lib/links";
 import { useHeaderFooter } from "@/components/providers/header-footer";
 import { useSiteSettings } from "@/components/providers/site-settings";
-import { cleanMeasurementId, cleanPixelId, openCookiePreferences } from "@/lib/tracking";
+import { hasTrackingCodes, openCookiePreferences } from "@/lib/tracking";
+import { useTracking } from "@/components/providers/tracking";
 
 const linkClass = "text-sm text-[#717680] hover:text-[#F3651B] transition-colors text-left";
 
 export function Footer() {
   const openModal = useModalStore((state) => state.openModal);
   const { footer } = useHeaderFooter();
-  const { contact, apps, social, branding, forms, tracking, cookieBanner } = useSiteSettings();
-  // Visitors can change their cookie choice once a tracker is turned on
-  const hasTracking = Boolean(cleanMeasurementId(tracking.googleAnalyticsId) || cleanPixelId(tracking.metaPixelId));
+  const { contact, apps, social, branding, forms } = useSiteSettings();
+  const { trackingCodes, cookieBanner } = useTracking();
+  // Visitors can change their cookie choice once a tracking code is turned on
+  const hasTracking = hasTrackingCodes(trackingCodes);
   const socialLinks = [
     { label: "LinkedIn", icon: Linkedin, href: social.linkedinUrl },
     { label: "Facebook", icon: Facebook, href: social.facebookUrl },
