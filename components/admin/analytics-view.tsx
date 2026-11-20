@@ -113,10 +113,8 @@ export async function AnalyticsView({ initPageResult, params, searchParams }: Ad
           setup={
             <ol>
               <li>In Google Analytics, create a GA4 property and a web data stream for keraeva.com.</li>
-              <li>Paste the <strong>Measurement ID</strong> (G-…) and the <strong>Property ID</strong> into <Link href={SETTINGS_URL} prefetch={false}>Tracking &amp; Analytics</Link>. The Measurement ID turns on tracking.</li>
-              <li>In Google Cloud, enable the <em>Google Analytics Data API</em>, create a service account and download a JSON key.</li>
-              <li>In Google Analytics → Admin → Property access management, add the service account&apos;s email as a <strong>Viewer</strong>.</li>
-              <li>Add the JSON key as <code>GOOGLE_ANALYTICS_CREDENTIALS</code> in the project&apos;s <a href={VERCEL_ENV_URL} target="_blank" rel="noopener noreferrer">environment variables</a>, then redeploy.</li>
+              <li>Paste the <strong>Measurement ID</strong> (G-…, turns on tracking) and the <strong>Property ID</strong> (Admin → Property details, about 9 digits; not the stream ID) into <Link href={SETTINGS_URL} prefetch={false}>Tracking &amp; Analytics</Link>.</li>
+              <li>Reading the numbers uses the Google Cloud project <em>Keraeva&apos;s Gen Web Analytics</em>: the live site signs in through Vercel without any key, as the service account <code>keraeva-analytics-reader</code>. That account must be a <strong>Viewer</strong> on the property (Google Analytics → Admin → Property access management).</li>
             </ol>
           }
         />
