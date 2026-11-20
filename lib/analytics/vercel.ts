@@ -1,4 +1,4 @@
-import { countryName, errorMessage, fillDays, periodStart, type RangeDays, type Row, type SourceResult, type WebReport } from "./types";
+import { REFRESH_SECONDS, countryName, errorMessage, fillDays, periodStart, type RangeDays, type Row, type SourceResult, type WebReport } from "./types";
 
 // Vercel Web Analytics (already collecting on keraeva.com through <Analytics />).
 // Read with a Vercel access token in VERCEL_ANALYTICS_TOKEN.
@@ -11,7 +11,7 @@ async function query<T>(endpoint: string, params: Record<string, string | number
   const search = new URLSearchParams({ projectId: PROJECT_ID, teamId: TEAM_ID, ...Object.fromEntries(Object.entries(params).map(([k, v]) => [k, String(v)])) });
   const response = await fetch(`https://api.vercel.com/v1/query/web-analytics/visits/${endpoint}?${search}`, {
     headers: { Authorization: `Bearer ${token}` },
-    next: { revalidate: 600 },
+    next: { revalidate: REFRESH_SECONDS },
   });
   if (!response.ok) {
     const body = await response.json().catch(() => ({}));

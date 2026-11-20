@@ -1,6 +1,9 @@
 // Shared shapes for the admin Analytics page (components/admin/analytics-view.tsx)
 
 export const RANGES = [7, 30, 90] as const;
+
+/** How long numbers from Vercel, Google and Meta are reused before they are fetched again. */
+export const REFRESH_SECONDS = 300;
 export type RangeDays = (typeof RANGES)[number];
 
 export type Row = { label: string; value: number };

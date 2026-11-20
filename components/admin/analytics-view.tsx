@@ -5,7 +5,7 @@ import type { AdminViewServerProps } from "payload";
 import { DefaultTemplate } from "@payloadcms/next/templates";
 import { getTracking } from "@/lib/cms/tracking";
 import { cleanContainerId, cleanMeasurementId, cleanPixelId } from "@/lib/tracking";
-import { RANGES, type RangeDays, type SourceResult, type WebReport } from "@/lib/analytics/types";
+import { RANGES, REFRESH_SECONDS, type RangeDays, type SourceResult, type WebReport } from "@/lib/analytics/types";
 import { vercelReport } from "@/lib/analytics/vercel";
 import { googleReport } from "@/lib/analytics/google";
 import { metaReport } from "@/lib/analytics/meta";
@@ -66,7 +66,7 @@ export async function AnalyticsView({ initPageResult, params, searchParams }: Ad
       <div className="kr-view">
         <PageHeader
           title="Analytics"
-          subtitle={`Visitors and sign-ups on keraeva.com over the last ${days} days. Numbers refresh every 10 minutes.`}
+          subtitle={`Visitors and sign-ups on keraeva.com over the last ${days} days. Numbers refresh every ${REFRESH_SECONDS / 60} minutes.`}
           actions={<ButtonLink href={SETTINGS_URL} icon={Settings} variant="secondary">Tracking &amp; Analytics settings</ButtonLink>}
         />
         <div className="kr-segmented kr-status-tabs" role="group" aria-label="Time period">

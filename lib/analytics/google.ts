@@ -1,6 +1,6 @@
 import crypto from "crypto";
 import { headers } from "next/headers";
-import { errorMessage, fillDays, type RangeDays, type Row, type SourceResult, type WebReport } from "./types";
+import { REFRESH_SECONDS, errorMessage, fillDays, type RangeDays, type Row, type SourceResult, type WebReport } from "./types";
 
 // Google Analytics 4 Data API for the property set in Settings → Tracking &
 // Analytics → Google Analytics Property ID.
@@ -133,7 +133,7 @@ export async function googleReport(days: RangeDays, propertyId: string): Promise
         method: "POST",
         headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
         body: JSON.stringify(body),
-        next: { revalidate: 600 },
+        next: { revalidate: REFRESH_SECONDS },
       });
       const json = await response.json().catch(() => ({}));
       if (!response.ok) throw new Error(json?.error?.message || `Google responded with ${response.status}`);

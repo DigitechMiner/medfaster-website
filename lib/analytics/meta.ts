@@ -1,4 +1,4 @@
-import { errorMessage, fillDays, periodStart, type MetaReport, type RangeDays, type SourceResult } from "./types";
+import { REFRESH_SECONDS, errorMessage, fillDays, periodStart, type MetaReport, type RangeDays, type SourceResult } from "./types";
 
 // Meta Pixel event counts from the Graph API, read with an access token (a
 // system user token with access to the Pixel) in META_ACCESS_TOKEN.
@@ -24,7 +24,7 @@ export async function metaReport(days: RangeDays, pixelId: string): Promise<Sour
     const pageViews = new Map<string, number>();
     let pages = 0;
     while (url && pages < MAX_PAGES) {
-      const response = await fetch(url, { next: { revalidate: 600 } });
+      const response = await fetch(url, { next: { revalidate: REFRESH_SECONDS } });
       const body = (await response.json().catch(() => ({}))) as Page;
       if (!response.ok || body.error) throw new Error(body.error?.message || `Meta responded with ${response.status}`);
       for (const bucket of body.data ?? []) {
