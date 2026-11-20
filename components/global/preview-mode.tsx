@@ -43,6 +43,8 @@ export function PreviewMode() {
       if (!target) return;
       event.preventDefault();
       event.stopPropagation();
+      hovered?.classList.remove("kr-edit-hover");
+      hovered = null;
       const message =
         target instanceof HTMLImageElement
           ? { type: "kr:edit-field", alt: target.alt }

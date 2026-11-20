@@ -44,40 +44,57 @@ function findPath(fields: FieldState, clicked: Clicked): string | null {
   return around?.path ?? null;
 }
 
+// Payload names list rows after the list's path with dashes: "journey.steps" row 2 → "journey-steps-row-2"
+const rowId = (listPath: string, index: string) => `${listPath.split(".").join("-")}-row-${index}`;
+
+// Opens every collapsed list row along the path that is already on the page
+function openRows(parts: string[]) {
+  for (let i = 1; i < parts.length; i += 1) {
+    if (!/^\d+$/.test(parts[i])) continue;
+    const row = document.getElementById(rowId(parts.slice(0, i).join("."), parts[i]));
+    const toggle = row?.querySelector<HTMLButtonElement>(".collapsible__toggle--collapsed");
+    toggle?.click();
+  }
+}
+
+// Payload only draws fields once they are near the visible screen, so scroll the
+// deepest part of the path that already exists into view to get the rest drawn
+function bringNearView(parts: string[]) {
+  for (let i = parts.length; i > 0; i -= 1) {
+    const sub = parts.slice(0, i);
+    const last = sub[sub.length - 1];
+    const el = /^\d+$/.test(last)
+      ? document.getElementById(rowId(sub.slice(0, -1).join("."), last))
+      : document.getElementById(`field-${sub.join("__")}`);
+    if (el) {
+      el.scrollIntoView({ block: "start" });
+      return;
+    }
+  }
+}
+
 async function reveal(path: string) {
   const id = `field-${path.replace(/\./g, "__")}`;
   const find = () => document.getElementById(id) ?? document.querySelector<HTMLElement>(`[id^="${id}"]`);
+  const parts = path.split(".");
   let el = find();
   if (!el) {
     // Fields live in tabs named after the first part of the path
-    const tab = humanize(path.split(".")[0]);
+    const tab = humanize(parts[0]);
     const button = [...document.querySelectorAll<HTMLButtonElement>(".tabs-field__tab-button")].find((b) => b.textContent?.trim() === tab);
-    button?.click();
-    for (let i = 0; i < 15 && !el; i += 1) {
-      await sleep(100);
-      el = find();
-    }
+    if (button && !button.classList.contains("tabs-field__tab-button--active")) button.click();
   }
-  if (!el) {
-    // Collapsed blocks don't draw their fields until opened: open each row on the path
-    const parts = path.split(".");
-    for (let i = 1; i < parts.length && !el; i += 1) {
-      if (!/^\d+$/.test(parts[i])) continue;
-      const listPath = parts.slice(0, i).join(".");
-      const row =
-        document.getElementById(`${listPath}-row-${parts[i]}`) ??
-        document.getElementById(`${listPath.replace(/\./g, "__")}-row-${parts[i]}`);
-      const collapsed = row?.querySelector(".collapsible--collapsed") ?? (row?.classList.contains("collapsible--collapsed") ? row : null);
-      collapsed?.querySelector<HTMLButtonElement>(".collapsible__toggle")?.click();
-      // Blocks render their fields from the server, which can take a moment
-      for (let j = 0; j < 30 && !el; j += 1) {
-        await sleep(100);
-        el = find();
-      }
+  // Open rows and scroll closer until the field is drawn (blocks can take a moment)
+  for (let i = 0; i < 40 && !el; i += 1) {
+    if (i % 4 === 0) {
+      openRows(parts);
+      bringNearView(parts);
     }
+    await sleep(100);
+    el = find();
   }
   if (!el) return false;
-  // Open any collapsed list rows around the field
+  // Open any collapsed rows still around the field
   for (let i = 0; i < 6; i += 1) {
     const collapsed = el.closest(".collapsible--collapsed");
     if (!collapsed) break;
