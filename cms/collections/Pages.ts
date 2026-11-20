@@ -52,9 +52,13 @@ export const Pages: CollectionConfig = {
     defaultColumns: ["title", "slug", "_status", "updatedAt"],
     description: "Pages built from sections. Only published pages appear on the website.",
     preview: (doc) => `/api/preview?slug=${encodeURIComponent(String(doc.slug ?? ""))}`,
-    components: { views: { list: { Component: "/components/admin/redirect-to-pages#RedirectToPages" } } },
+    components: {
+      views: { list: { Component: "/components/admin/redirect-to-pages#RedirectToPages" } },
+      // Click text or images in Live Preview to jump to their field
+      edit: { beforeDocumentControls: ["/components/admin/click-to-edit#ClickToEdit", "/components/admin/visual-editor#VisualEditor"] },
+    },
   },
-  versions: { drafts: true, maxPerDoc: 25 },
+  versions: { drafts: { autosave: { interval: 1000 } }, maxPerDoc: 25 },
   access: { read: publishedOrLoggedIn, create: isLoggedIn, update: isLoggedIn, delete: isLoggedIn },
   hooks: revalidateHooks,
   defaultSort: "title",

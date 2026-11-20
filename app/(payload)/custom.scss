@@ -446,6 +446,10 @@ body {
     font-weight: 500;
     color: var(--kr-text-2);
     text-decoration: none;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    font-family: inherit;
     span {
       color: var(--kr-text-3);
       font-size: 12px;
@@ -856,6 +860,32 @@ body {
       color: var(--kr-text);
       box-shadow: inset 3px 0 0 var(--kr-brand);
     }
+  }
+}
+
+// Live Preview open: the form column is narrow, so the section list becomes a
+// wrapping row of pills above the fields instead of a column beside them
+.collection-edit--is-live-previewing .tabs-field {
+  @media (min-width: 1024px) {
+    display: block;
+  }
+}
+.collection-edit--is-live-previewing .tabs-field__tabs-wrap {
+  @media (min-width: 1024px) {
+    position: static;
+    margin-bottom: 16px;
+  }
+}
+.collection-edit--is-live-previewing .tabs-field__tabs {
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+}
+.collection-edit--is-live-previewing .tabs-field__tab-button--active {
+  @media (min-width: 1024px) {
+    box-shadow: inset 0 -2px 0 var(--kr-brand);
   }
 }
 
@@ -1956,4 +1986,221 @@ body {
   font-variant-numeric: tabular-nums;
   font-weight: 500;
   color: var(--kr-text);
+}
+
+// Click-to-edit (components/admin/click-to-edit.tsx): brief highlight on the field you clicked in Live Preview
+@keyframes kr-field-flash {
+  0% { box-shadow: 0 0 0 0 rgba(243, 101, 27, 0); }
+  20% { box-shadow: 0 0 0 4px rgba(243, 101, 27, 0.35); }
+  100% { box-shadow: 0 0 0 0 rgba(243, 101, 27, 0); }
+}
+.kr-field-flash {
+  border-radius: var(--kr-radius-md);
+  animation: kr-field-flash 1.6s ease-out;
+}
+
+// Full-screen visual editor (components/admin/visual-editor.tsx, ?visual=1).
+// Elementor-style layout in the KeRaeva design: a dark top bar with the page
+// name, device sizes and Publish; a narrow panel with the fields on the left;
+// the live page on a large canvas filling the rest of the screen.
+html.kr-visual {
+  --app-header-height: 0px;
+  --kr-panel-width: 380px;
+}
+html.kr-visual .template-default {
+  // The sidebar is removed below, so the page is the only column
+  grid-template-columns: minmax(0, 1fr) !important;
+}
+html.kr-visual .template-default .nav,
+html.kr-visual .template-default__nav-toggler-wrapper,
+html.kr-visual .nav__header,
+html.kr-visual .app-header,
+html.kr-visual .template-default__wrap > .gutter {
+  display: none !important;
+}
+
+// Top bar
+html.kr-visual .doc-controls,
+html.kr-visual .collection-edit__form > .gutter {
+  background: #1b1e26;
+  color: #f2f3f5;
+}
+html.kr-visual .doc-controls__wrapper {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+html.kr-visual .doc-controls__divider {
+  display: none;
+}
+html.kr-visual .doc-controls,
+html.kr-visual .doc-controls__meta,
+html.kr-visual .doc-controls__value,
+html.kr-visual .doc-controls__label,
+html.kr-visual .doc-controls .status,
+html.kr-visual .doc-controls .status__value,
+html.kr-visual .doc-controls .status__label,
+html.kr-visual .doc-controls .autosave {
+  color: #c9ccd3 !important;
+}
+html.kr-visual .doc-controls .live-preview-toggler,
+html.kr-visual .doc-controls .popup-button,
+html.kr-visual .doc-controls .doc-controls__dots {
+  color: #f2f3f5;
+}
+html.kr-visual .doc-controls .status__action {
+  color: #ff9a62 !important;
+}
+
+// Left panel: fixed width, scrolls on its own
+html.kr-visual .collection-edit--is-live-previewing .collection-edit__main {
+  // Payload's 60px page gutters are too wide for a side panel
+  --gutter-h: 16px;
+  width: var(--kr-panel-width);
+  flex: 0 0 var(--kr-panel-width);
+  position: sticky;
+  top: var(--doc-controls-height);
+  height: calc(100vh - var(--doc-controls-height));
+  overflow-y: auto;
+  background: var(--kr-surface);
+  border-right: 1px solid var(--kr-border);
+}
+
+// Canvas
+html.kr-visual .live-preview-window {
+  width: auto;
+  flex: 1 1 auto;
+  background: #e7e7e3;
+}
+html[data-theme="dark"].kr-visual .live-preview-window {
+  background: #0b0c0f;
+}
+html.kr-visual .live-preview-window__main {
+  padding: 20px !important;
+  overflow: hidden;
+}
+// Real device width, scaled down to fit and centred (sizes set by visual-editor.tsx).
+// Payload nests the frame as: __main > div > [sized box] > container > iframe.
+html.kr-visual .live-preview-window__main > div > div {
+  width: var(--kr-device-w, 100%) !important;
+  height: var(--kr-device-h, 100%) !important;
+  transform: scale(var(--kr-scale, 1)) !important;
+  transform-origin: top left !important;
+  margin: 0 0 0 var(--kr-offset, 0px) !important;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 10px 40px rgba(15, 18, 26, 0.18), 0 1px 3px rgba(15, 18, 26, 0.1);
+}
+html.kr-visual .live-preview-window__main iframe {
+  width: 100% !important;
+  height: 100% !important;
+  border: 0 !important;
+}
+// Only the status in the top bar; created/modified dates are on the normal editor
+html.kr-visual .doc-controls__value-wrap {
+  display: none !important;
+}
+// Live Preview stays on in this mode, so its on/off switch is hidden
+html.kr-visual .live-preview-toggler {
+  display: none !important;
+}
+html.kr-visual .doc-controls::before {
+  background: #1b1e26 !important;
+}
+html.kr-visual .doc-controls .doc-controls__dots,
+html.kr-visual .doc-controls .popup-button--background {
+  background: transparent;
+  border-color: #363a43;
+  color: #f2f3f5;
+}
+
+// Payload's size and zoom toolbar stays in the page (the device buttons drive
+// it) but is hidden; the top bar's Phone / Tablet / Desktop replace it
+html.kr-visual .live-preview-toolbar {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  height: 0;
+  overflow: hidden;
+}
+
+.kr-visual-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: 8px;
+  html.kr-visual & .kr-segmented {
+    background: #2a2e38;
+    border-color: #363a43;
+    button {
+      color: #c9ccd3;
+      &.is-active {
+        background: #f2f3f5;
+        color: #1b1e26;
+      }
+      &:hover:not(.is-active) {
+        background: #343844;
+        color: #fff;
+      }
+    }
+  }
+  .kr-segmented button {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    svg {
+      width: 15px;
+      height: 15px;
+    }
+  }
+}
+.kr-visual-bar__title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-right: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  white-space: nowrap;
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.kr-visual-bar__mark {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  background: var(--kr-brand);
+  flex-shrink: 0;
+}
+.kr-visual-bar__exit {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: var(--kr-radius-md);
+  font-size: 13px;
+  color: var(--kr-text-2);
+  text-decoration: none;
+  html.kr-visual & {
+    color: #c9ccd3;
+  }
+  svg {
+    width: 15px;
+    height: 15px;
+  }
+  &:hover {
+    background: var(--kr-subtle);
+    color: var(--kr-text);
+  }
+  html.kr-visual &:hover {
+    background: #343844;
+    color: #fff;
+  }
+  @media (max-width: 1200px) {
+    span {
+      display: none;
+    }
+  }
 }

@@ -1,14 +1,14 @@
 import { cache } from "react";
 import { HEADER_FOOTER_DEFAULTS, type HeaderFooter } from "@/content/header-footer";
 import { mergeContent } from "./merge";
-import { fromCms } from "./payload";
+import { fromCms, isPreview } from "./payload";
 
 // Header and footer content, plus a "More" footer column for custom pages
 // marked "Show in footer links"
 export const getHeaderFooter = cache(
   async (): Promise<HeaderFooter> =>
     fromCms(HEADER_FOOTER_DEFAULTS, async (payload) => {
-      const doc = await payload.findGlobal({ slug: "header-footer", depth: 0 });
+      const doc = await payload.findGlobal({ slug: "header-footer", depth: 0, draft: await isPreview() });
       const content = mergeContent(HEADER_FOOTER_DEFAULTS, doc, Boolean(doc?.updatedAt));
       try {
         const pages = await payload.find({

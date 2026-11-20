@@ -16,7 +16,7 @@ import { TERMS_AND_CONDITIONS } from "@/lib/legal/terms";
 import type { LegalDocumentData } from "@/lib/legal/types";
 import { PAGE_REGISTRY } from "@/content/pages";
 import type { Post } from "@/payload-types";
-import { fromCms } from "./payload";
+import { fromCms, isPreview } from "./payload";
 import { mediaUrl, mergeContent } from "./merge";
 
 type CollectionSlug = Parameters<Payload["count"]>[0]["collection"];
@@ -203,7 +203,7 @@ export const getPageContent = cache(
     const page = PAGE_REGISTRY[key];
     const defaults = page.defaults as PageContent<K>;
     return fromCms(defaults, async (payload) => {
-      const doc = await payload.findGlobal({ slug: page.slug as Parameters<Payload["findGlobal"]>[0]["slug"], depth: 1 });
+      const doc = await payload.findGlobal({ slug: page.slug as Parameters<Payload["findGlobal"]>[0]["slug"], depth: 1, draft: await isPreview() });
       return mergeContent(defaults, doc, Boolean((doc as { updatedAt?: string } | null)?.updatedAt));
     });
   }

@@ -127,7 +127,8 @@ export async function importWebsiteContent(payload: Payload, { force = false, or
         );
       return value;
     };
-    await payload.updateGlobal({ slug: slug as GlobalSlug, data: toRows(defaults) as never, overrideAccess: true });
+    // Published straight away (pages and the header/footer have drafts)
+    await payload.updateGlobal({ slug: slug as GlobalSlug, data: { ...(toRows(defaults) as object), _status: "published" } as never, draft: false, overrideAccess: true });
     result.imported.push(slug);
   }
 

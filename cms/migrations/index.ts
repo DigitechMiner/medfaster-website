@@ -7,6 +7,7 @@ import * as migration_20261119_171640_form_placeholders from './20261119_171640_
 import * as migration_20261119_214417_form_labels_messages from './20261119_214417_form_labels_messages';
 import * as migration_20261119_215418_analytics_tracking from './20261119_215418_analytics_tracking';
 import * as migration_20261120_024912_tracking_settings from './20261120_024912_tracking_settings';
+import * as migration_20261120_103958_page_drafts from './20261120_103958_page_drafts';
 
 export const migrations = [
   {
@@ -52,6 +53,11 @@ export const migrations = [
   {
     up: migration_20261120_024912_tracking_settings.up,
     down: migration_20261120_024912_tracking_settings.down,
-    name: '20261120_024912_tracking_settings'
+    name: '20261120_024912_tracking_settings',
+  },
+  {
+    up: migration_20261120_103958_page_drafts.up,
+    down: migration_20261120_103958_page_drafts.down,
+    name: '20261120_103958_page_drafts'
   },
 ];

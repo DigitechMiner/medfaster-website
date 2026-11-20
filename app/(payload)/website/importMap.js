@@ -23,6 +23,8 @@ import { UnderlineFeatureClient as UnderlineFeatureClient_e70f5e05f09f93e00b997e
 import { BoldFeatureClient as BoldFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from '@payloadcms/richtext-lexical/client'
 import { ItalicFeatureClient as ItalicFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from '@payloadcms/richtext-lexical/client'
 import { RowLabel as RowLabel_bf77544266d401359bb913e1e4b02cd4 } from '../../../components/admin/row-label'
+import { ClickToEdit as ClickToEdit_509bb3d5db95a22b8e2726c0c352bfc2 } from '../../../components/admin/click-to-edit'
+import { VisualEditor as VisualEditor_0705cd7448fe624d07252be67ecd56c5 } from '../../../components/admin/visual-editor'
 import { RedirectToPages as RedirectToPages_1208d42ab95975fe253667d79d423c49 } from '../../../components/admin/redirect-to-pages'
 import { StatusTabs as StatusTabs_87ac15abbebc49d5e4ede6825ad68f7c } from '../../../components/admin/status-tabs'
 import { InboxView as InboxView_f019da0a41a6dd77524109fa2a1a5a17 } from '../../../components/admin/inbox-view'
@@ -65,6 +67,8 @@ export const importMap = {
   "@payloadcms/richtext-lexical/client#BoldFeatureClient": BoldFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
   "@payloadcms/richtext-lexical/client#ItalicFeatureClient": ItalicFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
   "/components/admin/row-label#RowLabel": RowLabel_bf77544266d401359bb913e1e4b02cd4,
+  "/components/admin/click-to-edit#ClickToEdit": ClickToEdit_509bb3d5db95a22b8e2726c0c352bfc2,
+  "/components/admin/visual-editor#VisualEditor": VisualEditor_0705cd7448fe624d07252be67ecd56c5,
   "/components/admin/redirect-to-pages#RedirectToPages": RedirectToPages_1208d42ab95975fe253667d79d423c49,
   "/components/admin/status-tabs#StatusTabs": StatusTabs_87ac15abbebc49d5e4ede6825ad68f7c,
   "/components/admin/inbox-view#InboxView": InboxView_f019da0a41a6dd77524109fa2a1a5a17,

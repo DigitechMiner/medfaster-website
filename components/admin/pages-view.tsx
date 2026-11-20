@@ -68,11 +68,11 @@ export async function PagesView({ initPageResult, params, searchParams }: AdminV
       <div className="kr-view">
         <PageHeader
           title="Pages"
-          subtitle="Edit the website's pages, or build a new page from ready-made sections."
+          subtitle="Edit opens the page in a new tab, with the live page beside the form in phone, tablet and desktop sizes."
           actions={
             <>
               {(visibleEntities.globals as string[]).includes("header-footer") && (
-                <ButtonLink href={adminUrl("/globals/header-footer")} icon={PanelsTopLeft} variant="secondary">Header &amp; Footer</ButtonLink>
+                <ButtonLink href={adminUrl("/globals/header-footer?visual=1")} icon={PanelsTopLeft} variant="secondary" external>Header &amp; Footer</ButtonLink>
               )}
               {canCustom && <ButtonLink href={adminUrl("/collections/pages/create")} icon={Plus}>New page</ButtonLink>}
             </>
@@ -114,7 +114,7 @@ export async function PagesView({ initPageResult, params, searchParams }: AdminV
                         <ButtonLink href={page.status === "published" ? `${SITE_URL}/${page.slug}` : `/api/preview?slug=${encodeURIComponent(page.slug)}`} icon={ExternalLink} variant="ghost" size="sm" external>
                           {page.status === "published" ? "View" : "Preview"}
                         </ButtonLink>
-                        <ButtonLink href={adminUrl(`/collections/pages/${page.id}`)} icon={SquarePen} variant="secondary" size="sm">Edit page</ButtonLink>
+                        <ButtonLink href={adminUrl(`/collections/pages/${page.id}?visual=1`)} icon={SquarePen} variant="secondary" size="sm" external>Edit page</ButtonLink>
                       </div>
                     </div>
                   </article>
@@ -143,7 +143,7 @@ export async function PagesView({ initPageResult, params, searchParams }: AdminV
                   <span className="kr-muted kr-small">{page.updatedAt ? `Edited ${relativeTime(page.updatedAt).toLowerCase()}` : "Not edited yet"}</span>
                   <div className="kr-inline">
                     <ButtonLink href={`${SITE_URL}${page.path}`} icon={ExternalLink} variant="ghost" size="sm" external>View</ButtonLink>
-                    <ButtonLink href={adminUrl(`/globals/${page.slug}`)} icon={SquarePen} variant="secondary" size="sm">Edit page</ButtonLink>
+                    <ButtonLink href={adminUrl(`/globals/${page.slug}?visual=1`)} icon={SquarePen} variant="secondary" size="sm" external>Edit page</ButtonLink>
                   </div>
                 </div>
               </article>

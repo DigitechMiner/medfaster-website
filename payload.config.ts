@@ -18,6 +18,7 @@ import { FormSubmissions } from "./cms/collections/FormSubmissions";
 import { Pages } from "./cms/collections/Pages";
 import { HeaderFooterGlobal, PageGlobals, SiteSettings, TrackingGlobal } from "./cms/globals";
 import { migrations } from "./cms/migrations";
+import { livePreview, PREVIEW_COLLECTIONS, PREVIEW_GLOBALS } from "./cms/live-preview";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -47,6 +48,8 @@ export default buildConfig({
       // Never index the admin panel
       robots: "noindex, nofollow",
     },
+    // Edit pages next to a live, updating preview (phone, tablet and desktop sizes)
+    livePreview: { ...livePreview, globals: PREVIEW_GLOBALS, collections: PREVIEW_COLLECTIONS },
     // KeRaeva admin design (see the "KeRaeva Admin – UI Design" Figma file)
     components: {
       Nav: "/components/admin/nav#AdminNav",

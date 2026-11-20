@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import { draftMode } from "next/headers";
 import "./globals.css";
 import { fonts } from "@/lib/font";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Analytics } from "@vercel/analytics/next";
 import { Tracking } from "@/components/global/tracking";
+import { PreviewMode } from "@/components/global/preview-mode";
 import { GlobalModals } from "@/components/global/modals";
 import { getPageContent } from "@/lib/cms/content";
 import { Preloader } from "@/components/global/preloader";
@@ -44,7 +46,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   // Shared by the header, footer, popups and buttons on every page
-  const [siteSettings, headerFooter, popups, tracking] = await Promise.all([getSiteSettings(), getHeaderFooter(), getPageContent("popups"), getTracking()]);
+  const [siteSettings, headerFooter, popups, tracking, { isEnabled: previewing }] = await Promise.all([getSiteSettings(), getHeaderFooter(), getPageContent("popups"), getTracking(), draftMode()]);
   return (
     <html lang="en" className={fonts}>
       <body
@@ -71,9 +73,10 @@ export default async function RootLayout({
           pauseOnHover
           theme="light"
         />
-        <Analytics />
-        {/* Tag Manager, Google Analytics and Meta Pixel (Settings → Tracking & Analytics), after cookie consent */}
-        <Tracking />
+        {!previewing && <Analytics />}
+        {/* Tag Manager, Google Analytics and Meta Pixel (Settings → Tracking & Analytics), after cookie consent.
+            Off while previewing drafts, so editors' visits aren't counted. */}
+        {previewing ? <PreviewMode /> : <Tracking />}
         </TrackingProvider>
         </HeaderFooterProvider>
         </SiteSettingsProvider>

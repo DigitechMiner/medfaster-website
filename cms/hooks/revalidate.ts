@@ -12,8 +12,13 @@ function refreshSite() {
   }
 }
 
-export const revalidateAfterChange: CollectionAfterChangeHook = ({ doc }) => {
-  refreshSite();
+// Draft saves (autosave while editing, "Save draft") don't change the live site
+function isDraftSave(req: { query?: Record<string, unknown> } | undefined) {
+  return String(req?.query?.draft) === "true";
+}
+
+export const revalidateAfterChange: CollectionAfterChangeHook = ({ doc, req }) => {
+  if (!isDraftSave(req)) refreshSite();
   return doc;
 };
 
@@ -22,8 +27,8 @@ export const revalidateAfterDelete: CollectionAfterDeleteHook = ({ doc }) => {
   return doc;
 };
 
-export const revalidateGlobal: GlobalAfterChangeHook = ({ doc }) => {
-  refreshSite();
+export const revalidateGlobal: GlobalAfterChangeHook = ({ doc, req }) => {
+  if (!isDraftSave(req)) refreshSite();
   return doc;
 };
 

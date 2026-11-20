@@ -19,6 +19,7 @@ export const HeaderFooterGlobal = buildGlobal({
   group: "Pages",
   description: "Menus, buttons and footer content shown on every page of the website.",
   defaults: HEADER_FOOTER_DEFAULTS as unknown as Record<string, Record<string, unknown>>,
+  drafts: true,
 });
 
 export const TrackingGlobal = buildGlobal({
@@ -36,5 +37,6 @@ export const PageGlobals: GlobalConfig[] = Object.values(PAGE_REGISTRY).map((pag
     group: "Pages",
     description: page.description,
     defaults: page.defaults as unknown as Record<string, Record<string, unknown>>,
+    drafts: true,
   })
 );

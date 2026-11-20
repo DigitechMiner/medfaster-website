@@ -48,7 +48,7 @@ export async function Dashboard({ payload, user }: AdminViewServerProps) {
   ];
 
   const actions = [
-    { icon: SquarePen, label: "Edit the home page", hint: "Hero, sections and buttons", href: adminUrl("/globals/page-home") },
+    { icon: SquarePen, label: "Edit the home page", hint: "Opens the visual editor in a new tab", href: adminUrl("/globals/page-home?visual=1"), newTab: true },
     { icon: Briefcase, label: "Post a job opening", hint: "Shows on Careers when published", href: adminUrl("/collections/jobs/create") },
     { icon: Newspaper, label: "Write a blog post", hint: "Draft, preview, publish", href: adminUrl("/collections/posts/create") },
     { icon: Settings, label: "Update site settings", hint: "Contact details and app links", href: adminUrl("/globals/site-settings") },
@@ -123,7 +123,7 @@ export async function Dashboard({ payload, user }: AdminViewServerProps) {
             <ul className="kr-rows kr-rows--plain">
               {actions.map((action) => (
                 <li key={action.label}>
-                  <Link href={action.href} className="kr-row" prefetch={false}>
+                  <Link href={action.href} className="kr-row" prefetch={false} {...("newTab" in action && action.newTab ? { target: "_blank", rel: "noopener" } : {})}>
                     <IconChip icon={action.icon} tone="neutral" />
                     <div className="kr-row__text">
                       <span className="kr-strong">{action.label}</span>
@@ -143,7 +143,7 @@ export async function Dashboard({ payload, user }: AdminViewServerProps) {
             <ul className="kr-rows kr-rows--plain">
               {pages.slice(0, 4).map((page) => (
                 <li key={page.slug}>
-                  <Link href={adminUrl(`/globals/${page.slug}`)} className="kr-row" prefetch={false}>
+                  <Link href={adminUrl(`/globals/${page.slug}?visual=1`)} className="kr-row" prefetch={false} target="_blank" rel="noopener">
                     <div className="kr-row__text">
                       <span className="kr-strong">{page.label}</span>
                       <span className="kr-muted kr-small">{page.updatedAt ? `Edited ${relativeTime(page.updatedAt).toLowerCase()}` : "Not edited yet"}</span>

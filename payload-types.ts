@@ -1690,6 +1690,7 @@ export interface HeaderFooter {
      */
     creditUrl?: string | null;
   };
+  _status?: ('draft' | 'published') | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -2201,6 +2202,7 @@ export interface PageHome {
       link?: string | null;
     };
   };
+  _status?: ('draft' | 'published') | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -2904,6 +2906,7 @@ export interface PageProfessional {
     screenshot?: (number | null) | Media;
     screenshotAlt?: string | null;
   };
+  _status?: ('draft' | 'published') | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -3394,6 +3397,7 @@ export interface PageOrganization {
     image?: (number | null) | Media;
     imageAlt?: string | null;
   };
+  _status?: ('draft' | 'published') | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -3464,6 +3468,7 @@ export interface PageContact {
       messageTooShort?: string | null;
     };
   };
+  _status?: ('draft' | 'published') | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -3547,6 +3552,7 @@ export interface PageSupport {
     heading?: string | null;
     body?: string | null;
   };
+  _status?: ('draft' | 'published') | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -3594,6 +3600,7 @@ export interface PagePricing {
         }[]
       | null;
   };
+  _status?: ('draft' | 'published') | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -3669,6 +3676,7 @@ export interface PageCareer {
      */
     image?: (number | null) | Media;
   };
+  _status?: ('draft' | 'published') | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -3704,6 +3712,7 @@ export interface PageBlog {
     body?: string | null;
     buttonLabel?: string | null;
   };
+  _status?: ('draft' | 'published') | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -4004,6 +4013,7 @@ export interface PageAbout {
       link?: string | null;
     };
   };
+  _status?: ('draft' | 'published') | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -4633,6 +4643,7 @@ export interface PageKeraevaAi {
       link?: string | null;
     };
   };
+  _status?: ('draft' | 'published') | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -4675,6 +4686,7 @@ export interface PageOurTeam {
     devLabel?: string | null;
     marketingLabel?: string | null;
   };
+  _status?: ('draft' | 'published') | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -4710,6 +4722,7 @@ export interface PageComingSoon {
     successMessage?: string | null;
     note?: string | null;
   };
+  _status?: ('draft' | 'published') | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -4803,6 +4816,7 @@ export interface PagePopup {
     successBody?: string | null;
     closeLabel?: string | null;
   };
+  _status?: ('draft' | 'published') | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -4969,6 +4983,7 @@ export interface HeaderFooterSelect<T extends boolean = true> {
         creditLabel?: T;
         creditUrl?: T;
       };
+  _status?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
@@ -5187,6 +5202,7 @@ export interface PageHomeSelect<T extends boolean = true> {
               link?: T;
             };
       };
+  _status?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
@@ -5404,6 +5420,7 @@ export interface PageProfessionalsSelect<T extends boolean = true> {
         screenshot?: T;
         screenshotAlt?: T;
       };
+  _status?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
@@ -5599,6 +5616,7 @@ export interface PageOrganizationsSelect<T extends boolean = true> {
         image?: T;
         imageAlt?: T;
       };
+  _status?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
@@ -5659,6 +5677,7 @@ export interface PageContactSelect<T extends boolean = true> {
               messageTooShort?: T;
             };
       };
+  _status?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
@@ -5728,6 +5747,7 @@ export interface PageSupportSelect<T extends boolean = true> {
         heading?: T;
         body?: T;
       };
+  _status?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
@@ -5775,6 +5795,7 @@ export interface PagePricingSelect<T extends boolean = true> {
               id?: T;
             };
       };
+  _status?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
@@ -5830,6 +5851,7 @@ export interface PageCareersSelect<T extends boolean = true> {
             };
         image?: T;
       };
+  _status?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
@@ -5865,6 +5887,7 @@ export interface PageBlogSelect<T extends boolean = true> {
         body?: T;
         buttonLabel?: T;
       };
+  _status?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
@@ -5983,6 +6006,7 @@ export interface PageAboutSelect<T extends boolean = true> {
               link?: T;
             };
       };
+  _status?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
@@ -6154,6 +6178,7 @@ export interface PageKeraevaAiSelect<T extends boolean = true> {
               link?: T;
             };
       };
+  _status?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
@@ -6198,6 +6223,7 @@ export interface PageOurTeamSelect<T extends boolean = true> {
         devLabel?: T;
         marketingLabel?: T;
       };
+  _status?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
@@ -6226,6 +6252,7 @@ export interface PageComingSoonSelect<T extends boolean = true> {
         successMessage?: T;
         note?: T;
       };
+  _status?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
@@ -6287,6 +6314,7 @@ export interface PagePopupsSelect<T extends boolean = true> {
         successBody?: T;
         closeLabel?: T;
       };
+  _status?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

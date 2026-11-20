@@ -31,3 +31,13 @@ export async function fromCms<T>(fallback: T, query: (payload: Payload) => Promi
     return fallback;
   }
 }
+
+/** True while an admin is previewing drafts (Live Preview or a preview link). */
+export async function isPreview() {
+  try {
+    const { draftMode } = await import("next/headers");
+    return (await draftMode()).isEnabled;
+  } catch {
+    return false; // outside a request (build scripts, seeding)
+  }
+}
